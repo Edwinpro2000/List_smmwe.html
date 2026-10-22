@@ -1,0 +1,76 @@
+{
+  "diffs": [
+    {
+      "name": "Hard",
+      "color": "#049cd8"
+    },
+    {
+      "name": "Expert",
+      "color": "#7a3fd1"
+    },
+    {
+      "name": "Super Expert",
+      "color": "#e52521"
+    },
+    {
+      "name": "Insane",
+      "color": "#c2185b"
+    },
+    {
+      "name": "Extreme",
+      "color": "#e65100"
+    },
+    {
+      "name": "Impossible",
+      "color": "#111111"
+    }
+  ],
+  "levels": [
+    {
+      "id": "l1",
+      "name": "0.2 - \"1 La Cueva Del Reto\"",
+      "creator": "Hugollano",
+      "diff": "Super Expert",
+      "code": "VZW9-BDE7-AMU2-VPA2",
+      "env": "",
+      "desc": "",
+      "video": "https://youtu.be/6tt2ueu9dR0",
+      "status": "verified"
+    },
+    {
+      "id": "l2",
+      "name": "Muncher Volcano",
+      "creator": "LuicundoGD",
+      "diff": "Expert",
+      "code": "L3Q9-8LIU-9V3T-GCUQ",
+      "env": "volcano",
+      "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump. Cualquier error, avísenme ^^",
+      "video": "",
+      "status": "verified"
+    },
+    {
+      "id": "l3",
+      "name": "Desert Night SMB3 - Kaizo Level",
+      "creator": "playoff16",
+      "diff": "Expert",
+      "code": "7REI-2XW3-C4XE-6N6X",
+      "env": "desert",
+      "desc": "Good level, Gg",
+      "video": "https://youtu.be/80tYWUSpsdU",
+      "status": "verified"
+    },
+    {
+      "id": "l4",
+      "name": "Malabaizo - Kaizo",
+      "creator": "N/A",
+      "diff": "Expert",
+      "code": "",
+      "env": "",
+      "desc": "Este nivel está en MediaFire.",
+      "video": "https://youtu.be/675WMIqQhqs",
+      "status": "verified"
+    }
+  ],
+  "credits": "",
+  "updated": "2026-10-21T23:55:00.000Z"
+}
