@@ -27,17 +27,6 @@
   ],
   "levels": [
     {
-      "id": "l1",
-      "name": "\"1 La Cueva Del Reto\"",
-      "creator": "Hugollano",
-      "diff": "Super Expert",
-      "code": "VZW9-BDE7-AMU2-VPA2",
-      "status": "verified",
-      "env": "",
-      "desc": "",
-      "video": "https://youtu.be/6tt2ueu9dR0"
-    },
-    {
       "id": "l2",
       "name": "Muncher Volcano",
       "creator": "LuicundoGD",
@@ -69,8 +58,19 @@
       "env": "",
       "desc": "Este nivel está en MediaFire.",
       "video": "https://youtu.be/675WMIqQhqs"
+    },
+    {
+      "id": "l1",
+      "name": "\"1 La Cueva Del Reto\"",
+      "creator": "Hugollano",
+      "diff": "Super Expert",
+      "code": "VZW9-BDE7-AMU2-VPA2",
+      "status": "verified",
+      "env": "",
+      "desc": "",
+      "video": "https://youtu.be/6tt2ueu9dR0"
     }
   ],
   "credits": "",
-  "updated": "2026-10-22T21:00:34.143Z"
+  "updated": "2026-10-22T21:05:00.781Z"
 }
