@@ -28,14 +28,14 @@
   "levels": [
     {
       "id": "l1",
-      "name": "0.2 - \"1 La Cueva Del Reto\"",
+      "name": "\"1 La Cueva Del Reto\"",
       "creator": "Hugollano",
       "diff": "Super Expert",
       "code": "VZW9-BDE7-AMU2-VPA2",
+      "status": "verified",
       "env": "",
       "desc": "",
-      "video": "https://youtu.be/6tt2ueu9dR0",
-      "status": "verified"
+      "video": "https://youtu.be/6tt2ueu9dR0"
     },
     {
       "id": "l2",
@@ -43,10 +43,10 @@
       "creator": "LuicundoGD",
       "diff": "Expert",
       "code": "L3Q9-8LIU-9V3T-GCUQ",
+      "status": "verified",
       "env": "volcano",
       "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump. Cualquier error, avísenme ^^",
-      "video": "",
-      "status": "verified"
+      "video": ""
     },
     {
       "id": "l3",
@@ -54,10 +54,10 @@
       "creator": "playoff16",
       "diff": "Expert",
       "code": "7REI-2XW3-C4XE-6N6X",
+      "status": "verified",
       "env": "desert",
       "desc": "Good level, Gg",
-      "video": "https://youtu.be/80tYWUSpsdU",
-      "status": "verified"
+      "video": "https://youtu.be/80tYWUSpsdU"
     },
     {
       "id": "l4",
@@ -65,12 +65,12 @@
       "creator": "N/A",
       "diff": "Expert",
       "code": "",
+      "status": "verified",
       "env": "",
       "desc": "Este nivel está en MediaFire.",
-      "video": "https://youtu.be/675WMIqQhqs",
-      "status": "verified"
+      "video": "https://youtu.be/675WMIqQhqs"
     }
   ],
   "credits": "",
-  "updated": "2026-10-21T23:55:00.000Z"
+  "updated": "2026-10-22T21:00:34.143Z"
 }
