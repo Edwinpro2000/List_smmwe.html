@@ -238,6 +238,9 @@ body[data-font=clear] h1,body[data-font=clear] h2{font-weight:900}
 .sbtn i{display:block;width:100%;height:100%;background:center/contain no-repeat}
 
 .thumb{position:relative;display:block;margin:10px 0;border:4px solid var(--black);box-shadow:4px 4px 0 var(--black);background:#000;line-height:0}
+.thumb{cursor:pointer}.thumb.playing{cursor:default}
+.thumb iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.ytl{font-size:8px;margin:0 0 10px}
 .thumb img{width:100%;height:auto;display:block;image-rendering:auto;aspect-ratio:16/9;object-fit:cover}
 .thumb .pl{position:absolute;left:50%;top:50%;width:0;height:0;margin:-18px 0 0 -12px;border-style:solid;border-width:18px 0 18px 30px;border-color:transparent transparent transparent #fff;filter:drop-shadow(3px 3px 0 #111)}
 .lid{font-size:10px;word-break:break-all}
@@ -316,6 +319,27 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .hw-ban .hwi{display:inline-block;width:22px;height:19px;background-size:100% 100%;image-rendering:pixelated;filter:drop-shadow(0 0 5px rgba(255,200,40,.8))}
 .logo-top{color:#ff8a00}
 footer{color:#ffd9a0}
+
+/* ---- more decoration ---- */
+.hw-garland{z-index:3;top:0;left:0;right:0;height:26px;background-repeat:repeat-x;background-size:auto 100%;animation:hwbulb 1.4s steps(2) infinite}
+@keyframes hwbulb{0%{filter:brightness(1.25) drop-shadow(0 0 4px rgba(255,190,60,.8))}50%{filter:brightness(.8)}100%{filter:brightness(1.25) drop-shadow(0 0 4px rgba(255,190,60,.8))}}
+.hw-tree{bottom:44px;right:-4px;width:96px;height:130px;z-index:0;opacity:.95}
+.hw-eye{position:fixed;z-index:0;width:4px;height:4px;background:#ffe45a;box-shadow:0 0 6px #ffcf2e;animation:hwblink 4.5s steps(1) infinite;pointer-events:none}
+@keyframes hwblink{0%,90%,100%{opacity:1}93%,97%{opacity:0}}
+.hw-cauldron{bottom:46px;left:30%;width:62px;height:50px;z-index:1}
+.hw-bub{position:fixed;z-index:1;bottom:84px;left:calc(30% + 14px);width:6px;height:6px;background:#8cff6a;box-shadow:0 0 6px #6ee05a;opacity:0;animation:hwbubble 2.6s linear infinite;pointer-events:none}
+.hw-bub.b2{left:calc(30% + 30px);animation-delay:-.9s;width:5px;height:5px}
+.hw-bub.b3{left:calc(30% + 42px);animation-delay:-1.7s}
+@keyframes hwbubble{0%{transform:translateY(0);opacity:0}15%{opacity:.95}100%{transform:translateY(-44px) translateX(6px);opacity:0}}
+.hw-witch{top:96px;left:-120px;width:84px;height:42px;z-index:3;animation:hwwitch 34s linear infinite}
+@keyframes hwwitch{0%{transform:translate(0,0)}8%{transform:translate(0,0)}55%{transform:translate(70vw,-20px)}100%{transform:translate(calc(100vw + 240px),34px)}}
+.hw-fall{top:-30px;z-index:1;width:14px;height:16px;animation:hwfall linear infinite}
+@keyframes hwfall{0%{transform:translate(0,-20px) rotate(0)}25%{transform:translate(18px,25vh) rotate(40deg)}50%{transform:translate(-14px,52vh) rotate(-30deg)}75%{transform:translate(16px,78vh) rotate(35deg)}100%{transform:translate(-6px,108vh) rotate(-20deg)}}
+.hw-flash{position:fixed;inset:0;z-index:1;background:#d9c8ff;opacity:0;pointer-events:none;animation:hwflash 17s linear infinite}
+@keyframes hwflash{0%,95.6%,96.8%,100%{opacity:0}96%{opacity:.30}96.4%{opacity:.05}96.6%{opacity:.22}}
+h1{animation:hwh1 3.4s ease-in-out infinite}
+@keyframes hwh1{0%,100%{filter:drop-shadow(0 0 3px rgba(255,138,0,.4))}50%{filter:drop-shadow(0 0 12px rgba(255,160,40,.85))}}
+.row:hover,.card:hover{filter:drop-shadow(0 0 8px rgba(255,138,0,.7))}
 </style>
 </head>
 <body>
@@ -503,7 +527,7 @@ gOwner:"Owner (GitHub user)",gRepo:"Repository",gBranch:"Branch",gPath:"File pat
 gHelp:"Create a fine-grained token (GitHub → Settings → Developer settings → Fine-grained tokens) for this repo only, with <b>Contents: Read and write</b>. It is kept only in this browser.",
 clearTok:"Clear token",badOwner:"Invalid owner or repository",badBranch:"Invalid branch",badPath:"Invalid file path",pasteTok:"Paste your token",ghSaved:"GitHub settings saved",tokGone:"Token removed",
 e401:"bad token",e404:"repo, branch or token access not found",pubFail:"Publish failed: {0}",setupGh:"Set up GitHub first",pubOk:"Published! Visitors will see it in about 1 min",draftFail:"Could not save draft (storage blocked)",
-credT:"CREDITS",fan:"Fan-made ranking. Not affiliated with Nintendo.",editCred:"EDIT CREDITS (one name per line)",credSaved:"Credits saved (press Publish to share)",defCred:"Creator:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209",
+credT:"CREDITS",fan:"Fan-made ranking. Not affiliated with Nintendo.",editCred:"EDIT CREDITS (one name per line)",credSaved:"Credits saved (press Publish to share)",defCred:"Creator:\nSpyderSammy\nDev:\nSpyderSammy\nTamalitos209\nDevhelper:\nAldian\nelfafagod\nblangro164.1.5",
 nClassic:"CLASSIC",nCoin:"COINS",nStar:"STARS",nHeart:"HEARTS",nFlower:"FLOWERS",nRocket:"ROCKETS",nGem:"GEMS",nCustom:"CUSTOM",
 bDefault:"DEFAULT",bNight:"NIGHT",bCave:"CAVE",bCastle:"CASTLE",bClean:"CLEAN",
 AUTUMN:"AUTUMN",BEACH:"BEACH",CASTLE:"CASTLE",CAVE:"CAVE",DESERT:"DESERT",FOREST:"FOREST",GHOST:"GHOST",GROUND:"GROUND",MOUNTAIN:"MOUNTAIN",NIGHT:"NIGHT",SKY:"SKY","SKY NIGHT":"SKY NIGHT",SNOW:"SNOW",VOLCANO:"VOLCANO",WATER:"WATER",
@@ -550,7 +574,7 @@ gOwner:"Dueño (usuario de GitHub)",gRepo:"Repositorio",gBranch:"Rama",gPath:"Ru
 gHelp:"Crea un token de acceso fino (GitHub → Settings → Developer settings → Fine-grained tokens) solo para este repo, con <b>Contents: Read and write</b>. Solo se guarda en este navegador.",
 clearTok:"Borrar token",badOwner:"Dueño o repositorio no válido",badBranch:"Rama no válida",badPath:"Ruta de archivo no válida",pasteTok:"Pega tu token",ghSaved:"Ajustes de GitHub guardados",tokGone:"Token borrado",
 e401:"token incorrecto",e404:"no se encontró el repo, la rama o el acceso del token",pubFail:"Falló la publicación: {0}",setupGh:"Primero configura GitHub",pubOk:"¡Publicado! Los visitantes lo verán en cerca de 1 min",draftFail:"No se pudo guardar el borrador (almacenamiento bloqueado)",
-credT:"CRÉDITOS",fan:"Ranking hecho por fans. Sin relación con Nintendo.",editCred:"EDITAR CRÉDITOS (un nombre por línea)",credSaved:"Créditos guardados (toca Publicar para compartir)",defCred:"Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209",
+credT:"CRÉDITOS",fan:"Ranking hecho por fans. Sin relación con Nintendo.",editCred:"EDITAR CRÉDITOS (un nombre por línea)",credSaved:"Créditos guardados (toca Publicar para compartir)",defCred:"Creador:\nSpyderSammy\nDev:\nSpyderSammy\nTamalitos209\nDevhelper:\nAldian\nelfafagod\nblangro164.1.5",
 nClassic:"CLÁSICO",nCoin:"MONEDAS",nStar:"ESTRELLAS",nHeart:"CORAZONES",nFlower:"FLORES",nRocket:"COHETES",nGem:"GEMAS",nCustom:"PROPIO",
 bDefault:"PREDETERMINADO",bNight:"NOCHE",bCave:"CUEVA",bCastle:"CASTILLO",bClean:"LIMPIO",
 AUTUMN:"OTOÑO",BEACH:"PLAYA",CASTLE:"CASTILLO",CAVE:"CUEVA",DESERT:"DESIERTO",FOREST:"BOSQUE",GHOST:"FANTASMA",GROUND:"SUELO",MOUNTAIN:"MONTAÑA",NIGHT:"NOCHE",SKY:"CIELO","SKY NIGHT":"CIELO NOCTURNO",SNOW:"NIEVE",VOLCANO:"VOLCÁN",WATER:"AGUA",
@@ -597,7 +621,7 @@ gOwner:"Dono (usuário do GitHub)",gRepo:"Repositório",gBranch:"Branch",gPath:"
 gHelp:"Crie um token de acesso refinado (GitHub → Settings → Developer settings → Fine-grained tokens) só para este repo, com <b>Contents: Read and write</b>. Ele fica salvo apenas neste navegador.",
 clearTok:"Apagar token",badOwner:"Dono ou repositório inválido",badBranch:"Branch inválida",badPath:"Caminho de arquivo inválido",pasteTok:"Cole o seu token",ghSaved:"Configurações do GitHub salvas",tokGone:"Token removido",
 e401:"token inválido",e404:"repo, branch ou acesso do token não encontrado",pubFail:"Falha ao publicar: {0}",setupGh:"Configure o GitHub primeiro",pubOk:"Publicado! Os visitantes verão em cerca de 1 min",draftFail:"Não foi possível salvar o rascunho (armazenamento bloqueado)",
-credT:"CRÉDITOS",fan:"Ranking feito por fãs. Não afiliado à Nintendo.",editCred:"EDITAR CRÉDITOS (um nome por linha)",credSaved:"Créditos salvos (toque em Publicar para compartilhar)",defCred:"Criador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209",
+credT:"CRÉDITOS",fan:"Ranking feito por fãs. Não afiliado à Nintendo.",editCred:"EDITAR CRÉDITOS (um nome por linha)",credSaved:"Créditos salvos (toque em Publicar para compartilhar)",defCred:"Criador:\nSpyderSammy\nDev:\nSpyderSammy\nTamalitos209\nDevhelper:\nAldian\nelfafagod\nblangro164.1.5",
 nClassic:"CLÁSSICO",nCoin:"MOEDAS",nStar:"ESTRELAS",nHeart:"CORAÇÕES",nFlower:"FLORES",nRocket:"FOGUETES",nGem:"GEMAS",nCustom:"PERSONALIZADO",
 bDefault:"PADRÃO",bNight:"NOITE",bCave:"CAVERNA",bCastle:"CASTELO",bClean:"LIMPO",
 AUTUMN:"OUTONO",BEACH:"PRAIA",CASTLE:"CASTELO",CAVE:"CAVERNA",DESERT:"DESERTO",FOREST:"FLORESTA",GHOST:"FANTASMA",GROUND:"TERRA",MOUNTAIN:"MONTANHA",NIGHT:"NOITE",SKY:"CÉU","SKY NIGHT":"CÉU NOTURNO",SNOW:"NEVE",VOLCANO:"VULCÃO",WATER:"ÁGUA",
@@ -644,7 +668,7 @@ gOwner:"Владелец (пользователь GitHub)",gRepo:"Репози�
 gHelp:"Создайте fine-grained токен (GitHub → Settings → Developer settings → Fine-grained tokens) только для этого репозитория, с правом <b>Contents: Read and write</b>. Он хранится только в этом браузере.",
 clearTok:"Удалить токен",badOwner:"Неверный владелец или репозиторий",badBranch:"Неверная ветка",badPath:"Неверный путь к файлу",pasteTok:"Вставьте токен",ghSaved:"Настройки GitHub сохранены",tokGone:"Токен удалён",
 e401:"неверный токен",e404:"репозиторий, ветка или доступ токена не найдены",pubFail:"Ошибка публикации: {0}",setupGh:"Сначала настройте GitHub",pubOk:"Опубликовано! Посетители увидят примерно через 1 мин",draftFail:"Не удалось сохранить черновик (хранилище заблокировано)",
-credT:"ТИТРЫ",fan:"Рейтинг от фанатов. Не связан с Nintendo.",editCred:"РЕДАКТИРОВАТЬ ТИТРЫ (одно имя в строке)",credSaved:"Титры сохранены (нажмите «Опубликовать»)",defCred:"Создатель:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209",
+credT:"ТИТРЫ",fan:"Рейтинг от фанатов. Не связан с Nintendo.",editCred:"РЕДАКТИРОВАТЬ ТИТРЫ (одно имя в строке)",credSaved:"Титры сохранены (нажмите «Опубликовать»)",defCred:"Создатель:\nSpyderSammy\nDev:\nSpyderSammy\nTamalitos209\nDevhelper:\nAldian\nelfafagod\nblangro164.1.5",
 nClassic:"КЛАССИКА",nCoin:"МОНЕТЫ",nStar:"ЗВЁЗДЫ",nHeart:"СЕРДЦА",nFlower:"ЦВЕТЫ",nRocket:"РАКЕТЫ",nGem:"САМОЦВЕТЫ",nCustom:"СВОЙ",
 bDefault:"ПО УМОЛЧ.",bNight:"НОЧЬ",bCave:"ПЕЩЕРА",bCastle:"ЗАМОК",bClean:"ЧИСТЫЙ",
 AUTUMN:"ОСЕНЬ",BEACH:"ПЛЯЖ",CASTLE:"ЗАМОК",CAVE:"ПЕЩЕРА",DESERT:"ПУСТЫНЯ",FOREST:"ЛЕС",GHOST:"ПРИЗРАК",GROUND:"ЗЕМЛЯ",MOUNTAIN:"ГОРЫ",NIGHT:"НОЧЬ",SKY:"НЕБО","SKY NIGHT":"НОЧНОЕ НЕБО",SNOW:"СНЕГ",VOLCANO:"ВУЛКАН",WATER:"ВОДА",
@@ -747,6 +771,8 @@ function ytId(u){
       else{const m=x.pathname.match(/^\/(shorts|embed|live|v)\/([^/?]+)/);if(m)v=m[2];}}
     return /^[A-Za-z0-9_-]{11}$/.test(v)?v:"";}catch(e){return "";}
 }
+(function(){const md=document.getElementById("mDetail");
+  new MutationObserver(()=>{if(!md.classList.contains("open"))md.querySelectorAll(".thumb iframe").forEach(f=>f.remove());}).observe(md,{attributes:true,attributeFilter:["class"]});})();
 function showDetail(id){
   const i=state.levels.findIndex(l=>l.id===id);if(i<0)return;const l=state.levels[i];
   const envOk=l.env&&ENVU[l.env];
@@ -760,11 +786,15 @@ function showDetail(id){
         <p>${stat(l.status)}${IF}</p>
       </div>
     </div>
-    ${l.video&&ytId(l.video)?`<a class="thumb" href="${esc(l.video)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(t("watchYt"))}"><img src="https://i.ytimg.com/vi/${ytId(l.video)}/hqdefault.jpg" alt="${esc(t("cover"))}" loading="lazy" onerror="this.parentNode.style.display='none'"><span class="pl"></span></a>`:""}
+    ${l.video&&ytId(l.video)?`<div class="thumb" id="ytThumb" role="button" tabindex="0" data-yt="${ytId(l.video)}" aria-label="${esc(t("watchYt"))}"><img src="https://i.ytimg.com/vi/${ytId(l.video)}/hqdefault.jpg" alt="${esc(t("cover"))}" loading="lazy" onerror="this.style.display='none'"><span class="pl"></span></div><p class="ytl"><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${esc(t("watchYt"))}</a></p>`:""}
     ${l.video&&!ytId(l.video)&&/^https?:\/\//i.test(l.video)?`<div class="kv"><b>${t("dVideo")}</b><span><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${t("watch")}</a></span></div>`:""}
     <div class="kv"><b>${t("dNotes")}</b><span>${esc(l.desc||t("noDesc"))}</span></div>
     <div class="actions">${admin?`<button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button>`:""}<button class="btn sm" data-close="#mDetail">${t("close")}</button></div>`;
   open("#mDetail");
+  const yt=$("#ytThumb");
+  if(yt){const go=()=>{const v=yt.dataset.yt;yt.removeAttribute("role");yt.removeAttribute("tabindex");yt.onclick=yt.onkeydown=null;
+      yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';yt.classList.add("playing");};
+    yt.onclick=go;yt.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}};}
   const cb=$("#cpCode");if(cb)cb.onclick=()=>{const v=l.code;const done=()=>toast(t("copied"));try{navigator.clipboard.writeText(v).then(done,()=>{});}catch(e){}};
 }
 
@@ -1352,7 +1382,7 @@ async function readZip(buf){
       bytes=new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer());
     }else continue;
     out.push({name:name.split("/").pop().replace(/\.mp3$/i,""),blob:new Blob([bytes],{type:"audio/mpeg"})});
-    if(out.length>=60)break;
+    if(out.length>=500)break;
   }
   return out;
 }
@@ -1502,6 +1532,32 @@ window.addEventListener("online",sync);
   add("hw-spider",SPIDER);
   add("hw-tomb t3",TOMB);add("hw-tomb t1",TOMB);add("hw-tomb t2",TOMB);add("hw-pump1",PUMP);
   add("hw-bat",BAT);add("hw-bat b2",BAT);add("hw-bat b3",BAT);add("hw-ghost",GHOST);add("hw-ghost g2",GHOST);
+
+  /* ---- more decoration (v2) ---- */
+  Object.assign(P,{T:"#150a26",t:"#2a1646",V:"#8cff6a",v:"#3fae3a",c:"#2a2540",C:"#5a5282",1:"#ff9a1a",2:"#b36bff",3:"#7cff5a",L:"#c0391a",F:"#e0b84a"});
+  const strip=(n)=>{const bulb=["KKKKKKKK","...KK...","..XXXX..",".XXXXXX.",".XXXXXX.","..XXXX..","...XX..."];const cols=["1","2","3","1","2","3"];
+    return bulb.map((row,y)=>cols.map(c=>row.replace(/X/g,c)).join(""));};
+  add("hw-garland",strip());
+  /* dead tree with owl eyes */
+  const TREE=(function(){const w=24,h=32,g=Array.from({length:h},()=>Array(w).fill("."));
+    const line=(x0,y0,x1,y1,th)=>{const n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0));for(let i=0;i<=n;i++){const x=Math.round(x0+(x1-x0)*i/n),y=Math.round(y0+(y1-y0)*i/n);for(let a=0;a<th;a++){if(g[y]&&x+a<w)g[y][x+a]="T";}}};
+    line(11,31,11,14,4);line(10,31,10,24,6);line(12,22,12,16,3);
+    line(12,16,4,8,2);line(11,18,19,10,2);line(5,9,2,3,1);line(6,10,9,4,1);line(18,11,21,5,1);line(17,12,14,6,1);line(8,12,3,13,1);line(20,12,23,14,1);
+    for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(g[y][x]==="T"&&x%7===3&&y%5===0)g[y][x]="t";
+    return g.map(r=>r.join(""));})();
+  add("hw-tree",TREE);
+  [[10,18],[13,18]].forEach(o=>{const e=document.createElement("div");e.className="hw-eye";e.style.right=(-4+(24-o[0])*4-4)+"px";e.style.bottom=(44+(32-o[1])*4.06-4)+"px";document.body.appendChild(e);});
+  /* cauldron + bubbles */
+  const CAUL=["..CCCCCCCCCCCC..",".CVVVVvVVVVvVVC.","CCCCCCCCCCCCCCCC",".cccccccccccccc.","cccccccccccccccc","cccccccccccccccc","cccccccccccccccc","cccccccccccccccc",".cccccccccccccc.","..cccccccccccc..","...c........c..."];
+  add("hw-cauldron",CAUL);["","b2","b3"].forEach(c=>{const b=document.createElement("div");b.className="hw hw-bub "+c;document.body.appendChild(b);});
+  /* witch on a broom */
+  const WITCH=["..................T.........", ".................TT.........", "................TTT.........", "...............TTTT.........", "..............TTTTT.........", ".........TTTTTTTTTTTTTT.....", "...............gggg.........", "...............TgggT........", "..............TTTTTTT.......", "F............TTTTTTTTT......", "FFF.TTTTTTTTTTTTTTTTTTTTTTT.", "FFFFTTTTTTTTTTTTTTTTTTTTTTT.", "FFF..........TT..TT.........", "F..........................."];
+  P.g="#7ac943";add("hw-witch",WITCH);
+  /* falling candy corn and leaves */
+  const CORN=["...W...","..WWW..","..WWW..",".OOOOO.",".OOOOO.","YYYYYYY","YYYYYYY",".YYYYY."];
+  const LEAF=["...O...","..OOO..",".OOLOO.","OOOLOOO",".OOLOO.","..OLO..","...L..."];
+  for(let i=0;i<9;i++){const d=add("hw-fall",i%3===0?CORN:LEAF);d.style.left=((i*11.3+4)%94)+"%";d.style.animationDuration=(17+i*2.3)+"s";d.style.animationDelay=(-i*3.1)+"s";}
+  const fl=document.createElement("div");fl.className="hw-flash";document.body.appendChild(fl);
   const ban=document.createElement("div");ban.className="hw-ban";
   const W={en:"HAPPY HALLOWEEN",es:"FELIZ HALLOWEEN",pt:"FELIZ HALLOWEEN",ru:"ХЭЛЛУИН"};
   const top=document.querySelector(".logo-top");
