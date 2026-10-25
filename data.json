@@ -27,6 +27,17 @@
   ],
   "levels": [
     {
+      "id": "nokm7lr7",
+      "name": "Magic Dog",
+      "creator": "ChandnoPalebn",
+      "diff": "Insane",
+      "code": "EKJ4-UG68-VID7-HQ6U",
+      "status": "verified",
+      "env": "ghost",
+      "desc": "Kaizo has been doing in for a long time",
+      "video": ""
+    },
+    {
       "id": "l2",
       "name": "Muncher Volcano",
       "creator": "LuicundoGD",
@@ -67,12 +78,22 @@
       "code": "VZW9-BDE7-AMU2-VPA2",
       "status": "verified",
       "env": "underground",
-      "desc": "creado por",
+      "desc": "",
       "video": "https://youtu.be/6tt2ueu9dR0"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian",
   "updates": [
+    {
+      "date": "2026-10-24",
+      "title": "Arreglado el link de YouTube",
+      "desc": "Ora la página se reproduzca en la página y no a YouTube"
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Más decoración de halloween",
+      "desc": "Decoración de halloween"
+    },
     {
       "date": "2026-10-23",
       "title": "Actualización de halloween",
@@ -151,5 +172,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-10-25T00:11:42.531Z"
+  "updated": "2026-10-25T00:35:39.688Z"
 }
