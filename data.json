@@ -27,48 +27,26 @@
   ],
   "levels": [
     {
-      "id": "nokm7lr7",
-      "name": "Magic Dog",
-      "creator": "ChandnoPalebn",
-      "diff": "Insane",
-      "code": "EKJ4-UG68-VID7-HQ6U",
+      "id": "l4",
+      "name": "Malabaizo - Kaizo",
+      "creator": "Plataformer2000",
+      "diff": "Super Expert",
+      "code": "",
       "status": "verified",
-      "env": "ghost",
-      "desc": "Kaizo has been doing in for a long time",
-      "video": ""
+      "env": "ground",
+      "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
+      "video": "https://youtu.be/675WMIqQhqs"
     },
     {
       "id": "l2",
       "name": "Muncher Volcano",
       "creator": "LuicundoGD",
-      "diff": "Expert",
+      "diff": "Super Expert",
       "code": "L3Q9-8LIU-9V3T-GCUQ",
       "status": "verified",
       "env": "volcano",
-      "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump. Cualquier error, avísenme ^^",
-      "video": ""
-    },
-    {
-      "id": "l3",
-      "name": "Desert Night SMB3 - Kaizo Level",
-      "creator": "playoff16",
-      "diff": "Expert",
-      "code": "7REI-2XW3-C4XE-6N6X",
-      "status": "verified",
-      "env": "desert",
-      "desc": "Good level, Gg",
-      "video": "https://youtu.be/80tYWUSpsdU"
-    },
-    {
-      "id": "l4",
-      "name": "Malabaizo - Kaizo",
-      "creator": "N/A",
-      "diff": "Expert",
-      "code": "",
-      "status": "verified",
-      "env": "ground",
-      "desc": "Este nivel está en MediaFire.",
-      "video": "https://youtu.be/675WMIqQhqs"
+      "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. \"Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump\" - Luicundo",
+      "video": "https://youtu.be/YFoQiYoV43s"
     },
     {
       "id": "l1",
@@ -80,20 +58,21 @@
       "env": "underground",
       "desc": "",
       "video": "https://youtu.be/6tt2ueu9dR0"
+    },
+    {
+      "id": "l3",
+      "name": "Desert Night SMB3 - Kaizo Level",
+      "creator": "playoff16",
+      "diff": "Expert",
+      "code": "7REI-2XW3-C4XE-6N6X",
+      "status": "verified",
+      "env": "desert",
+      "desc": "Good level, Gg",
+      "video": "https://youtu.be/80tYWUSpsdU"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian",
   "updates": [
-    {
-      "date": "2026-10-24",
-      "title": "Arreglado el link de YouTube",
-      "desc": "Ora la página se reproduzca en la página y no a YouTube"
-    },
-    {
-      "date": "2026-10-24",
-      "title": "Más decoración de halloween",
-      "desc": "Decoración de halloween"
-    },
     {
       "date": "2026-10-23",
       "title": "Actualización de halloween",
@@ -172,5 +151,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-10-25T00:35:39.688Z"
+  "updated": "2026-10-25T00:55:29.474Z"
 }
