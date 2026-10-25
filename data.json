@@ -5,16 +5,16 @@
       "color": "#049cd8"
     },
     {
+      "name": "Insane",
+      "color": "#c2185b"
+    },
+    {
       "name": "Expert",
       "color": "#7a3fd1"
     },
     {
       "name": "Super Expert",
       "color": "#e52521"
-    },
-    {
-      "name": "Insane",
-      "color": "#c2185b"
     },
     {
       "name": "Extreme",
@@ -151,5 +151,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-10-25T00:55:29.474Z"
+  "updated": "2026-10-25T01:39:30.766Z"
 }
