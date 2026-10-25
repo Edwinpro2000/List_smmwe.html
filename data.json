@@ -27,6 +27,17 @@
   ],
   "levels": [
     {
+      "id": "iuggaeau",
+      "name": "-Hell Has Arrived~El Infierno A Llegado_",
+      "creator": "Emagamer18",
+      "diff": "Impossible",
+      "code": "QIR4-541X-ZSUJ-CJ44",
+      "status": "verified",
+      "env": "forest",
+      "desc": "\"El nivel cuando lo publique por primera vez me tomo unas Buenas 5 horas en pasarlo y de paso es pixel Perfect mis estimados así que Suerte al que le toque (de verdad le deseo suerte) \" - Emagamer18 💀",
+      "video": ""
+    },
+    {
       "id": "l4",
       "name": "Malabaizo - Kaizo",
       "creator": "Plataformer2000",
@@ -156,5 +167,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-10-25T01:50:18.386Z"
+  "updated": "2026-10-25T03:23:55.009Z"
 }
