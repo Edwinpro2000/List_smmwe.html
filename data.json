@@ -2,23 +2,23 @@
   "diffs": [
     {
       "name": "Hard",
-      "color": "#049cd8"
+      "color": "#00ffff"
     },
     {
       "name": "Insane",
-      "color": "#c2185b"
+      "color": "#197d00"
     },
     {
       "name": "Expert",
-      "color": "#7a3fd1"
+      "color": "#ffff00"
     },
     {
       "name": "Super Expert",
-      "color": "#e52521"
+      "color": "#f07c00"
     },
     {
       "name": "Extreme",
-      "color": "#e65100"
+      "color": "#662900"
     },
     {
       "name": "Impossible",
@@ -26,17 +26,6 @@
     }
   ],
   "levels": [
-    {
-      "id": "iuggaeau",
-      "name": "-Hell Has Arrived~El Infierno A Llegado_",
-      "creator": "Emagamer18",
-      "diff": "Impossible",
-      "code": "QIR4-541X-ZSUJ-CJ44",
-      "status": "verified",
-      "env": "forest",
-      "desc": "\"El nivel cuando lo publique por primera vez me tomo unas Buenas 5 horas en pasarlo y de paso es pixel Perfect mis estimados así que Suerte al que le toque (de verdad le deseo suerte) \" - Emagamer18 💀",
-      "video": ""
-    },
     {
       "id": "l4",
       "name": "Malabaizo - Kaizo",
@@ -67,7 +56,7 @@
       "code": "VZW9-BDE7-AMU2-VPA2",
       "status": "verified",
       "env": "underground",
-      "desc": "\"Una cuenva no se termina con fuerza, sino entendiendo sus reglas.\"",
+      "desc": "",
       "video": "https://youtu.be/6tt2ueu9dR0"
     },
     {
@@ -78,17 +67,12 @@
       "code": "7REI-2XW3-C4XE-6N6X",
       "status": "verified",
       "env": "desert",
-      "desc": "Super expert kaizo level with checkpoint",
+      "desc": "Good level, Gg",
       "video": "https://youtu.be/80tYWUSpsdU"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian",
   "updates": [
-    {
-      "date": "2026-10-25",
-      "title": "HI",
-      "desc": "Hi"
-    },
     {
       "date": "2026-10-23",
       "title": "Actualización de halloween",
@@ -167,5 +151,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-10-25T03:30:54.668Z"
+  "updated": "2026-10-25T04:18:02.380Z"
 }
