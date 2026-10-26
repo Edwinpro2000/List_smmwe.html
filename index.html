@@ -140,6 +140,7 @@ footer{text-align:center;margin-top:30px;font-size:9px;color:#fff;text-shadow:2p
 /* menu (3 bars) */
 .menuwrap{position:relative;flex:0 0 auto}
 #menuBtn{flex:0 0 auto;padding:13px 14px}
+.menuwrap #menuBtn .bars{display:none}.menuwrap #menuBtn,.menuwrap.tl #menuBtn{width:52px;height:55px;padding:0;border:0;box-shadow:none;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAWCAYAAAAvg9c4AAAAyUlEQVR4nNWVTQ6CMBCF3xR2mogLb0KiB/ASGr2eXgWT3kXcuNHwDD8FFEyEqQveZl6a9svMtJkKKpEkFBIRqT1awMzW64NkYr6BjRbYPutYRgv8BNdQ3wq/9edX9VVpOptwh/dMYWfIlFCDyfaU6uLRzZQ2ACfRU4lZDgSfPRX8IdPMwxwI1QQAh21UuWVT/tC32Qc8pdci7hYRjYhstGAHdFEArHNDMhkD3EdlyTnQeXcrBXisjvNV8gwehT/f0uaz0oIBXJx7AdRrSUwzvHFAAAAAAElFTkSuQmCC) center/100% 100% no-repeat transparent;image-rendering:pixelated}.menuwrap #menuBtn:active{transform:translate(2px,2px)}.menuwrap #menuBtn .bars i{display:none}
 .bars{display:grid;gap:4px}.bars i{display:block;width:22px;height:4px;background:currentColor}
 .menu{position:absolute;top:calc(100% + 10px);left:0;min-width:220px;background:var(--panel);border:4px solid var(--black);box-shadow:6px 6px 0 var(--black);padding:10px;animation:drop .2s steps(4)}
 .menu .btn{display:block;width:100%;text-align:left;flex:none;margin:0 0 10px;font-size:11px;padding:11px 12px}
@@ -214,12 +215,15 @@ html.noanim{scroll-behavior:auto}
 .mmenu .modes .btn{flex:1;font-size:8px;padding:8px 4px;text-align:center}
 .mmenu input[type=range]{width:100%;accent-color:#e52521}
 
-#fontBtn{text-transform:none;position:fixed;right:10px;bottom:10px;z-index:40;width:48px;height:48px;padding:0;font-size:16px;display:flex;align-items:center;justify-content:center;background:#fff}
+#fontBtn{display:none!important;text-transform:none;position:fixed;right:10px;bottom:10px;z-index:40;width:48px;height:48px;padding:0;font-size:16px;display:flex;align-items:center;justify-content:center;background:#fff}
 #fontBtn[aria-pressed=true]{background:var(--yellow)}
 body[data-font=clear]{--px:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.5;letter-spacing:0}
 body[data-font=clear] *{letter-spacing:0}
 body[data-font=clear] button,body[data-font=clear] input,body[data-font=clear] select,body[data-font=clear] textarea{font-size:14px;font-weight:700}
 body[data-font=clear] h1,body[data-font=clear] h2{font-weight:900}
+body[data-font=clear] h1{line-height:1.5;text-shadow:3px 0 0 var(--black),-3px 0 0 var(--black),0 3px 0 var(--black),0 -3px 0 var(--black),3px 3px 0 var(--black),-3px 3px 0 var(--black),3px -3px 0 var(--black),-3px -3px 0 var(--black),0 6px 0 var(--black)}
+.lvm:not(:has(.sty)) .lvp{flex-direction:row;gap:1.6cqw}.lvm:not(:has(.sty)) .lvp .badge,.lvm:not(:has(.sty)) .lvp .st{flex:1 1 0;min-width:0;padding:5px 2px;font-size:10px}.lvm:not(:has(.sty)){margin-top:0}
+.lv .lvr p{flex-wrap:nowrap;overflow-wrap:anywhere;min-width:0}.lv .lvr p .ico{flex:0 0 auto}.lv .lvr p>span{flex:0 0 auto}.lv .lvr p .btn{flex:1 1 auto;min-width:0;font-size:11px;padding:6px 4px;word-break:normal;overflow-wrap:anywhere}
 #langBtn{position:absolute;top:10px;left:68px;z-index:40;width:48px;height:48px;padding:0;font-size:22px;display:flex;align-items:center;justify-content:center}
 .menuwrap.tl{position:absolute;top:10px;left:10px;z-index:40}
 .menuwrap.tl #menuBtn{width:48px;height:48px;padding:0;display:flex;align-items:center;justify-content:center}
@@ -364,6 +368,61 @@ h1{animation:hwh1 3.4s ease-in-out infinite}
 #aReset{background:#d32a1f;color:#fff;--ic:var(--ic-trash)}
 #aAdd{background:#ffd23a;--ic:var(--ic-plus)}
 #aOut{--ic:var(--ic-door)}
+
+/* ---------- game style, day/night, tags ---------- */
+.row,#detailBox{position:relative}
+.row.has-tm .rhead,.dhead.has-tm{padding-right:46px}
+.tmk{position:absolute;top:0;right:12px;width:34px;height:auto;image-rendering:pixelated;pointer-events:none}
+.rmeta{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.rmeta .sty{display:block;width:92px;height:auto;image-rendering:pixelated;flex:0 0 auto}
+.rcol{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.rcol p{margin:0!important}
+.tags{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:10px;font-size:8px;line-height:1.4}
+.tg{display:inline-flex;align-items:center;gap:5px}
+.tg::before{content:"";width:18px;height:12px;background:var(--tag-ico) center/contain no-repeat;image-rendering:pixelated;flex:0 0 18px}
+#fSty .envo img{display:block;height:24px;width:auto;max-width:100%;image-rendering:pixelated}
+.envo.tgo{font-size:7px}
+
+.envph{aspect-ratio:74/38;width:100%;border:3px solid var(--black);background:#d9d9d9;display:flex;align-items:center;justify-content:center;font-size:14px;color:#777}
+.envph::after{content:"?"}
+.renv .sty,.denv .sty{width:100%;margin-top:8px}
+.rcol{gap:10px}
+.rinfo p,.dinfo p{margin:0 0 10px}
+.rbody,.dmain{align-items:flex-start}
+.tags{border-top:2px dashed #bbb;padding-top:10px}
+
+/* ---------- level card v3 (like the mock; scales with its own width) ---------- */
+.lv{container-type:inline-size;position:relative}
+.lv .rkc{width:clamp(34px,11cqw,54px);height:clamp(34px,11cqw,54px);font-size:calc(var(--fs,1)*clamp(12px,4.2cqw,20px));flex:0 0 auto}
+.lvh{display:flex;align-items:center;gap:3.2cqw;margin-bottom:3cqw}
+.lv.has-tm .lvh{padding-right:clamp(36px,12cqw,60px)}
+.lvh .rname,.lvh h2{margin:0;font-size:calc(var(--fs,1)*clamp(11px,4.6cqw,20px));line-height:1.35;word-break:break-word;min-width:0;font-weight:700}
+.lvb{display:flex;gap:2.4cqw;align-items:flex-start}
+.lvl{flex:0 0 52%;max-width:52%}
+.lvl img{display:block;width:100%;height:auto;image-rendering:pixelated;border:3px solid var(--black);background:#000}
+.lvl small{display:block;font-size:calc(var(--fs,1)*clamp(7px,2.2cqw,10px));margin-top:6px;text-align:center}
+.lvr{flex:1;min-width:0}
+.lvr p{margin:0 0 2.4cqw;display:flex;align-items:center;flex-wrap:wrap;gap:1.6cqw;font-size:calc(var(--fs,1)*clamp(8px,3cqw,13px));line-height:1.35}
+.lvr p .btn{font-size:inherit;max-width:100%;overflow-wrap:anywhere;word-break:break-all;text-align:left}
+.lvm{display:flex;gap:2cqw;align-items:stretch;margin-top:1cqw}
+.lvm .sty{flex:0 0 46%;width:46%;height:auto;align-self:flex-start;image-rendering:pixelated}
+.lvp{display:flex;flex-direction:column;gap:1.6cqw;flex:1;min-width:0}
+.lvp .badge,.lvp .st{display:block;text-align:center;font-size:calc(var(--fs,1)*clamp(7px,2.3cqw,11px));padding:clamp(4px,1.6cqw,8px) 2px;margin:0;overflow-wrap:anywhere;line-height:1.3}
+.lv .tags{border-top:0;padding-top:0;margin-top:2.6cqw;gap:1.6cqw 3.2cqw;font-size:calc(var(--fs,1)*clamp(8px,2.6cqw,12px))}
+.lv .tg::before{width:clamp(18px,5cqw,26px);height:clamp(12px,3.4cqw,18px);flex:0 0 clamp(18px,5cqw,26px)}
+.lv .tmk{right:2.5cqw;width:clamp(28px,8cqw,46px)}
+.lv .envph{border-radius:0}
+.lv .rowtools{margin-top:12px}
+
+/* pixel font is very wide: smaller text and stacked badge so nothing breaks */
+body:not([data-font=clear]) .lv{--fs:.72}
+body:not([data-font=clear]) .lvm{flex-direction:column;gap:2.4cqw}
+body:not([data-font=clear]) .lvm .sty{flex:0 0 auto;width:62%}
+body:not([data-font=clear]) .lvp{width:100%;flex:0 0 auto}
+body:not([data-font=clear]) .lvp .badge,body:not([data-font=clear]) .lvp .st{font-size:6.5px;padding:5px 2px}
+body:not([data-font=clear]) .lv .tags{font-size:6.5px}
+body:not([data-font=clear]) .lvr p{font-size:calc(var(--fs)*clamp(9px,3cqw,13px))}
+body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line-height:1.5}
 </style>
 </head>
 <body>
@@ -529,7 +588,7 @@ musicMissing:"Music file not found: upload the mp3 files next to the page",
 official:"★ OFFICIAL RANKING ★",h1:"List of Difficulties<br>of <span>SMM:WE</span>",title:"List of Difficulties of SMM:WE",
 tag:"Welcome, player! This page contains a ranking of the hardest levels in SMM:WE, sorted from toughest to easiest. Search, filter and click any level to see its details.",
 top:"★ TOP",search:"⚲ SEARCH",
-htmlT:"UPDATE THE PAGE (HTML)",htmlInfo:"Pick the new HTML file from your device and press Update. It replaces the page file in your GitHub repo (needs the token saved in GitHub).",htmlPath:"File name in the repo",htmlPick:"New HTML file",htmlNone:"No file selected",htmlBad:"That does not look like the page HTML",htmlBig:"File too big",htmlUpd:"Update",htmlWait:"Updating...",htmlOk:"Page updated! GitHub Pages needs about 1 min, then reload.",htmlFail:"Update failed: {0}",sendM:"SEND LEVEL",sendT:"SEND YOUR LEVEL",sendInfo:"Fill in your level and create a code. Send that code to the admin on Discord. The admin reviews it and, if accepted, adds it to the ranking.",sendGen:"Create code",sendCode:"Your code (send it to the admin)",sendCopy:"Copy",sendCopied:"Copied!",sendDc:"Open Discord",unsure:"I do not know",inboxBtn:"Inbox",inboxT:"SUBMITTED LEVELS",inboxInfo:"Paste the codes people send you. Then review, edit and accept, or reject each level.",inboxPaste:"Paste codes here",inboxAdd:"Add to inbox",inboxEmpty:"Nothing waiting.",inboxAdded:"{0} level(s) added to the inbox",inboxNone:"No valid codes found",acc:"Review / Accept",rej:"Reject",rejAsk:"Reject {0}?",rejOk:"Level rejected",zipAdd:"+ ADD ZIP (MP3)",zipInfo:"Songs from your ZIP stay on this device only.",zipBusy:"Reading ZIP...",zipOk:"{0} song(s) added",zipNone:"No MP3 found in that ZIP",zipBad:"Could not read that ZIP",zipClear:"Remove my songs",zipBig:"ZIP too big (max 150 MB)",zipOld:"Your browser cannot open this ZIP",jsonT:"UPDATE DATA (data.json)",jsonInfo:"Pick a data.json file from your device and press Update. It replaces the levels, difficulties and credits in your GitHub repo (needs the token saved in GitHub).",jsonPick:"New data.json file",jsonBad:"That file is not a valid data.json (it needs levels and diffs)",jsonOk:"Data updated! Visitors will see it in about 1 min",jsonFail:"Update failed: {0}",adminMode:"ADMIN MODE",published:"PUBLISHED",unpub:"UNPUBLISHED CHANGES",publish:"Publish",publishing:"Publishing...",gh:"GitHub",addLevel:"+ Add level",diffs:"Difficulties",export:"Export",import:"Import",password:"Password",reset:"Reset",logout:"Log out",
+htmlT:"UPDATE THE PAGE (HTML)",htmlInfo:"Pick the new HTML file from your device and press Update. It replaces the page file in your GitHub repo (needs the token saved in GitHub).",htmlPath:"File name in the repo",htmlPick:"New HTML file",htmlNone:"No file selected",htmlBad:"That does not look like the page HTML",htmlBig:"File too big",htmlUpd:"Update",htmlWait:"Updating...",htmlOk:"Page updated! GitHub Pages needs about 1 min, then reload.",htmlFail:"Update failed: {0}",sendM:"SEND LEVEL",sendT:"SEND YOUR LEVEL",sendInfo:"Fill in your level and create a code. Send that code to the admin on Discord. The admin reviews it and, if accepted, adds it to the ranking.",sendGen:"Create code",sendCode:"Your code (send it to the admin)",sendCopy:"Copy",sendCopied:"Copied!",sendDc:"Open Discord",unsure:"I do not know",inboxBtn:"Inbox",inboxT:"SUBMITTED LEVELS",inboxInfo:"Paste the codes people send you. Then review, edit and accept, or reject each level.",inboxPaste:"Paste codes here",inboxAdd:"Add to inbox",inboxEmpty:"Nothing waiting.",inboxAdded:"{0} level(s) added to the inbox",inboxNone:"No valid codes found",acc:"Review / Accept",rej:"Reject",rejAsk:"Reject {0}?",rejOk:"Level rejected",zipAdd:"+ ADD ZIP (MP3)",zipInfo:"Songs from your ZIP stay on this device only.",zipBusy:"Reading ZIP...",zipOk:"{0} song(s) added",zipNone:"No MP3 found in that ZIP",zipBad:"Could not read that ZIP",zipClear:"Remove my songs",zipBig:"ZIP too big (max 150 MB)",zipOld:"Your browser cannot open this ZIP",jsonT:"UPDATE DATA (data.json)",jsonInfo:"Pick a data.json file from your device and press Update. It replaces the levels, difficulties and credits in your GitHub repo (needs the token saved in GitHub).",jsonPick:"New data.json file",jsonBad:"That file is not a valid data.json (it needs levels and diffs)",jsonOk:"Data updated! Visitors will see it in about 1 min",jsonFail:"Update failed: {0}",fStyle:"Game style",fTime:"Time of day",fTags:"Tags",sNone:"None",tDay:"Day",tNight:"Night",tg_trad:"Standard",tg_puzzle:"Puzzle",tg_speed:"Speedrun",tg_scroll:"Autoscroll",tg_auto:"Auto",tg_short:"Short and sweet",tg_versus:"Versus",tg_themed:"Themed",tg_music:"Music",tg_art:"Art",tg_skill:"Technical",tg_shoot:"Shooter",tg_boss:"Boss battle",tg_solo:"Solo",tg_link:"Link",adminMode:"ADMIN MODE",published:"PUBLISHED",unpub:"UNPUBLISHED CHANGES",publish:"Publish",publishing:"Publishing...",gh:"GitHub",addLevel:"+ Add level",diffs:"Difficulties",export:"Export",import:"Import",password:"Password",reset:"Reset",logout:"Log out",
 hardest:"HARDEST LEVELS",full:"FULL RANKING",hLevel:"LEVEL",hCreator:"CREATOR",hDiff:"DIFFICULTY",hTries:"ID",hStatus:"STATUS",
 foot:"© List of Difficulties of SMM:WE — Fan-made ranking. Sample data included.",newb:"NEW",ytT:"YouTube channel",dcT:"Discord server",
 sprIntro:"Pick the look of the coins and blocks. Saved on this device only.",sprOwn:"YOUR OWN IMAGE (PNG, GIF, JPG...)",close:"Close",
@@ -576,7 +635,7 @@ musicMissing:"Archivo de música no encontrado: sube los mp3 junto a la página"
 official:"★ RANKING OFICIAL ★",h1:"Lista de Dificultades<br>de <span>SMM:WE</span>",title:"Lista de Dificultades de SMM:WE",
 tag:"¡Bienvenido, jugador! Esta página contiene un ranking de los niveles más difíciles de SMM:WE, ordenados del más difícil al más fácil. Busca, filtra y toca cualquier nivel para ver sus detalles.",
 top:"★ TOP",search:"⚲ BUSCAR",
-htmlT:"ACTUALIZAR LA PÁGINA (HTML)",htmlInfo:"Elige el HTML nuevo de tu dispositivo y toca Actualizar. Reemplaza el archivo de la página en tu repositorio de GitHub (necesita el token guardado en GitHub).",htmlPath:"Nombre del archivo en el repositorio",htmlPick:"Archivo HTML nuevo",htmlNone:"Sin archivo",htmlBad:"Ese archivo no parece el HTML de la página",htmlBig:"Archivo demasiado grande",htmlUpd:"Actualizar",htmlWait:"Actualizando...",htmlOk:"¡Página actualizada! GitHub Pages tarda cerca de 1 min, luego recarga.",htmlFail:"Falló la actualización: {0}",sendM:"ENVIAR NIVEL",sendT:"ENVÍA TU NIVEL",sendInfo:"Llena los datos de tu nivel y crea un código. Mándale ese código al admin por Discord. El admin lo revisa y, si lo acepta, lo agrega al ranking.",sendGen:"Crear código",sendCode:"Tu código (mándaselo al admin)",sendCopy:"Copiar",sendCopied:"¡Copiado!",sendDc:"Abrir Discord",unsure:"No lo sé",inboxBtn:"Buzón",inboxT:"NIVELES ENVIADOS",inboxInfo:"Pega los códigos que te manden. Luego revisa, edita y acepta, o rechaza cada nivel.",inboxPaste:"Pega los códigos aquí",inboxAdd:"Agregar al buzón",inboxEmpty:"No hay nada pendiente.",inboxAdded:"{0} nivel(es) agregado(s) al buzón",inboxNone:"No se encontraron códigos válidos",acc:"Revisar / Aceptar",rej:"Rechazar",rejAsk:"¿Rechazar {0}?",rejOk:"Nivel rechazado",zipAdd:"+ AGREGAR ZIP (MP3)",zipInfo:"Las canciones de tu ZIP se quedan solo en este dispositivo.",zipBusy:"Leyendo ZIP...",zipOk:"{0} canción(es) agregada(s)",zipNone:"No hay MP3 en ese ZIP",zipBad:"No se pudo leer ese ZIP",zipClear:"Quitar mis canciones",zipBig:"ZIP demasiado grande (máx. 150 MB)",zipOld:"Tu navegador no puede abrir este ZIP",jsonT:"ACTUALIZAR DATOS (data.json)",jsonInfo:"Elige un archivo data.json de tu dispositivo y toca Actualizar. Reemplaza los niveles, dificultades y créditos en tu repositorio de GitHub (necesita el token guardado en GitHub).",jsonPick:"Archivo data.json nuevo",jsonBad:"Ese archivo no es un data.json válido (necesita levels y diffs)",jsonOk:"¡Datos actualizados! Los visitantes lo verán en cerca de 1 min",jsonFail:"Falló la actualización: {0}",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"CAMBIOS SIN PUBLICAR",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Agregar nivel",diffs:"Dificultades",export:"Exportar",import:"Importar",password:"Contraseña",reset:"Restablecer",logout:"Cerrar sesión",
+htmlT:"ACTUALIZAR LA PÁGINA (HTML)",htmlInfo:"Elige el HTML nuevo de tu dispositivo y toca Actualizar. Reemplaza el archivo de la página en tu repositorio de GitHub (necesita el token guardado en GitHub).",htmlPath:"Nombre del archivo en el repositorio",htmlPick:"Archivo HTML nuevo",htmlNone:"Sin archivo",htmlBad:"Ese archivo no parece el HTML de la página",htmlBig:"Archivo demasiado grande",htmlUpd:"Actualizar",htmlWait:"Actualizando...",htmlOk:"¡Página actualizada! GitHub Pages tarda cerca de 1 min, luego recarga.",htmlFail:"Falló la actualización: {0}",sendM:"ENVIAR NIVEL",sendT:"ENVÍA TU NIVEL",sendInfo:"Llena los datos de tu nivel y crea un código. Mándale ese código al admin por Discord. El admin lo revisa y, si lo acepta, lo agrega al ranking.",sendGen:"Crear código",sendCode:"Tu código (mándaselo al admin)",sendCopy:"Copiar",sendCopied:"¡Copiado!",sendDc:"Abrir Discord",unsure:"No lo sé",inboxBtn:"Buzón",inboxT:"NIVELES ENVIADOS",inboxInfo:"Pega los códigos que te manden. Luego revisa, edita y acepta, o rechaza cada nivel.",inboxPaste:"Pega los códigos aquí",inboxAdd:"Agregar al buzón",inboxEmpty:"No hay nada pendiente.",inboxAdded:"{0} nivel(es) agregado(s) al buzón",inboxNone:"No se encontraron códigos válidos",acc:"Revisar / Aceptar",rej:"Rechazar",rejAsk:"¿Rechazar {0}?",rejOk:"Nivel rechazado",zipAdd:"+ AGREGAR ZIP (MP3)",zipInfo:"Las canciones de tu ZIP se quedan solo en este dispositivo.",zipBusy:"Leyendo ZIP...",zipOk:"{0} canción(es) agregada(s)",zipNone:"No hay MP3 en ese ZIP",zipBad:"No se pudo leer ese ZIP",zipClear:"Quitar mis canciones",zipBig:"ZIP demasiado grande (máx. 150 MB)",zipOld:"Tu navegador no puede abrir este ZIP",jsonT:"ACTUALIZAR DATOS (data.json)",jsonInfo:"Elige un archivo data.json de tu dispositivo y toca Actualizar. Reemplaza los niveles, dificultades y créditos en tu repositorio de GitHub (necesita el token guardado en GitHub).",jsonPick:"Archivo data.json nuevo",jsonBad:"Ese archivo no es un data.json válido (necesita levels y diffs)",jsonOk:"¡Datos actualizados! Los visitantes lo verán en cerca de 1 min",jsonFail:"Falló la actualización: {0}",fStyle:"Estilo de juego",fTime:"Momento del día",fTags:"Etiquetas",sNone:"Ninguno",tDay:"Día",tNight:"Noche",tg_trad:"Tradicional",tg_puzzle:"Puzles",tg_speed:"Contrarreloj",tg_scroll:"Autoavance",tg_auto:"Automatismos",tg_short:"Corto pero intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidad",tg_shoot:"Disparos",tg_boss:"Contra jefes",tg_solo:"En solitario",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"CAMBIOS SIN PUBLICAR",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Agregar nivel",diffs:"Dificultades",export:"Exportar",import:"Importar",password:"Contraseña",reset:"Restablecer",logout:"Cerrar sesión",
 hardest:"NIVELES MÁS DIFÍCILES",full:"RANKING COMPLETO",hLevel:"NIVEL",hCreator:"CREADOR",hDiff:"DIFICULTAD",hTries:"ID",hStatus:"ESTADO",
 foot:"© Lista de Dificultades de SMM:WE — Ranking hecho por fans. Datos de ejemplo incluidos.",newb:"NUEVO",ytT:"Canal de YouTube",dcT:"Servidor de Discord",
 sprIntro:"Elige el aspecto de las monedas y los bloques. Se guarda solo en este dispositivo.",sprOwn:"TU PROPIA IMAGEN (PNG, GIF, JPG...)",close:"Cerrar",
@@ -623,7 +682,7 @@ musicMissing:"Arquivo de música não encontrado: envie os mp3 junto da página"
 official:"★ RANKING OFICIAL ★",h1:"Lista de Dificuldades<br>do <span>SMM:WE</span>",title:"Lista de Dificuldades do SMM:WE",
 tag:"Bem-vindo, jogador! Esta página traz um ranking dos níveis mais difíceis do SMM:WE, do mais difícil ao mais fácil. Pesquise, filtre e toque em qualquer nível para ver os detalhes.",
 top:"★ TOPO",search:"⚲ BUSCAR",
-htmlT:"ATUALIZAR A PÁGINA (HTML)",htmlInfo:"Escolha o novo HTML do seu dispositivo e toque em Atualizar. Ele substitui o arquivo da página no seu repositório do GitHub (precisa do token salvo em GitHub).",htmlPath:"Nome do arquivo no repositório",htmlPick:"Novo arquivo HTML",htmlNone:"Nenhum arquivo",htmlBad:"Esse arquivo não parece o HTML da página",htmlBig:"Arquivo grande demais",htmlUpd:"Atualizar",htmlWait:"Atualizando...",htmlOk:"Página atualizada! O GitHub Pages leva cerca de 1 min, depois recarregue.",htmlFail:"Falha ao atualizar: {0}",sendM:"ENVIAR NÍVEL",sendT:"ENVIE SEU NÍVEL",sendInfo:"Preencha os dados do seu nível e crie um código. Envie esse código ao admin pelo Discord. O admin revisa e, se aceitar, adiciona ao ranking.",sendGen:"Criar código",sendCode:"Seu código (envie ao admin)",sendCopy:"Copiar",sendCopied:"Copiado!",sendDc:"Abrir Discord",unsure:"Não sei",inboxBtn:"Caixa",inboxT:"NÍVEIS ENVIADOS",inboxInfo:"Cole os códigos que lhe enviarem. Depois revise, edite e aceite, ou rejeite cada nível.",inboxPaste:"Cole os códigos aqui",inboxAdd:"Adicionar à caixa",inboxEmpty:"Nada pendente.",inboxAdded:"{0} nível(is) adicionado(s) à caixa",inboxNone:"Nenhum código válido encontrado",acc:"Revisar / Aceitar",rej:"Rejeitar",rejAsk:"Rejeitar {0}?",rejOk:"Nível rejeitado",zipAdd:"+ ADICIONAR ZIP (MP3)",zipInfo:"As músicas do seu ZIP ficam só neste dispositivo.",zipBusy:"Lendo ZIP...",zipOk:"{0} música(s) adicionada(s)",zipNone:"Nenhum MP3 nesse ZIP",zipBad:"Não foi possível ler esse ZIP",zipClear:"Remover minhas músicas",zipBig:"ZIP grande demais (máx. 150 MB)",zipOld:"Seu navegador não consegue abrir este ZIP",jsonT:"ATUALIZAR DADOS (data.json)",jsonInfo:"Escolha um arquivo data.json do seu dispositivo e toque em Atualizar. Ele substitui os níveis, dificuldades e créditos no seu repositório do GitHub (precisa do token salvo em GitHub).",jsonPick:"Novo arquivo data.json",jsonBad:"Esse arquivo não é um data.json válido (precisa de levels e diffs)",jsonOk:"Dados atualizados! Os visitantes verão em cerca de 1 min",jsonFail:"Falha ao atualizar: {0}",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"ALTERAÇÕES NÃO PUBLICADAS",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Adicionar nível",diffs:"Dificuldades",export:"Exportar",import:"Importar",password:"Senha",reset:"Redefinir",logout:"Sair",
+htmlT:"ATUALIZAR A PÁGINA (HTML)",htmlInfo:"Escolha o novo HTML do seu dispositivo e toque em Atualizar. Ele substitui o arquivo da página no seu repositório do GitHub (precisa do token salvo em GitHub).",htmlPath:"Nome do arquivo no repositório",htmlPick:"Novo arquivo HTML",htmlNone:"Nenhum arquivo",htmlBad:"Esse arquivo não parece o HTML da página",htmlBig:"Arquivo grande demais",htmlUpd:"Atualizar",htmlWait:"Atualizando...",htmlOk:"Página atualizada! O GitHub Pages leva cerca de 1 min, depois recarregue.",htmlFail:"Falha ao atualizar: {0}",sendM:"ENVIAR NÍVEL",sendT:"ENVIE SEU NÍVEL",sendInfo:"Preencha os dados do seu nível e crie um código. Envie esse código ao admin pelo Discord. O admin revisa e, se aceitar, adiciona ao ranking.",sendGen:"Criar código",sendCode:"Seu código (envie ao admin)",sendCopy:"Copiar",sendCopied:"Copiado!",sendDc:"Abrir Discord",unsure:"Não sei",inboxBtn:"Caixa",inboxT:"NÍVEIS ENVIADOS",inboxInfo:"Cole os códigos que lhe enviarem. Depois revise, edite e aceite, ou rejeite cada nível.",inboxPaste:"Cole os códigos aqui",inboxAdd:"Adicionar à caixa",inboxEmpty:"Nada pendente.",inboxAdded:"{0} nível(is) adicionado(s) à caixa",inboxNone:"Nenhum código válido encontrado",acc:"Revisar / Aceitar",rej:"Rejeitar",rejAsk:"Rejeitar {0}?",rejOk:"Nível rejeitado",zipAdd:"+ ADICIONAR ZIP (MP3)",zipInfo:"As músicas do seu ZIP ficam só neste dispositivo.",zipBusy:"Lendo ZIP...",zipOk:"{0} música(s) adicionada(s)",zipNone:"Nenhum MP3 nesse ZIP",zipBad:"Não foi possível ler esse ZIP",zipClear:"Remover minhas músicas",zipBig:"ZIP grande demais (máx. 150 MB)",zipOld:"Seu navegador não consegue abrir este ZIP",jsonT:"ATUALIZAR DADOS (data.json)",jsonInfo:"Escolha um arquivo data.json do seu dispositivo e toque em Atualizar. Ele substitui os níveis, dificuldades e créditos no seu repositório do GitHub (precisa do token salvo em GitHub).",jsonPick:"Novo arquivo data.json",jsonBad:"Esse arquivo não é um data.json válido (precisa de levels e diffs)",jsonOk:"Dados atualizados! Os visitantes verão em cerca de 1 min",jsonFail:"Falha ao atualizar: {0}",fStyle:"Estilo de jogo",fTime:"Período do dia",fTags:"Etiquetas",sNone:"Nenhum",tDay:"Dia",tNight:"Noite",tg_trad:"Tradicional",tg_puzzle:"Quebra-cabeça",tg_speed:"Contra o relógio",tg_scroll:"Rolagem automática",tg_auto:"Automatismos",tg_short:"Curto e intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidade",tg_shoot:"Tiro",tg_boss:"Contra chefes",tg_solo:"Solo",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"ALTERAÇÕES NÃO PUBLICADAS",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Adicionar nível",diffs:"Dificuldades",export:"Exportar",import:"Importar",password:"Senha",reset:"Redefinir",logout:"Sair",
 hardest:"NÍVEIS MAIS DIFÍCEIS",full:"RANKING COMPLETO",hLevel:"NÍVEL",hCreator:"CRIADOR",hDiff:"DIFICULDADE",hTries:"ID",hStatus:"STATUS",
 foot:"© Lista de Dificuldades do SMM:WE — Ranking feito por fãs. Dados de exemplo incluídos.",newb:"NOVO",ytT:"Canal do YouTube",dcT:"Servidor do Discord",
 sprIntro:"Escolha o visual das moedas e dos blocos. Salvo apenas neste dispositivo.",sprOwn:"SUA PRÓPRIA IMAGEM (PNG, GIF, JPG...)",close:"Fechar",
@@ -670,7 +729,7 @@ musicMissing:"Файл музыки не найден: загрузите mp3 р
 official:"★ ОФИЦИАЛЬНЫЙ РЕЙТИНГ ★",h1:"Список сложностей<br>в <span>SMM:WE</span>",title:"Список сложностей SMM:WE",
 tag:"Добро пожаловать, игрок! Здесь собран рейтинг самых сложных уровней SMM:WE — от самых трудных к самым лёгким. Ищите, фильтруйте и нажимайте на любой уровень, чтобы увидеть подробности.",
 top:"★ ТОП",search:"⚲ ПОИСК",
-htmlT:"ОБНОВИТЬ СТРАНИЦУ (HTML)",htmlInfo:"Выберите новый HTML-файл на устройстве и нажмите «Обновить». Он заменит файл страницы в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",htmlPath:"Имя файла в репозитории",htmlPick:"Новый HTML-файл",htmlNone:"Файл не выбран",htmlBad:"Это не похоже на HTML страницы",htmlBig:"Файл слишком большой",htmlUpd:"Обновить",htmlWait:"Обновление...",htmlOk:"Страница обновлена! GitHub Pages нужна около 1 мин, затем перезагрузите.",htmlFail:"Ошибка обновления: {0}",sendM:"ОТПРАВИТЬ УРОВЕНЬ",sendT:"ОТПРАВЬТЕ СВОЙ УРОВЕНЬ",sendInfo:"Заполните данные уровня и создайте код. Отправьте код админу в Discord. Админ проверит его и, если примет, добавит в рейтинг.",sendGen:"Создать код",sendCode:"Ваш код (отправьте админу)",sendCopy:"Копировать",sendCopied:"Скопировано!",sendDc:"Открыть Discord",unsure:"Не знаю",inboxBtn:"Входящие",inboxT:"ОТПРАВЛЕННЫЕ УРОВНИ",inboxInfo:"Вставьте коды, которые вам прислали. Затем проверьте, измените и примите или отклоните каждый уровень.",inboxPaste:"Вставьте коды сюда",inboxAdd:"Добавить во входящие",inboxEmpty:"Ничего не ждёт.",inboxAdded:"Добавлено уровней: {0}",inboxNone:"Допустимые коды не найдены",acc:"Проверить / Принять",rej:"Отклонить",rejAsk:"Отклонить {0}?",rejOk:"Уровень отклонён",zipAdd:"+ ДОБАВИТЬ ZIP (MP3)",zipInfo:"Песни из вашего ZIP остаются только на этом устройстве.",zipBusy:"Чтение ZIP...",zipOk:"Добавлено песен: {0}",zipNone:"В этом ZIP нет MP3",zipBad:"Не удалось прочитать ZIP",zipClear:"Удалить мои песни",zipBig:"ZIP слишком большой (макс. 150 МБ)",zipOld:"Ваш браузер не может открыть этот ZIP",jsonT:"ОБНОВИТЬ ДАННЫЕ (data.json)",jsonInfo:"Выберите файл data.json на устройстве и нажмите «Обновить». Он заменит уровни, сложности и титры в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",jsonPick:"Новый файл data.json",jsonBad:"Это не подходящий data.json (нужны levels и diffs)",jsonOk:"Данные обновлены! Посетители увидят их примерно через 1 мин",jsonFail:"Ошибка обновления: {0}",adminMode:"РЕЖИМ АДМИНА",published:"ОПУБЛИКОВАНО",unpub:"НЕОПУБЛИКОВАННЫЕ ИЗМЕНЕНИЯ",publish:"Опубликовать",publishing:"Публикация...",gh:"GitHub",addLevel:"+ Добавить уровень",diffs:"Сложности",export:"Экспорт",import:"Импорт",password:"Пароль",reset:"Сброс",logout:"Выйти",
+htmlT:"ОБНОВИТЬ СТРАНИЦУ (HTML)",htmlInfo:"Выберите новый HTML-файл на устройстве и нажмите «Обновить». Он заменит файл страницы в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",htmlPath:"Имя файла в репозитории",htmlPick:"Новый HTML-файл",htmlNone:"Файл не выбран",htmlBad:"Это не похоже на HTML страницы",htmlBig:"Файл слишком большой",htmlUpd:"Обновить",htmlWait:"Обновление...",htmlOk:"Страница обновлена! GitHub Pages нужна около 1 мин, затем перезагрузите.",htmlFail:"Ошибка обновления: {0}",sendM:"ОТПРАВИТЬ УРОВЕНЬ",sendT:"ОТПРАВЬТЕ СВОЙ УРОВЕНЬ",sendInfo:"Заполните данные уровня и создайте код. Отправьте код админу в Discord. Админ проверит его и, если примет, добавит в рейтинг.",sendGen:"Создать код",sendCode:"Ваш код (отправьте админу)",sendCopy:"Копировать",sendCopied:"Скопировано!",sendDc:"Открыть Discord",unsure:"Не знаю",inboxBtn:"Входящие",inboxT:"ОТПРАВЛЕННЫЕ УРОВНИ",inboxInfo:"Вставьте коды, которые вам прислали. Затем проверьте, измените и примите или отклоните каждый уровень.",inboxPaste:"Вставьте коды сюда",inboxAdd:"Добавить во входящие",inboxEmpty:"Ничего не ждёт.",inboxAdded:"Добавлено уровней: {0}",inboxNone:"Допустимые коды не найдены",acc:"Проверить / Принять",rej:"Отклонить",rejAsk:"Отклонить {0}?",rejOk:"Уровень отклонён",zipAdd:"+ ДОБАВИТЬ ZIP (MP3)",zipInfo:"Песни из вашего ZIP остаются только на этом устройстве.",zipBusy:"Чтение ZIP...",zipOk:"Добавлено песен: {0}",zipNone:"В этом ZIP нет MP3",zipBad:"Не удалось прочитать ZIP",zipClear:"Удалить мои песни",zipBig:"ZIP слишком большой (макс. 150 МБ)",zipOld:"Ваш браузер не может открыть этот ZIP",jsonT:"ОБНОВИТЬ ДАННЫЕ (data.json)",jsonInfo:"Выберите файл data.json на устройстве и нажмите «Обновить». Он заменит уровни, сложности и титры в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",jsonPick:"Новый файл data.json",jsonBad:"Это не подходящий data.json (нужны levels и diffs)",jsonOk:"Данные обновлены! Посетители увидят их примерно через 1 мин",jsonFail:"Ошибка обновления: {0}",fStyle:"Стиль игры",fTime:"Время суток",fTags:"Теги",sNone:"Нет",tDay:"День",tNight:"Ночь",tg_trad:"Традиционный",tg_puzzle:"Головоломка",tg_speed:"На время",tg_scroll:"Автопрокрутка",tg_auto:"Автоматика",tg_short:"Коротко, но жёстко",tg_versus:"Соревновательный",tg_themed:"Тематический",tg_music:"Музыка",tg_art:"Художественный",tg_skill:"Мастерство",tg_shoot:"Стрельба",tg_boss:"Против боссов",tg_solo:"Одиночный",tg_link:"Ссылка",adminMode:"РЕЖИМ АДМИНА",published:"ОПУБЛИКОВАНО",unpub:"НЕОПУБЛИКОВАННЫЕ ИЗМЕНЕНИЯ",publish:"Опубликовать",publishing:"Публикация...",gh:"GitHub",addLevel:"+ Добавить уровень",diffs:"Сложности",export:"Экспорт",import:"Импорт",password:"Пароль",reset:"Сброс",logout:"Выйти",
 hardest:"САМЫЕ СЛОЖНЫЕ УРОВНИ",full:"ПОЛНЫЙ РЕЙТИНГ",hLevel:"УРОВЕНЬ",hCreator:"АВТОР",hDiff:"СЛОЖНОСТЬ",hTries:"ID",hStatus:"СТАТУС",
 foot:"© Список сложностей SMM:WE — рейтинг от фанатов. Включены примеры данных.",newb:"НОВОЕ",ytT:"Канал YouTube",dcT:"Сервер Discord",
 sprIntro:"Выберите вид монет и блоков. Сохраняется только на этом устройстве.",sprOwn:"ВАШЕ ИЗОБРАЖЕНИЕ (PNG, GIF, JPG...)",close:"Закрыть",
@@ -722,7 +781,7 @@ function clean(d){
   const diffs=d.diffs.filter(x=>x&&typeof x==="object").map(x=>({name:SX(x.name,40).trim(),color:/^#[0-9a-f]{3,8}$/i.test(x.color)?x.color:"#888888"})).filter(x=>x.name);
   const levels=d.levels.filter(l=>l&&typeof l==="object").map(l=>({
     id:/^[\w-]{1,24}$/.test(l.id||"")?l.id:uid(),name:SX(l.name,60),creator:SX(l.creator,40),diff:SX(l.diff,40),code:SX(l.code,24),status:"verified",
-    env:/^[a-z]{3,12}$/.test(l.env||"")?l.env:"",desc:SX(l.desc,500),video:/^https?:\/\//i.test(l.video||"")?SX(l.video,300):""}));
+    env:/^[a-z]{3,12}$/.test(l.env||"")?l.env:"",style:/^(smb|smb3|smw|nsmbu)$/.test(l.style||"")?l.style:"",time:/^(day|night)$/.test(l.time||"")?l.time:"",tags:Array.isArray(l.tags)?[...new Set(l.tags.filter(k=>/^[a-z]{3,10}$/.test(k||"")))].filter(k=>["trad","puzzle","speed","scroll","auto","short","versus","themed","music","art","skill","shoot","boss","solo","link"].includes(k)):[],desc:SX(l.desc,500),video:/^https?:\/\//i.test(l.video||"")?SX(l.video,300):""}));
   const o={diffs,levels};
   if(typeof d.credits==="string")o.credits=d.credits.slice(0,600);
   if(Array.isArray(d.updates))o.updates=d.updates.filter(u=>u&&typeof u==="object").map(u=>({date:SX(u.date,10),title:SX(u.title,60),desc:SX(u.desc,400),...(/^u\d{1,3}$/.test(u.k||"")?{k:u.k}:{})}));
@@ -740,6 +799,14 @@ let fCat="all",fDiff="all",query="";
 
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),m.length>40?5000:2200);}
 const dcolor=n=>(state.diffs.find(d=>d.name===n)||{color:"#666"}).color;
+
+const STY=["smb","smb3","smw","nsmbu"],STN={smb:"SMB",smb3:"SMB3",smw:"SMW",nsmbu:"NSMBU"},TMS=["day","night"];
+const TAGS=["trad","puzzle","speed","scroll","auto","short","versus","themed","music","art","skill","shoot","boss","solo","link"];
+const STU={"smb": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAxCAYAAAC8snXfAAABJ0lEQVR42u2bQQrCMBBFjXqXuuwRBPEOHsLjeAjvIAWP4FIPE3SbDtIwzSRNw3u7Qts0n+mf34G6oe++G1iELRIgPuID4iM+ID7iQx72mpOP95vZws/LVXVvef7c59Sum7InKh/bgX+42HjB8rUM2R3Oo2P/fmSzLKt1rW2Iysd2EB9qjpox/yxFrj6k3WOsX5xen9Hx0HdUPrYDiL9az0/J5mtBs0dtD6TysR3Eh9o8P/TqlHwtr9X2gNBPpQ+XnNdo+gOzHWwHkqOmfI3k57MmpslrvdEnP+MFwHYQH+Z7/lS89As9tPTOWsYLVD62A4jfUs7PlZdbgZEytgOIXzlO8zdibJZjmdWn1tLmfM29Su6Rysd2sB2g8hEfEB/xAfERHxC/DX5xfmIjOrN6+wAAAABJRU5ErkJggg==", "smb3": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAxCAYAAABTcB7hAAABjklEQVR42u2bPW4CMRBGTURDEQ6QE1DQIYSUu9BQJYjjoIWeuyBFK7oUOQEFZSjSIIV2dxAeD/b+Je91lne95tPw7Xjs7Z0P2a+D2nlCAoRHeEB4hAeER3h4nL6vc7SfBQ/09frhvVf2W56rjW2ZlypIngVfO3j7LLXPh4yIx2pAtxrLX1jy8p6X2sP5LJl9aGPH2JbFWiQ/23GpfSHisRpA+A6lk5Lv3TrZg2PeJ5Y5Ducr7/vitAhPF6WnS54ny+DUkojHahAe2ubx0i99y/HRvpkfJOeocZku7/o0EY/VAML/JY+3ll+L/dbyq5ZvV5XXaxTzb62O4ysLy3eFzOuJeKyGdPIhO4gp3dZZMrBYolYykO2BIRUl4rEahIemPf64mbaiDJCS27JwHpRaOueci9gmJOKxGoSHpj2+qu24OklZeugn9HQiHqtBeGhbHq+R8rhHVWhzlFt/MaeFvWsAIh6r+df0fB8Yy+W1pbxgHat4v+Xa1PMsYj1xwIcJWA0gfJc8Hoh4hAeE7zRXj5aNEKoTj3QAAAAASUVORK5CYII=", "smw": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAAxCAYAAABTcB7hAAABRklEQVR42u2cMQ7CMAxFU8QV2LtzBxZmVo7SQ3AUVuYu3IG9O4coq7GqpFbcpIX3NihKqi/rYTmUphuGMUBxdkRA8AQPy7PXb9zadpU32g1DlXuU++buLdei4lENwUMBmhBCtI8fLyefjR7Pr9eH/hz9/Pvcz17bstb4usbv83ifvW/OWlQ8qvnzdtJLLblofUhdpNRCxQPBEzxMO97SEtZ0PhUPBE/wYHe89rjs6609fs3vBC/0WMAyUqDiUQ0QfG3Hp462pKetjpeft/pej4VlHx+75u1063UqHtXApGosp+YpXSw5UracSFHxQPAED9Mjg7Uc/a0FPSKgnUQ1QPBbdryrHzc4Fk6NfeX1HN9T8aiG4KGE0kLi18JAxRM8OLSTng9XxdD7aCz7eq6Vs5d1Hx4+QzUED6XbSf5EgooneCD4n+UDtfxjGB5+OC0AAAAASUVORK5CYII=", "nsmbu": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAAAxCAYAAAC8snXfAAAB/UlEQVR42u2bzU7CQBSFZ9QEWkggYWHCClfyAO58CR/GuNaVGx/Gl3DHC8iCsCKxDQmQ/lB0Wnemd6Dz04bS4DkrLnPvdXpy882oKX+az7PX5IZB9esCFsB8mA/Vqyv5i8vbDK4cSeKTY/KBHQjmn1KcMUYgv91uSUK73VY2yOfb5B5Svt52H3klSULiVqulXJcl55N9vH/RZ3q4Lp2LyQd2cNVkjDGWZfSqGccxiR3HUearauVcuVeVfeTX0zRVPrRuPd9rb48itbhbpph8YAeC+Y1mvo6HYRga5+t6VeGyvA/V2aM7T1zXJXEURQqOW/z5RZOLyQd2YD7UNOZzzks3t+Gwrrbb7ZI4CAISdzqdwjXb80S5jns+sAPB/DNivhCCxP1+n8Sr1cq4ucxpuXa9XpO41+sV7kPXuwrTN5uNcW/2Lczd/RGYfGAH0mNH918eGUOe5xn/MLnW9/3C3N1uV/qhdLW69eVy+fd5MBjQq3eYGO+DBwkmH9iBYH6jmW/L2ipsVp0vdTJ/OBySeLFYFBcH5sxnIZgP7EAw//8wfzabla495T1fuS4x33melD4fMPnADsyHzon5ul7j8bj23x8O9Z5OpyQejUaFtfHLHYndx4/C3OjtHpMP7EB74vJL0Hgh7njCC3HADgTzm3bVlLkEYfJhPgTzz0a/Y5oJ7qV5yVgAAAAASUVORK5CYII=", "tag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAdCAYAAADcvP5OAAAAn0lEQVR42u3WUQrAIAwD0Kbs/lfufofT2U5mU5ifgvBQ0ggzk+gCED+0uLQCMgzNQoagmUg3NBvpgjIgp1AW5COUCTmEsiG7UEbkDcqKFBE5Isi2bgHsvdE3yNHeZ1Dm5176lPzQGdTMUOZGPdhewnemHtfkMgdLm3GDMmFixepguKMElBGrk9pECSgT1tVMDFh3hWZjQ12fiQ1/SrKwJ9AsQjt2lz1vAAAAAElFTkSuQmCC", "sun": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAACRCAYAAADwz4dvAAACxklEQVR42u3dQW7bMBBGYdPptlnIZzOSe7THSO7RwmezFsm6UQ5QGhibNEkT31sGhijqZcY/KMpK27btZuB0Ot08kePxmGa4BvsdpoFMMkEmyASZZIJMkIma/HjEk17X9d+9j7csy5PKBJkgE2QKQFOEnZlDkcrUZkEmyMQkASjHsiz7ex9vXdcvlQkyQSbInJM0+iboCysxoX/ClP7f2xydby4AWQECmSCTTMxBtxWglNKWCSehp7Fy4eRwOOwjYScXis7n81ePeahMkEkmyMTEAehCSCj53C7yuc/3113wePvK59clFKlMbRZkgkx0CkDRkHBFOLk57ORoMW6vUKQytVmQCTLRKQCVEA0T0bAz+rgqE2SSCTIxeADKrWD0CkU5fv76U3WMFmEnek2jK0UqU5sFmSATwe/gkr0utUNMSbCZZYwLQSkUilSmNgsyQSYaBKDaqyS5kDDSbacW55cbQwDSZkEmyESDAJT9YOVQNHrYaRGKSsKOytRmQSbIxO002QQ9S9jJkZtHr/mqTG0WZIJMFASgFrfAnn//nfaibgV7ikoeoVeZ2izIBJkIBqBe+30+3l6mCEW5eZRQEopUpjYLMkEmggFo9DBREopaHE9lgkyQSSYeMADlbqX0WhVqETpGDzGeAgOZZIJMNAhAuT+OHopKflMnSq95eAoMZJIJMtEpALUIEyVPSkWP1yLsjPSEm8rUZkEmyEQMP4Q42Pm5BQYyyQSZGDwARfEqDK/CgDZLJsjE8AHowpfwzQmo1+pRi4AWPZdciLni+tkDpM2CTJCJioT3AEW/hGu/NT562+kRb8dFr6nK1GZBJshEpwDUgiv2v1QNJ73GVZkgk0yQiT6kkr094UGCe4qie11KNmmXbDKuPQ+VCTLJBJmYOABdEYpS5ePdPZzUnofKBJlkgkxMHIAeMWSpTJAJMsnEHHwDcZ2sOZ2WtbAAAAAASUVORK5CYII=", "moon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAAB9CAYAAAChxU23AAACeUlEQVR42u3dwXGbYBCGYX5ZFXBM3EMySVpRlWrFh7iH2DfRQGTIOePVzBow/ILnPXokBHrZ5WMFuAzD0GyV8/k8euNOp1OpZTsODaqHJJJAEkkgCSSRBJLwP8etbEjXdW+fvby2bR9UEkgiCSQJDjsPCbWHCZWk3YEkkiA4zEzbtofPXl7Xdb1KAkkkgaQ9U+7x4sgbZ/6jd7hSctdBXi6XPvhcEweQRBJI2g1busahz4SJKCRkw1Mp5TD2vSpJuwNJIElwWInoLD+aQtz4aSG1Y15ff6UCRillCF5XVJJ2B5JAkuBwZ2HiBqNHBGuFCZWk3YEkkiA4bIQlwoRK0u5AEkkQHISJdJhQSdodSCIJJIEkkkASSLo70hOHJS4C3DJTphAqSbsDSSShFsoHRujR65qaw0S0HSoJJJEEkjCeYzYk1HR7YjYkZMOOSgJJJIEkJI+3TXB7YnTA7V++56x//b3KwTobdg7D9d3fHh6fU5/x9udb6nXZ5WWDjUrS7kASSahm4jD3AqOAscTTFa+vP0bvg39ffqYCRhy9Smp5Kkm7A0kgaVfBoS/H0QfX7LRi7r2tTw46ou2IJidT1iWafqgk7Q4kgaR7Y9LFkVEgmBIwqt+jk2EiCgnHL0/R99wE37PnOGh3IIkk3P/EIW19IyEhGwhUEkgiCSTtPjhEZ71zTyGWCCJrTT+mTBdUknYHkkhCzZQpFy5OuZVz0ko37//p5RCGjn7W0LFESFBJ2h1IIgmbDQ5TwkTEWj8FZAPBje2dNSSoJO0OJJGEXQWHbJiIWGJdPrDOTXKdi0oCSSSBJMFhnYN1NStT06OzVZJ2B5JIQi38A6agC7Ss6Yx2AAAAAElFTkSuQmCC"},TMU={day:STU.sun,night:STU.moon};
+document.documentElement.style.setProperty("--tag-ico",'url("'+STU.tag+'")');
+const styImg=l=>l.style&&STU[l.style]?`<img class="sty" src="${STU[l.style]}" alt="${STN[l.style]}" title="${STN[l.style]}">`:"";
+const tmImg=l=>l.time&&TMU[l.time]?`<img class="tmk" src="${TMU[l.time]}" alt="${esc(t(l.time==="day"?"tDay":"tNight"))}" title="${esc(t(l.time==="day"?"tDay":"tNight"))}">`:"";
+const tagsHtml=l=>(l.tags&&l.tags.length)?`<div class="tags">${l.tags.filter(k=>TAGS.includes(k)).map(k=>`<span class="tg">${esc(t("tg_"+k))}</span>`).join("")}</div>`:"";
 const badge=n=>`<span class="badge" style="background:${esc(dcolor(n))}">${esc(n)}</span>`;
 document.documentElement.style.setProperty('--ico-feet','url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAANUlEQVR4nGNkYGBgEBQU/M8ABe/fv2fEJsaELIALCAoK/mcipAgGqK+QaIDVh9jEmJAl8QEAKOoVP1v2sOoAAAAASUVORK5CYII=")');document.documentElement.style.setProperty('--ico-tag','url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAANklEQVR4nHWOwQkAQAjDUjdw/yE7wt3Lh6J5FUKgYpCZr3ZswrYAtBWt3IRtxSUAosYU58viA6HOFT0tNyNwAAAAAElFTkSuQmCC")');
 const IFT='<i class="ico ico-feet"></i>',IT='<i class="ico ico-tag"></i>';
@@ -761,15 +828,14 @@ function render(){
     (fDiff==="all"||l.diff===fDiff)&&
     (!q||l.name.toLowerCase().includes(q)||l.creator.toLowerCase().includes(q)||String(l.code||"").toLowerCase().includes(q)));
   $("#list").innerHTML=rows.length?rows.map(({l,rank})=>
-    `<div class="row" data-id="${l.id}">
-      <div class="rhead"><span class="rkc ${rank<=4?"":"b"}">${rank}</span><b class="rname">${esc(l.name)}</b>${IFT}</div>
-      <div class="rbody">
-        ${l.env&&ENVU[l.env]?`<div class="renv"><img src="${ENVU[l.env]}" alt="${esc(envName(l.env))}" title="${esc(envName(l.env))}"></div>`:""}
-        <div class="rinfo">
+    `<div class="row lv${l.time&&TMU[l.time]?" has-tm":""}" data-id="${l.id}">
+      ${tmImg(l)}<div class="lvh"><span class="rkc ${rank<=4?"":"b"}">${rank}</span><b class="rname">${esc(l.name)}</b>${IFT}</div>
+      <div class="lvb">
+        <div class="lvl">${l.env&&ENVU[l.env]?`<img src="${ENVU[l.env]}" alt="${esc(envName(l.env))}" title="${esc(envName(l.env))}">`:`<div class="envph"></div>`}</div>
+        <div class="lvr">
           <p>${esc(t("by",l.creator))}${IU}</p>
           <p><span>ID:</span> ${esc(l.code||"N/A")}${l.code?IT:""}</p>
-          <p>${badge(l.diff)}${IS}</p>
-          <p>${stat(l.status)}${IF}</p>
+          <div class="lvm">${styImg(l)}<div class="lvp">${badge(l.diff)}${stat(l.status)}</div></div>
         </div>
       </div>
       ${admin?`<div class="rowtools"><button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button><button class="btn sm red" data-del="${l.id}">${t("del")}</button></div>`:""}
@@ -799,16 +865,16 @@ function ytId(u){
 function showDetail(id){
   const i=state.levels.findIndex(l=>l.id===id);if(i<0)return;const l=state.levels[i];
   const envOk=l.env&&ENVU[l.env];
-  $("#detailBox").innerHTML=`<div class="dhead"><span class="rkc">${i+1}</span><h2>${esc(l.name)}</h2>${IFT}</div>
-    <div class="dmain">
-      ${envOk?`<div class="denv"><img src="${ENVU[l.env]}" alt="${esc(envName(l.env))}"><small>${esc(envName(l.env))}</small></div>`:""}
-      <div class="dinfo">
-        <p>${esc(t("by",l.creator))}${IU}</p>
-        <p><span>ID:</span> ${l.code?`<button class="btn sm" id="cpCode" title="${esc(t("copyT"))}">${esc(l.code)}</button>${IT}`:"N/A"}</p>
-        <p>${badge(l.diff)}${IS}</p>
-        <p>${stat(l.status)}${IF}</p>
+  $("#detailBox").innerHTML=`<div class="lv${l.time&&TMU[l.time]?" has-tm":""}">${tmImg(l)}<div class="lvh"><span class="rkc">${i+1}</span><h2>${esc(l.name)}</h2>${IFT}</div>
+      <div class="lvb">
+        <div class="lvl">${envOk?`<img src="${ENVU[l.env]}" alt="${esc(envName(l.env))}"><small>${esc(envName(l.env))}</small>`:`<div class="envph"></div>`}</div>
+        <div class="lvr">
+          <p>${esc(t("by",l.creator))}${IU}</p>
+          <p><span>ID:</span> ${l.code?`<button class="btn sm" id="cpCode" title="${esc(t("copyT"))}">${esc(l.code)}</button>${IT}`:"N/A"}</p>
+          <div class="lvm">${styImg(l)}<div class="lvp">${badge(l.diff)}${stat(l.status)}</div></div>
+        </div>
       </div>
-    </div>
+      ${tagsHtml(l)}</div>
     ${l.video&&ytId(l.video)?`<div class="thumb" id="ytThumb" role="button" tabindex="0" data-yt="${ytId(l.video)}" aria-label="${esc(t("watchYt"))}"><img src="https://i.ytimg.com/vi/${ytId(l.video)}/hqdefault.jpg" alt="${esc(t("cover"))}" loading="lazy" onerror="this.style.display='none'"><span class="pl"></span></div><p class="ytl"><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${esc(t("watchYt"))}</a></p>`:""}
     ${l.video&&!ytId(l.video)&&/^https?:\/\//i.test(l.video)?`<div class="kv"><b>${t("dVideo")}</b><span><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${t("watch")}</a></span></div>`:""}
     <div class="kv"><b>${t("dNotes")}</b><span>${esc(l.desc||t("noDesc"))}</span></div>
@@ -833,11 +899,18 @@ function levelForm(id,pre,done){
     <label class="lbl">${t("fPos")}</label><input type="number" id="fPos" min="1" max="${state.levels.length+(idx>=0?0:1)}" value="${pos}">
     <label class="lbl">${t("fAtt")}</label><input type="text" id="fCode" maxlength="24" autocomplete="off" value="${esc(l.code||"")}">
     <label class="lbl">${t("fEnv")}</label><div class="envs" id="fEnvs"><button type="button" class="btn sm envo${l.env&&ENVU[l.env]?"":" on"}" data-env="">${t("eNone")}</button>${ENVS.map(k=>`<button type="button" class="btn sm envo${l.env===k?" on":""}" data-env="${k}"><img src="${ENVU[k]}" alt="">${esc(envName(k))}</button>`).join("")}</div>
+    <label class="lbl">${t("fStyle")}</label><div class="envs" id="fSty"><button type="button" class="btn sm envo${l.style&&STU[l.style]?"":" on"}" data-sty="">${t("sNone")}</button>${STY.map(k=>`<button type="button" class="btn sm envo${l.style===k?" on":""}" data-sty="${k}"><img src="${STU[k]}" alt="${STN[k]}"></button>`).join("")}</div>
+    <label class="lbl">${t("fTime")}</label><div class="envs" id="fTm"><button type="button" class="btn sm envo${l.time&&TMU[l.time]?"":" on"}" data-tm="">${t("sNone")}</button>${TMS.map(k=>`<button type="button" class="btn sm envo${l.time===k?" on":""}" data-tm="${k}">${esc(t(k==="day"?"tDay":"tNight"))}</button>`).join("")}</div>
+    <label class="lbl">${t("fTags")}</label><div class="envs" id="fTg">${TAGS.map(k=>`<button type="button" class="btn sm envo tgo${(l.tags||[]).includes(k)?" on":""}" data-tg="${k}">${esc(t("tg_"+k))}</button>`).join("")}</div>
     <label class="lbl">${t("fVideo")}</label><input type="url" id="fVideo" placeholder="https://..." value="${esc(l.video||"")}">
     <label class="lbl">${t("fNotes")}</label><textarea id="fDesc" maxlength="500">${esc(l.desc||"")}</textarea>
     <div class="actions"><button class="btn green" id="fSave">${t("save")}</button><button class="btn" data-close="#mForm">${t("cancel")}</button></div>`;
   open("#mForm");close("#mDetail");
   let curEnv=l.env&&ENVU[l.env]?l.env:"";
+  let curSty=l.style&&STU[l.style]?l.style:"",curTm=l.time&&TMU[l.time]?l.time:"",curTg=new Set((l.tags||[]).filter(k=>TAGS.includes(k)));
+  $("#fSty").addEventListener("click",e=>{const b=e.target.closest("[data-sty]");if(!b)return;curSty=b.dataset.sty;document.querySelectorAll("#fSty [data-sty]").forEach(x=>x.classList.toggle("on",x===b));});
+  $("#fTm").addEventListener("click",e=>{const b=e.target.closest("[data-tm]");if(!b)return;curTm=b.dataset.tm;document.querySelectorAll("#fTm [data-tm]").forEach(x=>x.classList.toggle("on",x===b));});
+  $("#fTg").addEventListener("click",e=>{const b=e.target.closest("[data-tg]");if(!b)return;const k=b.dataset.tg;if(curTg.has(k))curTg.delete(k);else curTg.add(k);b.classList.toggle("on",curTg.has(k));});
   $("#fEnvs").addEventListener("click",e=>{const b=e.target.closest("[data-env]");if(!b)return;curEnv=b.dataset.env;document.querySelectorAll("#fEnvs [data-env]").forEach(x=>x.classList.toggle("on",x===b));});
   $("#fSave").onclick=()=>{
     const name=$("#fName").value.trim(),creator=$("#fCreator").value.trim();
@@ -845,7 +918,7 @@ function levelForm(id,pre,done){
     let video=$("#fVideo").value.trim();
     if(video&&!/^https?:\/\//i.test(video)){toast(t("videoBad"));return;}
     const obj={id:idx>=0?l.id:uid(),name,creator,diff:$("#fDiff").value,
-      code:$("#fCode").value.trim().slice(0,24),status:"verified",env:curEnv,desc:$("#fDesc").value.trim(),video};
+      code:$("#fCode").value.trim().slice(0,24),status:"verified",env:curEnv,style:curSty,time:curTm,tags:TAGS.filter(k=>curTg.has(k)),desc:$("#fDesc").value.trim(),video};
     if(idx>=0)state.levels.splice(idx,1);
     let p=parseInt($("#fPos").value,10);if(isNaN(p))p=state.levels.length+1;
     p=Math.max(1,Math.min(state.levels.length+1,p));
@@ -1205,6 +1278,99 @@ function inboxForm(){
 }
 $("#aInbox").onclick=inboxForm;updInboxBtn();
 
+/* ---------- Dev: file manager (Agregar) ---------- */
+const FMT={
+es:{t:"AGREGAR",root:"Raíz",nf:"+ Carpeta",nfi:"+ Archivo",up:"Subir",edit:"Editar",del:"Borrar",empty:"Carpeta vacía",back:"Volver",save:"Guardar",cancel:"Cancelar",name:"Nombre",nameBad:"Nombre no válido",ok:"Listo",delQ:"¿Borrar {0}? No se puede deshacer.",load:"Cargando...",big:"Archivo muy grande para editar",bin:"Este archivo no se puede editar aquí",cr:"Crear",setup:"Primero configura GitHub",fold:"Nombre de la carpeta",file:"Nombre del archivo (ej. nuevo.html)",saved:"Guardado. Se verá en cerca de 1 min",exists:"Ya existe"},
+en:{t:"ADD",root:"Root",nf:"+ Folder",nfi:"+ File",up:"Upload",edit:"Edit",del:"Delete",empty:"Empty folder",back:"Back",save:"Save",cancel:"Cancel",name:"Name",nameBad:"Invalid name",ok:"Done",delQ:"Delete {0}? This cannot be undone.",load:"Loading...",big:"File too big to edit",bin:"This file can't be edited here",cr:"Create",setup:"Set up GitHub first",fold:"Folder name",file:"File name (e.g. new.html)",saved:"Saved. It will show in about 1 min",exists:"Already exists"},
+pt:{t:"ADICIONAR",root:"Raiz",nf:"+ Pasta",nfi:"+ Arquivo",up:"Enviar",edit:"Editar",del:"Apagar",empty:"Pasta vazia",back:"Voltar",save:"Salvar",cancel:"Cancelar",name:"Nome",nameBad:"Nome inválido",ok:"Pronto",delQ:"Apagar {0}? Não dá para desfazer.",load:"Carregando...",big:"Arquivo grande demais para editar",bin:"Este arquivo não pode ser editado aqui",cr:"Criar",setup:"Configure o GitHub primeiro",fold:"Nome da pasta",file:"Nome do arquivo (ex. novo.html)",saved:"Salvo. Aparece em cerca de 1 min",exists:"Já existe"},
+ru:{t:"ДОБАВИТЬ",root:"Корень",nf:"+ Папка",nfi:"+ Файл",up:"Загрузить",edit:"Изменить",del:"Удалить",empty:"Папка пуста",back:"Назад",save:"Сохранить",cancel:"Отмена",name:"Имя",nameBad:"Недопустимое имя",ok:"Готово",delQ:"Удалить {0}? Нельзя отменить.",load:"Загрузка...",big:"Файл слишком большой",bin:"Этот файл нельзя изменить здесь",cr:"Создать",setup:"Сначала настройте GitHub",fold:"Имя папки",file:"Имя файла (напр. new.html)",saved:"Сохранено. Появится примерно через 1 мин",exists:"Уже существует"}};
+const ft=(k,a)=>{let s=(FMT[LANG]||FMT.en)[k]||FMT.en[k]||k;return a!=null?s.replace("{0}",a):s;};
+const FM_TXT=/\.(html?|json|js|css|txt|md|svg|xml|csv|ya?ml|ini|cfg|map)$/i;
+function fmGo(path){
+  if(!admin)return;
+  const c=ghCfg();if(!c.owner||!c.repo||!c.token){ghForm();toast(ft("setup"));return;}
+  const H={"Authorization":"Bearer "+c.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"},br=c.branch||"main";
+  const url=p=>"https://api.github.com/repos/"+c.owner+"/"+c.repo+"/contents/"+p.split("/").filter(Boolean).map(encodeURIComponent).join("/");
+  const put=async(p,content,msg,sha)=>{const r=await fetch(url(p),{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},H),
+    body:JSON.stringify(Object.assign({message:msg,content,branch:br},sha?{sha}:{}))});if(!r.ok)throw new Error(await ghErr(r));return r.json();};
+  const getSha=async p=>{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});if(g.ok){const j=await g.json();return Array.isArray(j)?null:j.sha;}if(g.status===404)return null;throw new Error(await ghErr(g));};
+  const okName=n=>n&&n.length<=100&&!/[\/\\]/.test(n)&&!/^\.+$/.test(n)&&!/[<>:"|?*\u0000-\u001f]/.test(n);
+  const ask=(label,cb)=>{
+    $("#formBox").innerHTML=`<h2>${esc(label)}</h2><input type="text" id="fmN" autocomplete="off" autocapitalize="off"><div class="actions"><button class="btn green" id="fmOk">${ft("cr")}</button><button class="btn" id="fmNo">${ft("cancel")}</button></div>`;
+    setTimeout(()=>{const e=$("#fmN");if(e)e.focus();},50);$("#fmNo").onclick=()=>fmGo(path);
+    const go=()=>{const n=$("#fmN").value.trim();if(!okName(n)){toast(ft("nameBad"));return;}cb(n);};
+    $("#fmOk").onclick=go;$("#fmN").onkeydown=e=>{if(e.key==="Enter")go();};
+  };
+  const editor=async(p,isNew)=>{
+    $("#formBox").innerHTML=`<h2>${esc(p)}</h2><p>${ft("load")}</p>`;
+    let txt="",sha=null;
+    if(!isNew){
+      try{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});
+        if(!g.ok)throw new Error(await ghErr(g));const j=await g.json();
+        if(j.size>600000||!j.content){toast(ft("big"));fmGo(path);return;}
+        sha=j.sha;const bin=atob(j.content.replace(/\n/g,""));txt=new TextDecoder().decode(Uint8Array.from(bin,ch=>ch.charCodeAt(0)));
+      }catch(e){toast(e.message);fmGo(path);return;}
+    }
+    $("#formBox").innerHTML=`<h2 style="word-break:break-all">${esc(p)}</h2>
+      <textarea id="fmT" spellcheck="false" style="width:100%;height:46vh;font-family:monospace;font-size:12px;line-height:1.4;white-space:pre;overflow:auto;box-sizing:border-box;tab-size:2"></textarea>
+      <div class="actions"><button class="btn green" id="fmS">${ft("save")}</button><button class="btn" id="fmC">${ft("back")}</button></div>`;
+    $("#fmT").value=txt;$("#fmC").onclick=()=>fmGo(path);
+    $("#fmS").onclick=async()=>{const b=$("#fmS");b.disabled=true;
+      try{const cur=await getSha(p);const r=await put(p,b64($("#fmT").value),"Edit "+p,cur||undefined);toast(ft("saved"));fmGo(path);}
+      catch(e){toast(e.message);b.disabled=false;}};
+  };
+  $("#formBox").innerHTML=`<h2>${ft("t")}</h2><p>${ft("load")}</p>`;open("#mForm");
+  (async()=>{
+    let items;
+    try{const g=await fetch(url(path)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});
+      if(!g.ok)throw new Error(await ghErr(g));items=await g.json();if(!Array.isArray(items))items=[];}
+    catch(e){toast(e.message);devPanel();return;}
+    items.sort((a,b)=>(a.type==="dir"?0:1)-(b.type==="dir"?0:1)||a.name.localeCompare(b.name));
+    const parts=path.split("/").filter(Boolean);
+    const crumbs=`<button class="btn sm" data-p="">${ft("root")}</button>`+parts.map((x,i)=>` / <button class="btn sm" data-p="${esc(parts.slice(0,i+1).join("/"))}">${esc(x)}</button>`).join("");
+    const rows=items.length?items.map(it=>{
+      const dir=it.type==="dir",kb=dir?"":(it.size>1024?Math.round(it.size/1024)+" KB":it.size+" B");
+      return `<div class="fmrow" style="display:flex;align-items:center;gap:8px;padding:8px 4px;border-bottom:2px dashed #0002">
+        <span style="font-size:22px">${dir?"📁":FM_TXT.test(it.name)?"📄":"🖼️"}</span>
+        <span class="fmn" data-n="${esc(it.name)}" data-d="${dir?1:0}" style="flex:1;min-width:0;word-break:break-all;cursor:pointer;font-weight:700">${esc(it.name)}<br><small style="font-weight:400;opacity:.7">${dir?"":kb}</small></span>
+        ${!dir&&FM_TXT.test(it.name)?`<button class="btn sm" data-e="${esc(it.name)}">${ft("edit")}</button>`:""}
+        <button class="btn sm red" data-x="${esc(it.name)}" data-s="${esc(it.sha)}" data-d="${dir?1:0}">${ft("del")}</button></div>`;}).join(""):`<p>${ft("empty")}</p>`;
+    $("#formBox").innerHTML=`<h2>${ft("t")}</h2>
+      <div style="font-size:12px;margin-bottom:8px;line-height:2.1">${crumbs}</div>
+      <div class="actions" style="margin-bottom:6px"><button class="btn green" id="fmF">${ft("nf")}</button><button class="btn green" id="fmI">${ft("nfi")}</button><button class="btn blue" id="fmU">${ft("up")}</button></div>
+      <input type="file" id="fmUp" multiple style="display:none">
+      <div style="max-height:44vh;overflow:auto;font-size:13px">${rows}</div>
+      <div class="actions"><button class="btn" id="fmB">${ft("back")}</button></div>`;
+    const join=n=>(path?path+"/":"")+n;
+    $("#fmB").onclick=devPanel;
+    $("#formBox").querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>fmGo(b.dataset.p));
+    $("#formBox").querySelectorAll(".fmn").forEach(b=>b.onclick=()=>{b.dataset.d==="1"?fmGo(join(b.dataset.n)):(FM_TXT.test(b.dataset.n)?editor(join(b.dataset.n),false):toast(ft("bin")));});
+    $("#formBox").querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>editor(join(b.dataset.e),false));
+    $("#formBox").querySelectorAll("[data-x]").forEach(b=>b.onclick=async()=>{
+      if(!confirm(ft("delQ",b.dataset.x)))return;b.disabled=true;
+      try{
+        const delFile=async(p,sha)=>{const r=await fetch(url(p),{method:"DELETE",headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify({message:"Delete "+p,sha,branch:br})});if(!r.ok)throw new Error(await ghErr(r));};
+        const walk=async p=>{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});if(!g.ok)throw new Error(await ghErr(g));
+          for(const f of await g.json()){f.type==="dir"?await walk(p+"/"+f.name):await delFile(p+"/"+f.name,f.sha);}};
+        const p=join(b.dataset.x);b.dataset.d==="1"?await walk(p):await delFile(p,b.dataset.s);
+        toast(ft("ok"));fmGo(path);
+      }catch(e){toast(e.message);b.disabled=false;}});
+    $("#fmF").onclick=()=>ask(ft("fold"),async n=>{try{if(await getSha(join(n)+"/.gitkeep")!==null){toast(ft("exists"));return;}await put(join(n)+"/.gitkeep","","Create folder "+n);toast(ft("ok"));fmGo(path);}catch(e){toast(e.message);}});
+    $("#fmI").onclick=()=>ask(ft("file"),async n=>{try{if(await getSha(join(n))!==null){toast(ft("exists"));return;}editor(join(n),true);}catch(e){toast(e.message);}});
+    $("#fmU").onclick=()=>$("#fmUp").click();
+    $("#fmUp").onchange=async e=>{
+      const fs=[...e.target.files];if(!fs.length)return;const bu=$("#fmU");bu.disabled=true;let n=0;
+      try{for(const f of fs){
+        if(!okName(f.name)){toast(ft("nameBad")+": "+f.name);continue;}
+        if(f.size>25e6){toast(ft("big")+": "+f.name);continue;}
+        bu.textContent=(++n)+"/"+fs.length;
+        const buf=new Uint8Array(await f.arrayBuffer());let bin="";for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode.apply(null,buf.subarray(i,i+8192));
+        const sha=await getSha(join(f.name));await put(join(f.name),btoa(bin),"Upload "+f.name,sha||undefined);}
+        toast(ft("ok"));fmGo(path);
+      }catch(er){toast(er.message);bu.disabled=false;bu.textContent=ft("up");}};
+  })();
+}
+
 /* ---------- Dev tools (second password) ---------- */
 const DEV_SHA="1e1228bd385e6b8a086102b16083fbf29d1be4f9192e9a07b413a34c64a583ba",DEV_FB="fcf9395a2",DKEY2="lod_smmwe_dev";
 function devPanel(){
@@ -1212,11 +1378,13 @@ function devPanel(){
     <div class="actions" style="flex-direction:column;align-items:stretch">
       <button class="btn blue" id="dHtml">HTML</button>
       <button class="btn blue" id="dJson">data.json</button>
+      <button class="btn blue" id="dAdd">${ft("t")}</button>
       <button class="btn" id="dPass">${t("password")}</button>
       <button class="btn" data-close="#mForm">${t("close")}</button>
     </div>`;
   open("#mForm");
   $("#dHtml").onclick=htmlForm;$("#dJson").onclick=jsonForm;$("#dPass").onclick=passForm;
+  $("#dAdd").onclick=()=>fmGo("");
 }
 function devAuth(){
   if(!admin)return;
@@ -1225,7 +1393,7 @@ function devAuth(){
   $("#formBox").innerHTML=`<h2>DEV</h2>
     <label class="lbl">${t("pw")}</label><input type="password" id="dpw" autocomplete="off">
     <div class="actions"><button class="btn green" id="dgo">${t("enter")}</button><button class="btn" data-close="#mForm">${t("cancel")}</button></div>`;
-  open("#mForm");setTimeout(()=>$("#dpw").focus(),50);
+  open("#mForm");setTimeout(()=>{const e=$("#dpw");if(e)e.focus();},50);
   const go=async()=>{
     const want=(window.crypto&&crypto.subtle)?DEV_SHA:DEV_FB;
     if(await hash($("#dpw").value)===want){try{sessionStorage.setItem(DKEY2,"1");}catch(e){}devPanel();}
@@ -1276,7 +1444,7 @@ function applySet(){
   /* sprites menu hidden until a future version */ set.spr="classic";set.custom="";
   if(set.bg!=="clean"&&!BGS.some(x=>"img:"+x.id===set.bg))set.bg="img:smw_ghost";
   const b=document.body,root=document.documentElement.style;
-  if(set.font==="clear")b.setAttribute("data-font","clear");else b.removeAttribute("data-font");
+  /* pixel-font mode disabled for now (coming in a later version) */b.setAttribute("data-font","clear");
   const fb=$("#fontBtn");if(fb)fb.setAttribute("aria-pressed",set.font==="clear"?"true":"false");
   const im=set.bg&&set.bg.indexOf("img:")===0?BGS.find(x=>"img:"+x.id===set.bg):null;
   if(im){b.setAttribute("data-bgscroll","1");const pi=new Image();pi.onload=()=>{bgAR=pi.naturalWidth/pi.naturalHeight||512/432;bgSize();};pi.src=im.u;}else b.removeAttribute("data-bgscroll");
