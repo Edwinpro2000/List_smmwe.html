@@ -34,6 +34,9 @@
       "code": "",
       "status": "verified",
       "env": "ground",
+      "style": "smw",
+      "time": "night",
+      "tags": [],
       "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
       "video": "https://youtu.be/675WMIqQhqs"
     },
@@ -45,6 +48,9 @@
       "code": "L3Q9-8LIU-9V3T-GCUQ",
       "status": "verified",
       "env": "volcano",
+      "style": "smw",
+      "time": "day",
+      "tags": [],
       "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. \"Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump\" - Luicundo",
       "video": "https://youtu.be/YFoQiYoV43s"
     },
@@ -56,6 +62,9 @@
       "code": "VZW9-BDE7-AMU2-VPA2",
       "status": "verified",
       "env": "underground",
+      "style": "smb",
+      "time": "day",
+      "tags": [],
       "desc": "",
       "video": "https://youtu.be/6tt2ueu9dR0"
     },
@@ -67,6 +76,9 @@
       "code": "7REI-2XW3-C4XE-6N6X",
       "status": "verified",
       "env": "desert",
+      "style": "smb3",
+      "time": "night",
+      "tags": [],
       "desc": "Good level, Gg",
       "video": "https://youtu.be/80tYWUSpsdU"
     }
@@ -151,5 +163,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-10-26T23:22:27.101Z"
+  "updated": "2026-10-26T23:28:15.084Z"
 }
