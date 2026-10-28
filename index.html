@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>List of Difficulties of SMM:WE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAWCAYAAAAvg9c4AAAAyUlEQVR4nNWVTQ6CMBCF3xR2mogLb0KiB/ASGr2eXgWT3kXcuNHwDD8FFEyEqQveZl6a9svMtJkKKpEkFBIRqT1awMzW64NkYr6BjRbYPutYRgv8BNdQ3wq/9edX9VVpOptwh/dMYWfIlFCDyfaU6uLRzZQ2ACfRU4lZDgSfPRX8IdPMwxwI1QQAh21UuWVT/tC32Qc8pdci7hYRjYhstGAHdFEArHNDMhkD3EdlyTnQeXcrBXisjvNV8gwehT/f0uaz0oIBXJx7AdRrSUwzvHFAAAAAAElFTkSuQmCC">
 <style>
 :root{
   --red:#e52521;--blue:#049cd8;--yellow:#fbd000;--green:#43b047;--black:#111;--white:#fff;
@@ -123,6 +124,7 @@ textarea{min-height:80px;resize:vertical}
 .diffrow{display:flex;gap:8px;align-items:center;margin-bottom:8px}
 .diffrow input[type=color]{width:48px;height:40px;border:4px solid var(--black);padding:0;background:#fff}
 footer{text-align:center;margin-top:30px;font-size:9px;color:#fff;text-shadow:2px 2px 0 #000}
+footer>span[data-i18n=foot]{display:inline-block;background:rgba(0,0,0,.62);padding:6px 10px;font-size:11px;line-height:1.5;text-shadow:none;max-width:92%}
 .toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);background:var(--black);color:var(--yellow);padding:10px 14px;border:3px solid var(--yellow);z-index:99;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.show{opacity:1}
 .live{display:flex;justify-content:center;margin:24px 0 18px;font-size:9px;color:var(--black);text-shadow:none}
@@ -224,7 +226,7 @@ body[data-font=clear] h1,body[data-font=clear] h2{font-weight:900}
 body[data-font=clear] h1{line-height:1.5;text-shadow:3px 0 0 var(--black),-3px 0 0 var(--black),0 3px 0 var(--black),0 -3px 0 var(--black),3px 3px 0 var(--black),-3px 3px 0 var(--black),3px -3px 0 var(--black),-3px -3px 0 var(--black),0 6px 0 var(--black)}
 .lvm:not(:has(.sty)) .lvp{flex-direction:row;gap:1.6cqw}.lvm:not(:has(.sty)) .lvp .badge,.lvm:not(:has(.sty)) .lvp .st{flex:1 1 0;min-width:0;padding:5px 2px;font-size:10px}.lvm:not(:has(.sty)){margin-top:0}
 .lv .lvr p{flex-wrap:nowrap;overflow-wrap:anywhere;min-width:0}.lv .lvr p .ico{flex:0 0 auto}.lv .lvr p>span{flex:0 0 auto}.lv .lvr p .btn{flex:1 1 auto;min-width:0;font-size:11px;padding:6px 4px;word-break:normal;overflow-wrap:anywhere}
-#langBtn{position:absolute;top:10px;left:68px;z-index:40;width:48px;height:48px;padding:0;font-size:22px;display:flex;align-items:center;justify-content:center}
+#langBtn{position:fixed;bottom:12px;right:12px;top:auto;left:auto;z-index:40;width:48px;height:48px;padding:0;font-size:22px;display:flex;align-items:center;justify-content:center}
 .menuwrap.tl{position:absolute;top:10px;left:10px;z-index:40}
 .menuwrap.tl #menuBtn{width:48px;height:48px;padding:0;display:flex;align-items:center;justify-content:center}
 #newBtn{position:relative;font-size:12px;padding:12px 26px}
@@ -434,6 +436,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
     <button class="btn" data-menu="bg" role="menuitem" data-i18n="bg">BACKGROUND</button>
     <button class="btn" data-menu="music" role="menuitem">&#9835; <span data-i18n="music">MUSIC</span></button>
     <button class="btn" data-menu="send" role="menuitem">&#9993; <span data-i18n="sendM">SEND LEVEL</span></button>
+    <button class="btn" data-menu="qr" role="menuitem">&#9638; QR</button>
     <button class="btn" data-menu="credits" role="menuitem" data-i18n="cred">CREDITS</button>
     <button class="btn yellow" id="adminBtn" role="menuitem">&#128273; Admin</button>
   </div>
@@ -498,7 +501,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 </section>
 
 <div class="live" id="live"></div>
-<footer><span data-i18n="foot">&copy; List of Difficulties of SMM:WE &mdash; Fan-made ranking. Sample data included.</span><br><br>
+<footer><span data-i18n="foot">&copy; List of Difficulties of SMM:WE &mdash; Fan-made ranking.</span><br><br>
 <button class="nbtn" id="newBtn" aria-label="NEW"><span class="ni"></span></button>
 <div class="soc">
   <a class="sbtn" id="lnkYt" href="https://www.youtube.com/@notorworld" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel" title="YouTube" data-i18n-title="ytT"><i></i></a>
@@ -590,7 +593,7 @@ tag:"Welcome, player! This page contains a ranking of the hardest levels in SMM:
 top:"★ TOP",search:"⚲ SEARCH",
 htmlT:"UPDATE THE PAGE (HTML)",htmlInfo:"Pick the new HTML file from your device and press Update. It replaces the page file in your GitHub repo (needs the token saved in GitHub).",htmlPath:"File name in the repo",htmlPick:"New HTML file",htmlNone:"No file selected",htmlBad:"That does not look like the page HTML",htmlBig:"File too big",htmlUpd:"Update",htmlWait:"Updating...",htmlOk:"Page updated! GitHub Pages needs about 1 min, then reload.",htmlFail:"Update failed: {0}",sendM:"SEND LEVEL",sendT:"SEND YOUR LEVEL",sendInfo:"Fill in your level and create a code. Send that code to the admin on Discord. The admin reviews it and, if accepted, adds it to the ranking.",sendGen:"Create code",sendCode:"Your code (send it to the admin)",sendCopy:"Copy",sendCopied:"Copied!",sendDc:"Open Discord",unsure:"I do not know",inboxBtn:"Inbox",inboxT:"SUBMITTED LEVELS",inboxInfo:"Paste the codes people send you. Then review, edit and accept, or reject each level.",inboxPaste:"Paste codes here",inboxAdd:"Add to inbox",inboxEmpty:"Nothing waiting.",inboxAdded:"{0} level(s) added to the inbox",inboxNone:"No valid codes found",acc:"Review / Accept",rej:"Reject",rejAsk:"Reject {0}?",rejOk:"Level rejected",zipAdd:"+ ADD ZIP (MP3)",zipInfo:"Songs from your ZIP stay on this device only.",zipBusy:"Reading ZIP...",zipOk:"{0} song(s) added",zipNone:"No MP3 found in that ZIP",zipBad:"Could not read that ZIP",zipClear:"Remove my songs",zipBig:"ZIP too big (max 150 MB)",zipOld:"Your browser cannot open this ZIP",jsonT:"UPDATE DATA (data.json)",jsonInfo:"Pick a data.json file from your device and press Update. It replaces the levels, difficulties and credits in your GitHub repo (needs the token saved in GitHub).",jsonPick:"New data.json file",jsonBad:"That file is not a valid data.json (it needs levels and diffs)",jsonOk:"Data updated! Visitors will see it in about 1 min",jsonFail:"Update failed: {0}",fStyle:"Game style",fTime:"Time of day",fTags:"Tags",sNone:"None",tDay:"Day",tNight:"Night",tg_trad:"Standard",tg_puzzle:"Puzzle",tg_speed:"Speedrun",tg_scroll:"Autoscroll",tg_auto:"Auto",tg_short:"Short and sweet",tg_versus:"Versus",tg_themed:"Themed",tg_music:"Music",tg_art:"Art",tg_skill:"Technical",tg_shoot:"Shooter",tg_boss:"Boss battle",tg_solo:"Solo",tg_link:"Link",adminMode:"ADMIN MODE",published:"PUBLISHED",unpub:"UNPUBLISHED CHANGES",publish:"Publish",publishing:"Publishing...",gh:"GitHub",addLevel:"+ Add level",diffs:"Difficulties",export:"Export",import:"Import",password:"Password",reset:"Reset",logout:"Log out",
 hardest:"HARDEST LEVELS",full:"FULL RANKING",hLevel:"LEVEL",hCreator:"CREATOR",hDiff:"DIFFICULTY",hTries:"ID",hStatus:"STATUS",
-foot:"© List of Difficulties of SMM:WE — Fan-made ranking. Sample data included.",newb:"NEW",ytT:"YouTube channel",dcT:"Discord server",
+foot:"© List of Difficulties of SMM:WE — Fan-made ranking.",newb:"NEW",ytT:"YouTube channel",dcT:"Discord server",
 sprIntro:"Pick the look of the coins and blocks. Saved on this device only.",sprOwn:"YOUR OWN IMAGE (PNG, GIF, JPG...)",close:"Close",
 anims:"ANIMATIONS",style:"STYLE",resetAll:"Reset all",animLbl:"ANIMATIONS: {0}",on:"ON",offS:"OFF",
 searchT:"⚲ SEARCH",ph:"Search level or creator...",category:"CATEGORY",difficulty:"DIFFICULTY",showRes:"Show results",clear:"Clear",
@@ -637,7 +640,7 @@ tag:"¡Bienvenido, jugador! Esta página contiene un ranking de los niveles más
 top:"★ TOP",search:"⚲ BUSCAR",
 htmlT:"ACTUALIZAR LA PÁGINA (HTML)",htmlInfo:"Elige el HTML nuevo de tu dispositivo y toca Actualizar. Reemplaza el archivo de la página en tu repositorio de GitHub (necesita el token guardado en GitHub).",htmlPath:"Nombre del archivo en el repositorio",htmlPick:"Archivo HTML nuevo",htmlNone:"Sin archivo",htmlBad:"Ese archivo no parece el HTML de la página",htmlBig:"Archivo demasiado grande",htmlUpd:"Actualizar",htmlWait:"Actualizando...",htmlOk:"¡Página actualizada! GitHub Pages tarda cerca de 1 min, luego recarga.",htmlFail:"Falló la actualización: {0}",sendM:"ENVIAR NIVEL",sendT:"ENVÍA TU NIVEL",sendInfo:"Llena los datos de tu nivel y crea un código. Mándale ese código al admin por Discord. El admin lo revisa y, si lo acepta, lo agrega al ranking.",sendGen:"Crear código",sendCode:"Tu código (mándaselo al admin)",sendCopy:"Copiar",sendCopied:"¡Copiado!",sendDc:"Abrir Discord",unsure:"No lo sé",inboxBtn:"Buzón",inboxT:"NIVELES ENVIADOS",inboxInfo:"Pega los códigos que te manden. Luego revisa, edita y acepta, o rechaza cada nivel.",inboxPaste:"Pega los códigos aquí",inboxAdd:"Agregar al buzón",inboxEmpty:"No hay nada pendiente.",inboxAdded:"{0} nivel(es) agregado(s) al buzón",inboxNone:"No se encontraron códigos válidos",acc:"Revisar / Aceptar",rej:"Rechazar",rejAsk:"¿Rechazar {0}?",rejOk:"Nivel rechazado",zipAdd:"+ AGREGAR ZIP (MP3)",zipInfo:"Las canciones de tu ZIP se quedan solo en este dispositivo.",zipBusy:"Leyendo ZIP...",zipOk:"{0} canción(es) agregada(s)",zipNone:"No hay MP3 en ese ZIP",zipBad:"No se pudo leer ese ZIP",zipClear:"Quitar mis canciones",zipBig:"ZIP demasiado grande (máx. 150 MB)",zipOld:"Tu navegador no puede abrir este ZIP",jsonT:"ACTUALIZAR DATOS (data.json)",jsonInfo:"Elige un archivo data.json de tu dispositivo y toca Actualizar. Reemplaza los niveles, dificultades y créditos en tu repositorio de GitHub (necesita el token guardado en GitHub).",jsonPick:"Archivo data.json nuevo",jsonBad:"Ese archivo no es un data.json válido (necesita levels y diffs)",jsonOk:"¡Datos actualizados! Los visitantes lo verán en cerca de 1 min",jsonFail:"Falló la actualización: {0}",fStyle:"Estilo de juego",fTime:"Momento del día",fTags:"Etiquetas",sNone:"Ninguno",tDay:"Día",tNight:"Noche",tg_trad:"Tradicional",tg_puzzle:"Puzles",tg_speed:"Contrarreloj",tg_scroll:"Autoavance",tg_auto:"Automatismos",tg_short:"Corto pero intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidad",tg_shoot:"Disparos",tg_boss:"Contra jefes",tg_solo:"En solitario",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"CAMBIOS SIN PUBLICAR",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Agregar nivel",diffs:"Dificultades",export:"Exportar",import:"Importar",password:"Contraseña",reset:"Restablecer",logout:"Cerrar sesión",
 hardest:"NIVELES MÁS DIFÍCILES",full:"RANKING COMPLETO",hLevel:"NIVEL",hCreator:"CREADOR",hDiff:"DIFICULTAD",hTries:"ID",hStatus:"ESTADO",
-foot:"© Lista de Dificultades de SMM:WE — Ranking hecho por fans. Datos de ejemplo incluidos.",newb:"NUEVO",ytT:"Canal de YouTube",dcT:"Servidor de Discord",
+foot:"© Lista de Dificultades de SMM:WE — Ranking hecho por fans.",newb:"NUEVO",ytT:"Canal de YouTube",dcT:"Servidor de Discord",
 sprIntro:"Elige el aspecto de las monedas y los bloques. Se guarda solo en este dispositivo.",sprOwn:"TU PROPIA IMAGEN (PNG, GIF, JPG...)",close:"Cerrar",
 anims:"ANIMACIONES",style:"ESTILO",resetAll:"Restablecer todo",animLbl:"ANIMACIONES: {0}",on:"SÍ",offS:"NO",
 searchT:"⚲ BUSCAR",ph:"Buscar nivel o creador...",category:"CATEGORÍA",difficulty:"DIFICULTAD",showRes:"Ver resultados",clear:"Borrar",
@@ -684,7 +687,7 @@ tag:"Bem-vindo, jogador! Esta página traz um ranking dos níveis mais difíceis
 top:"★ TOPO",search:"⚲ BUSCAR",
 htmlT:"ATUALIZAR A PÁGINA (HTML)",htmlInfo:"Escolha o novo HTML do seu dispositivo e toque em Atualizar. Ele substitui o arquivo da página no seu repositório do GitHub (precisa do token salvo em GitHub).",htmlPath:"Nome do arquivo no repositório",htmlPick:"Novo arquivo HTML",htmlNone:"Nenhum arquivo",htmlBad:"Esse arquivo não parece o HTML da página",htmlBig:"Arquivo grande demais",htmlUpd:"Atualizar",htmlWait:"Atualizando...",htmlOk:"Página atualizada! O GitHub Pages leva cerca de 1 min, depois recarregue.",htmlFail:"Falha ao atualizar: {0}",sendM:"ENVIAR NÍVEL",sendT:"ENVIE SEU NÍVEL",sendInfo:"Preencha os dados do seu nível e crie um código. Envie esse código ao admin pelo Discord. O admin revisa e, se aceitar, adiciona ao ranking.",sendGen:"Criar código",sendCode:"Seu código (envie ao admin)",sendCopy:"Copiar",sendCopied:"Copiado!",sendDc:"Abrir Discord",unsure:"Não sei",inboxBtn:"Caixa",inboxT:"NÍVEIS ENVIADOS",inboxInfo:"Cole os códigos que lhe enviarem. Depois revise, edite e aceite, ou rejeite cada nível.",inboxPaste:"Cole os códigos aqui",inboxAdd:"Adicionar à caixa",inboxEmpty:"Nada pendente.",inboxAdded:"{0} nível(is) adicionado(s) à caixa",inboxNone:"Nenhum código válido encontrado",acc:"Revisar / Aceitar",rej:"Rejeitar",rejAsk:"Rejeitar {0}?",rejOk:"Nível rejeitado",zipAdd:"+ ADICIONAR ZIP (MP3)",zipInfo:"As músicas do seu ZIP ficam só neste dispositivo.",zipBusy:"Lendo ZIP...",zipOk:"{0} música(s) adicionada(s)",zipNone:"Nenhum MP3 nesse ZIP",zipBad:"Não foi possível ler esse ZIP",zipClear:"Remover minhas músicas",zipBig:"ZIP grande demais (máx. 150 MB)",zipOld:"Seu navegador não consegue abrir este ZIP",jsonT:"ATUALIZAR DADOS (data.json)",jsonInfo:"Escolha um arquivo data.json do seu dispositivo e toque em Atualizar. Ele substitui os níveis, dificuldades e créditos no seu repositório do GitHub (precisa do token salvo em GitHub).",jsonPick:"Novo arquivo data.json",jsonBad:"Esse arquivo não é um data.json válido (precisa de levels e diffs)",jsonOk:"Dados atualizados! Os visitantes verão em cerca de 1 min",jsonFail:"Falha ao atualizar: {0}",fStyle:"Estilo de jogo",fTime:"Período do dia",fTags:"Etiquetas",sNone:"Nenhum",tDay:"Dia",tNight:"Noite",tg_trad:"Tradicional",tg_puzzle:"Quebra-cabeça",tg_speed:"Contra o relógio",tg_scroll:"Rolagem automática",tg_auto:"Automatismos",tg_short:"Curto e intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidade",tg_shoot:"Tiro",tg_boss:"Contra chefes",tg_solo:"Solo",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"ALTERAÇÕES NÃO PUBLICADAS",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Adicionar nível",diffs:"Dificuldades",export:"Exportar",import:"Importar",password:"Senha",reset:"Redefinir",logout:"Sair",
 hardest:"NÍVEIS MAIS DIFÍCEIS",full:"RANKING COMPLETO",hLevel:"NÍVEL",hCreator:"CRIADOR",hDiff:"DIFICULDADE",hTries:"ID",hStatus:"STATUS",
-foot:"© Lista de Dificuldades do SMM:WE — Ranking feito por fãs. Dados de exemplo incluídos.",newb:"NOVO",ytT:"Canal do YouTube",dcT:"Servidor do Discord",
+foot:"© Lista de Dificuldades do SMM:WE — Ranking feito por fãs.",newb:"NOVO",ytT:"Canal do YouTube",dcT:"Servidor do Discord",
 sprIntro:"Escolha o visual das moedas e dos blocos. Salvo apenas neste dispositivo.",sprOwn:"SUA PRÓPRIA IMAGEM (PNG, GIF, JPG...)",close:"Fechar",
 anims:"ANIMAÇÕES",style:"ESTILO",resetAll:"Redefinir tudo",animLbl:"ANIMAÇÕES: {0}",on:"LIGADAS",offS:"DESLIGADAS",
 searchT:"⚲ BUSCAR",ph:"Buscar nível ou criador...",category:"CATEGORIA",difficulty:"DIFICULDADE",showRes:"Ver resultados",clear:"Limpar",
@@ -731,7 +734,7 @@ tag:"Добро пожаловать, игрок! Здесь собран рей
 top:"★ ТОП",search:"⚲ ПОИСК",
 htmlT:"ОБНОВИТЬ СТРАНИЦУ (HTML)",htmlInfo:"Выберите новый HTML-файл на устройстве и нажмите «Обновить». Он заменит файл страницы в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",htmlPath:"Имя файла в репозитории",htmlPick:"Новый HTML-файл",htmlNone:"Файл не выбран",htmlBad:"Это не похоже на HTML страницы",htmlBig:"Файл слишком большой",htmlUpd:"Обновить",htmlWait:"Обновление...",htmlOk:"Страница обновлена! GitHub Pages нужна около 1 мин, затем перезагрузите.",htmlFail:"Ошибка обновления: {0}",sendM:"ОТПРАВИТЬ УРОВЕНЬ",sendT:"ОТПРАВЬТЕ СВОЙ УРОВЕНЬ",sendInfo:"Заполните данные уровня и создайте код. Отправьте код админу в Discord. Админ проверит его и, если примет, добавит в рейтинг.",sendGen:"Создать код",sendCode:"Ваш код (отправьте админу)",sendCopy:"Копировать",sendCopied:"Скопировано!",sendDc:"Открыть Discord",unsure:"Не знаю",inboxBtn:"Входящие",inboxT:"ОТПРАВЛЕННЫЕ УРОВНИ",inboxInfo:"Вставьте коды, которые вам прислали. Затем проверьте, измените и примите или отклоните каждый уровень.",inboxPaste:"Вставьте коды сюда",inboxAdd:"Добавить во входящие",inboxEmpty:"Ничего не ждёт.",inboxAdded:"Добавлено уровней: {0}",inboxNone:"Допустимые коды не найдены",acc:"Проверить / Принять",rej:"Отклонить",rejAsk:"Отклонить {0}?",rejOk:"Уровень отклонён",zipAdd:"+ ДОБАВИТЬ ZIP (MP3)",zipInfo:"Песни из вашего ZIP остаются только на этом устройстве.",zipBusy:"Чтение ZIP...",zipOk:"Добавлено песен: {0}",zipNone:"В этом ZIP нет MP3",zipBad:"Не удалось прочитать ZIP",zipClear:"Удалить мои песни",zipBig:"ZIP слишком большой (макс. 150 МБ)",zipOld:"Ваш браузер не может открыть этот ZIP",jsonT:"ОБНОВИТЬ ДАННЫЕ (data.json)",jsonInfo:"Выберите файл data.json на устройстве и нажмите «Обновить». Он заменит уровни, сложности и титры в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",jsonPick:"Новый файл data.json",jsonBad:"Это не подходящий data.json (нужны levels и diffs)",jsonOk:"Данные обновлены! Посетители увидят их примерно через 1 мин",jsonFail:"Ошибка обновления: {0}",fStyle:"Стиль игры",fTime:"Время суток",fTags:"Теги",sNone:"Нет",tDay:"День",tNight:"Ночь",tg_trad:"Традиционный",tg_puzzle:"Головоломка",tg_speed:"На время",tg_scroll:"Автопрокрутка",tg_auto:"Автоматика",tg_short:"Коротко, но жёстко",tg_versus:"Соревновательный",tg_themed:"Тематический",tg_music:"Музыка",tg_art:"Художественный",tg_skill:"Мастерство",tg_shoot:"Стрельба",tg_boss:"Против боссов",tg_solo:"Одиночный",tg_link:"Ссылка",adminMode:"РЕЖИМ АДМИНА",published:"ОПУБЛИКОВАНО",unpub:"НЕОПУБЛИКОВАННЫЕ ИЗМЕНЕНИЯ",publish:"Опубликовать",publishing:"Публикация...",gh:"GitHub",addLevel:"+ Добавить уровень",diffs:"Сложности",export:"Экспорт",import:"Импорт",password:"Пароль",reset:"Сброс",logout:"Выйти",
 hardest:"САМЫЕ СЛОЖНЫЕ УРОВНИ",full:"ПОЛНЫЙ РЕЙТИНГ",hLevel:"УРОВЕНЬ",hCreator:"АВТОР",hDiff:"СЛОЖНОСТЬ",hTries:"ID",hStatus:"СТАТУС",
-foot:"© Список сложностей SMM:WE — рейтинг от фанатов. Включены примеры данных.",newb:"НОВОЕ",ytT:"Канал YouTube",dcT:"Сервер Discord",
+foot:"© Список сложностей SMM:WE — рейтинг от фанатов.",newb:"НОВОЕ",ytT:"Канал YouTube",dcT:"Сервер Discord",
 sprIntro:"Выберите вид монет и блоков. Сохраняется только на этом устройстве.",sprOwn:"ВАШЕ ИЗОБРАЖЕНИЕ (PNG, GIF, JPG...)",close:"Закрыть",
 anims:"АНИМАЦИИ",style:"СТИЛЬ",resetAll:"Сбросить всё",animLbl:"АНИМАЦИИ: {0}",on:"ВКЛ",offS:"ВЫКЛ",
 searchT:"⚲ ПОИСК",ph:"Поиск уровня или автора...",category:"КАТЕГОРИЯ",difficulty:"СЛОЖНОСТЬ",showRes:"Показать",clear:"Очистить",
@@ -862,6 +865,117 @@ function ytId(u){
 }
 (function(){const md=document.getElementById("mDetail");
   new MutationObserver(()=>{if(!md.classList.contains("open"))md.querySelectorAll(".thumb iframe").forEach(f=>f.remove());}).observe(md,{attributes:true,attributeFilter:["class"]});})();
+/* ---------- Tiny QR encoder (byte mode, ECC level M, versions 1-10) ---------- */
+function qrMatrix(text){
+  const bytes=Array.from(new TextEncoder().encode(text));
+  const VT=[null,[10,[[1,16]]],[16,[[1,28]]],[26,[[1,44]]],[18,[[2,32]]],[24,[[2,43]]],[16,[[4,27]]],[18,[[4,31]]],[22,[[2,38],[2,39]]],[22,[[3,36],[2,37]]],[26,[[4,43],[1,44]]]];
+  const AP=[null,[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50]];
+  const cap=v=>VT[v][1].reduce((a,g)=>a+g[0]*g[1],0);
+  let ver=0;for(let v=1;v<=10;v++){if(4+(v<10?8:16)+8*bytes.length<=8*cap(v)){ver=v;break;}}
+  if(!ver)return null;
+  const bits=[];const put=(val,n)=>{for(let i=n-1;i>=0;i--)bits.push((val>>>i)&1);};
+  put(4,4);put(bytes.length,ver<10?8:16);bytes.forEach(b=>put(b,8));
+  const total=cap(ver)*8;put(0,Math.min(4,total-bits.length));while(bits.length%8)bits.push(0);
+  const cw=[];for(let i=0;i<bits.length;i+=8){let b=0;for(let j=0;j<8;j++)b=b<<1|bits[i+j];cw.push(b);}
+  for(let p=0xEC;cw.length<cap(ver);p^=0xEC^0x11)cw.push(p);
+  const EXP=[],LOG=[];{let x=1;for(let i=0;i<255;i++){EXP[i]=x;LOG[x]=i;x<<=1;if(x&256)x^=0x11D;}for(let i=255;i<512;i++)EXP[i]=EXP[i-255];}
+  const mul=(a,b)=>a&&b?EXP[LOG[a]+LOG[b]]:0;
+  const ecN=VT[ver][0];let gen=[1];for(let i=0;i<ecN;i++){const n=new Array(gen.length+1).fill(0);for(let j=0;j<gen.length;j++){n[j]^=gen[j];n[j+1]^=mul(gen[j],EXP[i]);}gen=n;}
+  const blocks=[];let pos=0;VT[ver][1].forEach(g=>{for(let k=0;k<g[0];k++){const d=cw.slice(pos,pos+g[1]);pos+=g[1];
+    const r=d.concat(new Array(ecN).fill(0));for(let i=0;i<d.length;i++){const f=r[i];if(f)for(let j=0;j<gen.length;j++)r[i+j]^=mul(gen[j],f);}
+    blocks.push({d,e:r.slice(d.length)});}});
+  const all=[];const maxD=Math.max(...blocks.map(b=>b.d.length));
+  for(let i=0;i<maxD;i++)blocks.forEach(b=>{if(i<b.d.length)all.push(b.d[i]);});
+  for(let i=0;i<ecN;i++)blocks.forEach(b=>all.push(b.e[i]));
+  const size=17+4*ver;const M=Array.from({length:size},()=>new Array(size).fill(false)),F=Array.from({length:size},()=>new Array(size).fill(false));
+  const setF=(x,y,v)=>{if(x>=0&&y>=0&&x<size&&y<size){M[y][x]=!!v;F[y][x]=true;}};
+  const gb=(n,i)=>(n>>>i)&1;
+  for(let i=0;i<size;i++){setF(6,i,i%2===0);setF(i,6,i%2===0);}
+  [[3,3],[size-4,3],[3,size-4]].forEach(c=>{for(let dy=-4;dy<=4;dy++)for(let dx=-4;dx<=4;dx++){const d=Math.max(Math.abs(dx),Math.abs(dy));setF(c[0]+dx,c[1]+dy,d!==2&&d!==4);}});
+  const ap=AP[ver];ap.forEach((a,i)=>ap.forEach((b,j)=>{if((i===0&&j===0)||(i===0&&j===ap.length-1)||(i===ap.length-1&&j===0))return;
+    for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)setF(a+dx,b+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1);}));
+  const fmt=mask=>{const data=0<<3|mask;let rem=data;for(let i=0;i<10;i++)rem=(rem<<1)^((rem>>>9)*0x537);const b=(data<<10|rem)^0x5412;
+    for(let i=0;i<=5;i++)setF(8,i,gb(b,i));setF(8,7,gb(b,6));setF(8,8,gb(b,7));setF(7,8,gb(b,8));for(let i=9;i<15;i++)setF(14-i,8,gb(b,i));
+    for(let i=0;i<8;i++)setF(size-1-i,8,gb(b,i));for(let i=8;i<15;i++)setF(8,size-15+i,gb(b,i));setF(8,size-8,true);};
+  fmt(0);
+  if(ver>=7){let rem=ver;for(let i=0;i<12;i++)rem=(rem<<1)^((rem>>>11)*0x1F25);const b=ver<<12|rem;
+    for(let i=0;i<18;i++){const a=size-11+i%3,c=Math.floor(i/3);setF(a,c,gb(b,i));setF(c,a,gb(b,i));}}
+  let k=0;for(let right=size-1;right>=1;right-=2){if(right===6)right=5;
+    for(let v=0;v<size;v++)for(let j=0;j<2;j++){const x=right-j,up=((right+1)&2)===0,y=up?size-1-v:v;
+      if(!F[y][x]&&k<all.length*8){M[y][x]=!!gb(all[k>>>3],7-(k&7));k++;}}}
+  const cond=[(x,y)=>(x+y)%2===0,(x,y)=>y%2===0,(x,y)=>x%3===0,(x,y)=>(x+y)%3===0,(x,y)=>(Math.floor(x/3)+Math.floor(y/2))%2===0,(x,y)=>x*y%2+x*y%3===0,(x,y)=>(x*y%2+x*y%3)%2===0,(x,y)=>((x+y)%2+x*y%3)%2===0];
+  const applyMask=m=>{for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(!F[y][x]&&cond[m](x,y))M[y][x]=!M[y][x];};
+  const penalty=()=>{let p=0;
+    for(let t=0;t<2;t++){for(let a=0;a<size;a++){let run=1;for(let b=1;b<size;b++){const c=t?M[b][a]:M[a][b],pv=t?M[b-1][a]:M[a][b-1];if(c===pv){run++;if(run===5)p+=3;else if(run>5)p++;}else run=1;}}}
+    for(let y=0;y<size-1;y++)for(let x=0;x<size-1;x++){const c=M[y][x];if(c===M[y][x+1]&&c===M[y+1][x]&&c===M[y+1][x+1])p+=3;}
+    const pat=[true,false,true,true,true,false,true],ln=(g)=>{for(let i=0;i+7<=size;i++){let m=true;for(let j=0;j<7;j++)if(g(i+j)!==pat[j]){m=false;break;}
+      if(m){let l=true,r=true;for(let j=1;j<=4;j++){if(i-j>=0&&g(i-j))l=false;if(i+6+j<size&&g(i+6+j))r=false;}if(l||r)p+=40;}}};
+    for(let a=0;a<size;a++){ln(i=>M[a][i]);ln(i=>M[i][a]);}
+    let d=0;M.forEach(r=>r.forEach(c=>{if(c)d++;}));p+=(Math.ceil(Math.abs(d*20-size*size*10)/(size*size))-1)*10;return p;};
+  let best=0,bp=1e9;for(let m=0;m<8;m++){applyMask(m);fmt(m);const p=penalty();if(p<bp){bp=p;best=m;}applyMask(m);}
+  applyMask(best);fmt(best);return M;
+}
+
+/* ---------- Report error / QR / ranking image ---------- */
+const XTD={
+es:{rp:"Reportar error",rpT:"REPORTAR UN ERROR",rpK:"¿Qué está mal?",k_name:"El nombre",k_id:"El ID",k_diff:"La dificultad",k_video:"El video",k_other:"Otra cosa",rpD:"Cuéntanos qué está mal",rpGo:"Copiar y abrir Discord",rpHint:"Se copia el mensaje. Pégalo en nuestro Discord.",rpCopied:"Mensaje copiado. Pégalo en Discord",cancel:"Cancelar",qrT:"QR DE LA PÁGINA",qrDl:"Descargar",qrBig:"El link es muy largo para el QR",img:"Imagen del ranking",imgOk:"Imagen lista",imgT:"LIST OF DIFFICULTIES OF SMM:WE",imgMore:"y {0} más...",close:"Cerrar"},
+en:{rp:"Report error",rpT:"REPORT AN ERROR",rpK:"What is wrong?",k_name:"The name",k_id:"The ID",k_diff:"The difficulty",k_video:"The video",k_other:"Something else",rpD:"Tell us what is wrong",rpGo:"Copy and open Discord",rpHint:"The message is copied. Paste it in our Discord.",rpCopied:"Message copied. Paste it in Discord",cancel:"Cancel",qrT:"PAGE QR CODE",qrDl:"Download",qrBig:"The link is too long for a QR",img:"Ranking image",imgOk:"Image ready",imgT:"LIST OF DIFFICULTIES OF SMM:WE",imgMore:"and {0} more...",close:"Close"},
+pt:{rp:"Reportar erro",rpT:"REPORTAR UM ERRO",rpK:"O que está errado?",k_name:"O nome",k_id:"O ID",k_diff:"A dificuldade",k_video:"O vídeo",k_other:"Outra coisa",rpD:"Conte o que está errado",rpGo:"Copiar e abrir o Discord",rpHint:"A mensagem é copiada. Cole no nosso Discord.",rpCopied:"Mensagem copiada. Cole no Discord",cancel:"Cancelar",qrT:"QR DA PÁGINA",qrDl:"Baixar",qrBig:"O link é longo demais para o QR",img:"Imagem do ranking",imgOk:"Imagem pronta",imgT:"LIST OF DIFFICULTIES OF SMM:WE",imgMore:"e mais {0}...",close:"Fechar"},
+ru:{rp:"Сообщить об ошибке",rpT:"СООБЩИТЬ ОБ ОШИБКЕ",rpK:"Что не так?",k_name:"Название",k_id:"ID",k_diff:"Сложность",k_video:"Видео",k_other:"Другое",rpD:"Опишите, что не так",rpGo:"Скопировать и открыть Discord",rpHint:"Сообщение скопировано. Вставьте его в наш Discord.",rpCopied:"Скопировано. Вставьте в Discord",cancel:"Отмена",qrT:"QR-КОД СТРАНИЦЫ",qrDl:"Скачать",qrBig:"Ссылка слишком длинная для QR",img:"Картинка рейтинга",imgOk:"Картинка готова",imgT:"LIST OF DIFFICULTIES OF SMM:WE",imgMore:"и ещё {0}...",close:"Закрыть"}};
+const xt=(k,a)=>{const s=(XTD[LANG]||XTD.en)[k]||XTD.en[k]||k;return a!=null?s.replace("{0}",a):s;};
+function reportForm(l,rank){
+  $("#formBox").innerHTML=`<h2>${xt("rpT")}</h2><p style="font-size:12px"><b>#${rank} ${esc(l.name)}</b></p>
+    <label class="lbl">${xt("rpK")}</label><select id="rpK">${["name","id","diff","video","other"].map(k=>`<option value="${k}">${xt("k_"+k)}</option>`).join("")}</select>
+    <label class="lbl">${xt("rpD")}</label><textarea id="rpD" maxlength="300" style="height:80px"></textarea>
+    <p style="font-size:11px;opacity:.75">${xt("rpHint")}</p>
+    <div class="actions"><button class="btn green" id="rpGo">${xt("rpGo")}</button><button class="btn" data-close="#mForm">${xt("cancel")}</button></div>`;
+  close("#mDetail");open("#mForm");
+  $("#rpGo").onclick=()=>{
+    const msg="[REPORT] #"+rank+" \""+l.name+"\""+(l.code?" (ID "+l.code+")":"")+" - "+$("#rpK").selectedOptions[0].textContent+": "+$("#rpD").value.trim();
+    const done=()=>toast(xt("rpCopied"));
+    try{navigator.clipboard.writeText(msg).then(done,done);}catch(e){done();}
+    const a=$("#lnkDc");if(a&&a.href)window.open(a.href,"_blank","noopener");
+    close("#mForm");};
+}
+function qrForm(){
+  const url=(location.protocol==="file:")?location.href:location.origin+location.pathname;
+  const m=qrMatrix(url);
+  if(!m){toast(xt("qrBig"));return;}
+  const q=4,s=Math.max(4,Math.floor(300/(m.length+q*2))),px=(m.length+q*2)*s;
+  $("#formBox").innerHTML=`<h2>${xt("qrT")}</h2><div style="text-align:center"><canvas id="qrC" width="${px}" height="${px}" style="max-width:100%;image-rendering:pixelated;border:3px solid var(--black)"></canvas>
+    <p style="font-size:11px;word-break:break-all;margin:8px 0">${esc(url)}</p></div>
+    <div class="actions"><button class="btn green" id="qrDl">${xt("qrDl")}</button><button class="btn" data-close="#mForm">${xt("close")}</button></div>`;
+  open("#mForm");
+  const c=$("#qrC"),g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,px,px);g.fillStyle="#000";
+  m.forEach((r,y)=>r.forEach((v,x)=>{if(v)g.fillRect((x+q)*s,(y+q)*s,s,s);}));
+  $("#qrDl").onclick=()=>{const big=document.createElement("canvas");big.width=big.height=px*3;const bg=big.getContext("2d");bg.imageSmoothingEnabled=false;bg.drawImage(c,0,0,px*3,px*3);
+    big.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="qr.png";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);});};
+}
+/* ---------- Comments (stored on this device) ---------- */
+const DMT={
+es:{cm:"Comentarios",h:"COMENTARIOS",name:"Tu nombre (opcional)",ph:"Escribe un comentario...",send:"Enviar",none:"Sé el primero en comentar",anon:"Anónimo",del:"Borrar"},
+en:{cm:"Comments",h:"COMMENTS",name:"Your name (optional)",ph:"Write a comment...",send:"Send",none:"Be the first to comment",anon:"Anonymous",del:"Delete"},
+pt:{cm:"Comentários",h:"COMENTÁRIOS",name:"Seu nome (opcional)",ph:"Escreva um comentário...",send:"Enviar",none:"Seja o primeiro a comentar",anon:"Anônimo",del:"Apagar"},
+ru:{cm:"Комментарии",h:"КОММЕНТАРИИ",name:"Ваше имя (необязательно)",ph:"Напишите комментарий...",send:"Отправить",none:"Будьте первым",anon:"Аноним",del:"Удалить"}};
+const dt=k=>(DMT[LANG]||DMT.en)[k]||DMT.en[k];
+const DMK="lod_smmwe_demo_social";
+const dmLoad=()=>{try{const o=JSON.parse(lsGet(DMK));return o&&typeof o==="object"?o:{};}catch(e){return {};}};
+function demoHtml(id){
+  const o=dmLoad()[id]||{},cm=Array.isArray(o.c)?o.c:[];
+  return `<div class="dmo" id="dmo" style="margin-top:12px;border:3px dashed var(--black);padding:10px;font-size:13px">
+    <b style="font-size:12px">${dt("h")}</b>
+    <input type="text" id="dmN" maxlength="20" placeholder="${esc(dt("name"))}" style="margin-bottom:6px">
+    <textarea id="dmT" maxlength="140" placeholder="${esc(dt("ph"))}" style="height:54px;margin-bottom:6px"></textarea>
+    <button class="btn sm blue" id="dmS">${dt("send")}</button>
+    <div style="margin-top:8px;max-height:150px;overflow:auto">${cm.length?cm.map((c,i)=>`<div style="padding:6px 0;border-top:2px dashed #0002"><b>${esc(c.n||dt("anon"))}</b> <small style="opacity:.6">${esc(c.d||"")}</small> <button class="btn sm" data-dx="${i}" style="float:right;padding:2px 6px;font-size:10px">${dt("del")}</button><br>${esc(c.t)}</div>`).join(""):`<p style="opacity:.6;margin:4px 0">${dt("none")}</p>`}</div></div>`;
+}
+function demoBind(id){
+  const box=$("#dmo");if(!box)return;
+  const save=fn=>{const all=dmLoad();const o=all[id]||(all[id]={});fn(o);lsSet(DMK,JSON.stringify(all));box.outerHTML=demoHtml(id);demoBind(id);};
+  box.querySelectorAll("[data-dx]").forEach(b=>b.onclick=()=>save(o=>{(o.c||[]).splice(+b.dataset.dx,1);}));
+  $("#dmS").onclick=()=>{const tx=$("#dmT").value.trim();if(!tx)return;const nm=$("#dmN").value.trim();
+    save(o=>{o.c=o.c||[];o.c.unshift({n:nm.slice(0,20),t:tx.slice(0,140),d:new Date().toISOString().slice(0,10)});o.c=o.c.slice(0,30);});};
+}
 function showDetail(id){
   const i=state.levels.findIndex(l=>l.id===id);if(i<0)return;const l=state.levels[i];
   const envOk=l.env&&ENVU[l.env];
@@ -878,8 +992,8 @@ function showDetail(id){
     ${l.video&&ytId(l.video)?`<div class="thumb" id="ytThumb" role="button" tabindex="0" data-yt="${ytId(l.video)}" aria-label="${esc(t("watchYt"))}"><img src="https://i.ytimg.com/vi/${ytId(l.video)}/hqdefault.jpg" alt="${esc(t("cover"))}" loading="lazy" onerror="this.style.display='none'"><span class="pl"></span></div><p class="ytl"><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${esc(t("watchYt"))}</a></p>`:""}
     ${l.video&&!ytId(l.video)&&/^https?:\/\//i.test(l.video)?`<div class="kv"><b>${t("dVideo")}</b><span><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${t("watch")}</a></span></div>`:""}
     <div class="kv"><b>${t("dNotes")}</b><span>${esc(l.desc||t("noDesc"))}</span></div>
-    <div class="actions">${admin?`<button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button>`:""}<button class="btn sm" data-close="#mDetail">${t("close")}</button></div>`;
-  open("#mDetail");
+    <div class="actions">${admin?`<button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button>`:""}<button class="btn sm" id="cmBtn">\uD83D\uDCAC ${dt("cm")}</button><button class="btn sm" id="rpBtn">\u2691 ${xt("rp")}</button><button class="btn sm" data-close="#mDetail">${t("close")}</button></div>`;
+  open("#mDetail");const rb=$("#rpBtn");if(rb)rb.onclick=()=>reportForm(l,i+1);const cmb=$("#cmBtn");if(cmb)cmb.onclick=()=>{const ex=$("#dmo");if(ex){ex.remove();return;}$("#detailBox").querySelector(".actions").insertAdjacentHTML("beforebegin",demoHtml(l.id));demoBind(l.id);$("#dmo").scrollIntoView({block:"nearest"});};
   const yt=$("#ytThumb");
   if(yt){const go=()=>{const v=yt.dataset.yt;yt.removeAttribute("role");yt.removeAttribute("tabindex");yt.onclick=yt.onkeydown=null;
       yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';yt.classList.add("playing");};
@@ -1378,9 +1492,9 @@ function devPanel(){
     <div class="actions" style="flex-direction:column;align-items:stretch">
       <button class="btn blue" id="dHtml">HTML</button>
       <button class="btn blue" id="dJson">data.json</button>
-      <button class="btn blue" id="dAdd">${ft("t")}</button>
       <button class="btn" id="dPass">${t("password")}</button>
       <button class="btn" data-close="#mForm">${t("close")}</button>
+      <div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="btn blue" id="dAdd" style="min-width:55%">${ft("t")}</button></div>
     </div>`;
   open("#mForm");
   $("#dHtml").onclick=htmlForm;$("#dJson").onclick=jsonForm;$("#dPass").onclick=passForm;
@@ -1503,6 +1617,7 @@ menuEl.addEventListener("click",e=>{
   else if(b.dataset.menu==="music"){setTimeout(()=>{mMenu.classList.remove("hide");mBtn.setAttribute("aria-expanded","true");mUI();},0);}
   else if(b.dataset.menu==="lang"){drawLang();open("#mLang");}
   else if(b.dataset.menu==="send"){sendForm();}
+  else if(b.dataset.menu==="qr"){qrForm();}
   else showCredits();
 });
 
