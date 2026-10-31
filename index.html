@@ -145,6 +145,19 @@ body.curmouse,body.curmouse *{cursor:none!important}
 .curopt.on{outline:3px solid #ffd23a;outline-offset:-3px}
 .curpv{display:flex;align-items:center;justify-content:center;gap:8px}.curpv img{image-rendering:pixelated;display:block}
 .curnm{font-size:10px}
+#mSaved{z-index:49}
+#mSaved .box{max-width:none;width:calc(96vw / var(--z));max-height:calc(94vh / var(--z));min-height:calc(90vh / var(--z));overflow:auto;box-sizing:border-box;display:flex;flex-direction:column}
+#mSaved .svlist{flex:1}
+.svlist{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.svrow{display:flex;align-items:center;gap:10px;border:3px solid var(--black);background:#fff;padding:8px 10px;cursor:pointer}
+.svrow:hover,.svrow:focus-visible{outline:3px solid #ffd23a;outline-offset:-3px}
+.svin{flex:1;min-width:0;display:flex;flex-direction:column}.svin b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.svin small{font-size:10px;opacity:.7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.svx{margin:0;flex:none}
+.svnone{font-size:13px;text-align:center;padding:30px 10px;opacity:.8}
+.fmsel{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0;padding:8px;border:3px solid var(--black);background:#ffe9a8}
+.fmsel b{font-size:11px;width:100%}.fmsel .btn{margin:0}
+.fmchips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.fmchips .btn{margin:0}
+.fmst{font-size:11px;min-height:14px;margin:4px 0}
 #mBg .box{max-width:400px;max-height:calc(68vh / var(--z));padding:12px}
 #mBg .bgs{grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px}
 #mBg .bgpick{padding:4px;gap:4px;font-size:7px}
@@ -474,6 +487,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
   <button class="btn" id="menuBtn" aria-label="Menu" aria-haspopup="menu" aria-expanded="false"><span class="bars"><i></i><i></i><i></i></span></button>
   <div class="menu hide" id="menu" role="menu">
     <button class="btn" data-menu="bg" role="menuitem">&#128444; <span id="bgL"></span></button>
+    <button class="btn" data-menu="saved" role="menuitem">&#9829; <span id="savL"></span></button>
     <button class="btn" data-menu="settings" role="menuitem">&#9881; <span id="setL"></span></button>
     <button class="btn" data-menu="social" role="menuitem">&#128279; <span id="socL"></span></button>
     <button class="btn" data-menu="send" role="menuitem">&#9993; <span data-i18n="sendM">SEND LEVEL</span></button>
@@ -551,6 +565,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
   <a class="sbtn" id="lnkDc" href="https://discord.gg/y56h2qXje" target="_blank" rel="noopener noreferrer" aria-label="Discord server" title="Discord" data-i18n-title="dcT"><i></i></a>
 </div>
 <div class="actions"><button class="btn" id="socX" data-close="#mSocial"></button></div></div></div>
+<div class="modal" id="mSaved"><div class="box" id="savedBox"></div></div>
 <div class="modal" id="mSet"><div class="box" id="setBox"></div></div>
 <div class="modal" id="mDetail"><div class="box" id="detailBox"></div></div>
 <!-- generic modal -->
@@ -993,30 +1008,28 @@ function qrForm(){
   $("#qrDl").onclick=()=>{const big=document.createElement("canvas");big.width=big.height=px*3;const bg=big.getContext("2d");bg.imageSmoothingEnabled=false;bg.drawImage(c,0,0,px*3,px*3);
     big.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="qr.png";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);});};
 }
-/* ---------- Comments (stored on this device) ---------- */
-const DMT={
-es:{cm:"Comentarios",h:"COMENTARIOS",name:"Tu nombre (opcional)",ph:"Escribe un comentario...",send:"Enviar",none:"Sé el primero en comentar",anon:"Anónimo",del:"Borrar"},
-en:{cm:"Comments",h:"COMMENTS",name:"Your name (optional)",ph:"Write a comment...",send:"Send",none:"Be the first to comment",anon:"Anonymous",del:"Delete"},
-pt:{cm:"Comentários",h:"COMENTÁRIOS",name:"Seu nome (opcional)",ph:"Escreva um comentário...",send:"Enviar",none:"Seja o primeiro a comentar",anon:"Anônimo",del:"Apagar"},
-ru:{cm:"Комментарии",h:"КОММЕНТАРИИ",name:"Ваше имя (необязательно)",ph:"Напишите комментарий...",send:"Отправить",none:"Будьте первым",anon:"Аноним",del:"Удалить"}};
-const dt=k=>(DMT[LANG]||DMT.en)[k]||DMT.en[k];
-const DMK="lod_smmwe_demo_social";
-const dmLoad=()=>{try{const o=JSON.parse(lsGet(DMK));return o&&typeof o==="object"?o:{};}catch(e){return {};}};
-function demoHtml(id){
-  const o=dmLoad()[id]||{},cm=Array.isArray(o.c)?o.c:[];
-  return `<div class="dmo" id="dmo" style="margin-top:12px;border:3px dashed var(--black);padding:10px;font-size:13px">
-    <b style="font-size:12px">${dt("h")}</b>
-    <input type="text" id="dmN" maxlength="20" placeholder="${esc(dt("name"))}" style="margin-bottom:6px">
-    <textarea id="dmT" maxlength="140" placeholder="${esc(dt("ph"))}" style="height:54px;margin-bottom:6px"></textarea>
-    <button class="btn sm blue" id="dmS">${dt("send")}</button>
-    <div style="margin-top:8px;max-height:150px;overflow:auto">${cm.length?cm.map((c,i)=>`<div style="padding:6px 0;border-top:2px dashed #0002"><b>${esc(c.n||dt("anon"))}</b> <small style="opacity:.6">${esc(c.d||"")}</small> <button class="btn sm" data-dx="${i}" style="float:right;padding:2px 6px;font-size:10px">${dt("del")}</button><br>${esc(c.t)}</div>`).join(""):`<p style="opacity:.6;margin:4px 0">${dt("none")}</p>`}</div></div>`;
-}
-function demoBind(id){
-  const box=$("#dmo");if(!box)return;
-  const save=fn=>{const all=dmLoad();const o=all[id]||(all[id]={});fn(o);lsSet(DMK,JSON.stringify(all));box.outerHTML=demoHtml(id);demoBind(id);};
-  box.querySelectorAll("[data-dx]").forEach(b=>b.onclick=()=>save(o=>{(o.c||[]).splice(+b.dataset.dx,1);}));
-  $("#dmS").onclick=()=>{const tx=$("#dmT").value.trim();if(!tx)return;const nm=$("#dmN").value.trim();
-    save(o=>{o.c=o.c||[];o.c.unshift({n:nm.slice(0,20),t:tx.slice(0,140),d:new Date().toISOString().slice(0,10)});o.c=o.c.slice(0,30);});};
+/* ---------- Saved levels (stored on this device) ---------- */
+const SVT={
+es:{m:"Guardados",h:"GUARDADOS",sv:"Guardar",sd:"Guardado",none:"Aún no has guardado niveles. Abre un nivel y toca ♡ Guardar.",add:"Nivel guardado",rm:"Quitado de guardados",close:"Cerrar",cnt:"niveles"},
+en:{m:"Saved",h:"SAVED",sv:"Save",sd:"Saved",none:"You haven't saved any levels yet. Open a level and tap ♡ Save.",add:"Level saved",rm:"Removed from saved",close:"Close",cnt:"levels"},
+pt:{m:"Salvos",h:"SALVOS",sv:"Salvar",sd:"Salvo",none:"Você ainda não salvou níveis. Abra um nível e toque em ♡ Salvar.",add:"Nível salvo",rm:"Removido dos salvos",close:"Fechar",cnt:"níveis"},
+ru:{m:"Сохранённые",h:"СОХРАНЁННЫЕ",sv:"Сохранить",sd:"Сохранено",none:"Вы ещё не сохранили уровни. Откройте уровень и нажмите ♡ Сохранить.",add:"Уровень сохранён",rm:"Удалено из сохранённых",close:"Закрыть",cnt:"уровней"}};
+const svt=k=>(SVT[LANG]||SVT.en)[k]||SVT.en[k];
+const SVK="lod_smmwe_saved";
+const svLoad=()=>{try{const a=JSON.parse(lsGet(SVK));return Array.isArray(a)?a.filter(x=>typeof x==="string"||typeof x==="number"):[];}catch(e){return [];}};
+const svHas=id=>svLoad().indexOf(id)>=0;
+function svToggle(id){let a=svLoad();const was=a.indexOf(id)>=0;a=was?a.filter(x=>x!==id):[id].concat(a).slice(0,500);lsSet(SVK,JSON.stringify(a));return !was;}
+function svBtnHtml(id){const on=svHas(id);return `<button class="btn sm${on?" red":""}" id="svBtn" aria-pressed="${on}">${on?"&#9829; "+svt("sd"):"&#9825; "+svt("sv")}</button>`;}
+function updSavLbl(){const e=$("#savL");if(e){const n=svLoad().filter(id=>state.levels.some(l=>l.id===id)).length;e.textContent=svt("m")+(n?" ("+n+")":"");}}
+function openSaved(){
+  const ids=svLoad(),ls=ids.map(id=>state.levels.findIndex(l=>l.id===id)).filter(i=>i>=0);
+  $("#savedBox").innerHTML=`<h2 style="margin:0 0 4px">&#9829; ${svt("h")} <small style="font-size:11px;opacity:.7">${ls.length} ${svt("cnt")}</small></h2>
+    <div class="svlist">${ls.length?ls.map(i=>{const l=state.levels[i];return `<div class="svrow" data-id="${esc(String(l.id))}" role="button" tabindex="0"><span class="rkc">${i+1}</span><div class="svin"><b>${esc(l.name)}</b><small>${esc(t("by",l.creator))}</small></div>${badge(l.diff)}<button class="btn sm red svx" data-un="${esc(String(l.id))}" aria-label="${esc(svt("rm"))}">&#9829;</button></div>`;}).join(""):`<p class="svnone">${svt("none")}</p>`}</div>
+    <div class="actions"><button class="btn" data-close="#mSaved">${svt("close")}</button></div>`;
+  open("#mSaved");
+  const idOf=s=>{const l=state.levels.find(x=>String(x.id)===s);return l?l.id:s;};
+  $("#savedBox").querySelectorAll(".svrow").forEach(r=>{const go=()=>showDetail(idOf(r.dataset.id));r.onclick=e=>{if(e.target.closest(".svx"))return;go();};r.onkeydown=e=>{if((e.key==="Enter"||e.key===" ")&&e.target===r){e.preventDefault();go();}};});
+  $("#savedBox").querySelectorAll("[data-un]").forEach(b=>b.onclick=e=>{e.stopPropagation();svToggle(idOf(b.dataset.un));updSavLbl();openSaved();});
 }
 /* ---------- Settings screen ---------- */
 const CFT={
@@ -1176,8 +1189,8 @@ function showDetail(id){
     ${l.video&&ytId(l.video)?`<div class="thumb" id="ytThumb" role="button" tabindex="0" data-yt="${ytId(l.video)}" aria-label="${esc(t("watchYt"))}"><img src="https://i.ytimg.com/vi/${ytId(l.video)}/hqdefault.jpg" alt="${esc(t("cover"))}" loading="lazy" onerror="this.style.display='none'"><span class="pl"></span></div><p class="ytl"><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${esc(t("watchYt"))}</a></p>`:""}
     ${l.video&&!ytId(l.video)&&/^https?:\/\//i.test(l.video)?`<div class="kv"><b>${t("dVideo")}</b><span><a href="${esc(l.video)}" target="_blank" rel="noopener noreferrer">${t("watch")}</a></span></div>`:""}
     <div class="kv"><b>${t("dNotes")}</b><span>${esc(l.desc||t("noDesc"))}</span></div>
-    <div class="actions">${admin?`<button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button>`:""}<button class="btn sm" id="cmBtn">\uD83D\uDCAC ${dt("cm")}</button><button class="btn sm" id="rpBtn">\u2691 ${xt("rp")}</button><button class="btn sm" data-close="#mDetail">${t("close")}</button></div>`;
-  open("#mDetail");const rb=$("#rpBtn");if(rb)rb.onclick=()=>reportForm(l,i+1);const cmb=$("#cmBtn");if(cmb)cmb.onclick=()=>{const ex=$("#dmo");if(ex){ex.remove();return;}$("#detailBox").querySelector(".actions").insertAdjacentHTML("beforebegin",demoHtml(l.id));demoBind(l.id);$("#dmo").scrollIntoView({block:"nearest"});};
+    <div class="actions">${admin?`<button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button>`:""}${svBtnHtml(l.id)}<button class="btn sm" id="rpBtn">\u2691 ${xt("rp")}</button><button class="btn sm" data-close="#mDetail">${t("close")}</button></div>`;
+  open("#mDetail");const rb=$("#rpBtn");if(rb)rb.onclick=()=>reportForm(l,i+1);const svb=$("#svBtn");if(svb)svb.onclick=()=>{const on=svToggle(l.id);svb.outerHTML=svBtnHtml(l.id);$("#svBtn").onclick=svb.onclick;toast(on?svt("add"):svt("rm"));updSavLbl();if($("#mSaved").classList.contains("open"))openSaved();};
   const yt=$("#ytThumb");
   if(yt){const go=()=>{const v=yt.dataset.yt;yt.removeAttribute("role");yt.removeAttribute("tabindex");yt.onclick=yt.onkeydown=null;
       yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';yt.classList.add("playing");};
@@ -1583,25 +1596,72 @@ en:{t:"ADD",root:"Root",nf:"+ Folder",nfi:"+ File",up:"Upload",edit:"Edit",del:"
 pt:{t:"ADICIONAR",root:"Raiz",nf:"+ Pasta",nfi:"+ Arquivo",up:"Enviar",edit:"Editar",del:"Apagar",empty:"Pasta vazia",back:"Voltar",save:"Salvar",cancel:"Cancelar",name:"Nome",nameBad:"Nome inválido",ok:"Pronto",delQ:"Apagar {0}? Não dá para desfazer.",load:"Carregando...",big:"Arquivo grande demais para editar",bin:"Este arquivo não pode ser editado aqui",cr:"Criar",setup:"Configure o GitHub primeiro",fold:"Nome da pasta",file:"Nome do arquivo (ex. novo.html)",saved:"Salvo. Aparece em cerca de 1 min",exists:"Já existe"},
 ru:{t:"ДОБАВИТЬ",root:"Корень",nf:"+ Папка",nfi:"+ Файл",up:"Загрузить",edit:"Изменить",del:"Удалить",empty:"Папка пуста",back:"Назад",save:"Сохранить",cancel:"Отмена",name:"Имя",nameBad:"Недопустимое имя",ok:"Готово",delQ:"Удалить {0}? Нельзя отменить.",load:"Загрузка...",big:"Файл слишком большой",bin:"Этот файл нельзя изменить здесь",cr:"Создать",setup:"Сначала настройте GitHub",fold:"Имя папки",file:"Имя файла (напр. new.html)",saved:"Сохранено. Появится примерно через 1 мин",exists:"Уже существует"}};
 const ft=(k,a)=>{let s=(FMT[LANG]||FMT.en)[k]||FMT.en[k]||k;return a!=null?s.replace("{0}",a):s;};
-const FM_TXT=/\.(html?|json|js|css|txt|md|svg|xml|csv|ya?ml|ini|cfg|map)$/i;
+const FM2={
+es:{copy:"Copiar",cut:"Cortar",paste:"Pegar",move:"Mover",ren:"Renombrar",sel:"{0} seleccionado(s)",all:"Todo",none:"Ninguno",newn:"Nuevo nombre",moveTo:"MOVER A...",here:"Mover aquí",copied:"Copiado: {0}",cutd:"Cortado: {0}",busy:"Procesando... {0}",self:"No se puede meter una carpeta dentro de sí misma",crit:"Esto es parte del sitio (index.html / data.json). ¿Seguro?",newT:"NUEVO ARCHIVO",fname:"Nombre (con o sin extensión)",type:"Tipo de archivo",upT:"O sube archivos",u_audio:"Audio (mp3, ogg...)",u_img:"Imágenes",u_vid:"Video",u_font:"Fuentes",u_other:"Otros (zip, pdf...)",nofold:"No hay más carpetas aquí",done:"Hecho: {0}"},
+en:{copy:"Copy",cut:"Cut",paste:"Paste",move:"Move",ren:"Rename",sel:"{0} selected",all:"All",none:"None",newn:"New name",moveTo:"MOVE TO...",here:"Move here",copied:"Copied: {0}",cutd:"Cut: {0}",busy:"Working... {0}",self:"A folder can't go inside itself",crit:"This is part of the site (index.html / data.json). Sure?",newT:"NEW FILE",fname:"Name (with or without extension)",type:"File type",upT:"Or upload files",u_audio:"Audio (mp3, ogg...)",u_img:"Images",u_vid:"Video",u_font:"Fonts",u_other:"Other (zip, pdf...)",nofold:"No more folders here",done:"Done: {0}"},
+pt:{copy:"Copiar",cut:"Recortar",paste:"Colar",move:"Mover",ren:"Renomear",sel:"{0} selecionado(s)",all:"Tudo",none:"Nenhum",newn:"Novo nome",moveTo:"MOVER PARA...",here:"Mover aqui",copied:"Copiado: {0}",cutd:"Recortado: {0}",busy:"Processando... {0}",self:"Uma pasta não pode ir dentro de si mesma",crit:"Isto faz parte do site (index.html / data.json). Tem certeza?",newT:"NOVO ARQUIVO",fname:"Nome (com ou sem extensão)",type:"Tipo de arquivo",upT:"Ou envie arquivos",u_audio:"Áudio (mp3, ogg...)",u_img:"Imagens",u_vid:"Vídeo",u_font:"Fontes",u_other:"Outros (zip, pdf...)",nofold:"Não há mais pastas aqui",done:"Feito: {0}"},
+ru:{copy:"Копировать",cut:"Вырезать",paste:"Вставить",move:"Переместить",ren:"Переименовать",sel:"Выбрано: {0}",all:"Все",none:"Снять",newn:"Новое имя",moveTo:"ПЕРЕМЕСТИТЬ В...",here:"Переместить сюда",copied:"Скопировано: {0}",cutd:"Вырезано: {0}",busy:"Выполняется... {0}",self:"Папку нельзя поместить в саму себя",crit:"Это часть сайта (index.html / data.json). Уверены?",newT:"НОВЫЙ ФАЙЛ",fname:"Имя (с расширением или без)",type:"Тип файла",upT:"Или загрузите файлы",u_audio:"Аудио (mp3, ogg...)",u_img:"Картинки",u_vid:"Видео",u_font:"Шрифты",u_other:"Другое (zip, pdf...)",nofold:"Папок больше нет",done:"Готово: {0}"}};
+const f2=(k,a)=>{let s=(FM2[LANG]||FM2.en)[k]||FM2.en[k]||k;return a!=null?s.replace("{0}",a):s;};
+const FM_TXT=/\.(html?|json|js|mjs|jsx|ts|tsx|css|txt|md|svg|xml|csv|ya?ml|ini|cfg|toml|map|py|php|sh)$/i;
+const FM_EXTS=["html","css","js","json","txt","md","svg","xml","csv","yml","ts","py","php","ini"];
+const FM_TPL={html:'<!DOCTYPE html>\n<html lang="es">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>Nueva página</title>\n</head>\n<body>\n\n</body>\n</html>\n',css:"/* estilos */\n",js:"// código\n",ts:"// código\n",json:"{\n  \n}\n",md:"# Título\n",svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\n\n</svg>\n',xml:'<?xml version="1.0" encoding="UTF-8"?>\n<root>\n</root>\n'};
+const FM_UP=[["audio","audio/*,.mp3,.ogg,.wav,.m4a,.flac,.aac,.opus","🎵"],["img","image/*,.png,.jpg,.jpeg,.gif,.webp,.svg,.ico,.bmp","🖼️"],["vid","video/*,.mp4,.webm,.mov","🎬"],["font",".ttf,.otf,.woff,.woff2","🔤"],["other","","📦"]];
+const fmIcon=(n,dir)=>dir?"📁":/\.(mp3|ogg|wav|m4a|flac|aac|opus)$/i.test(n)?"🎵":/\.(png|jpe?g|gif|webp|ico|bmp|avif)$/i.test(n)?"🖼️":/\.(mp4|webm|mov|mkv)$/i.test(n)?"🎬":/\.(ttf|otf|woff2?)$/i.test(n)?"🔤":/\.(zip|rar|7z|gz|tar|pdf)$/i.test(n)?"📦":FM_TXT.test(n)?"📄":"📎";
+const FM_CRIT=/^(index\.html|data\.json)$/i;
+let FMCLIP=null;
 function fmGo(path){
   if(!admin)return;
   const c=ghCfg();if(!c.owner||!c.repo||!c.token){ghForm();toast(ft("setup"));return;}
   const H={"Authorization":"Bearer "+c.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"},br=c.branch||"main";
-  const url=p=>"https://api.github.com/repos/"+c.owner+"/"+c.repo+"/contents/"+p.split("/").filter(Boolean).map(encodeURIComponent).join("/");
-  const put=async(p,content,msg,sha)=>{const r=await fetch(url(p),{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},H),
-    body:JSON.stringify(Object.assign({message:msg,content,branch:br},sha?{sha}:{}))});if(!r.ok)throw new Error(await ghErr(r));return r.json();};
+  const repo="https://api.github.com/repos/"+c.owner+"/"+c.repo+"/";
+  const url=p=>repo+"contents/"+p.split("/").filter(Boolean).map(encodeURIComponent).join("/");
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const req=async(method,p,body)=>{for(let k=0;;k++){
+    const r=await fetch(url(p),{method,headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify(body)});
+    if(r.ok)return r.json();
+    if((r.status===409||r.status===502||r.status===503)&&k<3){await sleep(700*(k+1));continue;}
+    throw new Error(await ghErr(r));}};
+  const put=(p,content,msg,sha)=>req("PUT",p,Object.assign({message:msg,content,branch:br},sha?{sha}:{}));
+  const delFile=(p,sha)=>req("DELETE",p,{message:"Delete "+p,sha,branch:br});
   const getSha=async p=>{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});if(g.ok){const j=await g.json();return Array.isArray(j)?null:j.sha;}if(g.status===404)return null;throw new Error(await ghErr(g));};
+  const list=async p=>{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});if(g.status===404)return [];if(!g.ok)throw new Error(await ghErr(g));const j=await g.json();return Array.isArray(j)?j:[];};
+  const blob=async sha=>{const g=await fetch(repo+"git/blobs/"+sha,{headers:H,cache:"no-store"});if(!g.ok)throw new Error(await ghErr(g));const j=await g.json();return (j.content||"").replace(/\s/g,"");};
   const okName=n=>n&&n.length<=100&&!/[\/\\]/.test(n)&&!/^\.+$/.test(n)&&!/[<>:"|?*\u0000-\u001f]/.test(n);
-  const ask=(label,cb)=>{
-    $("#formBox").innerHTML=`<h2>${esc(label)}</h2><input type="text" id="fmN" autocomplete="off" autocapitalize="off"><div class="actions"><button class="btn green" id="fmOk">${ft("cr")}</button><button class="btn" id="fmNo">${ft("cancel")}</button></div>`;
-    setTimeout(()=>{const e=$("#fmN");if(e)e.focus();},50);$("#fmNo").onclick=()=>fmGo(path);
+  const join=n=>(path?path+"/":"")+n;
+  const parent=p=>p.split("/").slice(0,-1).join("/");
+  let steps=0;const st=()=>{const e=$("#fmSt");if(e)e.textContent=f2("busy",++steps);};
+  const lock=()=>{$("#formBox").querySelectorAll("button,input,textarea").forEach(b=>b.disabled=true);};
+  const copyFile=async(sp,sha,dp)=>{st();await put(dp,await blob(sha),"Copy "+sp+" -> "+dp);};
+  const copyTree=async(sp,dp)=>{for(const f of await list(sp)){f.type==="dir"?await copyTree(sp+"/"+f.name,dp+"/"+f.name):await copyFile(sp+"/"+f.name,f.sha,dp+"/"+f.name);}};
+  const delTree=async p=>{for(const f of await list(p)){f.type==="dir"?await delTree(p+"/"+f.name):(st(),await delFile(p+"/"+f.name,f.sha));}};
+  const uniq=(nm,have,dir)=>{const i=dir?-1:nm.lastIndexOf(".");const b=i>0?nm.slice(0,i):nm,e=i>0?nm.slice(i):"";
+    const w={es:"copia",en:"copy",pt:"cópia",ru:"копия"}[LANG]||"copy";let k=1,r;do{r=b+" ("+w+(k>1?" "+k:"")+")"+e;k++;}while(have.has(r.toLowerCase()));return r;};
+  const xfer=async(its,dest,op,newName)=>{
+    const have=new Set((await list(dest)).map(x=>x.name.toLowerCase()));let n=0;
+    for(const it of its){
+      if(it.dir&&(dest===it.path||dest.startsWith(it.path+"/"))){toast(f2("self"));continue;}
+      if(op==="cut"&&!newName&&parent(it.path)===dest)continue;
+      if(op==="cut"&&newName)have.delete(it.name.toLowerCase());
+      let nm=newName||it.name;
+      if(have.has(nm.toLowerCase())){if(newName){toast(ft("exists"));continue;}nm=uniq(nm,have,it.dir);}
+      have.add(nm.toLowerCase());
+      const dp=(dest?dest+"/":"")+nm;
+      it.dir?await copyTree(it.path,dp):await copyFile(it.path,it.sha,dp);
+      if(op==="cut")it.dir?await delTree(it.path):(st(),await delFile(it.path,it.sha));
+      n++;}
+    return n;};
+  const crit=its=>!its.some(it=>!it.dir&&!it.path.includes("/")&&FM_CRIT.test(it.name))||confirm(f2("crit"));
+  const run=async(fn,msg)=>{lock();try{const n=await fn();toast(msg?msg(n):ft("ok"));}catch(e){toast(e.message);}fmGo(path);};
+  const ask=(label,cb,preset,okLbl)=>{
+    $("#formBox").innerHTML=`<h2>${esc(label)}</h2><input type="text" id="fmN" autocomplete="off" autocapitalize="off"><div class="actions"><button class="btn green" id="fmOk">${okLbl||ft("cr")}</button><button class="btn" id="fmNo">${ft("cancel")}</button></div>`;
+    const e0=$("#fmN");if(preset)e0.value=preset;
+    setTimeout(()=>{const e=$("#fmN");if(e){e.focus();if(preset){const i=preset.lastIndexOf(".");e.setSelectionRange(0,i>0?i:preset.length);}}},50);$("#fmNo").onclick=()=>fmGo(path);
     const go=()=>{const n=$("#fmN").value.trim();if(!okName(n)){toast(ft("nameBad"));return;}cb(n);};
     $("#fmOk").onclick=go;$("#fmN").onkeydown=e=>{if(e.key==="Enter")go();};
   };
-  const editor=async(p,isNew)=>{
+  const editor=async(p,isNew,init)=>{
     $("#formBox").innerHTML=`<h2>${esc(p)}</h2><p>${ft("load")}</p>`;
-    let txt="",sha=null;
+    let txt=init||"",sha=null;
     if(!isNew){
       try{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});
         if(!g.ok)throw new Error(await ghErr(g));const j=await g.json();
@@ -1614,58 +1674,104 @@ function fmGo(path){
       <div class="actions"><button class="btn green" id="fmS">${ft("save")}</button><button class="btn" id="fmC">${ft("back")}</button></div>`;
     $("#fmT").value=txt;$("#fmC").onclick=()=>fmGo(path);
     $("#fmS").onclick=async()=>{const b=$("#fmS");b.disabled=true;
-      try{const cur=await getSha(p);const r=await put(p,b64($("#fmT").value),"Edit "+p,cur||undefined);toast(ft("saved"));fmGo(path);}
+      try{const cur=await getSha(p);await put(p,b64($("#fmT").value),"Edit "+p,cur||undefined);toast(ft("saved"));fmGo(path);}
       catch(e){toast(e.message);b.disabled=false;}};
+  };
+  const upload=async(fs,bu)=>{
+    fs=[...fs];if(!fs.length)return;let n=0;
+    if(bu)bu.disabled=true;
+    try{for(const f of fs){
+      if(!okName(f.name)){toast(ft("nameBad")+": "+f.name);continue;}
+      if(f.size>25e6){toast(ft("big")+": "+f.name);continue;}
+      const e=$("#fmSt");if(e)e.textContent=f2("busy",(++n)+"/"+fs.length);
+      const buf=new Uint8Array(await f.arrayBuffer());let bin="";for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode.apply(null,buf.subarray(i,i+8192));
+      const sha=await getSha(join(f.name));await put(join(f.name),btoa(bin),"Upload "+f.name,sha||undefined);}
+      toast(ft("ok"));
+    }catch(er){toast(er.message);}
+    fmGo(path);};
+  const newFile=()=>{
+    let ext="html";
+    $("#formBox").innerHTML=`<h2>${f2("newT")}</h2>
+      <label class="lbl">${f2("fname")}</label><input type="text" id="nfN" autocomplete="off" autocapitalize="off">
+      <label class="lbl">${f2("type")}</label><div class="fmchips" id="nfC">${FM_EXTS.map(x=>`<button class="btn sm${x===ext?" on":""}" data-x="${x}">.${x}</button>`).join("")}</div>
+      <div class="actions"><button class="btn green" id="nfOk">${ft("cr")}</button></div>
+      <label class="lbl" style="margin-top:12px">${f2("upT")}</label>
+      <div class="actions">${FM_UP.map(u=>`<button class="btn sm blue" data-up="${u[0]}">${u[2]} ${f2("u_"+u[0])}</button>`).join("")}</div>
+      <input type="file" id="nfUp" multiple style="display:none"><div id="fmSt" class="fmst"></div>
+      <div class="actions"><button class="btn" id="nfBack">${ft("back")}</button></div>`;
+    $("#nfBack").onclick=()=>fmGo(path);
+    $("#nfC").querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>{ext=b.dataset.x;$("#nfC").querySelectorAll("[data-x]").forEach(x=>x.classList.toggle("on",x===b));});
+    const mk=async()=>{let n=$("#nfN").value.trim();if(!n){toast(ft("nameBad"));return;}
+      let e=ext;const m=n.match(/\.([A-Za-z0-9]+)$/);if(m)e=m[1].toLowerCase();else n+="."+ext;
+      if(!okName(n)){toast(ft("nameBad"));return;}
+      try{if(await getSha(join(n))!==null){toast(ft("exists"));return;}editor(join(n),true,FM_TPL[e]||"");}catch(er){toast(er.message);}};
+    $("#nfOk").onclick=mk;$("#nfN").onkeydown=e=>{if(e.key==="Enter")mk();};
+    $("#formBox").querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{const u=FM_UP.find(x=>x[0]===b.dataset.up);const inp=$("#nfUp");if(u[1])inp.setAttribute("accept",u[1]);else inp.removeAttribute("accept");inp.click();});
+    $("#nfUp").onchange=e=>upload(e.target.files,null);
+  };
+  const picker=its=>{
+    let cur="";
+    const draw=async()=>{
+      $("#formBox").innerHTML=`<h2>${f2("moveTo")}</h2><p>${ft("load")}</p>`;
+      let ds;try{ds=(await list(cur)).filter(x=>x.type==="dir"&&!its.some(it=>it.dir&&it.path===(cur?cur+"/":"")+x.name)).sort((a,b)=>a.name.localeCompare(b.name));}catch(e){toast(e.message);fmGo(path);return;}
+      const parts=cur.split("/").filter(Boolean);
+      const cr=`<button class="btn sm" data-g="">${ft("root")}</button>`+parts.map((x,i)=>` / <button class="btn sm" data-g="${esc(parts.slice(0,i+1).join("/"))}">${esc(x)}</button>`).join("");
+      $("#formBox").innerHTML=`<h2>${f2("moveTo")}</h2><div style="font-size:12px;margin-bottom:8px;line-height:2.1">${cr}</div>
+        <div style="max-height:40vh;overflow:auto;font-size:13px">${ds.length?ds.map(d=>`<div class="fmrow" style="display:flex;gap:8px;align-items:center;padding:8px 4px;border-bottom:2px dashed #0002;cursor:pointer" data-g="${esc((cur?cur+"/":"")+d.name)}"><span style="font-size:22px">📁</span><b>${esc(d.name)}</b></div>`).join(""):`<p>${f2("nofold")}</p>`}</div>
+        <div class="actions"><button class="btn green" id="pkOk">${f2("here")}</button><button class="btn" id="pkNo">${ft("cancel")}</button></div><div id="fmSt" class="fmst"></div>`;
+      $("#formBox").querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{cur=b.dataset.g;draw();});
+      $("#pkNo").onclick=()=>fmGo(path);
+      $("#pkOk").onclick=()=>{if(!crit(its))return;run(()=>xfer(its,cur,"cut"),n=>f2("done",n));};
+    };draw();
   };
   $("#formBox").innerHTML=`<h2>${ft("t")}</h2><p>${ft("load")}</p>`;open("#mForm");
   (async()=>{
     let items;
-    try{const g=await fetch(url(path)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});
-      if(!g.ok)throw new Error(await ghErr(g));items=await g.json();if(!Array.isArray(items))items=[];}
+    try{items=await list(path);}
     catch(e){toast(e.message);devPanel();return;}
     items.sort((a,b)=>(a.type==="dir"?0:1)-(b.type==="dir"?0:1)||a.name.localeCompare(b.name));
+    const model=items.map(it=>({name:it.name,path:join(it.name),dir:it.type==="dir",sha:it.sha}));
     const parts=path.split("/").filter(Boolean);
     const crumbs=`<button class="btn sm" data-p="">${ft("root")}</button>`+parts.map((x,i)=>` / <button class="btn sm" data-p="${esc(parts.slice(0,i+1).join("/"))}">${esc(x)}</button>`).join("");
     const rows=items.length?items.map(it=>{
       const dir=it.type==="dir",kb=dir?"":(it.size>1024?Math.round(it.size/1024)+" KB":it.size+" B");
       return `<div class="fmrow" style="display:flex;align-items:center;gap:8px;padding:8px 4px;border-bottom:2px dashed #0002">
-        <span style="font-size:22px">${dir?"📁":FM_TXT.test(it.name)?"📄":"🖼️"}</span>
+        <input type="checkbox" class="fmck" data-n="${esc(it.name)}" aria-label="${esc(it.name)}" style="width:20px;height:20px;flex:none;margin:0">
+        <span style="font-size:22px">${fmIcon(it.name,dir)}</span>
         <span class="fmn" data-n="${esc(it.name)}" data-d="${dir?1:0}" style="flex:1;min-width:0;word-break:break-all;cursor:pointer;font-weight:700">${esc(it.name)}<br><small style="font-weight:400;opacity:.7">${dir?"":kb}</small></span>
-        ${!dir&&FM_TXT.test(it.name)?`<button class="btn sm" data-e="${esc(it.name)}">${ft("edit")}</button>`:""}
-        <button class="btn sm red" data-x="${esc(it.name)}" data-s="${esc(it.sha)}" data-d="${dir?1:0}">${ft("del")}</button></div>`;}).join(""):`<p>${ft("empty")}</p>`;
+        ${!dir&&FM_TXT.test(it.name)?`<button class="btn sm" data-e="${esc(it.name)}">${ft("edit")}</button>`:""}</div>`;}).join(""):`<p>${ft("empty")}</p>`;
     $("#formBox").innerHTML=`<h2>${ft("t")}</h2>
       <div style="font-size:12px;margin-bottom:8px;line-height:2.1">${crumbs}</div>
-      <div class="actions" style="margin-bottom:6px"><button class="btn green" id="fmF">${ft("nf")}</button><button class="btn green" id="fmI">${ft("nfi")}</button><button class="btn blue" id="fmU">${ft("up")}</button></div>
+      <div class="actions" style="margin-bottom:6px"><button class="btn green" id="fmF">${ft("nf")}</button><button class="btn green" id="fmI">${ft("nfi")}</button><button class="btn blue" id="fmU">${ft("up")}</button><button class="btn" id="fmP" style="display:none"></button></div>
       <input type="file" id="fmUp" multiple style="display:none">
-      <div style="max-height:44vh;overflow:auto;font-size:13px">${rows}</div>
+      <div class="fmsel" id="fmSel" style="display:none"><b id="fmSn"></b>
+        <button class="btn sm" id="fmA">${f2("all")}</button><button class="btn sm" id="fmCp">${f2("copy")}</button><button class="btn sm" id="fmCt">${f2("cut")}</button><button class="btn sm" id="fmMv">${f2("move")}</button><button class="btn sm" id="fmRn">${f2("ren")}</button><button class="btn sm red" id="fmDl">${ft("del")}</button></div>
+      <div id="fmSt" class="fmst"></div>
+      <div style="max-height:40vh;overflow:auto;font-size:13px">${rows}</div>
       <div class="actions"><button class="btn" id="fmB">${ft("back")}</button></div>`;
-    const join=n=>(path?path+"/":"")+n;
     $("#fmB").onclick=devPanel;
-    $("#formBox").querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>fmGo(b.dataset.p));
-    $("#formBox").querySelectorAll(".fmn").forEach(b=>b.onclick=()=>{b.dataset.d==="1"?fmGo(join(b.dataset.n)):(FM_TXT.test(b.dataset.n)?editor(join(b.dataset.n),false):toast(ft("bin")));});
-    $("#formBox").querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>editor(join(b.dataset.e),false));
-    $("#formBox").querySelectorAll("[data-x]").forEach(b=>b.onclick=async()=>{
-      if(!confirm(ft("delQ",b.dataset.x)))return;b.disabled=true;
-      try{
-        const delFile=async(p,sha)=>{const r=await fetch(url(p),{method:"DELETE",headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify({message:"Delete "+p,sha,branch:br})});if(!r.ok)throw new Error(await ghErr(r));};
-        const walk=async p=>{const g=await fetch(url(p)+"?ref="+encodeURIComponent(br)+"&t="+Date.now(),{headers:H,cache:"no-store"});if(!g.ok)throw new Error(await ghErr(g));
-          for(const f of await g.json()){f.type==="dir"?await walk(p+"/"+f.name):await delFile(p+"/"+f.name,f.sha);}};
-        const p=join(b.dataset.x);b.dataset.d==="1"?await walk(p):await delFile(p,b.dataset.s);
-        toast(ft("ok"));fmGo(path);
-      }catch(e){toast(e.message);b.disabled=false;}});
+    const fb=$("#formBox");
+    fb.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>fmGo(b.dataset.p));
+    fb.querySelectorAll(".fmn").forEach(b=>b.onclick=()=>{b.dataset.d==="1"?fmGo(join(b.dataset.n)):(FM_TXT.test(b.dataset.n)?editor(join(b.dataset.n),false):toast(ft("bin")));});
+    fb.querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>editor(join(b.dataset.e),false));
+    const picked=()=>{const s=new Set([...fb.querySelectorAll(".fmck:checked")].map(x=>x.dataset.n));return model.filter(m=>s.has(m.name));};
+    const updSel=()=>{const p=picked();$("#fmSel").style.display=p.length?"flex":"none";$("#fmSn").textContent=f2("sel",p.length);$("#fmRn").style.display=p.length===1?"":"none";};
+    const updPaste=()=>{const b=$("#fmP");if(FMCLIP&&FMCLIP.items.length){b.style.display="";b.textContent="📋 "+f2("paste")+" ("+FMCLIP.items.length+")";}else b.style.display="none";};
+    fb.querySelectorAll(".fmck").forEach(x=>x.onchange=updSel);updPaste();
+    $("#fmA").onclick=()=>{const all=picked().length===model.length;fb.querySelectorAll(".fmck").forEach(x=>x.checked=!all);updSel();};
+    $("#fmCp").onclick=()=>{const p=picked();if(!p.length)return;FMCLIP={op:"copy",items:p};toast(f2("copied",p.length));fb.querySelectorAll(".fmck").forEach(x=>x.checked=false);updSel();updPaste();};
+    $("#fmCt").onclick=()=>{const p=picked();if(!p.length)return;if(!crit(p))return;FMCLIP={op:"cut",items:p};toast(f2("cutd",p.length));fb.querySelectorAll(".fmck").forEach(x=>x.checked=false);updSel();updPaste();};
+    $("#fmP").onclick=()=>{const cl=FMCLIP;if(!cl)return;run(async()=>{const n=await xfer(cl.items,path,cl.op);if(cl.op==="cut")FMCLIP=null;return n;},n=>f2("done",n));};
+    $("#fmMv").onclick=()=>{const p=picked();if(p.length)picker(p);};
+    $("#fmRn").onclick=()=>{const p=picked();if(p.length!==1)return;const it=p[0];if(!crit(p))return;
+      ask(f2("newn"),n=>{if(n===it.name){fmGo(path);return;}run(()=>xfer([it],path,"cut",n),n2=>f2("done",n2));},it.name,ft("save"));};
+    $("#fmDl").onclick=()=>{const p=picked();if(!p.length||!crit(p))return;
+      if(!confirm(ft("delQ",p.length===1?p[0].name:p.length+" ("+p.map(x=>x.name).slice(0,3).join(", ")+(p.length>3?"...":"")+")")))return;
+      run(async()=>{for(const it of p){it.dir?await delTree(it.path):(st(),await delFile(it.path,it.sha));}return p.length;},()=>ft("ok"));};
     $("#fmF").onclick=()=>ask(ft("fold"),async n=>{try{if(await getSha(join(n)+"/.gitkeep")!==null){toast(ft("exists"));return;}await put(join(n)+"/.gitkeep","","Create folder "+n);toast(ft("ok"));fmGo(path);}catch(e){toast(e.message);}});
-    $("#fmI").onclick=()=>ask(ft("file"),async n=>{try{if(await getSha(join(n))!==null){toast(ft("exists"));return;}editor(join(n),true);}catch(e){toast(e.message);}});
-    $("#fmU").onclick=()=>$("#fmUp").click();
-    $("#fmUp").onchange=async e=>{
-      const fs=[...e.target.files];if(!fs.length)return;const bu=$("#fmU");bu.disabled=true;let n=0;
-      try{for(const f of fs){
-        if(!okName(f.name)){toast(ft("nameBad")+": "+f.name);continue;}
-        if(f.size>25e6){toast(ft("big")+": "+f.name);continue;}
-        bu.textContent=(++n)+"/"+fs.length;
-        const buf=new Uint8Array(await f.arrayBuffer());let bin="";for(let i=0;i<buf.length;i+=8192)bin+=String.fromCharCode.apply(null,buf.subarray(i,i+8192));
-        const sha=await getSha(join(f.name));await put(join(f.name),btoa(bin),"Upload "+f.name,sha||undefined);}
-        toast(ft("ok"));fmGo(path);
-      }catch(er){toast(er.message);bu.disabled=false;bu.textContent=ft("up");}};
+    $("#fmI").onclick=newFile;
+    $("#fmU").onclick=()=>{$("#fmUp").removeAttribute("accept");$("#fmUp").click();};
+    $("#fmUp").onchange=e=>upload(e.target.files,$("#fmU"));
   })();
 }
 
@@ -1841,6 +1947,7 @@ menuEl.addEventListener("click",e=>{
   else if(b.dataset.menu==="music"){setTimeout(()=>{mMenu.classList.remove("hide");mBtn.setAttribute("aria-expanded","true");mUI();},0);}
   else if(b.dataset.menu==="lang"){drawLang();open("#mLang");}
   else if(b.dataset.menu==="send"){sendForm();}
+  else if(b.dataset.menu==="saved"){openSaved();}
   else if(b.dataset.menu==="settings"){openSettings();}
   else if(b.dataset.menu==="social"){openSocial();}
   else showCredits();
@@ -2021,7 +2128,7 @@ function drawLang(){
   $("#langOpts").innerHTML=h;
 }
 function applyLang(){
-  updSetLbl();{const e=$("#bgL");if(e)e.textContent=ct("bg");}updSocLbl();
+  updSetLbl();{const e=$("#bgL");if(e)e.textContent=ct("bg");}updSocLbl();updSavLbl();
   document.documentElement.lang=LANG;document.title=t("title");
   document.querySelectorAll("[data-i18n]").forEach(el=>{el.textContent=t(el.dataset.i18n);});
   document.querySelectorAll("[data-i18n-html]").forEach(el=>{el.innerHTML=t(el.dataset.i18nHtml);});
