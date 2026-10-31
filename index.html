@@ -116,27 +116,40 @@ textarea{min-height:80px;resize:vertical}
 #mSet .setbtn{display:block;width:100%;text-align:left;font-size:13px;padding:13px 12px;margin:0;box-sizing:border-box}
 #mSet .setsens{background:#fff;border:4px solid var(--black);box-shadow:4px 4px 0 var(--black)}
 #mSet .setsens small{display:block;font-size:11px;opacity:.7;margin:2px 0 10px}
-#mSet .segs{display:flex;gap:8px}#mSet .segs .btn{flex:1;margin:0}
+#mSet .segs{display:flex;gap:8px}#mSet .segs .btn{flex:1;margin:0;min-width:0;padding:8px 2px;font-size:11px;white-space:nowrap}
 #mSet .btn.on{background:var(--yellow)}
 body[data-fx="1"] .cloud,body[data-fx="1"] .hw-bat,body[data-fx="1"] .hw-flash,body[data-fx="1"] .hw-pumps{display:none!important}
 body[data-fx="1"] .hw,body[data-fx="1"] .hw *{animation:none!important}
 body[data-fx="0"] *,body[data-fx="0"] *::before,body[data-fx="0"] *::after{animation:none!important;transition:none!important}
 body[data-fx="0"] .cloud,body[data-fx="0"] .hw,body[data-fx="0"] .hw-flash,body[data-fx="0"] .hw-pumps,body[data-fx="0"] .hw-ban{display:none!important}
-/* desktop: bigger interface */
-:root{--z:1}
-@media (min-width:900px){:root{--z:1.25}}
-@media (min-width:1500px){:root{--z:1.5}}
-@media (min-width:2000px){:root{--z:1.9}}
+/* interface size */
+:root{--z0:1;--ui:1;--tx:1;--z:calc(var(--z0) * var(--ui))}
+@media (min-width:900px){:root{--z0:1.25}}
+@media (min-width:1500px){:root{--z0:1.5}}
+@media (min-width:2000px){:root{--z0:1.9}}
+.wrap,.menuwrap.tl,.mus,#langBtn,.toast{zoom:var(--z)}
+.modal .box{zoom:var(--z);max-height:calc(92vh / var(--z))}
 @media (min-width:900px){
-  .wrap{zoom:var(--z)}
-  .menuwrap.tl,.mus,#langBtn{zoom:var(--z)}
-  .modal .box{zoom:var(--z);max-width:600px;max-height:calc(92vh/var(--z))}
-  .toast{zoom:var(--z)}
+  .modal .box{max-width:600px}
   footer .sbtn{zoom:1}
 }
+.lv{--fs:var(--tx,1)}
 @media (min-width:1000px){#list{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}#list .row{margin:0}#list>*:not(.row){grid-column:1/-1}}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:50;padding:14px;overflow:auto}
 .modal.open{display:flex;animation:fade .2s}
+#mBg.bgfx-run{background:rgba(0,0,0,.12);transition:background .2s}
+#curFx{position:fixed;left:0;top:0;z-index:2147483647;pointer-events:none;display:none;image-rendering:pixelated;background-repeat:no-repeat;background-size:100% 100%;will-change:transform}
+body.curmouse,body.curmouse *{cursor:none!important}
+.curgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;margin:8px 0}
+.curopt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin:0;padding:10px 4px;min-height:74px;box-sizing:border-box}
+.curopt.on{outline:3px solid #ffd23a;outline-offset:-3px}
+.curpv{display:flex;align-items:center;justify-content:center;gap:8px}.curpv img{image-rendering:pixelated;display:block}
+.curnm{font-size:10px}
+#mBg .box{max-width:400px;max-height:calc(68vh / var(--z));padding:12px}
+#mBg .bgs{grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px}
+#mBg .bgpick{padding:4px;gap:4px;font-size:7px}
+#mBg .bgprev{height:32px}
+#mBg h2{font-size:14px;margin:0 0 8px}
 @keyframes fade{from{opacity:0}}
 .box{background:var(--panel);border:5px solid var(--black);box-shadow:8px 8px 0 var(--black);width:100%;max-width:560px;max-height:92vh;overflow:auto;padding:18px;animation:pop .22s}
 @keyframes pop{from{transform:scale(.85)}}
@@ -247,7 +260,7 @@ body[data-font=clear] *{letter-spacing:0}
 body[data-font=clear] button,body[data-font=clear] input,body[data-font=clear] select,body[data-font=clear] textarea{font-size:14px;font-weight:700}
 body[data-font=clear] h1,body[data-font=clear] h2{font-weight:900}
 body[data-font=clear] h1{line-height:1.5;text-shadow:3px 0 0 var(--black),-3px 0 0 var(--black),0 3px 0 var(--black),0 -3px 0 var(--black),3px 3px 0 var(--black),-3px 3px 0 var(--black),3px -3px 0 var(--black),-3px -3px 0 var(--black),0 6px 0 var(--black)}
-.lvm:not(:has(.sty)) .lvp{flex-direction:row;gap:1.6cqw}.lvm:not(:has(.sty)) .lvp .badge,.lvm:not(:has(.sty)) .lvp .st{flex:1 1 0;min-width:0;padding:5px 2px;font-size:10px}.lvm:not(:has(.sty)){margin-top:0}
+.lvm:not(:has(.sty)) .lvp{flex-direction:row;gap:1.6cqw}.lvm:not(:has(.sty)) .lvp .badge,.lvm:not(:has(.sty)) .lvp .st{flex:1 1 0;min-width:0;padding:5px 1px;font-size:clamp(7.5px,2.5cqw,10px);white-space:nowrap;overflow:hidden;overflow-wrap:normal}.lvm:not(:has(.sty)){margin-top:0}
 .lv .lvr p{flex-wrap:nowrap;overflow-wrap:anywhere;min-width:0}.lv .lvr p .ico{flex:0 0 auto}.lv .lvr p>span{flex:0 0 auto}.lv .lvr p .btn{flex:1 1 auto;min-width:0;font-size:11px;padding:6px 4px;word-break:normal;overflow-wrap:anywhere}
 #langBtn{position:fixed;bottom:12px;right:12px;top:auto;left:auto;z-index:40;width:48px;height:48px;padding:0;font-size:22px;display:flex;align-items:center;justify-content:center}
 .menuwrap.tl{position:absolute;top:10px;left:10px;z-index:40}
@@ -336,20 +349,20 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .hw-spider{top:0;left:calc(44% - 12px);width:26px;height:26px;animation:hwspid 6s ease-in-out infinite}
 @keyframes hwdrop{0%,100%{height:40px}50%{height:120px}}
 @keyframes hwspid{0%,100%{transform:translateY(34px)}50%{transform:translateY(114px)}}
-.hw-tomb{bottom:44px;z-index:1;width:56px;height:60px;opacity:1}
-.hw-tomb.t1{left:2%}.hw-tomb.t2{right:2%;width:48px;height:52px;opacity:.85}
-.hw-tomb.t3{left:15%;width:40px;height:43px;opacity:.7}
-.hw-pump1{bottom:48px;right:21%;width:48px;height:42px}
+.hw-tomb{bottom:44px;z-index:1;width:58px;height:60px;opacity:1}
+.hw-tomb.t1{left:2%}.hw-tomb.t2{right:2%;width:48px;height:50px;opacity:.85}
+.hw-tomb.t3{left:15%;width:40px;height:41px;opacity:.7}
+.hw-pump1{bottom:48px;right:21%;width:48px;height:48px}
 .hw-mist{left:0;right:0;bottom:0;height:150px;background:linear-gradient(transparent,rgba(190,150,255,.20));animation:hwmist 7s ease-in-out infinite alternate}
 @keyframes hwmist{from{opacity:.55}to{opacity:1}}
 .hw-pumps{display:flex;justify-content:center;align-items:flex-end;gap:16px;margin:18px 0 0;pointer-events:none}
-.hw-pumps i{display:block;width:64px;height:56px;background-size:100% 100%;image-rendering:pixelated;animation:hwhop 2.4s steps(2) infinite,hwglow 1.7s steps(3) infinite}
-.hw-pumps i:nth-child(2){width:92px;height:80px;animation-delay:-.8s,-.4s}
+.hw-pumps i{display:block;width:64px;height:64px;background-size:100% 100%;image-rendering:pixelated;animation:hwhop 2.4s steps(2) infinite,hwglow 1.7s steps(3) infinite}
+.hw-pumps i:nth-child(2){width:92px;height:92px;animation-delay:-.8s,-.4s}
 .hw-pumps i:nth-child(3){animation-delay:-1.6s,-1.1s}
 @keyframes hwhop{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes hwglow{0%{filter:drop-shadow(0 0 4px rgba(255,200,40,.5)) brightness(1)}33%{filter:drop-shadow(0 0 10px rgba(255,200,40,.9)) brightness(1.12)}66%{filter:drop-shadow(0 0 6px rgba(255,170,30,.7)) brightness(1.03)}100%{filter:drop-shadow(0 0 4px rgba(255,200,40,.5)) brightness(1)}}
 .hw-ban{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 12px 0;color:#ff8a00;text-shadow:2px 2px 0 #000;font-size:11px;letter-spacing:1px}
-.hw-ban .hwi{display:inline-block;width:22px;height:19px;background-size:100% 100%;image-rendering:pixelated;filter:drop-shadow(0 0 5px rgba(255,200,40,.8))}
+.hw-ban .hwi{display:inline-block;width:22px;height:22px;background-size:100% 100%;image-rendering:auto;filter:drop-shadow(0 0 5px rgba(255,200,40,.8))}
 .logo-top{color:#ff8a00}
 footer{color:#ffd9a0}
 
@@ -460,10 +473,11 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 <div class="menuwrap tl">
   <button class="btn" id="menuBtn" aria-label="Menu" aria-haspopup="menu" aria-expanded="false"><span class="bars"><i></i><i></i><i></i></span></button>
   <div class="menu hide" id="menu" role="menu">
+    <button class="btn" data-menu="bg" role="menuitem">&#128444; <span id="bgL"></span></button>
     <button class="btn" data-menu="settings" role="menuitem">&#9881; <span id="setL"></span></button>
+    <button class="btn" data-menu="social" role="menuitem">&#128279; <span id="socL"></span></button>
     <button class="btn" data-menu="send" role="menuitem">&#9993; <span data-i18n="sendM">SEND LEVEL</span></button>
     <button class="btn" data-menu="credits" role="menuitem" data-i18n="cred">CREDITS</button>
-    <button class="btn yellow" id="adminBtn" role="menuitem">&#128273; Admin</button>
   </div>
 </div>
 <button class="btn" id="langBtn" aria-label="Language" data-i18n-title="lang">&#127760;</button>
@@ -477,9 +491,9 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
       <button class="btn sm" id="mRepeat" data-i18n="repeat" data-i18n-title="repeatT">&#8635; REPEAT</button>
       <button class="btn sm" id="mNext" data-i18n="next" data-i18n-title="nextT">&#9654;&#9654; NEXT</button>
     </div>
-    <label class="btn sm" id="mZipLbl" for="mZip" data-i18n="zipAdd">+ ADD ZIP (MP3)</label><input type="file" id="mZip" accept=".zip,application/zip,application/x-zip-compressed" hidden>
+    <label class="btn sm" id="mZipLbl" for="mZip" data-i18n="zipAdd">+ ADD MP3</label><input type="file" id="mZip" accept=".mp3,audio/mpeg" multiple hidden>
     <button class="btn sm red hide" id="mZipClear" data-i18n="zipClear">Remove my songs</button>
-    <p class="zi" data-i18n="zipInfo">Songs from your ZIP stay on this device only.</p>
+    <p class="zi" data-i18n="zipInfo">Your MP3 songs stay on this device only.</p>
     <span class="lbl" data-i18n="volume">VOLUME</span>
     <input type="range" id="mVol" min="0" max="100" step="5" aria-label="Volume">
   </div>
@@ -527,14 +541,16 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 
 <div class="live" id="live"></div>
 <footer><span data-i18n="foot">&copy; List of Difficulties of SMM:WE &mdash; Fan-made ranking.</span><br><br>
-<button class="nbtn" id="newBtn" aria-label="NEW"><span class="ni"></span></button>
-<div class="soc">
-  <a class="sbtn" id="lnkYt" href="https://www.youtube.com/@notorworld" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel" title="YouTube" data-i18n-title="ytT"><i></i></a>
-  <a class="sbtn" id="lnkDc" href="https://discord.gg/y56h2qXje" target="_blank" rel="noopener noreferrer" aria-label="Discord server" title="Discord" data-i18n-title="dcT"><i></i></a>
-</div></footer>
+<button class="nbtn" id="newBtn" aria-label="NEW"><span class="ni"></span></button></footer>
 </div>
 
 <!-- detail modal -->
+<div class="modal" id="mSocial"><div class="box"><h2 id="socT" style="margin-top:0"></h2>
+<div class="soc">
+  <a class="sbtn" id="lnkYt" href="https://www.youtube.com/@notorworld" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel" title="YouTube" data-i18n-title="ytT"><i></i></a>
+  <a class="sbtn" id="lnkDc" href="https://discord.gg/y56h2qXje" target="_blank" rel="noopener noreferrer" aria-label="Discord server" title="Discord" data-i18n-title="dcT"><i></i></a>
+</div>
+<div class="actions"><button class="btn" id="socX" data-close="#mSocial"></button></div></div></div>
 <div class="modal" id="mSet"><div class="box" id="setBox"></div></div>
 <div class="modal" id="mDetail"><div class="box" id="detailBox"></div></div>
 <!-- generic modal -->
@@ -617,7 +633,7 @@ musicMissing:"Music file not found: upload the mp3 files next to the page",
 official:"★ OFFICIAL RANKING ★",h1:"List of Difficulties<br>of <span>SMM:WE</span>",title:"List of Difficulties of SMM:WE",
 tag:"Welcome, player! This page contains a ranking of the hardest levels in SMM:WE, sorted from toughest to easiest. Search, filter and click any level to see its details.",
 top:"★ TOP",search:"⚲ SEARCH",
-htmlT:"UPDATE THE PAGE (HTML)",htmlInfo:"Pick the new HTML file from your device and press Update. It replaces the page file in your GitHub repo (needs the token saved in GitHub).",htmlPath:"File name in the repo",htmlPick:"New HTML file",htmlNone:"No file selected",htmlBad:"That does not look like the page HTML",htmlBig:"File too big",htmlUpd:"Update",htmlWait:"Updating...",htmlOk:"Page updated! GitHub Pages needs about 1 min, then reload.",htmlFail:"Update failed: {0}",sendM:"SEND LEVEL",sendT:"SEND YOUR LEVEL",sendInfo:"Fill in your level and create a code. Send that code to the admin on Discord. The admin reviews it and, if accepted, adds it to the ranking.",sendGen:"Create code",sendCode:"Your code (send it to the admin)",sendCopy:"Copy",sendCopied:"Copied!",sendDc:"Open Discord",unsure:"I do not know",inboxBtn:"Inbox",inboxT:"SUBMITTED LEVELS",inboxInfo:"Paste the codes people send you. Then review, edit and accept, or reject each level.",inboxPaste:"Paste codes here",inboxAdd:"Add to inbox",inboxEmpty:"Nothing waiting.",inboxAdded:"{0} level(s) added to the inbox",inboxNone:"No valid codes found",acc:"Review / Accept",rej:"Reject",rejAsk:"Reject {0}?",rejOk:"Level rejected",zipAdd:"+ ADD ZIP (MP3)",zipInfo:"Songs from your ZIP stay on this device only.",zipBusy:"Reading ZIP...",zipOk:"{0} song(s) added",zipNone:"No MP3 found in that ZIP",zipBad:"Could not read that ZIP",zipClear:"Remove my songs",zipBig:"ZIP too big (max 150 MB)",zipOld:"Your browser cannot open this ZIP",jsonT:"UPDATE DATA (data.json)",jsonInfo:"Pick a data.json file from your device and press Update. It replaces the levels, difficulties and credits in your GitHub repo (needs the token saved in GitHub).",jsonPick:"New data.json file",jsonBad:"That file is not a valid data.json (it needs levels and diffs)",jsonOk:"Data updated! Visitors will see it in about 1 min",jsonFail:"Update failed: {0}",fStyle:"Game style",fTime:"Time of day",fTags:"Tags",sNone:"None",tDay:"Day",tNight:"Night",tg_trad:"Standard",tg_puzzle:"Puzzle",tg_speed:"Speedrun",tg_scroll:"Autoscroll",tg_auto:"Auto",tg_short:"Short and sweet",tg_versus:"Versus",tg_themed:"Themed",tg_music:"Music",tg_art:"Art",tg_skill:"Technical",tg_shoot:"Shooter",tg_boss:"Boss battle",tg_solo:"Solo",tg_link:"Link",adminMode:"ADMIN MODE",published:"PUBLISHED",unpub:"UNPUBLISHED CHANGES",publish:"Publish",publishing:"Publishing...",gh:"GitHub",addLevel:"+ Add level",diffs:"Difficulties",export:"Export",import:"Import",password:"Password",reset:"Reset",logout:"Log out",
+htmlT:"UPDATE THE PAGE (HTML)",htmlInfo:"Pick the new HTML file from your device and press Update. It replaces the page file in your GitHub repo (needs the token saved in GitHub).",htmlPath:"File name in the repo",htmlPick:"New HTML file",htmlNone:"No file selected",htmlBad:"That does not look like the page HTML",htmlBig:"File too big",htmlUpd:"Update",htmlWait:"Updating...",htmlOk:"Page updated! GitHub Pages needs about 1 min, then reload.",htmlFail:"Update failed: {0}",sendM:"SEND LEVEL",sendT:"SEND YOUR LEVEL",sendInfo:"Fill in your level and create a code. Send that code to the admin on Discord. The admin reviews it and, if accepted, adds it to the ranking.",sendGen:"Create code",sendCode:"Your code (send it to the admin)",sendCopy:"Copy",sendCopied:"Copied!",sendDc:"Open Discord",unsure:"I do not know",inboxBtn:"Inbox",inboxT:"SUBMITTED LEVELS",inboxInfo:"Paste the codes people send you. Then review, edit and accept, or reject each level.",inboxPaste:"Paste codes here",inboxAdd:"Add to inbox",inboxEmpty:"Nothing waiting.",inboxAdded:"{0} level(s) added to the inbox",inboxNone:"No valid codes found",acc:"Review / Accept",rej:"Reject",rejAsk:"Reject {0}?",rejOk:"Level rejected",zipAdd:"+ ADD MP3",zipInfo:"Your MP3 songs stay on this device only.",zipBusy:"Adding songs...",zipOk:"{0} song(s) added",zipNone:"Pick .mp3 files",zipBad:"Could not add that song",zipClear:"Remove my songs",zipBig:"File too big (max 60 MB)",zipOld:"Your browser cannot open this ZIP",jsonT:"UPDATE DATA (data.json)",jsonInfo:"Pick a data.json file from your device and press Update. It replaces the levels, difficulties and credits in your GitHub repo (needs the token saved in GitHub).",jsonPick:"New data.json file",jsonBad:"That file is not a valid data.json (it needs levels and diffs)",jsonOk:"Data updated! Visitors will see it in about 1 min",jsonFail:"Update failed: {0}",fStyle:"Game style",fTime:"Time of day",fTags:"Tags",sNone:"None",tDay:"Day",tNight:"Night",tg_trad:"Standard",tg_puzzle:"Puzzle",tg_speed:"Speedrun",tg_scroll:"Autoscroll",tg_auto:"Auto",tg_short:"Short and sweet",tg_versus:"Versus",tg_themed:"Themed",tg_music:"Music",tg_art:"Art",tg_skill:"Technical",tg_shoot:"Shooter",tg_boss:"Boss battle",tg_solo:"Solo",tg_link:"Link",adminMode:"ADMIN MODE",published:"PUBLISHED",unpub:"UNPUBLISHED CHANGES",publish:"Publish",publishing:"Publishing...",gh:"GitHub",addLevel:"+ Add level",diffs:"Difficulties",export:"Export",import:"Import",password:"Password",reset:"Reset",logout:"Log out",
 hardest:"HARDEST LEVELS",full:"FULL RANKING",hLevel:"LEVEL",hCreator:"CREATOR",hDiff:"DIFFICULTY",hTries:"ID",hStatus:"STATUS",
 foot:"© List of Difficulties of SMM:WE — Fan-made ranking.",newb:"NEW",ytT:"YouTube channel",dcT:"Discord server",
 sprIntro:"Pick the look of the coins and blocks. Saved on this device only.",sprOwn:"YOUR OWN IMAGE (PNG, GIF, JPG...)",close:"Close",
@@ -664,7 +680,7 @@ musicMissing:"Archivo de música no encontrado: sube los mp3 junto a la página"
 official:"★ RANKING OFICIAL ★",h1:"Lista de Dificultades<br>de <span>SMM:WE</span>",title:"Lista de Dificultades de SMM:WE",
 tag:"¡Bienvenido, jugador! Esta página contiene un ranking de los niveles más difíciles de SMM:WE, ordenados del más difícil al más fácil. Busca, filtra y toca cualquier nivel para ver sus detalles.",
 top:"★ TOP",search:"⚲ BUSCAR",
-htmlT:"ACTUALIZAR LA PÁGINA (HTML)",htmlInfo:"Elige el HTML nuevo de tu dispositivo y toca Actualizar. Reemplaza el archivo de la página en tu repositorio de GitHub (necesita el token guardado en GitHub).",htmlPath:"Nombre del archivo en el repositorio",htmlPick:"Archivo HTML nuevo",htmlNone:"Sin archivo",htmlBad:"Ese archivo no parece el HTML de la página",htmlBig:"Archivo demasiado grande",htmlUpd:"Actualizar",htmlWait:"Actualizando...",htmlOk:"¡Página actualizada! GitHub Pages tarda cerca de 1 min, luego recarga.",htmlFail:"Falló la actualización: {0}",sendM:"ENVIAR NIVEL",sendT:"ENVÍA TU NIVEL",sendInfo:"Llena los datos de tu nivel y crea un código. Mándale ese código al admin por Discord. El admin lo revisa y, si lo acepta, lo agrega al ranking.",sendGen:"Crear código",sendCode:"Tu código (mándaselo al admin)",sendCopy:"Copiar",sendCopied:"¡Copiado!",sendDc:"Abrir Discord",unsure:"No lo sé",inboxBtn:"Buzón",inboxT:"NIVELES ENVIADOS",inboxInfo:"Pega los códigos que te manden. Luego revisa, edita y acepta, o rechaza cada nivel.",inboxPaste:"Pega los códigos aquí",inboxAdd:"Agregar al buzón",inboxEmpty:"No hay nada pendiente.",inboxAdded:"{0} nivel(es) agregado(s) al buzón",inboxNone:"No se encontraron códigos válidos",acc:"Revisar / Aceptar",rej:"Rechazar",rejAsk:"¿Rechazar {0}?",rejOk:"Nivel rechazado",zipAdd:"+ AGREGAR ZIP (MP3)",zipInfo:"Las canciones de tu ZIP se quedan solo en este dispositivo.",zipBusy:"Leyendo ZIP...",zipOk:"{0} canción(es) agregada(s)",zipNone:"No hay MP3 en ese ZIP",zipBad:"No se pudo leer ese ZIP",zipClear:"Quitar mis canciones",zipBig:"ZIP demasiado grande (máx. 150 MB)",zipOld:"Tu navegador no puede abrir este ZIP",jsonT:"ACTUALIZAR DATOS (data.json)",jsonInfo:"Elige un archivo data.json de tu dispositivo y toca Actualizar. Reemplaza los niveles, dificultades y créditos en tu repositorio de GitHub (necesita el token guardado en GitHub).",jsonPick:"Archivo data.json nuevo",jsonBad:"Ese archivo no es un data.json válido (necesita levels y diffs)",jsonOk:"¡Datos actualizados! Los visitantes lo verán en cerca de 1 min",jsonFail:"Falló la actualización: {0}",fStyle:"Estilo de juego",fTime:"Momento del día",fTags:"Etiquetas",sNone:"Ninguno",tDay:"Día",tNight:"Noche",tg_trad:"Tradicional",tg_puzzle:"Puzles",tg_speed:"Contrarreloj",tg_scroll:"Autoavance",tg_auto:"Automatismos",tg_short:"Corto pero intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidad",tg_shoot:"Disparos",tg_boss:"Contra jefes",tg_solo:"En solitario",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"CAMBIOS SIN PUBLICAR",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Agregar nivel",diffs:"Dificultades",export:"Exportar",import:"Importar",password:"Contraseña",reset:"Restablecer",logout:"Cerrar sesión",
+htmlT:"ACTUALIZAR LA PÁGINA (HTML)",htmlInfo:"Elige el HTML nuevo de tu dispositivo y toca Actualizar. Reemplaza el archivo de la página en tu repositorio de GitHub (necesita el token guardado en GitHub).",htmlPath:"Nombre del archivo en el repositorio",htmlPick:"Archivo HTML nuevo",htmlNone:"Sin archivo",htmlBad:"Ese archivo no parece el HTML de la página",htmlBig:"Archivo demasiado grande",htmlUpd:"Actualizar",htmlWait:"Actualizando...",htmlOk:"¡Página actualizada! GitHub Pages tarda cerca de 1 min, luego recarga.",htmlFail:"Falló la actualización: {0}",sendM:"ENVIAR NIVEL",sendT:"ENVÍA TU NIVEL",sendInfo:"Llena los datos de tu nivel y crea un código. Mándale ese código al admin por Discord. El admin lo revisa y, si lo acepta, lo agrega al ranking.",sendGen:"Crear código",sendCode:"Tu código (mándaselo al admin)",sendCopy:"Copiar",sendCopied:"¡Copiado!",sendDc:"Abrir Discord",unsure:"No lo sé",inboxBtn:"Buzón",inboxT:"NIVELES ENVIADOS",inboxInfo:"Pega los códigos que te manden. Luego revisa, edita y acepta, o rechaza cada nivel.",inboxPaste:"Pega los códigos aquí",inboxAdd:"Agregar al buzón",inboxEmpty:"No hay nada pendiente.",inboxAdded:"{0} nivel(es) agregado(s) al buzón",inboxNone:"No se encontraron códigos válidos",acc:"Revisar / Aceptar",rej:"Rechazar",rejAsk:"¿Rechazar {0}?",rejOk:"Nivel rechazado",zipAdd:"+ AGREGAR MP3",zipInfo:"Tus canciones MP3 se quedan solo en este dispositivo.",zipBusy:"Agregando canciones...",zipOk:"{0} canción(es) agregada(s)",zipNone:"Elige archivos .mp3",zipBad:"No se pudo agregar esa canción",zipClear:"Quitar mis canciones",zipBig:"Archivo demasiado grande (máx. 60 MB)",zipOld:"Tu navegador no puede abrir este ZIP",jsonT:"ACTUALIZAR DATOS (data.json)",jsonInfo:"Elige un archivo data.json de tu dispositivo y toca Actualizar. Reemplaza los niveles, dificultades y créditos en tu repositorio de GitHub (necesita el token guardado en GitHub).",jsonPick:"Archivo data.json nuevo",jsonBad:"Ese archivo no es un data.json válido (necesita levels y diffs)",jsonOk:"¡Datos actualizados! Los visitantes lo verán en cerca de 1 min",jsonFail:"Falló la actualización: {0}",fStyle:"Estilo de juego",fTime:"Momento del día",fTags:"Etiquetas",sNone:"Ninguno",tDay:"Día",tNight:"Noche",tg_trad:"Tradicional",tg_puzzle:"Puzles",tg_speed:"Contrarreloj",tg_scroll:"Autoavance",tg_auto:"Automatismos",tg_short:"Corto pero intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidad",tg_shoot:"Disparos",tg_boss:"Contra jefes",tg_solo:"En solitario",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"CAMBIOS SIN PUBLICAR",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Agregar nivel",diffs:"Dificultades",export:"Exportar",import:"Importar",password:"Contraseña",reset:"Restablecer",logout:"Cerrar sesión",
 hardest:"NIVELES MÁS DIFÍCILES",full:"RANKING COMPLETO",hLevel:"NIVEL",hCreator:"CREADOR",hDiff:"DIFICULTAD",hTries:"ID",hStatus:"ESTADO",
 foot:"© Lista de Dificultades de SMM:WE — Ranking hecho por fans.",newb:"NUEVO",ytT:"Canal de YouTube",dcT:"Servidor de Discord",
 sprIntro:"Elige el aspecto de las monedas y los bloques. Se guarda solo en este dispositivo.",sprOwn:"TU PROPIA IMAGEN (PNG, GIF, JPG...)",close:"Cerrar",
@@ -711,7 +727,7 @@ musicMissing:"Arquivo de música não encontrado: envie os mp3 junto da página"
 official:"★ RANKING OFICIAL ★",h1:"Lista de Dificuldades<br>do <span>SMM:WE</span>",title:"Lista de Dificuldades do SMM:WE",
 tag:"Bem-vindo, jogador! Esta página traz um ranking dos níveis mais difíceis do SMM:WE, do mais difícil ao mais fácil. Pesquise, filtre e toque em qualquer nível para ver os detalhes.",
 top:"★ TOPO",search:"⚲ BUSCAR",
-htmlT:"ATUALIZAR A PÁGINA (HTML)",htmlInfo:"Escolha o novo HTML do seu dispositivo e toque em Atualizar. Ele substitui o arquivo da página no seu repositório do GitHub (precisa do token salvo em GitHub).",htmlPath:"Nome do arquivo no repositório",htmlPick:"Novo arquivo HTML",htmlNone:"Nenhum arquivo",htmlBad:"Esse arquivo não parece o HTML da página",htmlBig:"Arquivo grande demais",htmlUpd:"Atualizar",htmlWait:"Atualizando...",htmlOk:"Página atualizada! O GitHub Pages leva cerca de 1 min, depois recarregue.",htmlFail:"Falha ao atualizar: {0}",sendM:"ENVIAR NÍVEL",sendT:"ENVIE SEU NÍVEL",sendInfo:"Preencha os dados do seu nível e crie um código. Envie esse código ao admin pelo Discord. O admin revisa e, se aceitar, adiciona ao ranking.",sendGen:"Criar código",sendCode:"Seu código (envie ao admin)",sendCopy:"Copiar",sendCopied:"Copiado!",sendDc:"Abrir Discord",unsure:"Não sei",inboxBtn:"Caixa",inboxT:"NÍVEIS ENVIADOS",inboxInfo:"Cole os códigos que lhe enviarem. Depois revise, edite e aceite, ou rejeite cada nível.",inboxPaste:"Cole os códigos aqui",inboxAdd:"Adicionar à caixa",inboxEmpty:"Nada pendente.",inboxAdded:"{0} nível(is) adicionado(s) à caixa",inboxNone:"Nenhum código válido encontrado",acc:"Revisar / Aceitar",rej:"Rejeitar",rejAsk:"Rejeitar {0}?",rejOk:"Nível rejeitado",zipAdd:"+ ADICIONAR ZIP (MP3)",zipInfo:"As músicas do seu ZIP ficam só neste dispositivo.",zipBusy:"Lendo ZIP...",zipOk:"{0} música(s) adicionada(s)",zipNone:"Nenhum MP3 nesse ZIP",zipBad:"Não foi possível ler esse ZIP",zipClear:"Remover minhas músicas",zipBig:"ZIP grande demais (máx. 150 MB)",zipOld:"Seu navegador não consegue abrir este ZIP",jsonT:"ATUALIZAR DADOS (data.json)",jsonInfo:"Escolha um arquivo data.json do seu dispositivo e toque em Atualizar. Ele substitui os níveis, dificuldades e créditos no seu repositório do GitHub (precisa do token salvo em GitHub).",jsonPick:"Novo arquivo data.json",jsonBad:"Esse arquivo não é um data.json válido (precisa de levels e diffs)",jsonOk:"Dados atualizados! Os visitantes verão em cerca de 1 min",jsonFail:"Falha ao atualizar: {0}",fStyle:"Estilo de jogo",fTime:"Período do dia",fTags:"Etiquetas",sNone:"Nenhum",tDay:"Dia",tNight:"Noite",tg_trad:"Tradicional",tg_puzzle:"Quebra-cabeça",tg_speed:"Contra o relógio",tg_scroll:"Rolagem automática",tg_auto:"Automatismos",tg_short:"Curto e intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidade",tg_shoot:"Tiro",tg_boss:"Contra chefes",tg_solo:"Solo",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"ALTERAÇÕES NÃO PUBLICADAS",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Adicionar nível",diffs:"Dificuldades",export:"Exportar",import:"Importar",password:"Senha",reset:"Redefinir",logout:"Sair",
+htmlT:"ATUALIZAR A PÁGINA (HTML)",htmlInfo:"Escolha o novo HTML do seu dispositivo e toque em Atualizar. Ele substitui o arquivo da página no seu repositório do GitHub (precisa do token salvo em GitHub).",htmlPath:"Nome do arquivo no repositório",htmlPick:"Novo arquivo HTML",htmlNone:"Nenhum arquivo",htmlBad:"Esse arquivo não parece o HTML da página",htmlBig:"Arquivo grande demais",htmlUpd:"Atualizar",htmlWait:"Atualizando...",htmlOk:"Página atualizada! O GitHub Pages leva cerca de 1 min, depois recarregue.",htmlFail:"Falha ao atualizar: {0}",sendM:"ENVIAR NÍVEL",sendT:"ENVIE SEU NÍVEL",sendInfo:"Preencha os dados do seu nível e crie um código. Envie esse código ao admin pelo Discord. O admin revisa e, se aceitar, adiciona ao ranking.",sendGen:"Criar código",sendCode:"Seu código (envie ao admin)",sendCopy:"Copiar",sendCopied:"Copiado!",sendDc:"Abrir Discord",unsure:"Não sei",inboxBtn:"Caixa",inboxT:"NÍVEIS ENVIADOS",inboxInfo:"Cole os códigos que lhe enviarem. Depois revise, edite e aceite, ou rejeite cada nível.",inboxPaste:"Cole os códigos aqui",inboxAdd:"Adicionar à caixa",inboxEmpty:"Nada pendente.",inboxAdded:"{0} nível(is) adicionado(s) à caixa",inboxNone:"Nenhum código válido encontrado",acc:"Revisar / Aceitar",rej:"Rejeitar",rejAsk:"Rejeitar {0}?",rejOk:"Nível rejeitado",zipAdd:"+ ADICIONAR MP3",zipInfo:"Suas músicas MP3 ficam só neste dispositivo.",zipBusy:"Adicionando músicas...",zipOk:"{0} música(s) adicionada(s)",zipNone:"Escolha arquivos .mp3",zipBad:"Não foi possível adicionar essa música",zipClear:"Remover minhas músicas",zipBig:"Arquivo grande demais (máx. 60 MB)",zipOld:"Seu navegador não consegue abrir este ZIP",jsonT:"ATUALIZAR DADOS (data.json)",jsonInfo:"Escolha um arquivo data.json do seu dispositivo e toque em Atualizar. Ele substitui os níveis, dificuldades e créditos no seu repositório do GitHub (precisa do token salvo em GitHub).",jsonPick:"Novo arquivo data.json",jsonBad:"Esse arquivo não é um data.json válido (precisa de levels e diffs)",jsonOk:"Dados atualizados! Os visitantes verão em cerca de 1 min",jsonFail:"Falha ao atualizar: {0}",fStyle:"Estilo de jogo",fTime:"Período do dia",fTags:"Etiquetas",sNone:"Nenhum",tDay:"Dia",tNight:"Noite",tg_trad:"Tradicional",tg_puzzle:"Quebra-cabeça",tg_speed:"Contra o relógio",tg_scroll:"Rolagem automática",tg_auto:"Automatismos",tg_short:"Curto e intenso",tg_versus:"Competitivo",tg_themed:"Temático",tg_music:"Música",tg_art:"Artístico",tg_skill:"Habilidade",tg_shoot:"Tiro",tg_boss:"Contra chefes",tg_solo:"Solo",tg_link:"Link",adminMode:"MODO ADMIN",published:"PUBLICADO",unpub:"ALTERAÇÕES NÃO PUBLICADAS",publish:"Publicar",publishing:"Publicando...",gh:"GitHub",addLevel:"+ Adicionar nível",diffs:"Dificuldades",export:"Exportar",import:"Importar",password:"Senha",reset:"Redefinir",logout:"Sair",
 hardest:"NÍVEIS MAIS DIFÍCEIS",full:"RANKING COMPLETO",hLevel:"NÍVEL",hCreator:"CRIADOR",hDiff:"DIFICULDADE",hTries:"ID",hStatus:"STATUS",
 foot:"© Lista de Dificuldades do SMM:WE — Ranking feito por fãs.",newb:"NOVO",ytT:"Canal do YouTube",dcT:"Servidor do Discord",
 sprIntro:"Escolha o visual das moedas e dos blocos. Salvo apenas neste dispositivo.",sprOwn:"SUA PRÓPRIA IMAGEM (PNG, GIF, JPG...)",close:"Fechar",
@@ -758,7 +774,7 @@ musicMissing:"Файл музыки не найден: загрузите mp3 р
 official:"★ ОФИЦИАЛЬНЫЙ РЕЙТИНГ ★",h1:"Список сложностей<br>в <span>SMM:WE</span>",title:"Список сложностей SMM:WE",
 tag:"Добро пожаловать, игрок! Здесь собран рейтинг самых сложных уровней SMM:WE — от самых трудных к самым лёгким. Ищите, фильтруйте и нажимайте на любой уровень, чтобы увидеть подробности.",
 top:"★ ТОП",search:"⚲ ПОИСК",
-htmlT:"ОБНОВИТЬ СТРАНИЦУ (HTML)",htmlInfo:"Выберите новый HTML-файл на устройстве и нажмите «Обновить». Он заменит файл страницы в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",htmlPath:"Имя файла в репозитории",htmlPick:"Новый HTML-файл",htmlNone:"Файл не выбран",htmlBad:"Это не похоже на HTML страницы",htmlBig:"Файл слишком большой",htmlUpd:"Обновить",htmlWait:"Обновление...",htmlOk:"Страница обновлена! GitHub Pages нужна около 1 мин, затем перезагрузите.",htmlFail:"Ошибка обновления: {0}",sendM:"ОТПРАВИТЬ УРОВЕНЬ",sendT:"ОТПРАВЬТЕ СВОЙ УРОВЕНЬ",sendInfo:"Заполните данные уровня и создайте код. Отправьте код админу в Discord. Админ проверит его и, если примет, добавит в рейтинг.",sendGen:"Создать код",sendCode:"Ваш код (отправьте админу)",sendCopy:"Копировать",sendCopied:"Скопировано!",sendDc:"Открыть Discord",unsure:"Не знаю",inboxBtn:"Входящие",inboxT:"ОТПРАВЛЕННЫЕ УРОВНИ",inboxInfo:"Вставьте коды, которые вам прислали. Затем проверьте, измените и примите или отклоните каждый уровень.",inboxPaste:"Вставьте коды сюда",inboxAdd:"Добавить во входящие",inboxEmpty:"Ничего не ждёт.",inboxAdded:"Добавлено уровней: {0}",inboxNone:"Допустимые коды не найдены",acc:"Проверить / Принять",rej:"Отклонить",rejAsk:"Отклонить {0}?",rejOk:"Уровень отклонён",zipAdd:"+ ДОБАВИТЬ ZIP (MP3)",zipInfo:"Песни из вашего ZIP остаются только на этом устройстве.",zipBusy:"Чтение ZIP...",zipOk:"Добавлено песен: {0}",zipNone:"В этом ZIP нет MP3",zipBad:"Не удалось прочитать ZIP",zipClear:"Удалить мои песни",zipBig:"ZIP слишком большой (макс. 150 МБ)",zipOld:"Ваш браузер не может открыть этот ZIP",jsonT:"ОБНОВИТЬ ДАННЫЕ (data.json)",jsonInfo:"Выберите файл data.json на устройстве и нажмите «Обновить». Он заменит уровни, сложности и титры в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",jsonPick:"Новый файл data.json",jsonBad:"Это не подходящий data.json (нужны levels и diffs)",jsonOk:"Данные обновлены! Посетители увидят их примерно через 1 мин",jsonFail:"Ошибка обновления: {0}",fStyle:"Стиль игры",fTime:"Время суток",fTags:"Теги",sNone:"Нет",tDay:"День",tNight:"Ночь",tg_trad:"Традиционный",tg_puzzle:"Головоломка",tg_speed:"На время",tg_scroll:"Автопрокрутка",tg_auto:"Автоматика",tg_short:"Коротко, но жёстко",tg_versus:"Соревновательный",tg_themed:"Тематический",tg_music:"Музыка",tg_art:"Художественный",tg_skill:"Мастерство",tg_shoot:"Стрельба",tg_boss:"Против боссов",tg_solo:"Одиночный",tg_link:"Ссылка",adminMode:"РЕЖИМ АДМИНА",published:"ОПУБЛИКОВАНО",unpub:"НЕОПУБЛИКОВАННЫЕ ИЗМЕНЕНИЯ",publish:"Опубликовать",publishing:"Публикация...",gh:"GitHub",addLevel:"+ Добавить уровень",diffs:"Сложности",export:"Экспорт",import:"Импорт",password:"Пароль",reset:"Сброс",logout:"Выйти",
+htmlT:"ОБНОВИТЬ СТРАНИЦУ (HTML)",htmlInfo:"Выберите новый HTML-файл на устройстве и нажмите «Обновить». Он заменит файл страницы в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",htmlPath:"Имя файла в репозитории",htmlPick:"Новый HTML-файл",htmlNone:"Файл не выбран",htmlBad:"Это не похоже на HTML страницы",htmlBig:"Файл слишком большой",htmlUpd:"Обновить",htmlWait:"Обновление...",htmlOk:"Страница обновлена! GitHub Pages нужна около 1 мин, затем перезагрузите.",htmlFail:"Ошибка обновления: {0}",sendM:"ОТПРАВИТЬ УРОВЕНЬ",sendT:"ОТПРАВЬТЕ СВОЙ УРОВЕНЬ",sendInfo:"Заполните данные уровня и создайте код. Отправьте код админу в Discord. Админ проверит его и, если примет, добавит в рейтинг.",sendGen:"Создать код",sendCode:"Ваш код (отправьте админу)",sendCopy:"Копировать",sendCopied:"Скопировано!",sendDc:"Открыть Discord",unsure:"Не знаю",inboxBtn:"Входящие",inboxT:"ОТПРАВЛЕННЫЕ УРОВНИ",inboxInfo:"Вставьте коды, которые вам прислали. Затем проверьте, измените и примите или отклоните каждый уровень.",inboxPaste:"Вставьте коды сюда",inboxAdd:"Добавить во входящие",inboxEmpty:"Ничего не ждёт.",inboxAdded:"Добавлено уровней: {0}",inboxNone:"Допустимые коды не найдены",acc:"Проверить / Принять",rej:"Отклонить",rejAsk:"Отклонить {0}?",rejOk:"Уровень отклонён",zipAdd:"+ ДОБАВИТЬ MP3",zipInfo:"Ваши MP3 остаются только на этом устройстве.",zipBusy:"Добавление песен...",zipOk:"Добавлено песен: {0}",zipNone:"Выберите файлы .mp3",zipBad:"Не удалось добавить песню",zipClear:"Удалить мои песни",zipBig:"Файл слишком большой (макс. 60 МБ)",zipOld:"Ваш браузер не может открыть этот ZIP",jsonT:"ОБНОВИТЬ ДАННЫЕ (data.json)",jsonInfo:"Выберите файл data.json на устройстве и нажмите «Обновить». Он заменит уровни, сложности и титры в вашем репозитории GitHub (нужен токен, сохранённый в GitHub).",jsonPick:"Новый файл data.json",jsonBad:"Это не подходящий data.json (нужны levels и diffs)",jsonOk:"Данные обновлены! Посетители увидят их примерно через 1 мин",jsonFail:"Ошибка обновления: {0}",fStyle:"Стиль игры",fTime:"Время суток",fTags:"Теги",sNone:"Нет",tDay:"День",tNight:"Ночь",tg_trad:"Традиционный",tg_puzzle:"Головоломка",tg_speed:"На время",tg_scroll:"Автопрокрутка",tg_auto:"Автоматика",tg_short:"Коротко, но жёстко",tg_versus:"Соревновательный",tg_themed:"Тематический",tg_music:"Музыка",tg_art:"Художественный",tg_skill:"Мастерство",tg_shoot:"Стрельба",tg_boss:"Против боссов",tg_solo:"Одиночный",tg_link:"Ссылка",adminMode:"РЕЖИМ АДМИНА",published:"ОПУБЛИКОВАНО",unpub:"НЕОПУБЛИКОВАННЫЕ ИЗМЕНЕНИЯ",publish:"Опубликовать",publishing:"Публикация...",gh:"GitHub",addLevel:"+ Добавить уровень",diffs:"Сложности",export:"Экспорт",import:"Импорт",password:"Пароль",reset:"Сброс",logout:"Выйти",
 hardest:"САМЫЕ СЛОЖНЫЕ УРОВНИ",full:"ПОЛНЫЙ РЕЙТИНГ",hLevel:"УРОВЕНЬ",hCreator:"АВТОР",hDiff:"СЛОЖНОСТЬ",hTries:"ID",hStatus:"СТАТУС",
 foot:"© Список сложностей SMM:WE — рейтинг от фанатов.",newb:"НОВОЕ",ytT:"Канал YouTube",dcT:"Сервер Discord",
 sprIntro:"Выберите вид монет и блоков. Сохраняется только на этом устройстве.",sprOwn:"ВАШЕ ИЗОБРАЖЕНИЕ (PNG, GIF, JPG...)",close:"Закрыть",
@@ -840,7 +856,7 @@ const badge=n=>`<span class="badge" style="background:${esc(dcolor(n))}">${esc(n
 document.documentElement.style.setProperty('--ico-feet','url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAANUlEQVR4nGNkYGBgEBQU/M8ABe/fv2fEJsaELIALCAoK/mcipAgGqK+QaIDVh9jEmJAl8QEAKOoVP1v2sOoAAAAASUVORK5CYII=")');document.documentElement.style.setProperty('--ico-tag','url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAANklEQVR4nHWOwQkAQAjDUjdw/yE7wt3Lh6J5FUKgYpCZr3ZswrYAtBWt3IRtxSUAosYU58viA6HOFT0tNyNwAAAAAElFTkSuQmCC")');
 const IFT='<i class="ico ico-feet"></i>',IT='<i class="ico ico-tag"></i>';
 const IU='<i class="ico ico-user"></i>',IS='<i class="ico ico-skull"></i>',IF='<i class="ico ico-flag"></i>';
-const stat=s=>`<span class="st v">${t("sVerified")}</span>`;
+const stat=s=>`<span class="st v">${(LANG==="es"||LANG==="pt")?t("sVerified").replace(/S$/,""):t("sVerified")}</span>`;
 
 /* ---------- render ---------- */
 function render(){
@@ -873,7 +889,7 @@ function render(){
   $("#goSearch").classList.toggle("on",!!(q||fCat!=="all"||fDiff!=="all"));
   $("#adminbar").classList.toggle("hide",!admin);
   updateStatus();
-  $("#adminBtn").textContent="\u{1F511} "+(admin?t("adminPanel"):t("admin"));
+  {const ab=$("#adminBtn");if(ab)ab.textContent="\u{1F511} "+(admin?t("adminPanel"):t("admin"));}
 }
 
 /* ---------- modals ---------- */
@@ -1010,21 +1026,136 @@ pt:{t:"CONFIGURAÇÕES",bg:"Fundo",sens:"Sensibilidade",sensD:"Animações e efe
 ru:{t:"НАСТРОЙКИ",bg:"Фон",sens:"Чувствительность",sensD:"Анимации и эффекты",f0:"Нет",f1:"Низкая",f2:"Обычная",qr:"QR",music:"Музыка",exit:"Выйти"}};
 const ct=k=>(CFT[LANG]||CFT.en)[k]||CFT.en[k];
 function updSetLbl(){const e=$("#setL");if(e)e.textContent=ct("t").charAt(0)+ct("t").slice(1).toLowerCase();}
+/* ---------- Size (screen + text) ---------- */
+const SZT={
+es:{t:"Tamaño",scr:"Pantalla",txt:"Letras",reset:"Restablecer",done:"Listo",info:"Ajusta el tamaño de la pantalla y de las letras."},
+en:{t:"Size",scr:"Screen",txt:"Text",reset:"Reset",done:"Done",info:"Adjust the size of the screen and of the text."},
+pt:{t:"Tamanho",scr:"Tela",txt:"Letras",reset:"Redefinir",done:"Pronto",info:"Ajuste o tamanho da tela e das letras."},
+ru:{t:"Размер",scr:"Экран",txt:"Текст",reset:"Сбросить",done:"Готово",info:"Настройте размер экрана и текста."}};
+const zt=k=>(SZT[LANG]||SZT.en)[k]||SZT.en[k];
+const clampN=(v,a,b,d)=>{v=+v;return isFinite(v)?Math.min(b,Math.max(a,v)):d;};
+function applySize(){
+  const r=document.documentElement.style;
+  r.setProperty("--ui",String(clampN(set.ui,0.7,1.5,1)));
+  r.setProperty("--tx",String(clampN(set.tx,0.8,1.5,1)));
+}
+function buildTxStyle(){
+  if(document.getElementById("txStyle"))return;
+  const bad=/var\(|em|%|inherit|initial|unset|smaller|larger|medium|small|large/i;
+  const walk=rules=>{let out="";for(const r of rules){
+    if(r.type===1){const fs=r.style.getPropertyValue("font-size");
+      if(fs&&!bad.test(fs)&&/px|vw|vh|clamp/.test(fs))out+=r.selectorText+"{font-size:calc("+fs+" * var(--tx,1))"+(r.style.getPropertyPriority("font-size")?" !important":"")+"}\n";}
+    else if(r.type===4){const inner=walk(r.cssRules);if(inner)out+="@media "+r.conditionText+"{"+inner+"}\n";}}
+    return out;};
+  let css="";
+  try{for(const sh of document.styleSheets){let rl;try{rl=sh.cssRules;}catch(e){continue;}if(rl)css+=walk(rl);}}catch(e){}
+  if(!css)return;
+  const st=document.createElement("style");st.id="txStyle";st.textContent=css;document.head.appendChild(st);
+}
+function sizeForm(){
+  const ui=Math.round(clampN(set.ui,0.7,1.5,1)*100),tx=Math.round(clampN(set.tx,0.8,1.5,1)*100);
+  $("#formBox").innerHTML=`<h2>&#128207; ${zt("t")}</h2><p style="font-size:12px">${zt("info")}</p>
+    <label class="lbl">${zt("scr")}: <b id="szUv">${ui}%</b></label><input type="range" id="szU" min="70" max="150" step="5" value="${ui}" style="width:100%">
+    <label class="lbl">${zt("txt")}: <b id="szTv">${tx}%</b></label><input type="range" id="szT" min="80" max="150" step="5" value="${tx}" style="width:100%">
+    <div class="actions"><button class="btn green" id="szOk">${zt("done")}</button><button class="btn" id="szRs">${zt("reset")}</button></div>`;
+  open("#mForm");
+  const upd=()=>{set.ui=+$("#szU").value/100;set.tx=+$("#szT").value/100;$("#szUv").textContent=$("#szU").value+"%";$("#szTv").textContent=$("#szT").value+"%";applySize();};
+  $("#szU").oninput=upd;$("#szT").oninput=upd;
+  $("#szU").onchange=$("#szT").onchange=()=>{upd();saveSet();};
+  $("#szRs").onclick=()=>{delete set.ui;delete set.tx;saveSet();applySize();sizeForm();};
+  $("#szOk").onclick=()=>{saveSet();close("#mForm");};
+}
+/* ---------- Social networks window ---------- */
+const SCT={es:{t:"Redes sociales",close:"Cerrar"},en:{t:"Social networks",close:"Close"},pt:{t:"Redes sociais",close:"Fechar"},ru:{t:"Соцсети",close:"Закрыть"}};
+const sct=k=>(SCT[LANG]||SCT.en)[k]||SCT.en[k];
+function updSocLbl(){const e=$("#socL");if(e)e.textContent=sct("t");const h=$("#socT");if(h)h.textContent=sct("t");const c=$("#socX");if(c)c.textContent=sct("close");}
+function openSocial(){updSocLbl();open("#mSocial");}
+/* ---------- Cursor (hand sprites) ---------- */
+const CURS=[{"n":"pink","o":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAABJ0lEQVR42pWUPY6DMBCFH1EqV1tzFlZRijSIggOk2SYN59lmmzQcgAJRgMSPwllS09CEZGebeDV2xhZ5EoXl8fcenpEDAJiynMLzCQBw/frBx/cxwFNTlhME8RqurYZVZQEACJPUgGgjW1OWkwTd8sVuf0BVFgiT1CjSZlpxkiI8n5xQTFlOSinS6tualFLUtzX1bU229P7zTyInkB+WQFxKqfehLpBO7gW+QH8fBmihm2EoACMRpj9XMvse7ZQbO+U8z2L6qiyw2x+MTtvdF4FD14hQDvMYRy/AOEkxdA18umPB0DWIrXl1NoV3sm9rWugmzqHQlMgLtZvEx8UBc4+PlJYbrIbxC5bSajMXLFgBvVjP1qdQN64F/oM9eyNfrAVK0FEq+gM6h5QoqFAn2QAAAABJRU5ErkJggg==","c":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAABC0lEQVR42pWUIQ7CQBBFpwQ1a9CcpYQgME1FD4DBYHoeDAbDARAEQRNKQ8+CxtTQhsXQzXb2bwuTVHQz++b/n8kG5KlnetDofLJdBeh87Ls83W+8AxAssBvk5fPp2PmP4oSIiB7rHVb2TA+amTUz69v1Yj5Zt+tFM7P+Kg8HIX3V9krYyLYxXyxpvljCbJRSVOSZY9cBRXFCRZ4R6XenoaGalFJmEKjQscbM0Iptt81J2jOKqqqCkqWSKE6gPQMq8gzCpB3PwNDNqKcaqqnIM7NPP+9RrV9wj0Q+YWenZOh2+C24B+IuJ1JngwchdnBIXTvEBwl6YHfxfMxAXzkE6m4trhI+I3/AStT0AfrgLbwZJsyRAAAAAElFTkSuQmCC","ow":20,"oh":18,"hx":2,"hy":0,"cw":18,"ch":18},{"n":"red","o":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAABMElEQVR42pWUsW6DQAyGfyq6HE+QrMdblChlyIIYeNQMUQYiEaLyGOmaPMEtiVp3wejO+KjybyfMZ//2+RIAoNxSdrsDANx6heT6nWAU5ZagyI/xlTLseNgDALK6CSCcSIpySxo09Q/bcofjYY+sboIgTsaq6gbZ7R6FgnJLxhhi9V1Lxhjqu5b6riUp/j46KaJA/2cN5MsY8zo0BuLKF4Ez6O9PAHrSI0ioAAsVNlmJVCb7GK3SH4wGlK3gBBL4Jm1fzic452bt2Ja74KzFBFX6lv8bzJMeMctFIm3zZviX+aP8RIr3wEU1Xv5xVTfTSmqT1tbNOYfL+TRtigZTgf6DIKutvJXUYAAGFcgNptx+yWrdesWvzQwWrVBCxbO1UeKGRcuL12EB9gpQgw5a0B+ySaPC2Z8HwwAAAABJRU5ErkJggg==","c":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAABBElEQVR42o2UMQ7CMAxFfxAs7glgbW9BKmBgQQwclQExUIlS0WPACifIAgizENQ6TqmlDo3sl/9duwaR4Cxl7dxcrkY9jxUnt7t6gZuMVZhpQmTxfrdtva/Wm04YOEuZiJiI+HQ8/B4Zp+OBiYi/yu1fSFf43ADmQX0A/iINNGj6r8oC4HdL8QtPJEmC/W6L2WKp9d8G1ogoqkT2KVDlQb5Ia7AGlqCftaos4JwLdEs7Wg4AG3y1rnjyI2bNGjmMzSGcLuYYYoSmajGUea/J9laqstAmO/+7a1KdB8QgAGptky1n6Vmqc5Ox3/4AEiiSMPH7yJW8WrUWnVo96miPesJqLekDOUFkCVr78YcAAAAASUVORK5CYII=","ow":20,"oh":18,"hx":2,"hy":0,"cw":18,"ch":18},{"n":"green","o":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAABLklEQVR42pWUv26DQAzGP6pMfp9uoFOGLIiBqXMerTNThigDSPxR2fI8lyG0dYbi6DA+2n4Swwnfz9/Z50sAAJVjOl4BALf3V+BtSCCqHMNSGBMoEdjlfAIA5EX5A50libRWiWftwoXbH3A5n5AX5SJIkonyogQdr7hVjm2nlWMiYlHf1kxE3Lc1923NWvJ/LkcaBYabLVAoIvo/NAYS59tADf3+WoAmvi8SGsDUhMkXc6brGHcZNMYC6lJIAg180aceugbe+1U13P6wWFsxANIVMC9KDF2DLX1iwtA1q/sabUrYyb6teeK7eQ+NpqSJCTXGzXv/dC7O5vHLlrMccRrOcTjnapYztXNMNgqQonIf2u3z4TBgcYcKqp6tzIgbt49sgeMaf6/h36CjFfQAanuG+A4uTPQAAAAASUVORK5CYII=","c":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAA/klEQVR42o2UMQ+CMBCFXx2P3+NWQxxcjIOTsz+NmYmBMEgiNrL5e3AQYh2kBK/XyiUMNNeP9y7vUAhVnlrx/GSUdKxCl+n8EDnPbC3C1BzCL1dl8fO+PxyjsC+EyBKRvV0v08Prdr1YIrKjcv0XEivX68NG0BKA+5AEWs39m6YG7PtH8IAeSZKgKguk2500f+1ZI6KgEj4nX9UIcpekAUtgDpqsmaZG13Webm5H6gGg/RlFakAP09RTnhbnqLcvMUfMlgago8l2VpxSluzN311zQLcicysSBECrxFzk6Z2re2Zrt/0exFfEYOz3sRH6WtlaMLViteEZLYO1UtMHEedKZaX5ZCUAAAAASUVORK5CYII=","ow":20,"oh":18,"hx":2,"hy":0,"cw":18,"ch":18},{"n":"blue","o":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAABJUlEQVR42pWUv26EMAzGv1Q3hVfidLrhGBCDHzUDYggSf1ReKcvR1l1ILwlO2n4SA4r5+bONowCAiNnaCgDQNA7GKIVDRMwQFMaEunjY0BsAQNtVEcQnSkXELEEv4cvt/sDQG7RdDPHJvNqOYG2VhYKIWWvNXstkWWvNy2R5mSyn8udHJXUWGH4sgUJprf8PzYG88yLwBP36jEA7P6OEArAWYf7JOUv7mLp8S10650T3Q29wuz+iSafTF4HrPIrQEFZIXJ+AbUdY5xElfWDHOo9oOyrGRX30k1wmyzs/xf9QGEqtJKi0bs65H+fe2bH31zBO5ZyGe/za81eJEgzApgodqIn4PXXbNM7fNidY1mEKTa6tqxC3FUuWwIWz7dce/hG6SUHfaERyeUWgvlcAAAAASUVORK5CYII=","c":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAABAklEQVR42o2Usa7CMAxFbxidXwpCDHSoOvhTOzy9oZUo1esvZXlFmIVExXEKljI0co7vtew6VIJZxLrve+ese1d7PAzeLNA00YS5LUQ//v3p377bjndhYBYhIiEiuV2HfHTcroMQkbyUh4+QvUi5GnbY2jidLzidL2ZvvPeYp7GwW4DajjFPIyCPt4Q7VnjvcyEjQmGNiEwrW7upT9peVhRjNCVrJW3Hpr0MmqfRhGk7lYKh7NFO3LFinsY8T1/P0Sr/5hyp/gQAYXeyk5WkVE328eOuJWBq6taKBQGwWJscmOVPq2uamLa/gBSKNEz9Po5G3mJaq06tHUu1R1/CFivpCYzUDDf41XeKAAAAAElFTkSuQmCC","ow":20,"oh":18,"hx":2,"hy":0,"cw":18,"ch":18}];
+const CUT={es:{t:"Cursor",info:"Elige el color de tu mano. Mano abierta = normal, mano cerrada = al tocar botones.",off:"Normal",n:["Rosa","Rojo","Verde","Azul"],done:"Listo"},
+en:{t:"Cursor",info:"Pick your hand colour. Open hand = normal, closed hand = when you touch buttons.",off:"Normal",n:["Pink","Red","Green","Blue"],done:"Done"},
+pt:{t:"Cursor",info:"Escolha a cor da sua mão. Mão aberta = normal, mão fechada = ao tocar nos botões.",off:"Normal",n:["Rosa","Vermelho","Verde","Azul"],done:"Pronto"},
+ru:{t:"Курсор",info:"Выберите цвет руки. Открытая рука — обычно, сжатая — при нажатии на кнопки.",off:"Обычный",n:["Розовый","Красный","Зелёный","Синий"],done:"Готово"}};
+const cut=k=>(CUT[LANG]||CUT.en)[k]||CUT.en[k];
+const CUR_Z=2;
+let curEl=null,curDown=false,curClosed=null,curHide=0,curInst=false,curSeen=false;
+const curBtn=el=>!!(el&&el.closest&&el.closest("button,a,input,select,textarea,label,summary,[role=button],[data-menu],[data-s],.lv,.bgpick,.tile,[data-close]"));
+function curShow(x,y,closed){
+  const c=CURS[set.cur];if(!c||!curEl)return;
+  if(curClosed!==closed){
+    curClosed=closed;
+    curEl.style.width=(closed?c.cw:c.ow)*CUR_Z+"px";curEl.style.height=(closed?c.ch:c.oh)*CUR_Z+"px";
+    curEl.style.backgroundImage="url("+(closed?c.c:c.o)+")";
+  }
+  const ox=closed?c.cw*CUR_Z/2:c.hx*CUR_Z,oy=closed?c.ch*CUR_Z/2:c.hy*CUR_Z;
+  curEl.style.transform="translate("+Math.round(x-ox)+"px,"+Math.round(y-oy)+"px)";
+  curEl.style.display="block";curEl.style.opacity="1";
+}
+function curOff(){clearTimeout(curHide);if(curEl){curEl.style.display="none";}curClosed=null;}
+function curInstall(){
+  if(curInst)return;curInst=true;
+  curEl=document.createElement("div");curEl.id="curFx";curEl.setAttribute("aria-hidden","true");document.body.appendChild(curEl);
+  const on=()=>set.cur!=null&&CURS[set.cur];
+  document.addEventListener("pointermove",e=>{
+    if(!on())return;
+    if(e.pointerType==="mouse"){curSeen=true;document.body.classList.add("curmouse");}
+    clearTimeout(curHide);
+    curShow(e.clientX,e.clientY,curDown||curBtn(e.target));
+  },true);
+  document.addEventListener("pointerdown",e=>{
+    if(!on())return;
+    curDown=true;clearTimeout(curHide);
+    if(e.pointerType==="mouse"){curSeen=true;document.body.classList.add("curmouse");}
+    curShow(e.clientX,e.clientY,curBtn(e.target)||e.pointerType==="mouse");
+  },true);
+  const up=e=>{
+    curDown=false;if(!on())return;
+    if(e.pointerType==="mouse")curShow(e.clientX,e.clientY,curBtn(e.target));
+    else{clearTimeout(curHide);curHide=setTimeout(curOff,650);}
+  };
+  document.addEventListener("pointerup",up,true);
+  document.addEventListener("pointercancel",e=>{curDown=false;if(e.pointerType!=="mouse")curHide=setTimeout(curOff,300);},true);
+  document.documentElement.addEventListener("mouseleave",()=>{if(on())curOff();});
+  document.addEventListener("pointerover",e=>{if(on()&&e.pointerType==="mouse"&&e.target&&e.target.tagName==="IFRAME")curOff();},true);
+}
+function curApply(){
+  const on=set.cur!=null&&CURS[set.cur];
+  if(on){curInstall();}
+  else{document.body.classList.remove("curmouse");curOff();}
+}
+function curForm(){
+  const sel=(set.cur!=null&&CURS[set.cur])?set.cur:-1;
+  $("#formBox").innerHTML=`<h2 style="margin-top:0">&#9757; ${cut("t")}</h2><p style="font-size:12px">${cut("info")}</p>
+    <div class="curgrid"><button class="btn curopt${sel<0?" on":""}" data-c="-1"><span class="curnm">${cut("off")}</span></button>${CURS.map((c,i)=>`<button class="btn curopt${sel===i?" on":""}" data-c="${i}"><span class="curpv"><img src="${c.o}" alt="" width="${c.ow*CUR_Z}" height="${c.oh*CUR_Z}"><img src="${c.c}" alt="" width="${c.cw*CUR_Z}" height="${c.ch*CUR_Z}"></span><span class="curnm">${cut("n")[i]}</span></button>`).join("")}</div>
+    <div class="actions"><button class="btn green" id="curOk">${cut("done")}</button></div>`;
+  open("#mForm");
+  $("#formBox").querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{
+    const v=+b.dataset.c;if(v<0)delete set.cur;else set.cur=v;
+    saveSet();curApply();curForm();
+  });
+  $("#curOk").onclick=()=>close("#mForm");
+}
 function openSettings(){
   const fx=(set.fx===0||set.fx===1)?set.fx:2;
   $("#setBox").innerHTML=`<h2 style="margin:0">&#9881; ${ct("t")}</h2>
     <button class="btn setbtn" data-s="bg">&#128444; ${ct("bg")}</button>
     <div class="setbtn setsens"><b>&#127898; ${ct("sens")}</b><small>${ct("sensD")}</small>
       <div class="segs">${[0,1,2].map(v=>`<button class="btn sm${fx===v?" on":""}" data-fx="${v}">${ct("f"+v)}</button>`).join("")}</div></div>
+    <button class="btn setbtn" data-s="size">&#128207; ${zt("t")}</button>
+    <button class="btn setbtn" data-s="cur">&#9757; ${cut("t")}</button>
     <button class="btn setbtn" data-s="qr">&#9638; ${ct("qr")}</button>
     <button class="btn setbtn" data-s="music">&#9835; ${ct("music")}</button>
+    <button class="btn yellow setbtn" id="adminBtn">&#128273; ${admin?t("adminPanel"):t("admin")}</button>
     <button class="btn red setbtn" id="setExit">${ct("exit")}</button>`;
   open("#mSet");
   $("#setExit").onclick=()=>close("#mSet");
+  $("#adminBtn").onclick=()=>{close("#mSet");adminEntry();};
   $("#setBox").querySelectorAll("[data-fx]").forEach(b=>b.onclick=()=>{set.fx=+b.dataset.fx;saveSet();applySet();openSettings();});
   $("#setBox").querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{
     const k=b.dataset.s;
     if(k==="bg"){drawBg();open("#mBg");}
+    else if(k==="size"){sizeForm();}
+    else if(k==="cur"){curForm();}
     else if(k==="qr"){qrForm();}
     else if(k==="music"){close("#mSet");setTimeout(()=>{mMenu.classList.remove("hide");mBtn.setAttribute("aria-expanded","true");mUI();},0);}
   });
@@ -1178,7 +1309,7 @@ document.addEventListener("click",e=>{
   if(el.classList.contains("card")||el.classList.contains("row"))showDetail(el.dataset.id);
 });
 $("#q").addEventListener("input",e=>{query=e.target.value;render();});
-$("#adminBtn").onclick=()=>{toggleMenu(false);admin?window.scrollTo({top:$("#adminbar").offsetTop-10,behavior:"smooth"}):loginForm();};
+const adminEntry=()=>{toggleMenu(false);admin?window.scrollTo({top:$("#adminbar").offsetTop-10,behavior:"smooth"}):loginForm();};
 $("#aAdd").onclick=()=>levelForm(null);
 $("#aDiff").onclick=diffForm;
 $("#aOut").addEventListener("click",()=>{try{sessionStorage.removeItem("lod_smmwe_dev");}catch(e){}});
@@ -1607,7 +1738,45 @@ const BG_KEYS=[["clean","bClean"]];
 let bgAR=512/432;
 function bgSize(){const w=Math.round(window.innerHeight*bgAR);const r=document.documentElement.style;r.setProperty("--bgw",w+"px");r.setProperty("--bgdur",Math.max(20,Math.round(w/18))+"s");}
 bgSize();window.addEventListener("resize",bgSize);
+/* ---------- background change transition (diagonal mosaic) ---------- */
+let lastBg=null,bgFxRun=0;
+function bgSnap(){
+  try{
+    const bi=$("#bgimg"),shown=document.body.hasAttribute("data-bgimg"),el=document.createElement("div");
+    el.id="bgFx";
+    if(shown){const cs=getComputedStyle(bi);
+      el.style.cssText="position:fixed;inset:0;z-index:0;pointer-events:none;image-rendering:pixelated;background-image:"+cs.backgroundImage+";background-size:"+cs.backgroundSize+";background-repeat:"+cs.backgroundRepeat+";background-position:"+cs.backgroundPosition;}
+    else{const cs=getComputedStyle(document.body);
+      el.style.cssText="position:fixed;inset:0;z-index:0;pointer-events:none;background-color:"+cs.backgroundColor+";background-image:"+cs.backgroundImage+";background-size:"+cs.backgroundSize+";background-repeat:"+cs.backgroundRepeat+";background-position:"+cs.backgroundPosition;}
+    return el;
+  }catch(e){return null;}
+}
+function bgRun(el){
+  const mb=$("#mBg");if(mb)mb.classList.add("bgfx-run");
+  const old=document.getElementById("bgFx");if(old)old.remove();
+  const run=++bgFxRun;
+  el.id="bgFx";document.body.insertBefore(el,$("#bgimg").nextSibling);
+  const vw=innerWidth,vh=innerHeight,T=Math.max(14,Math.round(vw/22)),cols=Math.ceil(vw/T),rows=Math.ceil(vh/T),S=2;
+  const cv=document.createElement("canvas");cv.width=Math.ceil(vw/S);cv.height=Math.ceil(vh/S);const g=cv.getContext("2d"),Tc=T/S;
+  const DUR=1100,SPAN=.62,t0=performance.now();
+  const frame=now=>{
+    if(run!==bgFxRun){el.remove();return;}
+    const t=Math.min(1,(now-t0)/DUR);
+    g.clearRect(0,0,cv.width,cv.height);g.fillStyle="#000";
+    for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
+      const d=(i/cols+j/rows)/2,p=Math.min(1,Math.max(0,(t-d*SPAN)/(1-SPAN)));
+      if(p>=1)continue;const s=Tc*(1-p),o=(Tc-s)/2;g.fillRect(i*Tc+o,j*Tc+o,s+.5,s+.5);}
+    const u="url("+cv.toDataURL()+")";el.style.webkitMaskImage=u;el.style.maskImage=u;el.style.webkitMaskSize=el.style.maskSize="100% 100%";
+    if(t<1)requestAnimationFrame(frame);else{el.remove();if(mb)mb.classList.remove("bgfx-run");}
+  };
+  requestAnimationFrame(frame);
+}
 function applySet(){
+  let fxEl=null;
+  if(lastBg!==null&&lastBg!==set.bg&&set.fx!==0&&!(typeof reduced!=="undefined"&&reduced))fxEl=bgSnap();
+  lastBg=set.bg;
+  curApply();
+  applySize();buildTxStyle();
   document.body.setAttribute("data-fx",(set.fx===0||set.fx===1)?String(set.fx):"2");
   /* sprites menu hidden until a future version */ set.spr="classic";set.custom="";
   if(set.bg!=="clean"&&!BGS.some(x=>"img:"+x.id===set.bg))set.bg="img:smw_ghost";
@@ -1629,6 +1798,7 @@ function applySet(){
   }else if(SPR[set.spr]){b.setAttribute("data-spr",set.spr);root.setProperty("--spr",SPR[set.spr]);}
   else b.removeAttribute("data-spr");
   document.documentElement.classList.toggle("noanim",!set.anim);
+  if(fxEl)bgRun(fxEl);
 }
 function drawSprOpts(){
   const list=SPR_KEYS.filter(n=>n[0]!=="custom"||set.custom).map(n=>[n[0],t(n[1])]);
@@ -1672,6 +1842,7 @@ menuEl.addEventListener("click",e=>{
   else if(b.dataset.menu==="lang"){drawLang();open("#mLang");}
   else if(b.dataset.menu==="send"){sendForm();}
   else if(b.dataset.menu==="settings"){openSettings();}
+  else if(b.dataset.menu==="social"){openSocial();}
   else showCredits();
 });
 
@@ -1775,7 +1946,7 @@ if(set.music){mWait=true;const go=()=>{document.removeEventListener("pointerdown
   document.addEventListener("pointerdown",go);document.addEventListener("keydown",go);}
 mUI();
 
-/* ---------- add your own songs from a ZIP (kept on this device) ---------- */
+/* ---------- add your own MP3 songs (kept on this device) ---------- */
 const MDB="lod_smmwe_music";
 function idb(){return new Promise((res,rej)=>{try{const r=indexedDB.open(MDB,1);r.onupgradeneeded=()=>r.result.createObjectStore("tracks",{keyPath:"id",autoIncrement:true});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}catch(e){rej(e);}});}
 const idbDo=(mode,fn)=>idb().then(db=>new Promise((res,rej)=>{const tx=db.transaction("tracks",mode),st=tx.objectStore("tracks"),rq=fn(st);tx.oncomplete=()=>res(rq&&rq.result);tx.onerror=()=>rej(tx.error);}));
@@ -1786,49 +1957,24 @@ async function loadCustom(){
   if(/^z:/.test(set.music||"")&&!TRACKS.some(x=>x[0]===set.music)){set.music="";saveSet();}
   zipUI();mUI();
 }
-const u16=(d,o)=>d.getUint16(o,true),u32=(d,o)=>d.getUint32(o,true);
-async function readZip(buf){
-  const d=new DataView(buf),n=buf.byteLength;let e=-1;
-  for(let i=n-22;i>=Math.max(0,n-65557);i--){if(u32(d,i)===0x06054b50){e=i;break;}}
-  if(e<0)throw new Error("bad");
-  let cnt=u16(d,e+10),off=u32(d,e+16);
-  if(cnt===0xffff||off===0xffffffff)throw new Error("zip64");
-  const out=[],dec=new TextDecoder();
-  for(let k=0;k<cnt;k++){
-    if(u32(d,off)!==0x02014b50)throw new Error("bad");
-    const flag=u16(d,off+8),meth=u16(d,off+10),csz=u32(d,off+20),usz=u32(d,off+24),nl=u16(d,off+28),el=u16(d,off+30),cl=u16(d,off+32),lo=u32(d,off+42);
-    const name=dec.decode(new Uint8Array(buf,off+46,nl));off+=46+nl+el+cl;
-    if(/\/$/.test(name)||/(^|\/)(__MACOSX\/|\._)/.test(name)||!/\.mp3$/i.test(name)||(flag&1))continue;
-    if(usz>60e6)continue;
-    if(u32(d,lo)!==0x04034b50)continue;
-    const ds=lo+30+u16(d,lo+26)+u16(d,lo+28),raw=new Uint8Array(buf,ds,csz);
-    let bytes;
-    if(meth===0)bytes=raw;
-    else if(meth===8){
-      if(typeof DecompressionStream==="undefined")throw new Error("old");
-      bytes=new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer());
-    }else continue;
-    out.push({name:name.split("/").pop().replace(/\.mp3$/i,""),blob:new Blob([bytes],{type:"audio/mpeg"})});
-    if(out.length>=500)break;
-  }
-  return out;
-}
 $("#mZip").onchange=async e=>{
-  const f=e.target.files[0];e.target.value="";if(!f)return;
-  if(f.size>150e6){toast(t("zipBig"));return;}
+  const files=[...e.target.files].filter(f=>/\.mp3$/i.test(f.name)||f.type==="audio/mpeg");e.target.value="";
+  if(!files.length){toast(t("zipNone"));return;}
   toast(t("zipBusy"));
+  let ok=0,big=0,have=TRACKS.filter(x=>/^z:/.test(x[0])).length;
   try{
-    const list=await readZip(await f.arrayBuffer());
-    if(!list.length){toast(t("zipNone"));return;}
-    let ok=0;
-    for(const it of list){
-      const nm=it.name.replace(/[<>"&]/g,"").toUpperCase().slice(0,28)||"MP3";
-      let id=null;try{id=await idbDo("readwrite",st=>st.add({name:nm,blob:it.blob}));}catch(er){}
+    for(const f of files){
+      if(have+ok>=500)break;
+      if(f.size>60e6){big++;continue;}
+      const nm=f.name.replace(/\.mp3$/i,"").replace(/[<>"&]/g,"").toUpperCase().slice(0,28)||"MP3";
+      const blob=new Blob([f],{type:"audio/mpeg"});
+      let id=null;try{id=await idbDo("readwrite",st=>st.add({name:nm,blob}));}catch(er){}
       if(id==null)id="t"+Date.now()+"_"+ok;
-      addCustom(id,nm,it.blob);ok++;
+      addCustom(id,nm,blob);ok++;
     }
-    zipUI();mUI();toast(t("zipOk",ok));
-  }catch(er){toast(t(er&&er.message==="old"?"zipOld":"zipBad"));}
+    zipUI();mUI();
+    if(ok)toast(t("zipOk",ok));else toast(t(big?"zipBig":"zipBad"));
+  }catch(er){toast(t("zipBad"));}
 };
 $("#mZipClear").onclick=async()=>{
   try{await idbDo("readwrite",st=>st.clear());}catch(e){}
@@ -1875,7 +2021,7 @@ function drawLang(){
   $("#langOpts").innerHTML=h;
 }
 function applyLang(){
-  updSetLbl();
+  updSetLbl();{const e=$("#bgL");if(e)e.textContent=ct("bg");}updSocLbl();
   document.documentElement.lang=LANG;document.title=t("title");
   document.querySelectorAll("[data-i18n]").forEach(el=>{el.textContent=t(el.dataset.i18n);});
   document.querySelectorAll("[data-i18n-html]").forEach(el=>{el.innerHTML=t(el.dataset.i18nHtml);});
@@ -1935,7 +2081,7 @@ window.addEventListener("online",sync);
 <script>
 (function(){
   const P={K:"#140a24",O:"#ff8a00",o:"#d96a00",H:"#ffb84a",D:"#a84400",G:"#4f9a2a",g:"#7ac943",Y:"#ffe45a",W:"#f4f1ff",y:"#e0b84a",R:"#d62b1a",S:"#aaa4c8",s:"#6a6490",B:"#d9d2f0",e:"#2b1750"};
-  function uri(g){const w=Math.max(...g.map(r=>r.length));let r="";
+  function uri(g){if(typeof g==="string")return g;const w=Math.max(...g.map(r=>r.length));let r="";
     g.forEach((row,y)=>{for(let x=0;x<row.length;x++){const c=P[row[x]];if(c)r+="<rect x='"+x+"' y='"+y+"' width='1.02' height='1.02' fill='"+c+"'/>";}});
     return 'url("data:image/svg+xml,'+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 "+w+" "+g.length+"' shape-rendering='crispEdges'>"+r+"</svg>")+'")';}
   /* jack-o'-lantern drawn by code: shaded lobes, glowing carved face */
@@ -1979,7 +2125,7 @@ window.addEventListener("online",sync);
     [[14,5],[14,4],[15,3],[16,2],[17,1],[18,0],[21,0],[20,2],[19,3],[18,4],[17,5]].forEach(a=>{if(out[a[1]]&&out[a[1]][a[0]]===".")out[a[1]][a[0]]="K";});
     return out.map(r=>r.join(""));
   }
-  const PUMP=pumpkin();
+  const PUMP='url("data:image/png;base64,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")',TOMBIMG='url("data:image/png;base64,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")',CAULIMG='url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAABCCAYAAAArOOo+AAAGIklEQVR42u1cTW4cRRh97+uxSSRWnIGwSE5gFqBIyQEIGwTiAglHABbAEewLICUrlBzAliJYTE6QLAgHYMWKRWJ76rGo/qnuqv6bGc8kpkqypqen+quq9/2876vuNjGzff3F9wI/6Jx1/sMIUhBWIIpRWZKCbwY4xZ2MjXwAJCfPNZyHxEC+JTq/BQA8efYLsWZbzL2AJNQDJOAgAWQB0MGxWVYgocGpPC3nryWtBbAfKwDSBEdFkPXJpopAngCrFOYiUOcoaWtgpixSBBgs2pnD4WEBHLDuZ2Vvk8HRf56/ufALESEJYhsbsbPQArhx4wCOrlaEYyO7ZXEXwvn5ClyxNV+RaPTh0la6HzBjq/XgCFoANAfQhfYLVx7RFTBrbEslMAWbxa1K0FhbJkBbAbYKVBcGgfJIBi0IewsgsLh2WNl+s6sQ6lgCS5eIY+2YKQkqFWGdtZqasKIOGOrIamvVgWQQZnbTZlvmvx/+jUu7bAEl8/5pZqW7OhzeXICLfkugiIuDlbfAixI0qRX3AAXngeIAOLhZQBy3MF0S58UlKKu9xjkHgGCX6GRYuM2dtFd33zz4QcJhx5kM/9x9Wp+5/92nrbgjrcpjIhXPKUBsAmPb7crz4YU1uEoQRRBS2JcteIWcnbyYDMhHzx8kYylxjsdPf+Zabh5PMO56erwMgBQoK4O7BmSqN5GpIKr+zk5e4OxkOdC/H8jasgXcf3iE+w+PNop+4gZuTjXL9haV7nd6vCwtdHjA2IEDthYiCzw9XuLeoyMAxNmJP677j8iuWmWRXo7/DFMgbwwD62f7+1YIaEwrp8fL0TyNwYROj5c4O16C6p9kpaAQDCqWc3q8TAJZKePeo6MaVD9HJsdYxxLXJKDxfKyr5W489Tme1ZYs+VhWA0WAMCiwTqP/HoZW+aqg5RHhcTVWNUaojDif8PNMW+j8HJT9ZeOPAg8iwSEBzWlffvvV4OSGLHs8P+wuPEEgCfm//fq4h4ASMnSBJ89+GrRXhqwt+VTEQTCwZVWNcNc5X1ZAaupDyadJVc4HJY6jfJNJlxcBlj8kAe/KL1MdAHDOta9xbOYaRbqwxKzW2FZQg0uDVcX0kZtXP1rSYC0RZv3AlF+IVgRJ0ILBQvC0CFKotmz2WJ+XXWUM4YZHEQDXBrG1WBcs3lydd6bXMkwlIS4pxS4QsWpoFW4Cm5WLkdUpImUQgTY+DsAqmEQwYTfixtXv1vWUMARYFMF8RhJYtTiZd33X4fV3cVsMATWeDoTu4NoxTl0NeoDhKg7QhATDpUEFm+SecXioANYk+bbm2uM+G9ZQEzTcqaexpb2GFmC6uvnPS424AnUeMZ+DIotLD+4SQbynGkF7FycoCzrBHz3WGafnRLWtxIngueR+Zv+YzXUGpjMLroZTo9sffyZYsYGeXMSWQ5XUsJW4CZWKDYy9ja2wFV799QfXKyejHfV1XcgFMXPdzVgbIAo30YO2s1e7s83hcSDsCuUb9t32P4Nr1DKYuwBTzDjPxYN3bt2Vyns2cun7Nrml0DXQVG6KdwjIb20pgzSZ3h26KadVlH/Vt0GvpXGqqftJYuFPVPsh2cVnGScKQKifOskss9XavPT/uDzLra989ewe4KaeCigDOZYi5aR9N0l7ZvNtszm383zi/y5+dgwxu/kuavPc1kiN/CZwjpfbcHcLb6bnth6Q1UO7lpl8O4yeY2YmoPcETPUc5xbjoTEwMw3NIJ4+MFOvgWRgx/Ho4mZ1x/A1u+zjaUAjX1cL5Do1CnPNvA3XEzeZzjHblpmT9o2rHwBYSCswerTYsnX2urlD15vrrbi+C6v76bk1QL58/Xy9N9Ry22IFlOv1+XjYlMCa2zQ8Bh7cyg8kzMVjMYW5QuyvOyml171+lTTYrivLV9XNGGNnNt83m+eWwcxgXpc2+9UVX8tXL1u5cZZ3ql9xjvXnJuh2rE/4zmY5CeMMtg7/WcuGJLYtrdy59bmqh+jDxxJf/fl859x/+5O76s7Df3d4+fp3vldu/q6kTrueh12VqH1X9tqd7WQCeqfB7O6q7NvTOWGOe2fz3snX0d6Vu9DF/oBUkHmE/8biiu8U/gdwYdeKtQcyFAAAAABJRU5ErkJggg==")';
   const BAT=["KK.......KK","KKK.K.K.KKK","KKKKKKKKKKK",".KKKKKKKKK.","..KK.K.KK..","...K...K..."].map(r=>r.replace(/K/g,"K"));
   const GHOST=["...WWWWW...","..WWWWWWW..",".WWWWWWWWW.",".WWKWWWKWW.",".WWKWWWKWW.",".WWWWWWWWW.",".WWWKKKWWW.",".WWWKKKWWW.",".WWWWWWWWW.",".WWWWWWWWW.",".WW.WWW.WW.","..W..W..W.."];
   const SPIDER=["K.......K",".K.KKK.K.",".KKKKKKK.","KKKKRKKKK",".KKKKKKK.",".K.KKK.K.","K.......K"];
@@ -1999,7 +2145,7 @@ window.addEventListener("online",sync);
   add("hw-moon",MOON);add("hw-web",WEB);
   const th=document.createElement("div");th.className="hw hw-thread";th.style.backgroundImage="none";document.body.appendChild(th);
   add("hw-spider",SPIDER);
-  add("hw-tomb t3",TOMB);add("hw-tomb t1",TOMB);add("hw-tomb t2",TOMB);add("hw-pump1",PUMP);
+  add("hw-tomb t3",TOMBIMG);add("hw-tomb t1",TOMBIMG);add("hw-tomb t2",TOMBIMG);add("hw-pump1",PUMP);
   add("hw-bat",BAT);add("hw-bat b2",BAT);add("hw-bat b3",BAT);(function(){const BOO="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAA60lEQVR4nMVVyw3DIAwNqJOZW9fJGu06vcFqVEZyMY75OGnVJyESm+cvTrbtz3AjJUDO/D0lNzx/hu9GxBhbeQhrgVziA+QpZGZf48OATDq+n3Eug7htPwCV+tOGZ6qCHRq949HLnq04wn6Oeh7vzDnJX1DOot7PssCdP8sMVwJHh7QkfM957wZz5xy97MkpVaJkj/LAAgB2oTTnVvDSyxZIuV8pIR7uGcQ7IKtS7O213CqX9KCMDsoO8kesS4yhZfwOY5hKBm0VrC3QbBDU6mgALetJ9JoNK99pRnqRrnzLrfypIQ7L33CV/wZxnd15lkflVwAAAABJRU5ErkJggg==";
     ["b1","b2"].forEach(c=>{const d=document.createElement("div");d.className="hw hw-boo "+c;d.style.backgroundImage="url("+BOO+")";d.setAttribute("role","button");d.setAttribute("aria-label","Boo");document.body.appendChild(d);
       let tm;const on=()=>{clearTimeout(tm);d.classList.add("shy");},off=()=>{clearTimeout(tm);tm=setTimeout(()=>d.classList.remove("shy"),700);};
@@ -2018,7 +2164,7 @@ window.addEventListener("online",sync);
     return g.map(r=>r.join(""));})();
   /* cauldron + bubbles */
   const CAUL=["..CCCCCCCCCCCC..",".CVVVVvVVVVvVVC.","CCCCCCCCCCCCCCCC",".cccccccccccccc.","cccccccccccccccc","cccccccccccccccc","cccccccccccccccc","cccccccccccccccc",".cccccccccccccc.","..cccccccccccc..","...c........c..."];
-  add("hw-cauldron",CAUL);["","b2","b3"].forEach(c=>{const b=document.createElement("div");b.className="hw hw-bub "+c;document.body.appendChild(b);});
+  add("hw-cauldron",CAULIMG);["","b2","b3"].forEach(c=>{const b=document.createElement("div");b.className="hw hw-bub "+c;document.body.appendChild(b);});
   /* witch on a broom */
   const WITCH=["..................T.........", ".................TT.........", "................TTT.........", "...............TTTT.........", "..............TTTTT.........", ".........TTTTTTTTTTTTTT.....", "...............gggg.........", "...............TgggT........", "..............TTTTTTT.......", "F............TTTTTTTTT......", "FFF.TTTTTTTTTTTTTTTTTTTTTTT.", "FFFFTTTTTTTTTTTTTTTTTTTTTTT.", "FFF..........TT..TT.........", "F..........................."];
   /* falling candy corn and leaves */
