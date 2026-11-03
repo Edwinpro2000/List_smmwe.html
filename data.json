@@ -81,6 +81,22 @@
       "tags": [],
       "desc": "Good level, Gg",
       "video": "https://youtu.be/80tYWUSpsdU"
+    },
+    {
+      "id": "yxuckqdi",
+      "name": "Royal kiazo",
+      "creator": "‪makermx‬",
+      "diff": "Super Expert",
+      "code": "E9QL-PJCZ-9JXP-YB1J",
+      "status": "verified",
+      "env": "ground",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "short"
+      ],
+      "desc": "No check point corto pero intenso",
+      "video": "https://www.youtube.com/channel/UCyKay5GmOKxr-jm5WH555tw"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
@@ -168,5 +184,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-11-03T00:56:21.822Z"
+  "updated": "2026-11-03T01:37:26.854Z"
 }
