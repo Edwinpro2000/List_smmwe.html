@@ -69,6 +69,22 @@
       "video": "https://youtu.be/80tYWUSpsdU"
     },
     {
+      "id": "zdz9v56n",
+      "name": "The Pharaoh - Kaizo [ Super Expert ] TeamSkill",
+      "creator": "Plataformer2000",
+      "diff": "Super Expert",
+      "code": "IAKF-GS7J-RDW4-7BOG",
+      "status": "verified",
+      "env": "desert",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "short"
+      ],
+      "desc": "Aquí está, mi nuevo nivelito kaizo, con una dificultad algo elevada jeje",
+      "video": "https://youtu.be/afmvT7bkabk?si=bVBZBHiJveqlFC4v"
+    },
+    {
       "id": "yxuckqdi",
       "name": "Royal kiazo",
       "creator": "‪makermx‬",
@@ -184,5 +200,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-11-03T01:55:17.042Z"
+  "updated": "2026-11-03T02:10:58.162Z"
 }
