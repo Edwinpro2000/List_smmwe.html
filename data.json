@@ -55,20 +55,6 @@
       "video": "https://youtu.be/YFoQiYoV43s"
     },
     {
-      "id": "l1",
-      "name": "\"1 La Cueva Del Reto\"",
-      "creator": "Hugollano",
-      "diff": "Super Expert",
-      "code": "VZW9-BDE7-AMU2-VPA2",
-      "status": "verified",
-      "env": "underground",
-      "style": "smb",
-      "time": "day",
-      "tags": [],
-      "desc": "",
-      "video": "https://youtu.be/6tt2ueu9dR0"
-    },
-    {
       "id": "l3",
       "name": "Desert Night SMB3 - Kaizo Level",
       "creator": "playoff16",
@@ -97,6 +83,20 @@
       ],
       "desc": "No check point corto pero intenso",
       "video": "https://www.youtube.com/channel/UCyKay5GmOKxr-jm5WH555tw"
+    },
+    {
+      "id": "l1",
+      "name": "\"1 La Cueva Del Reto\"",
+      "creator": "Hugollano",
+      "diff": "Super Expert",
+      "code": "VZW9-BDE7-AMU2-VPA2",
+      "status": "verified",
+      "env": "underground",
+      "style": "smb",
+      "time": "day",
+      "tags": [],
+      "desc": "",
+      "video": "https://youtu.be/6tt2ueu9dR0"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
@@ -184,5 +184,5 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-11-03T01:37:26.854Z"
+  "updated": "2026-11-03T01:37:46.169Z"
 }
