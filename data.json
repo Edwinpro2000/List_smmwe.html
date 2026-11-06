@@ -36,9 +36,7 @@
       "env": "ground",
       "style": "smw",
       "time": "night",
-      "tags": [
-        "short"
-      ],
+      "tags": [],
       "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
       "video": "https://youtu.be/675WMIqQhqs",
       "img": ""
@@ -126,12 +124,6 @@
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
   "updates": [
     {
-      "date": "2026-11-06",
-      "title": "HII",
-      "desc": "Hoi",
-      "tag": "chg"
-    },
-    {
       "date": "2026-10-31",
       "title": "FELIZ HALLOWEEN!!!! 🎃",
       "desc": "Nuevas cosas!!!"
@@ -214,6 +206,5 @@
       "k": "u9"
     }
   ],
-  "trash": [],
-  "updated": "2026-11-06T22:10:09.570Z"
+  "updated": "2026-11-06T22:10:55.336Z"
 }
