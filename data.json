@@ -206,5 +206,20 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-11-06T22:10:55.336Z"
+  "players": [
+    {
+      "id": "p-demo",
+      "name": "PLATAFORMER2000",
+      "img": "levelimgs/gfrl3kh7.jpg",
+      "video": "",
+      "desc": "",
+      "clears": [
+        "l4",
+        "l3",
+        "yxuckqdi",
+        "zdz9v56n"
+      ]
+    }
+  ],
+  "updated": "2026-11-06T22:16:44.503Z"
 }
