@@ -36,9 +36,12 @@
       "env": "ground",
       "style": "smw",
       "time": "night",
-      "tags": [],
+      "tags": [
+        "short"
+      ],
       "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
-      "video": "https://youtu.be/675WMIqQhqs"
+      "video": "https://youtu.be/675WMIqQhqs",
+      "img": ""
     },
     {
       "id": "l2",
@@ -52,7 +55,8 @@
       "time": "day",
       "tags": [],
       "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. \"Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump\" - Luicundo",
-      "video": "https://youtu.be/YFoQiYoV43s"
+      "video": "https://youtu.be/YFoQiYoV43s",
+      "img": ""
     },
     {
       "id": "l3",
@@ -66,7 +70,8 @@
       "time": "night",
       "tags": [],
       "desc": "Good level, Gg",
-      "video": "https://youtu.be/80tYWUSpsdU"
+      "video": "https://youtu.be/80tYWUSpsdU",
+      "img": ""
     },
     {
       "id": "zdz9v56n",
@@ -82,7 +87,8 @@
         "short"
       ],
       "desc": "Aquí está, mi nuevo nivelito kaizo, con una dificultad algo elevada jeje",
-      "video": "https://youtu.be/afmvT7bkabk?si=bVBZBHiJveqlFC4v"
+      "video": "https://youtu.be/afmvT7bkabk?si=bVBZBHiJveqlFC4v",
+      "img": ""
     },
     {
       "id": "yxuckqdi",
@@ -98,7 +104,8 @@
         "short"
       ],
       "desc": "No check point corto pero intenso",
-      "video": "https://youtu.be/6QYuTiAVUO8?si=oSggw44lsiPhAPlG"
+      "video": "https://youtu.be/6QYuTiAVUO8?si=oSggw44lsiPhAPlG",
+      "img": ""
     },
     {
       "id": "l1",
@@ -112,11 +119,18 @@
       "time": "day",
       "tags": [],
       "desc": "",
-      "video": "https://youtu.be/6tt2ueu9dR0"
+      "video": "https://youtu.be/6tt2ueu9dR0",
+      "img": ""
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
   "updates": [
+    {
+      "date": "2026-11-06",
+      "title": "HII",
+      "desc": "Hoi",
+      "tag": "chg"
+    },
     {
       "date": "2026-10-31",
       "title": "FELIZ HALLOWEEN!!!! 🎃",
@@ -200,5 +214,6 @@
       "k": "u9"
     }
   ],
-  "updated": "2026-11-06T03:48:53.295Z"
+  "trash": [],
+  "updated": "2026-11-06T22:10:09.570Z"
 }
