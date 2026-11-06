@@ -333,7 +333,60 @@
       ],
       "desc": "",
       "video": ""
+    },
+    {
+      "id": "hxj6lyk5",
+      "img": "",
+      "name": "La avaricia Destruye todo",
+      "creator": "Eternal",
+      "diff": "Hard",
+      "code": "WWG9-9D9Y-JDES-BGTW",
+      "status": "verified",
+      "env": "airship",
+      "style": "smb",
+      "time": "night",
+      "tags": [
+        "shoot",
+        "solo"
+      ],
+      "desc": "",
+      "video": ""
+    },
+    {
+      "id": "gpswiaxs",
+      "img": "",
+      "name": "El Dúo Perfecto -spike Ball y snowball",
+      "creator": "Denity",
+      "diff": "Hard",
+      "code": "BRBS-GKFC-DEG3-E4WH",
+      "status": "verified",
+      "env": "snow",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "trad"
+      ],
+      "desc": "",
+      "video": ""
+    },
+    {
+      "id": "sq949zss",
+      "img": "",
+      "name": "Entre Las Airships de bowser",
+      "creator": "TMysterio",
+      "diff": "Hard",
+      "code": "T89S-AUKW-KAPJ-O2IM",
+      "status": "verified",
+      "env": "airship",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "trad",
+        "skill"
+      ],
+      "desc": "",
+      "video": ""
     }
   ],
-  "updated": "2026-11-06T22:51:28.064Z"
+  "updated": "2026-11-06T22:54:35.171Z"
 }
