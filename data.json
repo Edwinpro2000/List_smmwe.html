@@ -230,7 +230,6 @@
     },
     {
       "id": "rev9kk9b",
-      "img": "",
       "name": "Rock volcano",
       "creator": "Samuel4833",
       "diff": "Hard",
@@ -243,11 +242,11 @@
         "puzzle"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "0htfv973",
-      "img": "",
       "name": "Frostall Roger (kaizo)",
       "creator": "Malodesmmwe",
       "diff": "Hard",
@@ -261,11 +260,11 @@
         "skill"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "2buduf68",
-      "img": "",
       "name": "Loonboo (pvz minigames theme) - musical speedrun",
       "creator": "Soulsline",
       "diff": "Hard",
@@ -279,11 +278,11 @@
         "music"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "om8kpxdw",
-      "img": "",
       "name": "Mr switch",
       "creator": "Plataformer2000",
       "diff": "Hard",
@@ -297,11 +296,11 @@
         "solo"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "q49oggnl",
-      "img": "",
       "name": "Jumpman on Grrrols",
       "creator": "Ambarkym",
       "diff": "Hard",
@@ -315,11 +314,11 @@
         "solo"
       ],
       "desc": ". . .",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "nfr0t2pz",
-      "img": "",
       "name": "Corre y salta",
       "creator": "Dayron",
       "diff": "Hard",
@@ -332,11 +331,11 @@
         "speed"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "hxj6lyk5",
-      "img": "",
       "name": "La avaricia Destruye todo",
       "creator": "Eternal",
       "diff": "Hard",
@@ -350,11 +349,11 @@
         "solo"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "gpswiaxs",
-      "img": "",
       "name": "El Dúo Perfecto -spike Ball y snowball",
       "creator": "Denity",
       "diff": "Hard",
@@ -367,11 +366,11 @@
         "trad"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     },
     {
       "id": "sq949zss",
-      "img": "",
       "name": "Entre Las Airships de bowser",
       "creator": "TMysterio",
       "diff": "Hard",
@@ -385,8 +384,9 @@
         "skill"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": ""
     }
   ],
-  "updated": "2026-11-06T22:54:44.481Z"
+  "updated": "2026-11-06T23:00:14.540Z"
 }
