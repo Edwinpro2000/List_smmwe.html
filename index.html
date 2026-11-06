@@ -1817,7 +1817,7 @@ $("#prAdd").onclick=()=>{if(admin){LVK="prom";levelForm(null);}};
 $("#prLink").onclick=()=>{const v=location.origin+location.pathname+"#lista_prometedores",done=()=>toast(prt("copied"));
   const fb=()=>{try{const ta=document.createElement("textarea");ta.value=v;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
   try{navigator.clipboard.writeText(v).then(done,fb);}catch(e){fb();}};
-if(location.hash==="#list_players")viewSet("players",true);else if(location.hash==="#lista_prometedores")viewSet("prom",true);
+
 
 
 /* ===== admin tools: incomplete levels, link checker, trash ===== */
@@ -2451,6 +2451,7 @@ document.addEventListener("click",e=>{
 
 $("#langBtn").onclick=showUpdates;
 applyLang();
+if(location.hash==="#list_players")viewSet("players",true);else if(location.hash==="#lista_prometedores")viewSet("prom",true);
 /* admin: no visible button. Open the page with #admin to get the password form */
 function adminHash(){if(location.hash!=="#admin")return;try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}adminEntry();}
 window.addEventListener("hashchange",adminHash);adminHash();
