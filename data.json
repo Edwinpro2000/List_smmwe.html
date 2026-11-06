@@ -124,16 +124,6 @@
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
   "updates": [
     {
-      "date": "2026-10-31",
-      "title": "FELIZ HALLOWEEN!!!! 🎃",
-      "desc": "Nuevas cosas!!!"
-    },
-    {
-      "date": "2026-10-23",
-      "title": "Actualización de halloween",
-      "desc": "Halloween 🎃  decoración mejorado\n\n(Arreglado bugs y arrores)"
-    },
-    {
       "date": "2026-10-18",
       "title": "",
       "desc": "",
@@ -210,8 +200,6 @@
     {
       "id": "p-demo",
       "name": "PLATAFORMER2000",
-      "img": "levelimgs/gfrl3kh7.jpg",
-      "video": "",
       "desc": "",
       "clears": [
         "l4",
@@ -221,5 +209,131 @@
       ]
     }
   ],
-  "updated": "2026-11-06T22:31:44.909Z"
+  "prom": [
+    {
+      "id": "pm-demo",
+      "name": "Link's lost cavern",
+      "creator": "Malodesmmwe",
+      "diff": "Hard",
+      "code": "ZSBI-I1S3-B6FD-I3TC",
+      "status": "verified",
+      "env": "underground",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "puzzle",
+        "link"
+      ],
+      "desc": "Mi primer nivel de link",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "rev9kk9b",
+      "img": "",
+      "name": "Rock volcano",
+      "creator": "Samuel4833",
+      "diff": "Hard",
+      "code": "ZOO1-9S5I-YSJF-VLHA",
+      "status": "verified",
+      "env": "volcano",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "puzzle"
+      ],
+      "desc": "",
+      "video": ""
+    },
+    {
+      "id": "0htfv973",
+      "img": "",
+      "name": "Frostall Roger (kaizo)",
+      "creator": "Malodesmmwe",
+      "diff": "Hard",
+      "code": "2JVJ-VHIB-3WEZ-CP62",
+      "status": "verified",
+      "env": "snow",
+      "style": "smb",
+      "time": "night",
+      "tags": [
+        "short",
+        "skill"
+      ],
+      "desc": "",
+      "video": ""
+    },
+    {
+      "id": "2buduf68",
+      "img": "",
+      "name": "Loonboo (pvz minigames theme) - musical speedrun",
+      "creator": "Soulsline",
+      "diff": "Hard",
+      "code": "3F43-2HDK-54AP-T9Z4",
+      "status": "verified",
+      "env": "autumn",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "speed",
+        "music"
+      ],
+      "desc": "",
+      "video": ""
+    },
+    {
+      "id": "om8kpxdw",
+      "img": "",
+      "name": "Mr switch",
+      "creator": "Plataformer2000",
+      "diff": "Hard",
+      "code": "NN3Z-OM9Y-7WRO-2ZA8",
+      "status": "verified",
+      "env": "ground",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "puzzle",
+        "solo"
+      ],
+      "desc": "",
+      "video": ""
+    },
+    {
+      "id": "q49oggnl",
+      "img": "",
+      "name": "Jumpman on Grrrols",
+      "creator": "Ambarkym",
+      "diff": "Hard",
+      "code": "I88Q-EE45-MZHM-KAI1",
+      "status": "verified",
+      "env": "forest",
+      "style": "nsmbu",
+      "time": "",
+      "tags": [
+        "skill",
+        "solo"
+      ],
+      "desc": ". . .",
+      "video": ""
+    },
+    {
+      "id": "nfr0t2pz",
+      "img": "",
+      "name": "Corre y salta",
+      "creator": "Dayron",
+      "diff": "Hard",
+      "code": "VWVJ-OJ9V-JIC1-K6PF",
+      "status": "verified",
+      "env": "sky",
+      "style": "smb3",
+      "time": "day",
+      "tags": [
+        "speed"
+      ],
+      "desc": "",
+      "video": ""
+    }
+  ],
+  "updated": "2026-11-06T22:51:28.064Z"
 }
