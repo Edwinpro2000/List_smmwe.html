@@ -1068,7 +1068,7 @@ const lkt=k=>(LKT[LANG]||LKT.en)[k]||LKT.en[k];
 const lvLink=id=>location.href.split("#")[0]+"#nivel-"+encodeURIComponent(id);
 const lvHash=()=>{const m=/^#nivel-(.+)$/.exec(location.hash);if(!m)return null;try{return decodeURIComponent(m[1]);}catch(e){return null;}};
 let pendLv=lvHash();
-function lvOpenPending(){
+function lvOpenPending(){LVK="levels";
   if(!pendLv)return;const id=pendLv;pendLv=null;
   if(state.levels.some(l=>l.id===id))showDetail(id);
 }
@@ -1297,7 +1297,7 @@ function showDetail(id){
     ${!(l.video&&ytId(l.video))&&l.img?`<a class="thumb imgv" href="${esc(l.img)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(imt("open"))}"><img src="${esc(l.img)}" alt="${esc(imt("alt"))}" loading="lazy" onerror="this.parentNode.style.display='none'"></a>`:""}
     <div class="kv"><b>${t("dNotes")}</b><span>${esc(l.desc||t("noDesc"))}</span></div>
     <div class="actions">${admin?`<button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button>`:""}<button class="btn sm green" id="lkBtn">\uD83D\uDD17 ${lkt("cp")}</button>${svBtnHtml(l.id)}<button class="btn sm" id="rpBtn">\u2691 ${xt("rp")}</button><button class="btn sm" data-close="#mDetail">${t("close")}</button></div>`;
-  open("#mDetail");const rb=$("#rpBtn");if(rb)rb.onclick=()=>reportForm(l,i+1);const lkb=$("#lkBtn");if(lkb)lkb.onclick=()=>lvCopy(l.id);const svb=$("#svBtn");if(svb)svb.onclick=()=>{const on=svToggle(l.id);svb.outerHTML=svBtnHtml(l.id);$("#svBtn").onclick=svb.onclick;toast(on?svt("add"):svt("rm"));updSavLbl();if($("#mSaved").classList.contains("open"))openSaved();};
+  open("#mDetail");if(LVK==="prom"){["#lkBtn","#svBtn","#rpBtn"].forEach(q=>{const x=$(q);if(x)x.style.display="none";});}const rb=$("#rpBtn");if(rb)rb.onclick=()=>reportForm(l,i+1);const lkb=$("#lkBtn");if(lkb)lkb.onclick=()=>lvCopy(l.id);const svb=$("#svBtn");if(svb)svb.onclick=()=>{const on=svToggle(l.id);svb.outerHTML=svBtnHtml(l.id);$("#svBtn").onclick=svb.onclick;toast(on?svt("add"):svt("rm"));updSavLbl();if($("#mSaved").classList.contains("open"))openSaved();};
   const yt=$("#ytThumb");
   if(yt){const go=()=>{const v=yt.dataset.yt;yt.removeAttribute("role");yt.removeAttribute("tabindex");yt.onclick=yt.onkeydown=null;
       yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';yt.classList.add("playing");};
@@ -1468,7 +1468,7 @@ $("#aDiff").onclick=diffForm;
 $("#aOut").addEventListener("click",()=>{try{sessionStorage.removeItem("lod_smmwe_dev");}catch(e){}});
 $("#aOut").onclick=()=>{admin=false;try{sessionStorage.removeItem(SKEY);}catch(e){}state=readJSON(RKEY)||state;render();toast(t("loggedOut"));};
 $("#aReset").onclick=()=>{if(admin&&confirm(t("resetConfirm"))){
-  state={diffs:JSON.parse(JSON.stringify(DEF_DIFFS)),levels:DEF_LEVELS.map(l=>({id:uid(),...l}))};save();render();toast(t("resetDone"));}};
+  state=defaults();save();render();toast(t("resetDone"));}};
 $("#aExp").onclick=()=>{if(!admin)return;
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));
   a.download="data.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
