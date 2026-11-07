@@ -364,6 +364,11 @@ body[data-view=players] #searchPanel,body[data-view=players] #lvSec,body[data-vi
 .plrow{background:var(--paper,#fff8dc);border:4px solid var(--black);box-shadow:4px 4px 0 var(--black);padding:10px;margin:0 0 12px;cursor:pointer}
 .plrow .plh{display:flex;align-items:center;gap:8px}
 .plrow .plh b{flex:1;min-width:0;word-break:break-word;font-size:12px}
+.pltabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}.pltabs .btn{text-transform:none;width:100%;text-align:center;min-height:0;padding:9px 2px;font-size:9px;line-height:1.3}.pltabs .btn.on{background:#fbd000}
+#plQ{width:100%;box-sizing:border-box;padding:8px;font-size:10px}.plhow{margin-top:8px;border:3px dashed #0006;padding:6px;font-size:9px}.plhow summary{cursor:pointer;font-size:10px}
+.plrow.p1{border-color:#b8860b;background:#fff3b8}.plrow.p2{border-color:#6b7683;background:#eef1f5}.plrow.p3{border-color:#8a4b1f;background:#fbe3cf}
+.plrow .plh .rkc{flex:0 0 auto}.plrow .plpt{flex:0 0 auto}
+.pbdg{display:inline-block;border:2px solid #111;padding:2px 5px;font-size:8px;white-space:nowrap}
 .plrow .plpt{background:#fbd000;border:3px solid var(--black);padding:3px 6px;font-size:10px;white-space:nowrap}
 .plrow .plb{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
 .plrow .plav{flex:0 0 64px;width:64px;height:64px;border:3px solid var(--black);background:#ddd;object-fit:cover;image-rendering:auto}
@@ -519,6 +524,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
   <div class="menu hide" id="menu" role="menu">
     <button class="btn" data-menu="bg" role="menuitem">&#128444; <span id="bgL"></span></button>
     <button class="btn" data-menu="players" role="menuitem">&#127942; <span id="plL"></span></button>
+    <button class="btn" data-menu="upd" role="menuitem">&#128339; <span id="upL"></span></button>
     <button class="btn" data-menu="prom" role="menuitem">&#11088; <span id="prL"></span></button>
     <button class="btn" data-menu="saved" role="menuitem">&#9829; <span id="savL"></span></button>
     <button class="btn" data-menu="settings" role="menuitem">&#9881; <span id="setL"></span></button>
@@ -588,7 +594,14 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 <section class="panel" id="plPanel">
   <h2 style="margin:0"><span class="qblock">?</span> <span id="plTitle"></span></h2>
   <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="plBack"></button><button class="btn sm blue" id="plLink"></button><button class="btn sm green hide" id="plAdd"></button></div>
-  <div class="tags" id="plPts" style="margin-top:8px"></div>
+  <div class="pltabs" id="plTabs"></div>
+  <h3 id="plH" style="margin:10px 0 0;font-size:11px"></h3>
+  <input type="search" id="plQ" maxlength="40" autocomplete="off" style="margin-top:8px">
+  <p id="plCnt" style="font-size:9px;margin:6px 0 0"></p>
+  <details class="plhow" id="plHow"><summary id="plHowT"></summary>
+    <p id="plRule" style="font-size:9px;margin:6px 0 0"></p>
+    <div class="tags" id="plPts" style="margin-top:8px"></div>
+    <div class="tags" id="plBdg" style="margin-top:6px"></div></details>
 </section>
 <section class="panel" id="prPanel">
   <h2 style="margin:0"><span class="qblock">?</span> <span id="prTitle"></span></h2>
@@ -882,6 +895,7 @@ const t=(k,...a)=>{let s=(I18N[LANG]&&I18N[LANG][k]);if(s==null)s=I18N.en[k];if(
 const valid=s=>!!s&&Array.isArray(s.levels)&&Array.isArray(s.diffs);
 /* everything that comes from outside (data.json, saved copies, imports) is cleaned before use */
 const SX=(v,n)=>v==null?"":String(v).slice(0,n);
+function recN(v){const n=Math.floor(Number(v));return isFinite(n)&&n>0?Math.min(n,999999):null;}
 function clean(d){
   const diffs=d.diffs.filter(x=>x&&typeof x==="object").map(x=>({name:SX(x.name,40).trim(),color:/^#[0-9a-f]{3,8}$/i.test(x.color)?x.color:"#888888"})).filter(x=>x.name);
   const levels=d.levels.filter(l=>l&&typeof l==="object").map(l=>({
@@ -891,10 +905,11 @@ function clean(d){
   o.prom=Array.isArray(d.prom)?clean({diffs:d.diffs,levels:d.prom,players:[]}).levels.slice(0,300):[];
   if(!Array.isArray(d.prom)&&!d.__inner&&levels.length)o.prom=[{id:"pm-demo",name:"Ejemplo de nivel prometedor",creator:"Creador",diff:diffs[0]?diffs[0].name:"",code:"",status:"verified",env:"",style:"",time:"",tags:[],desc:"Este es un nivel de ejemplo. Entra como admin para editarlo o borrarlo.",video:"",img:""}];
   if(Array.isArray(d.trash)){const lim=Date.now()-30*864e5;o.trash=d.trash.filter(x=>x&&typeof x==="object"&&x.l&&typeof x.l==="object"&&Date.parse(x.date)>lim).slice(0,50).map(x=>{const c=clean({diffs:[],levels:[x.l]}).levels[0];return c?{l:c,pos:Math.max(1,x.pos|0),date:SX(x.date,10)}:null;}).filter(Boolean);}
+  if(typeof d.updated==="string"&&!isNaN(Date.parse(d.updated)))o.updated=d.updated.slice(0,30);
   if(typeof d.credits==="string")o.credits=d.credits.slice(0,600);
-  if(Array.isArray(d.players))o.players=d.players.filter(p=>p&&typeof p==="object"&&p.name).slice(0,300).map(p=>({id:SX(p.id||("p"+Math.random().toString(36).slice(2,9)),20),name:SX(p.name,40),desc:SX(p.desc,300),clears:Array.isArray(p.clears)?p.clears.map(x=>SX(x,40)).slice(0,500):[]}));
+  if(Array.isArray(d.players))o.players=d.players.filter(p=>p&&typeof p==="object"&&p.name).slice(0,300).map(p=>({id:SX(p.id||("p"+Math.random().toString(36).slice(2,9)),20),name:SX(p.name,40),desc:SX(p.desc,300),rp:recN(p.rp),re:recN(p.re),clears:Array.isArray(p.clears)?p.clears.map(x=>SX(x,40)).slice(0,500):[]}));
   if(Array.isArray(d.updates))o.updates=d.updates.filter(u=>u&&typeof u==="object").map(u=>({date:SX(u.date,10),title:SX(u.title,60),desc:SX(u.desc,400),...(/^[un]\d{1,3}$/.test(u.k||"")?{k:u.k}:{}),...(u.tag==="new"||u.tag==="chg"?{tag:u.tag}:{})}));
-  if(!Array.isArray(o.players)&&!Array.isArray(d.players)&&o.levels.length)o.players=[{id:"p-demo",name:"Jugador de ejemplo",desc:"Este es un jugador de ejemplo. Entra como admin para editarlo o borrarlo.",clears:o.levels.slice(0,3).map(l=>l.id)}];
+  if(!Array.isArray(o.players)&&!Array.isArray(d.players)&&o.levels.length)o.players=[{id:"p-demo",name:"Jugador de ejemplo",rp:25,re:45,desc:"Este es un jugador de ejemplo. Entra como admin para editarlo o borrarlo.",clears:o.levels.slice(0,3).map(l=>l.id)}];
   return o;
 }
 const readJSON=k=>{try{const s=JSON.parse(lsGet(k));return valid(s)?clean(s):null;}catch(e){return null;}};
@@ -957,7 +972,7 @@ function render(){
   $("#goSearch").classList.toggle("on",!!(q||fCat!=="all"||fDiff!=="all"));
   $("#adminbar").classList.toggle("hide",!admin);
   updateStatus();
-  if(typeof plRender==="function")plRender();if(typeof prRender==="function")prRender();
+  if(typeof plRender==="function")plRender();if(typeof prRender==="function")prRender();if(typeof upRender==="function")upRender();
   {const ab=$("#adminBtn");if(ab)ab.textContent="\u{1F511} "+(admin?t("adminPanel"):t("admin"));}
 }
 
@@ -1733,11 +1748,16 @@ $("#aInbox").onclick=inboxForm;updInboxBtn();
 const PTS_N={"hard":1,"insane":3,"expert":5,"super expert":10,"extreme":15,"impossible":20};
 const ptsOf=n=>{const k=String(n||"").toLowerCase();if(PTS_N[k]!=null)return PTS_N[k];const i=state.diffs.findIndex(d=>d.name===n);return i<0?1:[1,3,5,10,15,20][Math.min(i,5)];};
 const PLT={
-es:{m:"Lista de jugadores",t:"LISTA DE JUGADORES",back:"← Lista de niveles",link:"Copiar enlace",copied:"Enlace copiado",add:"+ Jugador",pts:"puntos",none:"Aún no hay jugadores",lvls:"Niveles pasados",edit:"Editar",del:"Borrar",delQ:"¿Borrar a \"{0}\"?",name:"Nombre",img:"Imagen (opcional)",vid:"Video (opcional)",notes:"Notas",clr:"Niveles que pasó",find:"Buscar nivel...",save:"Guardar",cancel:"Cancelar",need:"Falta el nombre",saved:"Jugador guardado",done:"Jugador borrado",up:"Subir imagen",total:"Total",watch:"Ver video",pl:"puntos por nivel"},
-en:{m:"Player list",t:"PLAYER LIST",back:"← Level list",link:"Copy link",copied:"Link copied",add:"+ Player",pts:"points",none:"No players yet",lvls:"Cleared levels",edit:"Edit",del:"Delete",delQ:"Delete \"{0}\"?",name:"Name",img:"Image (optional)",vid:"Video (optional)",notes:"Notes",clr:"Levels cleared",find:"Search level...",save:"Save",cancel:"Cancel",need:"Name is missing",saved:"Player saved",done:"Player deleted",up:"Upload image",total:"Total",watch:"Watch video",pl:"points per level"},
-pt:{m:"Lista de jogadores",t:"LISTA DE JOGADORES",back:"← Lista de níveis",link:"Copiar link",copied:"Link copiado",add:"+ Jogador",pts:"pontos",none:"Ainda não há jogadores",lvls:"Níveis completados",edit:"Editar",del:"Excluir",delQ:"Excluir \"{0}\"?",name:"Nome",img:"Imagem (opcional)",vid:"Vídeo (opcional)",notes:"Notas",clr:"Níveis completados",find:"Buscar nível...",save:"Salvar",cancel:"Cancelar",need:"Falta o nome",saved:"Jogador salvo",done:"Jogador excluído",up:"Enviar imagem",total:"Total",watch:"Ver vídeo",pl:"pontos por nível"}};
+es:{tsP:"🌟 Prometedores",tsE:"♾ Sin fin",tsB:"🏆 Mejores",how:"Cómo se ganan los puntos",find2:"Buscar jugador...",cnt:"{0} jugadores",noMatch:"Ningún jugador coincide",tbP:"Jugadores prometedores",tbE:"Desafío Mario Sin Fin (Expert)",tbB:"Los mejores jugadores",rec:"Récord",fRp:"Récord en Prometedores",fRe:"Récord en Desafío sin fin (Expert)",rule:"Desde {0} de récord, el récord completo suma como puntos.",sLv:"Puntos de niveles",sPr:"Puntos de Prometedores",sEn:"Puntos de Desafío sin fin",min:"mín. {0}",noOne:"Nadie en esta lista todavía",ruleB:"Total = niveles + Prometedores + Desafío sin fin.",bR:"Bronce",bS:"Plata",bG:"Oro",bL:"Insignias",m:"Lista de jugadores",t:"LISTA DE JUGADORES",back:"← Lista de niveles",link:"Copiar enlace",copied:"Enlace copiado",add:"+ Jugador",pts:"puntos",none:"Aún no hay jugadores",lvls:"Niveles pasados",edit:"Editar",del:"Borrar",delQ:"¿Borrar a \"{0}\"?",name:"Nombre",img:"Imagen (opcional)",vid:"Video (opcional)",notes:"Notas",clr:"Niveles que pasó",find:"Buscar nivel...",save:"Guardar",cancel:"Cancelar",need:"Falta el nombre",saved:"Jugador guardado",done:"Jugador borrado",up:"Subir imagen",total:"Total",watch:"Ver video",pl:"puntos por nivel"},
+en:{tsP:"🌟 Promising",tsE:"♾ Endless",tsB:"🏆 Best",how:"How points work",find2:"Search player...",cnt:"{0} players",noMatch:"No player matches",tbP:"Promising players",tbE:"Endless Mario Challenge (Expert)",tbB:"Best players",rec:"Record",fRp:"Record in Promising",fRe:"Record in Endless Challenge (Expert)",rule:"From {0} record, the whole record counts as points.",sLv:"Level points",sPr:"Promising points",sEn:"Endless Challenge points",min:"min. {0}",noOne:"Nobody on this list yet",ruleB:"Total = levels + Promising + Endless Challenge.",bR:"Bronze",bS:"Silver",bG:"Gold",bL:"Badges",m:"Player list",t:"PLAYER LIST",back:"← Level list",link:"Copy link",copied:"Link copied",add:"+ Player",pts:"points",none:"No players yet",lvls:"Cleared levels",edit:"Edit",del:"Delete",delQ:"Delete \"{0}\"?",name:"Name",img:"Image (optional)",vid:"Video (optional)",notes:"Notes",clr:"Levels cleared",find:"Search level...",save:"Save",cancel:"Cancel",need:"Name is missing",saved:"Player saved",done:"Player deleted",up:"Upload image",total:"Total",watch:"Watch video",pl:"points per level"},
+pt:{tsP:"🌟 Promissores",tsE:"♾ Sem fim",tsB:"🏆 Melhores",how:"Como os pontos funcionam",find2:"Buscar jogador...",cnt:"{0} jogadores",noMatch:"Nenhum jogador encontrado",tbP:"Jogadores promissores",tbE:"Desafio Mario Sem Fim (Expert)",tbB:"Melhores jogadores",rec:"Recorde",fRp:"Recorde em Promissores",fRe:"Recorde no Desafio sem fim (Expert)",rule:"A partir de {0} de recorde, o recorde inteiro soma como pontos.",sLv:"Pontos dos níveis",sPr:"Pontos de Promissores",sEn:"Pontos do Desafio sem fim",min:"mín. {0}",noOne:"Ninguém nesta lista ainda",ruleB:"Total = níveis + Promissores + Desafio sem fim.",bR:"Bronze",bS:"Prata",bG:"Ouro",bL:"Insígnias",m:"Lista de jogadores",t:"LISTA DE JOGADORES",back:"← Lista de níveis",link:"Copiar link",copied:"Link copiado",add:"+ Jogador",pts:"pontos",none:"Ainda não há jogadores",lvls:"Níveis completados",edit:"Editar",del:"Excluir",delQ:"Excluir \"{0}\"?",name:"Nome",img:"Imagem (opcional)",vid:"Vídeo (opcional)",notes:"Notas",clr:"Níveis completados",find:"Buscar nível...",save:"Salvar",cancel:"Cancelar",need:"Falta o nome",saved:"Jogador salvo",done:"Jogador excluído",up:"Enviar imagem",total:"Total",watch:"Ver vídeo",pl:"pontos por nível"}};
 const plt=(k,a)=>{let v=(PLT[LANG]||PLT.en)[k]||PLT.en[k]||"";return a==null?v:v.replace("{0}",a);};
-const plTotal=p=>{let pts=0,n=0;const by={};(p.clears||[]).forEach(id=>{const l=state.levels.find(x=>x.id===id);if(l){pts+=ptsOf(l.diff);n++;by[l.diff]=(by[l.diff]||0)+1;}});return{pts,n,by};};
+const BDG=[[40,"bG","#fbd000","#111"],[15,"bS","#c9d1d9","#111"],[1,"bR","#cd7f32","#fff"]];
+const plBadge=p=>{const b=BDG.find(x=>p>=x[0]);return b?`<span class="pbdg" style="background:${b[2]};color:${b[3]}">${esc(plt(b[1]))}</span>`:"";};
+const PP_MIN=20,EP_MIN=40;
+const recPts=(v,min)=>v!=null&&v>=min?v:0;
+const plTotal=p=>{let lp=0,n=0;const by={};(p.clears||[]).forEach(id=>{const l=state.levels.find(x=>x.id===id);if(l){lp+=ptsOf(l.diff);n++;by[l.diff]=(by[l.diff]||0)+1;}});const pp=recPts(p.rp,PP_MIN),ep=recPts(p.re,EP_MIN);return{pts:lp+pp+ep,lp,pp,ep,n,by};};
+let plTab="best";
 const plSorted=()=>(state.players||[]).map(p=>({p,...plTotal(p)})).sort((a,b)=>b.pts-a.pts||b.n-a.n||a.p.name.localeCompare(b.p.name));
 const VH={players:"#list_players",prom:"#lista_prometedores"};
 function viewSet(v,noHash){
@@ -1750,16 +1770,46 @@ function plRender(){
   const e=$("#plL");if(e)e.textContent=document.body.getAttribute("data-view")==="players"?plt("back").replace(/^\S+\s/,""):plt("m");
   $("#plTitle").textContent=plt("t");$("#plBack").textContent=plt("back");$("#plLink").textContent=plt("link");$("#plAdd").textContent=plt("add");$("#plAdd").classList.toggle("hide",!admin);
   $("#plPts").innerHTML=state.diffs.map(d=>`<span class="tg" style="border-color:${esc(d.color)}">${esc(d.name)}: ${ptsOf(d.name)}+</span>`).join("");
-  const rows=plSorted();
-  $("#plList").innerHTML=rows.length?rows.map((r,i)=>`<div class="plrow" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${i<4?"":"b"}">${i+1}</span><b>${esc(r.p.name)}</b><span class="plpt">${r.pts} ${esc(plt("pts"))}</span></div>
-    <div class="plb"><div class="plbd">${state.diffs.filter(d=>r.by[d.name]).map(d=>`<span class="badge" style="background:${esc(d.color)}">${esc(d.name)} x${r.by[d.name]}</span>`).join("")||"&mdash;"}</div></div>
-    ${admin?`<div class="rowtools"><button class="btn sm blue" data-ple="${esc(r.p.id)}">${plt("edit")}</button><button class="btn sm red" data-pld="${esc(r.p.id)}">${plt("del")}</button></div>`:""}</div>`).join(""):`<div class="empty">${plt("none")}</div>`;
+  $("#plBdg").innerHTML="<b style=\"font-size:9px\">"+esc(plt("bL"))+":</b> "+BDG.slice().reverse().map(b=>`<span class="pbdg" style="background:${b[2]};color:${b[3]}">${esc(plt(b[1]))} ${b[0]}+</span>`).join(" ");
+  const tabs=[["prom","tsP","tbP"],["endless","tsE","tbE"],["best","tsB","tbB"]];
+  $("#plTabs").innerHTML=tabs.map(x=>`<button type="button" class="btn${plTab===x[0]?" on":""}" data-pltab="${x[0]}" title="${esc(plt(x[2]))}">${esc(plt(x[1]))}</button>`).join("");
+  const cur=tabs.find(x=>x[0]===plTab);$("#plH").textContent=plt(cur[2]);
+  $("#plHowT").textContent=plt("how");$("#plQ").placeholder=plt("find2");
+  $("#plRule").textContent=plTab==="prom"?plt("rule",PP_MIN):plTab==="endless"?plt("rule",EP_MIN):plt("ruleB");
+  const bestV=plTab==="best";$("#plPts").style.display=bestV?"":"none";$("#plBdg").style.display=bestV?"":"none";
+  const q=($("#plQ").value||"").trim().toLowerCase();
+  const rk=(arr,f)=>arr.map((r,i)=>({...r,rank:arr.findIndex(x=>f(x)===f(r))+1}));
+  const actions=r=>admin?`<div class="rowtools"><button class="btn sm blue" data-ple="${esc(r.p.id)}">${plt("edit")}</button><button class="btn sm red" data-pld="${esc(r.p.id)}">${plt("del")}</button></div>`:"";
+  const rcls=n=>n<=3?" p"+n:"";
+  let list,html="";
+  if(bestV){
+    list=rk(plSorted(),r=>r.pts+"|"+r.n);
+  }else{
+    const k=plTab==="prom"?"rp":"re";
+    list=rk(plSorted().filter(r=>r.p[k]!=null).sort((a,b)=>b.p[k]-a.p[k]||a.p.name.localeCompare(b.p.name)),r=>r.p[k]);
+  }
+  const total=list.length;
+  list=list.filter(r=>!q||r.p.name.toLowerCase().includes(q));
+  $("#plCnt").textContent=plt("cnt",total);
+  if(bestV){
+    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b>${plBadge(r.pts)}<span class="plpt">${r.pts} ${esc(plt("pts"))}</span></div>
+    <div class="plb"><div class="plbd">${state.diffs.filter(d=>r.by[d.name]).map(d=>`<span class="badge" style="background:${esc(d.color)}">${esc(d.name)} x${r.by[d.name]}</span>`).join("")}${r.pp?`<span class="badge" style="background:#6a2fb8">Prom ${r.pp}</span>`:""}${r.ep?`<span class="badge" style="background:#d32a1f">Expert ${r.ep}</span>`:""}${(!r.pts)?"&mdash;":""}</div></div>${actions(r)}</div>`).join("");
+  }else{
+    const k=plTab==="prom"?"rp":"re",min=plTab==="prom"?PP_MIN:EP_MIN;
+    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b><span class="plpt">${esc(plt("rec"))} ${r.p[k]}</span></div>
+    <div class="plb"><div class="plbd"><span class="badge" style="background:${r.p[k]>=min?"#2fa84f":"#777"}">${r.p[k]>=min?"+"+r.p[k]+" "+esc(plt("pts")):esc(plt("min",min))}</span></div></div>${actions(r)}</div>`).join("");
+  }
+  if(!list.length)html=`<div class="empty">${plt(q?"noMatch":"noOne")}</div>`;
+  $("#plList").innerHTML=html;
 }
 function plDetail(id){
-  const r=plSorted().map((x,i)=>({...x,rank:i+1})).find(x=>x.p.id===id);if(!r)return;const p=r.p;
+  const all=plSorted(),r=all.map(x=>({...x,rank:all.findIndex(y=>y.pts===x.pts&&y.n===x.n)+1})).find(x=>x.p.id===id);if(!r)return;const p=r.p;
   const lv=(p.clears||[]).map(i=>state.levels.find(l=>l.id===i)).filter(Boolean);
-  $("#detailBox").innerHTML=`<h2 style="margin-top:0">#${r.rank} ${esc(p.name)}</h2>
+  $("#detailBox").innerHTML=`<h2 style="margin-top:0">#${r.rank} ${esc(p.name)} ${plBadge(r.pts)}</h2>
     <p><b>${r.pts}</b> ${esc(plt("pts"))} · ${r.n} ${esc(plt("lvls").toLowerCase())}</p>
+    <div class="tlrow"><span>${esc(plt("sLv"))}</span><b>${r.lp}</b></div>
+    <div class="tlrow"><span>${esc(plt("tbP"))}: ${p.rp!=null?esc(plt("rec"))+" "+p.rp:"&mdash;"}</span><b>${r.pp}</b></div>
+    <div class="tlrow"><span>${esc(plt("tbE"))}: ${p.re!=null?esc(plt("rec"))+" "+p.re:"&mdash;"}</span><b>${r.ep}</b></div>
     ${p.desc?`<p style="font-size:10px">${esc(p.desc)}</p>`:""}
     <span class="lbl">${esc(plt("lvls"))}</span>
     <div>${lv.map(l=>`<div class="tlrow"><div><b>${esc(l.name)}</b></div><div>${badge(l.diff)} +${ptsOf(l.diff)}</div></div>`).join("")||"&mdash;"}</div>
@@ -1767,27 +1817,31 @@ function plDetail(id){
   open("#mDetail");
 }
 function plForm(id){
-  const ex=(state.players||[]).find(p=>p.id===id),p=ex?JSON.parse(JSON.stringify(ex)):{id:"p"+uid(),name:"",img:"",video:"",desc:"",clears:[]};
+  const ex=(state.players||[]).find(p=>p.id===id),p=ex?JSON.parse(JSON.stringify(ex)):{id:"p"+uid(),name:"",desc:"",rp:null,re:null,clears:[]};
   const sel=new Set(p.clears);
   $("#formBox").innerHTML=`<h2>${plt(ex?"edit":"add")}</h2>
     <label class="lbl">${plt("name")}</label><input type="text" id="pName" maxlength="40" value="${esc(p.name)}">
+    <label class="lbl">${plt("fRp")}</label><input type="number" id="pRp" min="0" inputmode="numeric" value="${p.rp==null?"":p.rp}">
+    <label class="lbl">${plt("fRe")}</label><input type="number" id="pRe" min="0" inputmode="numeric" value="${p.re==null?"":p.re}">
     <label class="lbl">${plt("notes")}</label><textarea id="pDesc" maxlength="300">${esc(p.desc)}</textarea>
     <label class="lbl">${plt("clr")} — <b id="pTot">0</b> ${esc(plt("pts"))}</label>
     <input type="search" id="pFind" placeholder="${esc(plt("find"))}"><div class="plclr" id="pClr"></div>
     <div class="actions"><button class="btn green" id="pSave">${plt("save")}</button><button class="btn" data-close="#mForm">${plt("cancel")}</button></div>`;
-  const tot=()=>{let n=0;sel.forEach(i=>{const l=state.levels.find(x=>x.id===i);if(l)n+=ptsOf(l.diff);});$("#pTot").textContent=n;};
+  const tot=()=>{let n=0;sel.forEach(i=>{const l=state.levels.find(x=>x.id===i);if(l)n+=ptsOf(l.diff);});n+=recPts(recN($("#pRp").value),PP_MIN)+recPts(recN($("#pRe").value),EP_MIN);$("#pTot").textContent=n;};
   const draw=()=>{const q=$("#pFind").value.trim().toLowerCase();$("#pClr").innerHTML=state.levels.filter(l=>!q||l.name.toLowerCase().includes(q)).map(l=>`<label><input type="checkbox" data-c="${esc(l.id)}"${sel.has(l.id)?" checked":""}><span>${esc(l.name)}</span>${badge(l.diff)}<b>+${ptsOf(l.diff)}</b></label>`).join("");
     $("#pClr").querySelectorAll("[data-c]").forEach(c=>c.onchange=()=>{c.checked?sel.add(c.dataset.c):sel.delete(c.dataset.c);tot();});tot();};
-  draw();$("#pFind").oninput=draw;
+  draw();$("#pFind").oninput=draw;$("#pRp").oninput=tot;$("#pRe").oninput=tot;
   $("#pSave").onclick=()=>{
     const name=$("#pName").value.trim();if(!name){toast(plt("need"));return;}
-    const o={id:p.id,name,desc:$("#pDesc").value.trim().slice(0,300),clears:[...sel]};
+    const o={id:p.id,name,rp:recN($("#pRp").value),re:recN($("#pRe").value),desc:$("#pDesc").value.trim().slice(0,300),clears:[...sel]};
     const a=(state.players||[]).slice();const i=a.findIndex(x=>x.id===p.id);if(i>=0)a[i]=o;else a.push(o);
     state.players=a;save();render();close("#mForm");toast(plt("saved"));
   };
   open("#mForm");
 }
 $("#plBack").onclick=()=>plSet(false);
+$("#plQ").addEventListener("input",()=>plRender());
+$("#plTabs").addEventListener("click",e=>{const b=e.target.closest("[data-pltab]");if(b){plTab=b.dataset.pltab;plRender();}});
 $("#plAdd").onclick=()=>{if(admin)plForm(null);};
 $("#plLink").onclick=()=>{const v=location.origin+location.pathname+"#list_players",done=()=>toast(plt("copied"));
   const fb=()=>{try{const ta=document.createElement("textarea");ta.value=v;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
@@ -1800,6 +1854,25 @@ $("#plList").addEventListener("click",e=>{
 });
 window.addEventListener("hashchange",()=>{const h=location.hash;if(h==="#list_players")viewSet("players",true);else if(h==="#lista_prometedores")viewSet("prom",true);else if(!h&&document.body.getAttribute("data-view")!=="levels")viewSet("levels",true);});
 
+
+/* ===== last update window ===== */
+const UPT={
+es:{m:"Actualización",t:"ÚLTIMA ACTUALIZACIÓN",none:"Sin fecha todavía (aún no se ha publicado)",ago0:"hoy",ago1:"hace 1 día",agoN:"hace {0} días",lv:"Niveles",pr:"Prometedores",pl:"Jugadores",close:"Cerrar"},
+en:{m:"Last update",t:"LAST UPDATE",none:"No date yet (nothing published yet)",ago0:"today",ago1:"1 day ago",agoN:"{0} days ago",lv:"Levels",pr:"Promising",pl:"Players",close:"Close"},
+pt:{m:"Atualização",t:"ÚLTIMA ATUALIZAÇÃO",none:"Sem data ainda (nada publicado ainda)",ago0:"hoje",ago1:"há 1 dia",agoN:"há {0} dias",lv:"Níveis",pr:"Promissores",pl:"Jogadores",close:"Fechar"}};
+const upt=(k,a)=>{const v=(UPT[LANG]||UPT.en)[k]||UPT.en[k]||"";return a==null?v:v.replace("{0}",a);};
+function updForm(){
+  const d=state.updated?new Date(state.updated):null,ok=d&&!isNaN(d);
+  let when=upt("none"),ago="";
+  if(ok){const n=Math.max(0,Math.floor((Date.now()-d.getTime())/864e5));when=d.toLocaleDateString(LOC[LANG],{day:"numeric",month:"long",year:"numeric"})+" · "+d.toLocaleTimeString(LOC[LANG],{hour:"2-digit",minute:"2-digit"});ago=n===0?upt("ago0"):n===1?upt("ago1"):upt("agoN",n);}
+  $("#formBox").innerHTML=`<h2>${esc(upt("t"))}</h2><p style="font-size:12px"><b>${esc(when)}</b>${ago?`<br><small>${esc(ago)}</small>`:""}</p>
+    <div class="tlrow"><b>${esc(upt("lv"))}</b><span>${state.levels.length}</span></div>
+    <div class="tlrow"><b>${esc(upt("pr"))}</b><span>${(state.prom||[]).length}</span></div>
+    <div class="tlrow"><b>${esc(upt("pl"))}</b><span>${(state.players||[]).length}</span></div>
+    <div class="actions"><button class="btn" data-close="#mForm">${esc(upt("close"))}</button></div>`;
+  open("#mForm");
+}
+function upRender(){const e=$("#upL");if(e)e.textContent=upt("m");}
 /* ===== promising levels ===== */
 const PRT={
 es:{m:"Prometedores",t:"PROMETEDORES",intro:"Niveles prometedores de SMM:WE: todavía no están en la lista de dificultades, pero van por buen camino.",back:"← Lista de niveles",link:"Copiar enlace",copied:"Enlace copiado",add:"+ Nivel",none:"Aún no hay niveles prometedores"},
@@ -2235,6 +2308,7 @@ menuEl.addEventListener("click",e=>{
   else if(b.dataset.menu==="lang"){drawLang();open("#mLang");}
   else if(b.dataset.menu==="send"){sendForm();}
   else if(b.dataset.menu==="players"){plSet(document.body.getAttribute("data-view")!=="players");}
+  else if(b.dataset.menu==="upd"){updForm();}
   else if(b.dataset.menu==="prom"){viewSet(document.body.getAttribute("data-view")!=="prom"?"prom":"levels");}
   else if(b.dataset.menu==="saved"){openSaved();}
   else if(b.dataset.menu==="settings"){openSettings();}
