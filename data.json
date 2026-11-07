@@ -121,6 +121,24 @@
       "video": "https://youtu.be/6tt2ueu9dR0"
     },
     {
+      "id": "kyh9q19e",
+      "img": "",
+      "name": "My bestest shell level [Kaizo]",
+      "creator": "Newpalebn",
+      "diff": "Expert",
+      "code": "MLLE-WS7N-AZQ9-S8JO",
+      "status": "verified",
+      "env": "snow",
+      "style": "smb3",
+      "time": "day",
+      "tags": [
+        "skill",
+        "solo"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/ndqn4lww9SA?si=KipVIq6ZkMSB4kgQ"
+    },
+    {
       "id": "d2ajnd1j",
       "img": "",
       "name": "Frostall rage (kaizo)",
@@ -153,6 +171,24 @@
       ],
       "desc": "",
       "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy"
+    },
+    {
+      "id": "q0nj503a",
+      "img": "",
+      "name": "Megatively - Kaizo",
+      "creator": "Newpalebn",
+      "diff": "Insane",
+      "code": "Z3GL-4IS5-7EEY-LHR",
+      "status": "verified",
+      "env": "ground",
+      "style": "smb3",
+      "time": "night",
+      "tags": [
+        "skill",
+        "solo"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/ndqn4lww9SA?si=KipVIq6ZkMSB4kgQ"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
@@ -559,5 +595,5 @@
       "img": ""
     }
   ],
-  "updated": "2026-11-07T14:33:27.051Z"
+  "updated": "2026-11-07T14:38:52.002Z"
 }
