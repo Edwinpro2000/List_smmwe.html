@@ -124,6 +124,18 @@
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
   "updates": [
     {
+      "date": "2026-11-06",
+      "title": "Prometedores",
+      "desc": "Nieveles prometedores",
+      "tag": "new"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Nuevo lista de jugadores",
+      "desc": "Cosas nuevas de top jugadores",
+      "tag": "new"
+    },
+    {
       "date": "2026-10-18",
       "title": "",
       "desc": "",
@@ -198,15 +210,140 @@
   ],
   "players": [
     {
-      "id": "p-demo",
-      "name": "PLATAFORMER2000",
+      "id": "pql3tkcfs",
+      "name": "Cerespin",
+      "rp": 175,
+      "re": null,
       "desc": "",
-      "clears": [
-        "l4",
-        "l3",
-        "yxuckqdi",
-        "zdz9v56n"
-      ]
+      "clears": []
+    },
+    {
+      "id": "pu6ewetl8",
+      "name": "RYANBOSS966",
+      "rp": 119,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pam7pt3xy",
+      "name": "Billie64",
+      "rp": 51,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pdvpuzxuc",
+      "name": "PerrunoXD",
+      "rp": 51,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "picwr9vj0",
+      "name": "Zamasu",
+      "rp": 42,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pf2pzcigq",
+      "name": "MARIODDJ",
+      "rp": null,
+      "re": 3250,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pybvr11y0",
+      "name": "Jojoyito",
+      "rp": 35,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "p8c7vgbjz",
+      "name": "Hicardo",
+      "rp": 32,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pka8ldt8v",
+      "name": "BenMaster",
+      "rp": 30,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pi2qtfe2t",
+      "name": "Skyslayer",
+      "rp": 25,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "p2htenrjm",
+      "name": "Elfrynn",
+      "rp": 25,
+      "re": null,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pd1h5xqxe",
+      "name": "Ederssj",
+      "rp": null,
+      "re": 3213,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "ppsv0pig5",
+      "name": "Toadetteclzz",
+      "rp": null,
+      "re": 2356,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pj3cnzy6v",
+      "name": "Dimou",
+      "rp": null,
+      "re": 1890,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pzjxvony1",
+      "name": "Kokoshibou77",
+      "rp": null,
+      "re": 1883,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "p34869tfw",
+      "name": "qwfpg5",
+      "rp": null,
+      "re": 1612,
+      "desc": "",
+      "clears": []
+    },
+    {
+      "id": "pd1cqvlfw",
+      "name": "Azert33",
+      "rp": null,
+      "re": 1126,
+      "desc": "",
+      "clears": []
     }
   ],
   "prom": [
@@ -388,5 +525,5 @@
       "img": ""
     }
   ],
-  "updated": "2026-11-06T23:00:14.540Z"
+  "updated": "2026-11-07T04:05:42.273Z"
 }
