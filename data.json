@@ -28,9 +28,10 @@
   "levels": [
     {
       "id": "l4",
+      "img": "",
       "name": "Malabaizo - Kaizo",
       "creator": "Plataformer2000",
-      "diff": "Super Expert",
+      "diff": "Extreme",
       "code": "",
       "status": "verified",
       "env": "ground",
@@ -38,14 +39,14 @@
       "time": "night",
       "tags": [],
       "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
-      "video": "https://youtu.be/675WMIqQhqs",
-      "img": ""
+      "video": "https://youtu.be/675WMIqQhqs"
     },
     {
       "id": "l2",
+      "img": "",
       "name": "Muncher Volcano",
       "creator": "LuicundoGD",
-      "diff": "Super Expert",
+      "diff": "Extreme",
       "code": "L3Q9-8LIU-9V3T-GCUQ",
       "status": "verified",
       "env": "volcano",
@@ -53,14 +54,14 @@
       "time": "day",
       "tags": [],
       "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. \"Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump\" - Luicundo",
-      "video": "https://youtu.be/YFoQiYoV43s",
-      "img": ""
+      "video": "https://youtu.be/YFoQiYoV43s"
     },
     {
       "id": "l3",
+      "img": "",
       "name": "Desert Night SMB3 - Kaizo Level",
       "creator": "playoff16",
-      "diff": "Expert",
+      "diff": "Super Expert",
       "code": "7REI-2XW3-C4XE-6N6X",
       "status": "verified",
       "env": "desert",
@@ -68,8 +69,7 @@
       "time": "night",
       "tags": [],
       "desc": "Good level, Gg",
-      "video": "https://youtu.be/80tYWUSpsdU",
-      "img": ""
+      "video": "https://youtu.be/80tYWUSpsdU"
     },
     {
       "id": "zdz9v56n",
@@ -107,9 +107,10 @@
     },
     {
       "id": "l1",
+      "img": "",
       "name": "\"1 La Cueva Del Reto\"",
       "creator": "Hugollano",
-      "diff": "Super Expert",
+      "diff": "Expert",
       "code": "VZW9-BDE7-AMU2-VPA2",
       "status": "verified",
       "env": "underground",
@@ -117,8 +118,41 @@
       "time": "day",
       "tags": [],
       "desc": "",
-      "video": "https://youtu.be/6tt2ueu9dR0",
-      "img": ""
+      "video": "https://youtu.be/6tt2ueu9dR0"
+    },
+    {
+      "id": "d2ajnd1j",
+      "img": "",
+      "name": "Frostall rage (kaizo)",
+      "creator": "Maladesmmwe",
+      "diff": "Expert",
+      "code": "2JVJ-VHIB-3WEZ-CP62",
+      "status": "verified",
+      "env": "snow",
+      "style": "smb",
+      "time": "night",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy"
+    },
+    {
+      "id": "4dp8bi7v",
+      "img": "",
+      "name": "La acojenante y Flipante Mansion De Hector [Kaizo]",
+      "creator": "LuigiRicoRico",
+      "diff": "Insane",
+      "code": "UIGG-8QBC-WXDW-EZ9K",
+      "status": "verified",
+      "env": "ghost",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
@@ -212,137 +246,137 @@
     {
       "id": "pql3tkcfs",
       "name": "Cerespin",
+      "desc": "",
       "rp": 175,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pu6ewetl8",
       "name": "RYANBOSS966",
+      "desc": "",
       "rp": 119,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pam7pt3xy",
       "name": "Billie64",
+      "desc": "",
       "rp": 51,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pdvpuzxuc",
       "name": "PerrunoXD",
+      "desc": "",
       "rp": 51,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "picwr9vj0",
       "name": "Zamasu",
+      "desc": "",
       "rp": 42,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pf2pzcigq",
       "name": "MARIODDJ",
+      "desc": "",
       "rp": null,
       "re": 3250,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pybvr11y0",
       "name": "Jojoyito",
+      "desc": "",
       "rp": 35,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "p8c7vgbjz",
       "name": "Hicardo",
+      "desc": "",
       "rp": 32,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pka8ldt8v",
       "name": "BenMaster",
+      "desc": "",
       "rp": 30,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pi2qtfe2t",
       "name": "Skyslayer",
+      "desc": "",
       "rp": 25,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "p2htenrjm",
       "name": "Elfrynn",
+      "desc": "",
       "rp": 25,
       "re": null,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pd1h5xqxe",
       "name": "Ederssj",
+      "desc": "",
       "rp": null,
       "re": 3213,
-      "desc": "",
       "clears": []
     },
     {
       "id": "ppsv0pig5",
       "name": "Toadetteclzz",
+      "desc": "",
       "rp": null,
       "re": 2356,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pj3cnzy6v",
       "name": "Dimou",
+      "desc": "",
       "rp": null,
       "re": 1890,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pzjxvony1",
       "name": "Kokoshibou77",
+      "desc": "",
       "rp": null,
       "re": 1883,
-      "desc": "",
       "clears": []
     },
     {
       "id": "p34869tfw",
       "name": "qwfpg5",
+      "desc": "",
       "rp": null,
       "re": 1612,
-      "desc": "",
       "clears": []
     },
     {
       "id": "pd1cqvlfw",
       "name": "Azert33",
+      "desc": "",
       "rp": null,
       "re": 1126,
-      "desc": "",
       "clears": []
     }
   ],
@@ -525,5 +559,5 @@
       "img": ""
     }
   ],
-  "updated": "2026-11-07T04:05:42.273Z"
+  "updated": "2026-11-07T14:33:27.051Z"
 }
