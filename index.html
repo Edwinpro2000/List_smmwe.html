@@ -154,6 +154,11 @@ body[data-fx="0"] .cloud,body[data-fx="0"] .hw,body[data-fx="0"] .hw-flash,body[
 @media (min-width:1000px){#list{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}#list .row{margin:0}#list>*:not(.row){grid-column:1/-1}}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:50;padding:14px;overflow:auto}
 .modal.open{display:flex;animation:fade .2s}
+#mForm.full{padding:0;align-items:stretch;justify-content:stretch;overflow:hidden}
+#mForm.full .box{max-width:none;width:calc(100vw / var(--z));height:calc(100dvh / var(--z));max-height:none;border-width:0;box-shadow:none;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;padding:14px 14px 10px;overflow:hidden}
+#mForm.full .box>h2{flex:0 0 auto}
+#mForm.full .box>.fscroll{flex:1 1 auto;max-height:none!important;overflow:auto}
+#mForm.full .box>.actions{flex:0 0 auto}
 #mBg.bgfx-run{background:rgba(0,0,0,.12);transition:background .2s}
 #curFx{position:fixed;left:0;top:0;z-index:2147483647;pointer-events:none;display:none;image-rendering:pixelated;background-repeat:no-repeat;background-size:100% 100%;will-change:transform}
 body.curmouse,body.curmouse *{cursor:none!important}
@@ -368,6 +373,9 @@ body[data-view=players] #searchPanel,body[data-view=players] #lvSec,body[data-vi
 #plQ{width:100%;box-sizing:border-box;padding:8px;font-size:10px}.plhow{margin-top:8px;border:3px dashed #0006;padding:6px;font-size:9px}.plhow summary{cursor:pointer;font-size:10px}
 .plrow.p1{border-color:#b8860b;background:#fff3b8}.plrow.p2{border-color:#6b7683;background:#eef1f5}.plrow.p3{border-color:#8a4b1f;background:#fbe3cf}
 .plrow .plh .rkc{flex:0 0 auto}.plrow .plpt{flex:0 0 auto}
+#toTop{position:fixed;left:10px;bottom:10px;z-index:41;width:48px;height:48px;padding:0;font-size:16px;zoom:var(--z)}#toTop.hide{display:none}
+.newtag{display:inline-block;background:#d32a1f;color:#fff;border:2px solid #111;padding:1px 4px;font-size:7px;margin-left:4px;vertical-align:middle;white-space:nowrap;flex:0 0 auto}
+.tpls{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.tpls .btn{font-size:8px;padding:6px}
 .pbdg{display:inline-block;border:2px solid #111;padding:2px 5px;font-size:8px;white-space:nowrap}
 .plrow .plpt{background:#fbd000;border:3px solid var(--black);padding:3px 6px;font-size:10px;white-space:nowrap}
 .plrow .plb{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
@@ -524,6 +532,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
   <div class="menu hide" id="menu" role="menu">
     <button class="btn" data-menu="bg" role="menuitem">&#128444; <span id="bgL"></span></button>
     <button class="btn" data-menu="players" role="menuitem">&#127942; <span id="plL"></span></button>
+    <button class="btn" data-menu="apply" role="menuitem">&#128221; <span id="apL"></span></button>
     <button class="btn" data-menu="upd" role="menuitem">&#128339; <span id="upL"></span></button>
     <button class="btn" data-menu="prom" role="menuitem">&#11088; <span id="prL"></span></button>
     <button class="btn" data-menu="saved" role="menuitem">&#9829; <span id="savL"></span></button>
@@ -534,6 +543,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
   </div>
 </div>
 <button class="btn" id="langBtn" aria-label="News" data-i18n-title="newT">&#128226;</button>
+<button class="btn hide" id="toTop" aria-label="Top">&#9650;</button>
 <div class="lgw" id="lgw"><button class="btn" id="lgBtn" aria-haspopup="menu" aria-expanded="false" aria-label="Language"><span class="lgg">&#127760;</span><b id="lgCode">ES</b></button><div class="lgm hide" id="lgm" role="menu"></div></div>
 <button class="btn" id="fontBtn" data-i18n-title="fontT" aria-pressed="false">Aa</button>
 <div class="mus" id="mus">
@@ -593,7 +603,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 </section>
 <section class="panel" id="plPanel">
   <h2 style="margin:0"><span class="qblock">?</span> <span id="plTitle"></span></h2>
-  <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="plBack"></button><button class="btn sm blue" id="plLink"></button><button class="btn sm green hide" id="plAdd"></button></div>
+  <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="plBack"></button><button class="btn sm blue" id="plLink"></button><button class="btn sm green hide" id="plAdd"></button><button class="btn sm hide" id="plImp"></button></div>
   <div class="pltabs" id="plTabs"></div>
   <h3 id="plH" style="margin:10px 0 0;font-size:11px"></h3>
   <input type="search" id="plQ" maxlength="40" autocomplete="off" style="margin-top:8px">
@@ -606,7 +616,7 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 <section class="panel" id="prPanel">
   <h2 style="margin:0"><span class="qblock">?</span> <span id="prTitle"></span></h2>
   <p id="prIntro" style="font-size:10px;margin:8px 0 0"></p>
-  <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="prBack"></button><button class="btn sm blue" id="prLink"></button><button class="btn sm green hide" id="prAdd"></button></div>
+  <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="prBack"></button><button class="btn sm blue" id="prLink"></button><button class="btn sm green hide" id="prAdd"></button><button class="btn sm hide" id="prImp"></button></div>
 </section>
 <section id="prSec"><div id="prList"></div></section>
 <section id="plSec"><div id="plList"></div></section>
@@ -669,6 +679,28 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 <div class="modal" id="mForm"><div class="box" id="formBox"></div></div>
 <div class="toast" id="toast"></div>
 
+<script>
+(function(){
+  var shown=false;
+  var T={es:["Algo falló en la página. Se muestra la lista básica.","Recargar","Reparar"],en:["Something failed on the page. Showing the basic list.","Reload","Repair"],pt:["Algo falhou na página. Mostrando a lista básica.","Recarregar","Reparar"]};
+  function lang(){var l="";try{l=(JSON.parse(localStorage.getItem("lod_smmwe_settings")||"{}").lang)||"";}catch(e){}if(!T[l])l=((navigator.language||"en")+"").slice(0,2).toLowerCase();return T[l]?l:"en";}
+  window.addEventListener("error",function(ev){
+    if(shown||!ev||!ev.message||/ResizeObserver|Script error/i.test(ev.message))return;shown=true;
+    try{
+      var h=location.hash;if(h==="#list_players"||h==="#lista_prometedores"){try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}}
+      if(document.body)document.body.setAttribute("data-view","levels");
+      var t=T[lang()],d=document.createElement("div");
+      d.setAttribute("role","alert");
+      d.style.cssText="position:fixed;left:8px;right:8px;top:8px;z-index:99999;background:#fff3b8;color:#111;border:4px solid #111;box-shadow:4px 4px 0 #111;padding:8px;font:12px/1.4 sans-serif;display:flex;gap:8px;align-items:center;flex-wrap:wrap";
+      var sp=document.createElement("span");sp.textContent="⚠ "+t[0];sp.style.flex="1 1 160px";d.appendChild(sp);
+      function b(txt,fn){var x=document.createElement("button");x.textContent=txt;x.style.cssText="border:3px solid #111;background:#fff;padding:6px 8px;font:inherit;cursor:pointer";x.onclick=fn;d.appendChild(x);}
+      b(t[1],function(){location.reload();});
+      b(t[2],function(){try{["lod_smmwe_v1","lod_smmwe_remote","lod_smmwe_dirty","lod_smmwe_pending"].forEach(function(k){localStorage.removeItem(k);});}catch(e){}location.reload();});
+      (document.body||document.documentElement).appendChild(d);
+    }catch(e){}
+  });
+})();
+</script>
 <script>
 (function(){
 "use strict";
@@ -900,14 +932,14 @@ function clean(d){
   const diffs=d.diffs.filter(x=>x&&typeof x==="object").map(x=>({name:SX(x.name,40).trim(),color:/^#[0-9a-f]{3,8}$/i.test(x.color)?x.color:"#888888"})).filter(x=>x.name);
   const levels=d.levels.filter(l=>l&&typeof l==="object").map(l=>({
     id:/^[\w-]{1,24}$/.test(l.id||"")?l.id:uid(),name:SX(l.name,60),creator:SX(l.creator,40),diff:SX(l.diff,40),code:SX(l.code,24),status:"verified",
-    env:/^[a-z]{3,12}$/.test(l.env||"")?l.env:"",style:/^(smb|smb3|smw|nsmbu)$/.test(l.style||"")?l.style:"",time:/^(day|night)$/.test(l.time||"")?l.time:"",tags:Array.isArray(l.tags)?[...new Set(l.tags.filter(k=>/^[a-z]{3,10}$/.test(k||"")))].filter(k=>["trad","puzzle","speed","scroll","auto","short","versus","themed","music","art","skill","shoot","boss","solo","link"].includes(k)):[],desc:SX(l.desc,500),video:/^https?:\/\//i.test(l.video||"")?SX(l.video,300):"",img:/^(https?:\/\/|levelimgs\/[\w.-]+$)/i.test(l.img||"")?SX(l.img,300):""}));
+    env:/^[a-z]{3,12}$/.test(l.env||"")?l.env:"",style:/^(smb|smb3|smw|nsmbu)$/.test(l.style||"")?l.style:"",time:/^(day|night)$/.test(l.time||"")?l.time:"",tags:Array.isArray(l.tags)?[...new Set(l.tags.filter(k=>/^[a-z]{3,10}$/.test(k||"")))].filter(k=>["trad","puzzle","speed","scroll","auto","short","versus","themed","music","art","skill","shoot","boss","solo","link"].includes(k)):[],desc:SX(l.desc,500),video:/^https?:\/\//i.test(l.video||"")?SX(l.video,300):"",img:/^(https?:\/\/|levelimgs\/[\w.-]+$)/i.test(l.img||"")?SX(l.img,300):"",added:/^\d{4}-\d{2}-\d{2}$/.test(l.added||"")?l.added:""}));
   const o={diffs,levels};
   o.prom=Array.isArray(d.prom)?clean({diffs:d.diffs,levels:d.prom,players:[]}).levels.slice(0,300):[];
   if(!Array.isArray(d.prom)&&!d.__inner&&levels.length)o.prom=[{id:"pm-demo",name:"Ejemplo de nivel prometedor",creator:"Creador",diff:diffs[0]?diffs[0].name:"",code:"",status:"verified",env:"",style:"",time:"",tags:[],desc:"Este es un nivel de ejemplo. Entra como admin para editarlo o borrarlo.",video:"",img:""}];
   if(Array.isArray(d.trash)){const lim=Date.now()-30*864e5;o.trash=d.trash.filter(x=>x&&typeof x==="object"&&x.l&&typeof x.l==="object"&&Date.parse(x.date)>lim).slice(0,50).map(x=>{const c=clean({diffs:[],levels:[x.l]}).levels[0];return c?{l:c,pos:Math.max(1,x.pos|0),date:SX(x.date,10)}:null;}).filter(Boolean);}
   if(typeof d.updated==="string"&&!isNaN(Date.parse(d.updated)))o.updated=d.updated.slice(0,30);
   if(typeof d.credits==="string")o.credits=d.credits.slice(0,600);
-  if(Array.isArray(d.players))o.players=d.players.filter(p=>p&&typeof p==="object"&&p.name).slice(0,300).map(p=>({id:SX(p.id||("p"+Math.random().toString(36).slice(2,9)),20),name:SX(p.name,40),desc:SX(p.desc,300),rp:recN(p.rp),re:recN(p.re),clears:Array.isArray(p.clears)?p.clears.map(x=>SX(x,40)).slice(0,500):[]}));
+  if(Array.isArray(d.players))o.players=d.players.filter(p=>p&&typeof p==="object"&&p.name).slice(0,300).map(p=>({id:SX(p.id||("p"+Math.random().toString(36).slice(2,9)),20),name:SX(p.name,40),desc:SX(p.desc,300),added:/^\d{4}-\d{2}-\d{2}$/.test(p.added||"")?p.added:"",rp:recN(p.rp),re:recN(p.re),clears:Array.isArray(p.clears)?p.clears.map(x=>SX(x,40)).slice(0,500):[]}));
   if(Array.isArray(d.updates))o.updates=d.updates.filter(u=>u&&typeof u==="object").map(u=>({date:SX(u.date,10),title:SX(u.title,60),desc:SX(u.desc,400),...(/^[un]\d{1,3}$/.test(u.k||"")?{k:u.k}:{}),...(u.tag==="new"||u.tag==="chg"?{tag:u.tag}:{})}));
   if(!Array.isArray(o.players)&&!Array.isArray(d.players)&&o.levels.length)o.players=[{id:"p-demo",name:"Jugador de ejemplo",rp:25,re:45,desc:"Este es un jugador de ejemplo. Entra como admin para editarlo o borrarlo.",clears:o.levels.slice(0,3).map(l=>l.id)}];
   return o;
@@ -941,7 +973,7 @@ const stat=s=>`<span class="st v">${(LANG==="es"||LANG==="pt")?t("sVerified").re
 /* ---------- render ---------- */
 let LVK="levels";const LV=()=>state[LVK]||(state[LVK]=[]);
 const lvRowHtml=({l,rank})=>`<div class="row lv${l.time&&TMU[l.time]?" has-tm":""}" data-id="${l.id}">
-      ${tmImg(l)}<div class="lvh"><span class="rkc ${rank<=4?"":"b"}">${rank}</span><b class="rname">${esc(l.name)}</b>${IFT}</div>
+      ${tmImg(l)}<div class="lvh"><span class="rkc ${rank<=4?"":"b"}">${rank}</span><b class="rname">${esc(l.name)}</b>${newTag(l)}${IFT}</div>
       <div class="lvb">
         <div class="lvl">${l.env&&ENVU[l.env]?`<img src="${ENVU[l.env]}" alt="${esc(envName(l.env))}" title="${esc(envName(l.env))}">`:`<div class="envph"></div>`}</div>
         <div class="lvr">
@@ -950,7 +982,7 @@ const lvRowHtml=({l,rank})=>`<div class="row lv${l.time&&TMU[l.time]?" has-tm":"
           <div class="lvm">${styImg(l)}<div class="lvp">${badge(l.diff)}${stat(l.status)}</div></div>
         </div>
       </div>
-      ${admin?`<div class="rowtools"><button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button><button class="btn sm red" data-del="${l.id}">${t("del")}</button></div>`:""}
+      ${admin?`<div class="rowtools"><button class="btn sm blue" data-edit="${l.id}">${t("edit")}</button><button class="btn sm" data-mv="${l.id}">\u21C4 ${mvt("b")}</button><button class="btn sm red" data-del="${l.id}">${t("del")}</button></div>`:""}
     </div>`;
 let prevJ=null,undoSt=[],undoing=false;
 function render(){
@@ -972,12 +1004,12 @@ function render(){
   $("#goSearch").classList.toggle("on",!!(q||fCat!=="all"||fDiff!=="all"));
   $("#adminbar").classList.toggle("hide",!admin);
   updateStatus();
-  if(typeof plRender==="function")plRender();if(typeof prRender==="function")prRender();if(typeof upRender==="function")upRender();
+  if(typeof plRender==="function")plRender();if(typeof prRender==="function")prRender();if(typeof upRender==="function")upRender();if(typeof apRender==="function")apRender();
   {const ab=$("#adminBtn");if(ab)ab.textContent="\u{1F511} "+(admin?t("adminPanel"):t("admin"));}
 }
 
 /* ---------- modals ---------- */
-const open=id=>$(id).classList.add("open"),close=id=>$(id).classList.remove("open");
+const open=id=>{const m=$(id);if(id==="#mForm")m.classList.remove("full");m.classList.add("open");},close=id=>$(id).classList.remove("open");
 document.querySelectorAll(".modal").forEach(m=>m.addEventListener("mousedown",e=>{if(e.target===m)m.classList.remove("open");}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal.open").forEach(m=>m.classList.remove("open"));});
 
@@ -1382,7 +1414,7 @@ function levelForm(id,pre,done){
     if(video&&!/^https?:\/\//i.test(video)){toast(t("videoBad"));return;}
     let img=$("#fImg").value.trim();
     if(img&&!/^(https?:\/\/|levelimgs\/[\w.-]+$)/i.test(img)){toast(imt("bad"));return;}
-    const obj={id:idx>=0?l.id:uid(),img,name,creator,diff:$("#fDiff").value,
+    const obj={id:idx>=0?l.id:uid(),added:idx>=0?(l.added||""):new Date().toISOString().slice(0,10),img,name,creator,diff:$("#fDiff").value,
       code:$("#fCode").value.trim().slice(0,24),status:"verified",env:curEnv,style:curSty,time:curTm,tags:TAGS.filter(k=>curTg.has(k)),desc:$("#fDesc").value.trim(),video};
     if(idx>=0)A().splice(idx,1);
     let p=parseInt($("#fPos").value,10);if(isNaN(p))p=A().length+1;
@@ -1469,6 +1501,8 @@ document.addEventListener("click",e=>{
   LVK=el.closest("#prList,#prPanel")?"prom":"levels";
   if(el.dataset.close){close(el.dataset.close);return;}
   if(el.dataset.edit){e.stopPropagation();levelForm(el.dataset.edit);return;}
+  if(el.dataset.mv){e.stopPropagation();if(!admin)return;const src=LVK,l=LV().find(x=>x.id===el.dataset.mv);if(!l)return;
+    LVK=src==="prom"?"levels":"prom";levelForm(null,JSON.parse(JSON.stringify(l)),()=>{state[src]=(state[src]||[]).filter(x=>x.id!==l.id);save();render();toast(mvt("ok"));});LVK=src;return;}
   if(el.dataset.del){e.stopPropagation();if(!admin)return;
     const l=LV().find(x=>x.id===el.dataset.del);
     if(l&&confirm(t("delConfirm",l.name))){if(LVK==="levels")trashAdd(l);state[LVK]=LV().filter(x=>x.id!==l.id);save();render();toast(t("lvlDeleted"));}return;}
@@ -1567,6 +1601,18 @@ function ghForm(){
 }
 async function ghErr(r){let m="";try{m=(await r.json()).message||"";}catch(e){}
   return r.status===401?t("e401"):r.status===404?t("e404"):r.status+" "+m;}
+async function ghBackup(c,H,oldB64){
+  try{
+    const d=new Date(),z=n=>String(n).padStart(2,"0"),name="data-"+d.getUTCFullYear()+z(d.getUTCMonth()+1)+z(d.getUTCDate())+"-"+z(d.getUTCHours())+z(d.getUTCMinutes())+z(d.getUTCSeconds())+".json";
+    const root="https://api.github.com/repos/"+c.owner+"/"+c.repo+"/contents/backups";
+    const r=await fetch(root+"/"+name,{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify({message:"Backup before publish",content:oldB64,branch:c.branch})});
+    if(!r.ok)return;
+    const l=await fetch(root+"?ref="+encodeURIComponent(c.branch)+"&t="+Date.now(),{headers:H,cache:"no-store"});
+    if(!l.ok)return;
+    const a=(await l.json()).filter(x=>/^data-\d{8}-\d{6}\.json$/.test(x.name)).sort((x,y)=>y.name.localeCompare(x.name));
+    for(const x of a.slice(15)){try{await fetch(root+"/"+x.name,{method:"DELETE",headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify({message:"Prune backup",sha:x.sha,branch:c.branch})});}catch(e){}}
+  }catch(e){}
+}
 async function publish(){
   if(!admin||publishing)return;
   const c=ghCfg();
@@ -1577,9 +1623,10 @@ async function publish(){
   const updated=new Date().toISOString();
   const body=JSON.stringify({diffs:state.diffs,levels:state.levels,credits:state.credits,updates:state.updates,trash:state.trash,players:state.players,prom:state.prom,updated},null,2);
   try{
-    let sha;
+    let sha,oldB64="";
     const g=await fetch(base+"?ref="+encodeURIComponent(c.branch)+"&t="+Date.now(),{headers:H,cache:"no-store"});
-    if(g.ok)sha=(await g.json()).sha;else if(g.status!==404)throw new Error(await ghErr(g));
+    if(g.ok){const gj=await g.json();sha=gj.sha;oldB64=(gj.content||"").replace(/\s/g,"");}else if(g.status!==404)throw new Error(await ghErr(g));
+    if(oldB64)await ghBackup(c,H,oldB64);
     const p=await fetch(base,{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},H),
       body:JSON.stringify(Object.assign({message:"Update ranking",content:b64(body),branch:c.branch},sha?{sha}:{}))});
     if(!p.ok)throw new Error(await ghErr(p));
@@ -1768,7 +1815,7 @@ function viewSet(v,noHash){
 function plSet(on,noHash){viewSet(on?"players":"levels",noHash);}
 function plRender(){
   const e=$("#plL");if(e)e.textContent=document.body.getAttribute("data-view")==="players"?plt("back").replace(/^\S+\s/,""):plt("m");
-  $("#plTitle").textContent=plt("t");$("#plBack").textContent=plt("back");$("#plLink").textContent=plt("link");$("#plAdd").textContent=plt("add");$("#plAdd").classList.toggle("hide",!admin);
+  $("#plTitle").textContent=plt("t");$("#plBack").textContent=plt("back");$("#plLink").textContent=plt("link");$("#plAdd").textContent=plt("add");$("#plAdd").classList.toggle("hide",!admin);{const b=$("#plImp");b.textContent=imp("save");b.classList.toggle("hide",!admin);}
   $("#plPts").innerHTML=state.diffs.map(d=>`<span class="tg" style="border-color:${esc(d.color)}">${esc(d.name)}: ${ptsOf(d.name)}+</span>`).join("");
   $("#plBdg").innerHTML="<b style=\"font-size:9px\">"+esc(plt("bL"))+":</b> "+BDG.slice().reverse().map(b=>`<span class="pbdg" style="background:${b[2]};color:${b[3]}">${esc(plt(b[1]))} ${b[0]}+</span>`).join(" ");
   const tabs=[["prom","tsP","tbP"],["endless","tsE","tbE"],["best","tsB","tbB"]];
@@ -1792,11 +1839,11 @@ function plRender(){
   list=list.filter(r=>!q||r.p.name.toLowerCase().includes(q));
   $("#plCnt").textContent=plt("cnt",total);
   if(bestV){
-    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b>${plBadge(r.pts)}<span class="plpt">${r.pts} ${esc(plt("pts"))}</span></div>
+    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b>${newTag(r.p)}${plBadge(r.pts)}<span class="plpt">${r.pts} ${esc(plt("pts"))}</span></div>
     <div class="plb"><div class="plbd">${state.diffs.filter(d=>r.by[d.name]).map(d=>`<span class="badge" style="background:${esc(d.color)}">${esc(d.name)} x${r.by[d.name]}</span>`).join("")}${r.pp?`<span class="badge" style="background:#6a2fb8">Prom ${r.pp}</span>`:""}${r.ep?`<span class="badge" style="background:#d32a1f">Expert ${r.ep}</span>`:""}${(!r.pts)?"&mdash;":""}</div></div>${actions(r)}</div>`).join("");
   }else{
     const k=plTab==="prom"?"rp":"re",min=plTab==="prom"?PP_MIN:EP_MIN;
-    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b><span class="plpt">${esc(plt("rec"))} ${r.p[k]}</span></div>
+    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b>${newTag(r.p)}<span class="plpt">${esc(plt("rec"))} ${r.p[k]}</span></div>
     <div class="plb"><div class="plbd"><span class="badge" style="background:${r.p[k]>=min?"#2fa84f":"#777"}">${r.p[k]>=min?"+"+r.p[k]+" "+esc(plt("pts")):esc(plt("min",min))}</span></div></div>${actions(r)}</div>`).join("");
   }
   if(!list.length)html=`<div class="empty">${plt(q?"noMatch":"noOne")}</div>`;
@@ -1833,7 +1880,7 @@ function plForm(id){
   draw();$("#pFind").oninput=draw;$("#pRp").oninput=tot;$("#pRe").oninput=tot;
   $("#pSave").onclick=()=>{
     const name=$("#pName").value.trim();if(!name){toast(plt("need"));return;}
-    const o={id:p.id,name,rp:recN($("#pRp").value),re:recN($("#pRe").value),desc:$("#pDesc").value.trim().slice(0,300),clears:[...sel]};
+    const o={id:p.id,added:ex?(ex.added||""):new Date().toISOString().slice(0,10),name,rp:recN($("#pRp").value),re:recN($("#pRe").value),desc:$("#pDesc").value.trim().slice(0,300),clears:[...sel]};
     const a=(state.players||[]).slice();const i=a.findIndex(x=>x.id===p.id);if(i>=0)a[i]=o;else a.push(o);
     state.players=a;save();render();close("#mForm");toast(plt("saved"));
   };
@@ -1852,7 +1899,7 @@ $("#plList").addEventListener("click",e=>{
   if(dl){e.stopPropagation();const p=(state.players||[]).find(x=>x.id===dl.dataset.pld);if(admin&&p&&confirm(plt("delQ",p.name))){state.players=state.players.filter(x=>x.id!==p.id);save();render();toast(plt("done"));}return;}
   const r=e.target.closest("[data-pl]");if(r)plDetail(r.dataset.pl);
 });
-window.addEventListener("hashchange",()=>{const h=location.hash;if(h==="#list_players")viewSet("players",true);else if(h==="#lista_prometedores")viewSet("prom",true);else if(!h&&document.body.getAttribute("data-view")!=="levels")viewSet("levels",true);});
+window.addEventListener("hashchange",()=>{const h=location.hash;if(h==="#list_players")viewSet("players",true);else if(h==="#lista_prometedores")viewSet("prom",true);else if(h==="#postularse")applyForm();else if(!h&&document.body.getAttribute("data-view")!=="levels")viewSet("levels",true);});
 
 
 /* ===== last update window ===== */
@@ -1873,6 +1920,188 @@ function updForm(){
   open("#mForm");
 }
 function upRender(){const e=$("#upL");if(e)e.textContent=upt("m");}
+
+/* ===== NEW tag, move level, news templates, back to top ===== */
+const NWTG={es:"NUEVO",en:"NEW",pt:"NOVO"};
+const newTag=x=>{const d=x&&x.added?Date.parse(x.added):NaN;return !isNaN(d)&&Date.now()-d<=7*864e5+864e5?`<span class="newtag">${NWTG[LANG]||"NEW"}</span>`:"";};
+const MVT={es:{b:"Mover",ok:"Nivel movido"},en:{b:"Move",ok:"Level moved"},pt:{b:"Mover",ok:"Nível movido"}};
+const mvt=k=>(MVT[LANG]||MVT.en)[k];
+const TPL={
+es:[["Nuevo nivel agregado: ","new","Se agregó un nivel nuevo a la lista de dificultades."],["Nuevo prometedor: ","new","Se agregó un nivel a la lista de prometedores."],["Nuevo jugador: ","new","Se agregó un jugador a la lista de jugadores."],["Nivel movido de lista: ","chg","Un nivel cambió de lista."],["Puntos actualizados","chg","Se actualizaron los récords y puntos de los jugadores."],["Arreglo de errores","chg","Se arreglaron errores y se mejoró la página."]],
+en:[["New level added: ","new","A new level was added to the difficulty list."],["New promising level: ","new","A level was added to the promising list."],["New player: ","new","A player was added to the player list."],["Level moved to another list: ","chg","A level changed lists."],["Points updated","chg","Player records and points were updated."],["Bug fixes","chg","Bugs were fixed and the page was improved."]],
+pt:[["Novo nível adicionado: ","new","Um novo nível foi adicionado à lista de dificuldades."],["Novo promissor: ","new","Um nível foi adicionado à lista de promissores."],["Novo jogador: ","new","Um jogador foi adicionado à lista de jogadores."],["Nível movido de lista: ","chg","Um nível mudou de lista."],["Pontos atualizados","chg","Os recordes e pontos dos jogadores foram atualizados."],["Correção de erros","chg","Erros foram corrigidos e a página foi melhorada."]]};
+{const tt=$("#toTop");let busy=false;
+ const chk=()=>{busy=false;tt.classList.toggle("hide",window.scrollY<500);};
+ window.addEventListener("scroll",()=>{if(!busy){busy=true;requestAnimationFrame(chk);}},{passive:true});
+ tt.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});}
+
+/* ===== text import + backups ===== */
+const IMP={
+es:{t:"IMPORTAR",list:"Lista",lv:"Dificultades (niveles)",pr:"Prometedores (niveles)",pp:"Jugadores: récord Prometedores",pe:"Jugadores: récord Desafío sin fin",
+ helpL:"Un nivel por línea: Nombre | Creador | Dificultad | ID | Notas (solo el nombre es obligatorio).",helpP:"Un jugador por línea: nombre y récord al final. Ej: carespin 175",
+ defD:"Dificultad si falta",where:"Dónde insertar",end:"Al final",start:"Al principio",ph:"Pega aquí...",prev:"Vista previa",none:"Nada que importar todavía",
+ willL:"Niveles nuevos: {0}",willP:"Jugadores nuevos: {0}",upd:"A actualizar: {0}",same:"Sin cambios: {0}",skip:"Omitidos: {0}",dup:"ya existe",bad:"no se entendió",badD:"dificultad desconocida",
+ save:"Importar",close:"Cerrar",done:"Importado",many:"Máximo 150 líneas",line:"Línea {0}"},
+en:{t:"IMPORT",list:"List",lv:"Difficulties (levels)",pr:"Promising (levels)",pp:"Players: Promising record",pe:"Players: Endless Challenge record",
+ helpL:"One level per line: Name | Creator | Difficulty | ID | Notes (only the name is required).",helpP:"One player per line: name and record at the end. E.g.: carespin 175",
+ defD:"Difficulty if missing",where:"Where to insert",end:"At the end",start:"At the start",ph:"Paste here...",prev:"Preview",none:"Nothing to import yet",
+ willL:"New levels: {0}",willP:"New players: {0}",upd:"To update: {0}",same:"Unchanged: {0}",skip:"Skipped: {0}",dup:"already exists",bad:"not understood",badD:"unknown difficulty",
+ save:"Import",close:"Close",done:"Imported",many:"Maximum 150 lines",line:"Line {0}"},
+pt:{t:"IMPORTAR",list:"Lista",lv:"Dificuldades (níveis)",pr:"Promissores (níveis)",pp:"Jogadores: recorde Promissores",pe:"Jogadores: recorde Desafio sem fim",
+ helpL:"Um nível por linha: Nome | Criador | Dificuldade | ID | Notas (só o nome é obrigatório).",helpP:"Um jogador por linha: nome e recorde no fim. Ex: carespin 175",
+ defD:"Dificuldade se faltar",where:"Onde inserir",end:"No final",start:"No início",ph:"Cole aqui...",prev:"Pré-visualização",none:"Nada para importar ainda",
+ willL:"Novos níveis: {0}",willP:"Novos jogadores: {0}",upd:"A atualizar: {0}",same:"Sem mudanças: {0}",skip:"Ignorados: {0}",dup:"já existe",bad:"não entendido",badD:"dificuldade desconhecida",
+ save:"Importar",close:"Fechar",done:"Importado",many:"Máximo 150 linhas",line:"Linha {0}"}};
+const imp=(k,a)=>{const v=(IMP[LANG]||IMP.en)[k]||IMP.en[k]||"";return a==null?v:v.replace("{0}",a);};
+function impParse(kind,text,defDiff){
+  const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  const out={items:[],upd:[],same:0,skip:[],tooMany:lines.length>150};
+  const L=lines.slice(0,150),today=new Date().toISOString().slice(0,10);
+  if(kind==="lv"||kind==="pr"){
+    const target=state[kind==="lv"?"levels":"prom"]||[],seen=new Set(target.map(l=>(l.name+"|"+l.creator).toLowerCase()));
+    L.forEach((ln,i)=>{
+      const p=ln.split(/\s*[|;\t]\s*/).map(x=>x.trim());const name=p[0];
+      if(!name){out.skip.push([i+1,imp("bad")]);return;}
+      let diff=defDiff;
+      if(p[2]){const d=state.diffs.find(x=>x.name.toLowerCase()===p[2].toLowerCase());if(!d){out.skip.push([i+1,imp("badD")+": "+p[2]]);return;}diff=d.name;}
+      const creator=p[1]||"?",k=(name+"|"+creator).toLowerCase();
+      if(seen.has(k)){out.skip.push([i+1,imp("dup")+": "+name]);return;}
+      seen.add(k);out.items.push({id:uid(),added:today,name,creator,diff,code:p[3]||"",status:"verified",env:"",style:"",time:"",tags:[],desc:p[4]||"",video:"",img:""});
+    });
+  }else{
+    const key=kind==="pp"?"rp":"re",ps=state.players||[],map=new Map(ps.map(p=>[p.name.toLowerCase(),p]));
+    const tmp=new Map();
+    L.forEach((ln,i)=>{
+      const m=ln.match(/^(.*?)[\s:=\-–]+(\d{1,6})\s*$/);
+      if(!m||!m[1].trim()){out.skip.push([i+1,imp("bad")+": "+ln.slice(0,30)]);return;}
+      const name=m[1].trim().slice(0,40),v=parseInt(m[2],10),k=name.toLowerCase();
+      if(!tmp.has(k)||tmp.get(k).v<v)tmp.set(k,{name,v});
+    });
+    tmp.forEach((x,k)=>{const ex=map.get(k);
+      if(!ex)out.items.push({name:x.name,v:x.v});
+      else if(ex[key]==null||x.v>ex[key])out.upd.push({id:ex.id,name:ex.name,v:x.v});
+      else out.same++;});
+  }
+  return out;
+}
+function impForm(kind){
+  if(!admin)return;kind=kind||"lv";
+  const dd=state.diffs.map(d=>`<option value="${esc(d.name)}">${esc(d.name)}</option>`).join("");
+  $("#formBox").innerHTML=`<h2>${esc(imp("t"))}</h2>
+    <label class="lbl">${esc(imp("list"))}</label><select id="imK">${[["lv","lv"],["pr","pr"],["pp","pp"],["pe","pe"]].map(x=>`<option value="${x[0]}"${x[0]===kind?" selected":""}>${esc(imp(x[1]))}</option>`).join("")}</select>
+    <p id="imH" style="font-size:9px;margin:6px 0"></p>
+    <div id="imL"><label class="lbl">${esc(imp("defD"))}</label><select id="imD">${dd}</select>
+    <label class="lbl">${esc(imp("where"))}</label><select id="imW"><option value="end">${esc(imp("end"))}</option><option value="start">${esc(imp("start"))}</option></select></div>
+    <textarea id="imT" rows="7" placeholder="${esc(imp("ph"))}" style="width:100%;box-sizing:border-box"></textarea>
+    <div id="imP" style="font-size:9px;margin:6px 0;max-height:22vh;overflow:auto"></div>
+    <div class="actions"><button class="btn green" id="imGo">${esc(imp("save"))}</button><button class="btn" data-close="#mForm">${esc(imp("close"))}</button></div>`;
+  open("#mForm");
+  const cur=()=>({k:$("#imK").value,r:impParse($("#imK").value,$("#imT").value,$("#imD").value)});
+  const draw=()=>{const {k,r}=cur(),isL=k==="lv"||k==="pr";
+    $("#imH").textContent=imp(isL?"helpL":"helpP");$("#imL").style.display=isL?"":"none";
+    const parts=[];if(r.items.length)parts.push("<b>"+esc(imp(isL?"willL":"willP",r.items.length))+"</b>");
+    if(r.upd.length)parts.push(esc(imp("upd",r.upd.length))+": "+r.upd.slice(0,6).map(u=>esc(u.name)+" "+u.v).join(", "));
+    if(r.same)parts.push(esc(imp("same",r.same)));
+    if(r.skip.length)parts.push("<span style=\"color:#d32a1f\">"+esc(imp("skip",r.skip.length))+"</span><br>"+r.skip.slice(0,5).map(x=>esc(imp("line",x[0]))+": "+esc(x[1])).join("<br>"));
+    if(r.tooMany)parts.push("<span style=\"color:#d32a1f\">"+esc(imp("many"))+"</span>");
+    $("#imP").innerHTML=parts.join("<br>")||esc(imp("none"));
+    $("#imGo").disabled=!(r.items.length||r.upd.length);};
+  ["#imK","#imD","#imW"].forEach(q=>$(q).onchange=draw);$("#imT").oninput=draw;draw();
+  $("#imGo").onclick=()=>{
+    const {k,r}=cur();if(!(r.items.length||r.upd.length))return;
+    if(k==="lv"||k==="pr"){
+      const name=k==="lv"?"levels":"prom",clean2=clean({diffs:state.diffs,levels:r.items,players:[]}).levels,a=(state[name]||[]).slice();
+      state[name]=$("#imW").value==="start"?clean2.concat(a):a.concat(clean2);
+    }else{
+      const key=k==="pp"?"rp":"re",today=new Date().toISOString().slice(0,10),a=(state.players||[]).map(p=>({...p}));
+      r.upd.forEach(u=>{const p=a.find(x=>x.id===u.id);if(p)p[key]=u.v;});
+      r.items.forEach(x=>{const p={id:"p"+uid(),added:today,name:x.name,desc:"",rp:null,re:null,clears:[]};p[key]=x.v;a.push(p);});
+      state.players=a;
+    }
+    save();render();close("#mForm");toast(imp("done"));
+  };
+}
+const BKT={es:{t:"Respaldos",none:"Todavía no hay respaldos (se crean al publicar)",rest:"Restaurar",q:"¿Restaurar este respaldo? Reemplaza lo que tienes ahora (puedes deshacer). Después toca Publicar para aplicarlo.",ok:"Respaldo restaurado (toca Publicar para aplicarlo)",load:"Cargando...",fail:"No se pudo: {0}",imp:"Importar"},
+en:{t:"Backups",none:"No backups yet (created when you publish)",rest:"Restore",q:"Restore this backup? It replaces what you have now (you can undo). Then tap Publish to apply it.",ok:"Backup restored (tap Publish to apply it)",load:"Loading...",fail:"Failed: {0}",imp:"Import"},
+pt:{t:"Backups",none:"Ainda não há backups (criados ao publicar)",rest:"Restaurar",q:"Restaurar este backup? Substitui o que você tem agora (pode desfazer). Depois toque em Publicar para aplicar.",ok:"Backup restaurado (toque em Publicar para aplicar)",load:"Carregando...",fail:"Falhou: {0}",imp:"Importar"}};
+const bkt=(k,a)=>{const v=(BKT[LANG]||BKT.en)[k]||BKT.en[k]||"";return a==null?v:v.replace("{0}",a);};
+async function bkList(box){
+  const c=ghCfg();if(!c.owner||!c.repo||!c.token){close("#mForm");ghForm();toast(t("setupGh"));return;}
+  box.textContent=bkt("load");
+  const H={"Authorization":"Bearer "+c.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+  const root="https://api.github.com/repos/"+c.owner+"/"+c.repo+"/contents/backups";
+  try{
+    const r=await fetch(root+"?ref="+encodeURIComponent(c.branch)+"&t="+Date.now(),{headers:H,cache:"no-store"});
+    if(r.status===404){box.textContent=bkt("none");return;}
+    if(!r.ok)throw new Error(await ghErr(r));
+    const a=(await r.json()).filter(x=>/^data-\d{8}-\d{6}\.json$/.test(x.name)).sort((x,y)=>y.name.localeCompare(x.name));
+    if(!a.length){box.textContent=bkt("none");return;}
+    box.innerHTML=a.map(x=>{const m=x.name.match(/(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})/);return `<div class="tlrow"><div><b>${m[1]}-${m[2]}-${m[3]}</b> <small>${m[4]}:${m[5]} UTC</small></div><button class="btn sm green" data-bk="${esc(x.name)}">${bkt("rest")}</button></div>`;}).join("");
+    box.querySelectorAll("[data-bk]").forEach(b=>b.onclick=async()=>{
+      if(!confirm(bkt("q")))return;
+      try{
+        const g=await fetch(root+"/"+encodeURIComponent(b.dataset.bk)+"?ref="+encodeURIComponent(c.branch),{headers:Object.assign({},H,{"Accept":"application/vnd.github.raw+json"}),cache:"no-store"});
+        if(!g.ok)throw new Error(await ghErr(g));
+        const o=JSON.parse(await g.text());state=clean(o);save();render();close("#mForm");toast(bkt("ok"));
+      }catch(e){toast(bkt("fail",e.message));}
+    });
+  }catch(e){box.textContent=bkt("fail",e.message);}
+}
+
+/* ===== apply to be admin ===== */
+const APT={
+es:{lk:"Copiar enlace",lkOk:"Enlace copiado",m:"Postularse",t:"POSTULARSE COMO ADMIN",intro:"¿Quieres ayudar a mantener la lista? Lee las reglas, contesta el cuestionario y envíalo por Discord.",
+ rT:"REGLAS DE LOS ADMINS",rules:["Sé honesto: nunca cambies una dificultad por amistad, favor o presión.","Verifica con video o prueba antes de agregar o mover un nivel.","Respeta a todos: jugadores, creadores y otros admins.","No compartas la contraseña ni el token de GitHub con nadie.","No borres ni cambies cosas importantes sin avisar al dueño. Si te equivocas, avisa; hay respaldos.","Sé activo: avisa si vas a estar mucho tiempo sin entrar.","Las decisiones finales las toma el dueño de la lista.","Si rompes las reglas, pierdes el rol de admin."],
+ qT:"CUESTIONARIO",req:"(obligatorio)",
+ q1:"Tu nombre o usuario de Discord",q2:"¿Cuánto tiempo llevas jugando SMM:WE?",q2o:["Menos de 3 meses","3 a 12 meses","1 a 2 años","Más de 2 años"],
+ q3:"¿Cuál es tu nivel favorito de SMM:WE?",q4:"¿Por qué quieres ser admin?",q5:"¿Cuántas horas por semana puedes dedicar?",q5o:["1 a 2","3 a 5","6 a 10","Más de 10"],
+ q6:"¿Cómo comprobarías que un nivel nuevo es tan difícil como dice su creador?",q7:"Un amigo te pide subir su nivel fácil al ranking de difíciles. ¿Qué haces?",q8:"¿Has sido admin o moderador antes? ¿Dónde?",
+ acc:"Leí y acepto las reglas",go:"Copiar y abrir Discord",close:"Cerrar",hint:"Se copia tu postulación. Pégala en el Discord. Postularse no garantiza ser admin.",missing:"Faltan campos obligatorios o aceptar las reglas",copied:"Postulación copiada. Pégala en Discord.",head:"POSTULACIÓN PARA ADMIN",rulesOk:"Acepta las reglas: sí"},
+en:{lk:"Copy link",lkOk:"Link copied",m:"Apply",t:"APPLY TO BE AN ADMIN",intro:"Want to help keep the list running? Read the rules, answer the questionnaire and send it on Discord.",
+ rT:"ADMIN RULES",rules:["Be honest: never change a difficulty because of friendship, favors or pressure.","Verify with video or proof before adding or moving a level.","Respect everyone: players, creators and other admins.","Never share the password or the GitHub token with anyone.","Don't delete or change important things without telling the owner. If you make a mistake, say so; there are backups.","Stay active: tell us if you'll be away for a long time.","Final decisions are made by the list owner.","If you break the rules, you lose the admin role."],
+ qT:"QUESTIONNAIRE",req:"(required)",
+ q1:"Your name or Discord username",q2:"How long have you been playing SMM:WE?",q2o:["Less than 3 months","3 to 12 months","1 to 2 years","More than 2 years"],
+ q3:"What is your favorite SMM:WE level?",q4:"Why do you want to be an admin?",q5:"How many hours per week can you give?",q5o:["1 to 2","3 to 5","6 to 10","More than 10"],
+ q6:"How would you check that a new level is as hard as its creator says?",q7:"A friend asks you to put their easy level on the hard ranking. What do you do?",q8:"Have you been an admin or moderator before? Where?",
+ acc:"I read and accept the rules",go:"Copy and open Discord",close:"Close",hint:"Your application is copied. Paste it on Discord. Applying does not guarantee becoming an admin.",missing:"Required fields are missing or the rules are not accepted",copied:"Application copied. Paste it on Discord.",head:"ADMIN APPLICATION",rulesOk:"Accepts the rules: yes"},
+pt:{lk:"Copiar link",lkOk:"Link copiado",m:"Candidatar-se",t:"CANDIDATAR-SE A ADMIN",intro:"Quer ajudar a manter a lista? Leia as regras, responda o questionário e envie pelo Discord.",
+ rT:"REGRAS DOS ADMINS",rules:["Seja honesto: nunca mude uma dificuldade por amizade, favor ou pressão.","Verifique com vídeo ou prova antes de adicionar ou mover um nível.","Respeite todos: jogadores, criadores e outros admins.","Não compartilhe a senha nem o token do GitHub com ninguém.","Não apague nem mude coisas importantes sem avisar o dono. Se errar, avise; há backups.","Seja ativo: avise se for ficar muito tempo sem entrar.","As decisões finais são do dono da lista.","Se quebrar as regras, perde o cargo de admin."],
+ qT:"QUESTIONÁRIO",req:"(obrigatório)",
+ q1:"Seu nome ou usuário do Discord",q2:"Há quanto tempo joga SMM:WE?",q2o:["Menos de 3 meses","3 a 12 meses","1 a 2 anos","Mais de 2 anos"],
+ q3:"Qual é o seu nível favorito do SMM:WE?",q4:"Por que quer ser admin?",q5:"Quantas horas por semana pode dedicar?",q5o:["1 a 2","3 a 5","6 a 10","Mais de 10"],
+ q6:"Como comprovaria que um nível novo é tão difícil quanto o criador diz?",q7:"Um amigo pede para colocar o nível fácil dele no ranking de difíceis. O que faz?",q8:"Já foi admin ou moderador antes? Onde?",
+ acc:"Li e aceito as regras",go:"Copiar e abrir o Discord",close:"Fechar",hint:"Sua candidatura é copiada. Cole no Discord. Candidatar-se não garante ser admin.",missing:"Faltam campos obrigatórios ou aceitar as regras",copied:"Candidatura copiada. Cole no Discord.",head:"CANDIDATURA A ADMIN",rulesOk:"Aceita as regras: sim"}};
+const apt=k=>(APT[LANG]||APT.en)[k]||APT.en[k];
+function apRender(){const e=$("#apL");if(e)e.textContent=apt("m");}
+function applyForm(){
+  const sel=(id,o)=>`<select id="${id}">${o.map(x=>`<option>${esc(x)}</option>`).join("")}</select>`;
+  const QO=[1,2,4,5,6,7],q=(n,req,inner)=>`<label class="lbl">${QO.indexOf(n)+1}. ${esc(apt("q"+n))}${req?" <small>"+esc(apt("req"))+"</small>":""}</label>${inner}`;
+  $("#formBox").innerHTML=`<h2>${esc(apt("t"))}</h2><div class="fscroll" style="overflow:auto;padding-right:4px">
+    <p style="font-size:10px">${esc(apt("intro"))}</p>
+    <h3 style="font-size:11px;margin:8px 0 4px">${esc(apt("rT"))}</h3><ol style="font-size:9px;line-height:1.5;padding-left:18px;margin:0 0 8px">${apt("rules").map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
+    <h3 style="font-size:11px;margin:8px 0 4px">${esc(apt("qT"))}</h3>
+    ${q(1,1,'<input type="text" id="apQ1" maxlength="60">')}
+    ${q(2,0,sel("apQ2",apt("q2o")))}
+    ${q(4,1,'<textarea id="apQ4" maxlength="400"></textarea>')}
+    ${q(5,0,sel("apQ5",apt("q5o")))}
+    ${q(6,1,'<textarea id="apQ6" maxlength="400"></textarea>')}
+    ${q(7,1,'<textarea id="apQ7" maxlength="400"></textarea>')}
+    <label style="display:flex;gap:8px;align-items:center;font-size:10px;margin:10px 0"><input type="checkbox" id="apAcc" style="width:20px;height:20px"> ${esc(apt("acc"))}</label>
+    <p style="font-size:9px">${esc(apt("hint"))}</p></div>
+    <div class="actions"><button class="btn yellow" id="apGo">${esc(apt("go"))}</button><button class="btn blue" id="apLk">${esc(apt("lk"))}</button><button class="btn" data-close="#mForm">${esc(apt("close"))}</button></div>`;
+  open("#mForm");$("#mForm").classList.add("full");
+  $("#apLk").onclick=()=>{const u=location.origin+location.pathname+"#postularse",d=()=>toast(apt("lkOk"));
+    const fb=()=>{try{const ta=document.createElement("textarea");ta.value=u;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}d();};
+    try{navigator.clipboard.writeText(u).then(d,fb);}catch(e){fb();}};
+  $("#apGo").onclick=()=>{
+    const v=i=>$("#apQ"+i).value.trim();
+    if(!v(1)||!v(4)||!v(6)||!v(7)||!$("#apAcc").checked){toast(apt("missing"));return;}
+    const msg=["📝 "+apt("head"),"","1) "+apt("q1")+": "+v(1),"2) "+apt("q2")+": "+v(2),"3) "+apt("q4")+": "+v(4),"4) "+apt("q5")+": "+v(5),"5) "+apt("q6")+": "+v(6),"6) "+apt("q7")+": "+v(7),"",apt("rulesOk")].join("\n");
+    const done=()=>{toast(apt("copied"));try{window.open(DISCORD_URL,"_blank","noopener,noreferrer");}catch(e){}};
+    const fb=()=>{try{const ta=document.createElement("textarea");ta.value=msg;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
+    try{navigator.clipboard.writeText(msg).then(done,fb);}catch(e){fb();}
+  };
+}
 /* ===== promising levels ===== */
 const PRT={
 es:{m:"Prometedores",t:"PROMETEDORES",intro:"Niveles prometedores de SMM:WE: todavía no están en la lista de dificultades, pero van por buen camino.",back:"← Lista de niveles",link:"Copiar enlace",copied:"Enlace copiado",add:"+ Nivel",none:"Aún no hay niveles prometedores"},
@@ -1881,11 +2110,13 @@ pt:{m:"Promissores",t:"PROMISSORES",intro:"Níveis promissores de SMM:WE: ainda 
 const prt=k=>(PRT[LANG]||PRT.en)[k]||PRT.en[k]||"";
 function prRender(){
   const e=$("#prL");if(e)e.textContent=document.body.getAttribute("data-view")==="prom"?prt("back").replace(/^\S+\s/,""):prt("m");
-  $("#prTitle").textContent=prt("t");$("#prIntro").textContent=prt("intro");$("#prBack").textContent=prt("back");$("#prLink").textContent=prt("link");$("#prAdd").textContent=prt("add");$("#prAdd").classList.toggle("hide",!admin);
+  $("#prTitle").textContent=prt("t");$("#prIntro").textContent=prt("intro");$("#prBack").textContent=prt("back");$("#prLink").textContent=prt("link");$("#prAdd").textContent=prt("add");$("#prAdd").classList.toggle("hide",!admin);{const b=$("#prImp");b.textContent=imp("save");b.classList.toggle("hide",!admin);}
   const A=state.prom||[];
   $("#prList").innerHTML=A.length?A.map((l,i)=>lvRowHtml({l,rank:i+1})).join(""):`<div class="empty">${prt("none")}</div>`;
 }
 $("#prBack").onclick=()=>viewSet("levels");
+$("#prImp").onclick=()=>{if(admin)impForm("pr");};
+$("#plImp").onclick=()=>{if(admin)impForm(plTab==="endless"?"pe":"pp");};
 $("#prAdd").onclick=()=>{if(admin){LVK="prom";levelForm(null);}};
 $("#prLink").onclick=()=>{const v=location.origin+location.pathname+"#lista_prometedores",done=()=>toast(prt("copied"));
   const fb=()=>{try{const ta=document.createElement("textarea");ta.value=v;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
@@ -1895,9 +2126,9 @@ $("#prLink").onclick=()=>{const v=location.origin+location.pathname+"#lista_prom
 
 /* ===== admin tools: incomplete levels, link checker, trash ===== */
 const TLT={
-es:{b:"Herramientas",t:"HERRAMIENTAS",inc:"Sin completar",lnk:"Links rotos",tr:"Papelera",allOk:"¡Todo completo!",noMedia:"sin video/imagen",noId:"sin ID",noDesc:"sin notas",chk:"Revisar ahora",chking:"Revisando {0}/{1}...",bad:"Roto",good:"OK",skip:"No verificable",noLinks:"No hay links para revisar",sumLnk:"{0} rotos, {1} ok, {2} no verificables",empty:"La papelera está vacía",rest:"Restaurar",forever:"Borrar ya",clear:"Vaciar",restOk:"Nivel restaurado",tinfo:"Los niveles borrados se guardan 30 días.",clrQ:"¿Borrar todo lo de la papelera para siempre?",closeB:"Cerrar",edit:"Editar",img:"Imagen",vid:"Video"},
-en:{b:"Tools",t:"TOOLS",inc:"Incomplete",lnk:"Broken links",tr:"Trash",allOk:"All complete!",noMedia:"no video/image",noId:"no ID",noDesc:"no notes",chk:"Check now",chking:"Checking {0}/{1}...",bad:"Broken",good:"OK",skip:"Can't verify",noLinks:"No links to check",sumLnk:"{0} broken, {1} ok, {2} unverifiable",empty:"Trash is empty",rest:"Restore",forever:"Delete now",clear:"Empty",restOk:"Level restored",tinfo:"Deleted levels are kept for 30 days.",clrQ:"Delete everything in the trash forever?",closeB:"Close",edit:"Edit",img:"Image",vid:"Video"},
-pt:{b:"Ferramentas",t:"FERRAMENTAS",inc:"Incompletos",lnk:"Links quebrados",tr:"Lixeira",allOk:"Tudo completo!",noMedia:"sem vídeo/imagem",noId:"sem ID",noDesc:"sem notas",chk:"Verificar agora",chking:"Verificando {0}/{1}...",bad:"Quebrado",good:"OK",skip:"Não verificável",noLinks:"Não há links para verificar",sumLnk:"{0} quebrados, {1} ok, {2} não verificáveis",empty:"A lixeira está vazia",rest:"Restaurar",forever:"Excluir já",clear:"Esvaziar",restOk:"Nível restaurado",tinfo:"Níveis excluídos ficam 30 dias.",clrQ:"Excluir tudo da lixeira para sempre?",closeB:"Fechar",edit:"Editar",img:"Imagem",vid:"Vídeo"},
+es:{imp:"Importar",bk:"Respaldos",b:"Herramientas",t:"HERRAMIENTAS",inc:"Sin completar",lnk:"Links rotos",tr:"Papelera",allOk:"¡Todo completo!",noMedia:"sin video/imagen",noId:"sin ID",noDesc:"sin notas",chk:"Revisar ahora",chking:"Revisando {0}/{1}...",bad:"Roto",good:"OK",skip:"No verificable",noLinks:"No hay links para revisar",sumLnk:"{0} rotos, {1} ok, {2} no verificables",empty:"La papelera está vacía",rest:"Restaurar",forever:"Borrar ya",clear:"Vaciar",restOk:"Nivel restaurado",tinfo:"Los niveles borrados se guardan 30 días.",clrQ:"¿Borrar todo lo de la papelera para siempre?",closeB:"Cerrar",edit:"Editar",img:"Imagen",vid:"Video"},
+en:{imp:"Import",bk:"Backups",b:"Tools",t:"TOOLS",inc:"Incomplete",lnk:"Broken links",tr:"Trash",allOk:"All complete!",noMedia:"no video/image",noId:"no ID",noDesc:"no notes",chk:"Check now",chking:"Checking {0}/{1}...",bad:"Broken",good:"OK",skip:"Can't verify",noLinks:"No links to check",sumLnk:"{0} broken, {1} ok, {2} unverifiable",empty:"Trash is empty",rest:"Restore",forever:"Delete now",clear:"Empty",restOk:"Level restored",tinfo:"Deleted levels are kept for 30 days.",clrQ:"Delete everything in the trash forever?",closeB:"Close",edit:"Edit",img:"Image",vid:"Video"},
+pt:{imp:"Importar",bk:"Backups",b:"Ferramentas",t:"FERRAMENTAS",inc:"Incompletos",lnk:"Links quebrados",tr:"Lixeira",allOk:"Tudo completo!",noMedia:"sem vídeo/imagem",noId:"sem ID",noDesc:"sem notas",chk:"Verificar agora",chking:"Verificando {0}/{1}...",bad:"Quebrado",good:"OK",skip:"Não verificável",noLinks:"Não há links para verificar",sumLnk:"{0} quebrados, {1} ok, {2} não verificáveis",empty:"A lixeira está vazia",rest:"Restaurar",forever:"Excluir já",clear:"Esvaziar",restOk:"Nível restaurado",tinfo:"Níveis excluídos ficam 30 dias.",clrQ:"Excluir tudo da lixeira para sempre?",closeB:"Fechar",edit:"Editar",img:"Imagem",vid:"Vídeo"},
 ru:{b:"Инструменты",t:"ИНСТРУМЕНТЫ",inc:"Неполные",lnk:"Битые ссылки",tr:"Корзина",allOk:"Всё заполнено!",noMedia:"нет видео/картинки",noId:"нет ID",noDesc:"нет заметок",chk:"Проверить",chking:"Проверка {0}/{1}...",bad:"Не работает",good:"OK",skip:"Нельзя проверить",noLinks:"Нет ссылок для проверки",sumLnk:"{0} битых, {1} ок, {2} непроверяемых",empty:"Корзина пуста",rest:"Вернуть",forever:"Удалить",clear:"Очистить",restOk:"Уровень восстановлен",tinfo:"Удалённые уровни хранятся 30 дней.",clrQ:"Удалить всё из корзины навсегда?",closeB:"Закрыть",edit:"Изменить",img:"Картинка",vid:"Видео"}};
 const tlt=(k,a,b2,c2)=>{let v=(TLT[LANG]||TLT.en)[k]||TLT.en[k]||"";return v.replace("{0}",a==null?"":a).replace("{1}",b2==null?"":b2).replace("{2}",c2==null?"":c2);};
 function trashAdd(l){const pos=state.levels.findIndex(x=>x.id===l.id)+1;const a=Array.isArray(state.trash)?state.trash:[];a.unshift({l:JSON.parse(JSON.stringify(l)),pos:Math.max(1,pos),date:new Date().toISOString().slice(0,10)});state.trash=a.slice(0,50);}
@@ -1911,14 +2142,17 @@ function toolsForm(tab){
   }else if(tab==="lnk"){
     const n=state.levels.filter(l=>l.video||l.img).length;
     body=`<div class="actions"><button class="btn green" id="tlGo">${tlt("chk")}</button></div><p id="tlSum" style="font-size:9px">${n?"":tlt("noLinks")}</p><div id="tlRes"></div>`;
+  }else if(tab==="bk"){
+    body='<div id="bkBox" style="font-size:9px"></div>';
   }else{
     const L=state.trash||[];
     body=`<p style="font-size:9px">${tlt("tinfo")}</p>`+(L.length?L.map((x,i)=>`<div class="tlrow"><div><b>${esc(x.l.name)}</b><br><small>${esc(x.l.creator)} · ${esc(x.date)}</small></div><div><button class="btn sm green" data-tr="${i}">${tlt("rest")}</button> <button class="btn sm red" data-tx="${i}">${tlt("forever")}</button></div></div>`).join("")+`<div class="actions"><button class="btn sm red" id="tlClr">${tlt("clear")}</button></div>`:`<p>${tlt("empty")}</p>`);
   }
-  $("#formBox").innerHTML=`<h2>${tlt("t")}</h2><div class="envs" id="tlTabs">${[["inc","inc"],["lnk","lnk"],["tr","tr"]].map(([k,n])=>`<button type="button" class="btn sm envo${k===tab?" on":""}" data-tab="${k}">${tlt(n)}${k==="tr"&&(state.trash||[]).length?" ("+state.trash.length+")":""}</button>`).join("")}</div>
+  $("#formBox").innerHTML=`<h2>${tlt("t")}</h2><div class="envs" id="tlTabs">${[["inc","inc"],["lnk","lnk"],["tr","tr"],["imp","imp"],["bk","bk"]].map(([k,n])=>`<button type="button" class="btn sm envo${k===tab?" on":""}" data-tab="${k}">${tlt(n)}${k==="tr"&&(state.trash||[]).length?" ("+state.trash.length+")":""}</button>`).join("")}</div>
     <div class="tlbody" style="max-height:52vh;overflow:auto;margin:8px 0">${body}</div><div class="actions"><button class="btn" data-close="#mForm">${tlt("closeB")}</button></div>`;
   open("#mForm");
-  document.querySelectorAll("#tlTabs [data-tab]").forEach(b=>b.onclick=()=>toolsForm(b.dataset.tab));
+  document.querySelectorAll("#tlTabs [data-tab]").forEach(b=>b.onclick=()=>{if(b.dataset.tab==="imp")impForm("lv");else toolsForm(b.dataset.tab);});
+  if(tab==="bk")bkList($("#bkBox"));
   document.querySelectorAll("[data-te]").forEach(b=>b.onclick=()=>levelForm(b.dataset.te,null,()=>toolsForm("inc")));
   document.querySelectorAll("[data-tr]").forEach(b=>b.onclick=()=>{const x=state.trash.splice(+b.dataset.tr,1)[0];if(!state.levels.some(l=>l.id===x.l.id)){state.levels.splice(Math.min(x.pos,state.levels.length+1)-1,0,x.l);}save();render();toast(tlt("restOk"));toolsForm("tr");});
   document.querySelectorAll("[data-tx]").forEach(b=>b.onclick=()=>{state.trash.splice(+b.dataset.tx,1);save();toolsForm("tr");});
@@ -2309,6 +2543,7 @@ menuEl.addEventListener("click",e=>{
   else if(b.dataset.menu==="send"){sendForm();}
   else if(b.dataset.menu==="players"){plSet(document.body.getAttribute("data-view")!=="players");}
   else if(b.dataset.menu==="upd"){updForm();}
+  else if(b.dataset.menu==="apply"){applyForm();}
   else if(b.dataset.menu==="prom"){viewSet(document.body.getAttribute("data-view")!=="prom"?"prom":"levels");}
   else if(b.dataset.menu==="saved"){openSaved();}
   else if(b.dataset.menu==="settings"){openSettings();}
@@ -2342,11 +2577,12 @@ function updDot(){let seen="";try{seen=lsGet(SEENKEY)||"";}catch(e){}const has=!
 function showUpdates(){
   const L=updList();
   $("#newBox").innerHTML='<h2>'+esc(t("newT"))+'</h2><div class="updlist">'+(L.length?L.map((u,i)=>'<div class="upd"><div class="ud">'+updChip(u)+esc(u.date||"")+'</div><div class="ut">'+esc(updT(u))+'</div><div class="ux">'+esc(updD(u))+'</div>'+(admin?'<button class="btn sm" data-udel="'+i+'">'+t("del")+'</button>':"")+'</div>').join(""):'<div class="empty">'+esc(t("noUpd"))+'</div>')+'</div>'
-    +(admin?'<span class="lbl">'+esc(t("addUpd"))+'</span><input type="text" id="uTitle" maxlength="60" placeholder="'+esc(t("uTitle"))+'"><select id="uTag"><option value="new">'+esc(nwt("chNew"))+'</option><option value="chg">'+esc(nwt("chChg"))+'</option></select><textarea id="uDesc" maxlength="400" placeholder="'+esc(t("uDesc"))+'"></textarea><div class="actions"><button class="btn green" id="uAdd">'+t("uAdd")+'</button></div>':"")
+    +(admin?'<span class="lbl">'+esc(t("addUpd"))+'</span><input type="text" id="uTitle" maxlength="60" placeholder="'+esc(t("uTitle"))+'"><select id="uTag"><option value="new">'+esc(nwt("chNew"))+'</option><option value="chg">'+esc(nwt("chChg"))+'</option></select><div class="tpls" id="uTpl">'+(TPL[LANG]||TPL.en).map((x,i)=>'<button type="button" class="btn sm" data-tpl="'+i+'">'+esc(x[0].trim().replace(/:$/,""))+'</button>').join("")+'</div><textarea id="uDesc" maxlength="400" placeholder="'+esc(t("uDesc"))+'"></textarea><div class="actions"><button class="btn green" id="uAdd">'+t("uAdd")+'</button></div>':"")
     +'<div class="actions"><button class="btn" data-close="#mNew">'+t("close")+'</button></div>';
   open("#mNew");
   try{lsSet(SEENKEY,updKey());}catch(e){}updDot();
   if(admin){
+    document.querySelectorAll("#uTpl [data-tpl]").forEach(b=>b.onclick=()=>{const x=(TPL[LANG]||TPL.en)[+b.dataset.tpl];$("#uTitle").value=x[0];$("#uDesc").value=x[2];$("#uTag").value=x[1];const ti=$("#uTitle");ti.focus();try{ti.setSelectionRange(ti.value.length,ti.value.length);}catch(e){}});
     $("#uAdd").onclick=()=>{const ti=$("#uTitle").value.trim(),d=$("#uDesc").value.trim();if(!ti){toast(t("writeTitle"));return;}
       const a=updList().slice();a.unshift({date:new Date().toISOString().slice(0,10),title:ti,desc:d,tag:$("#uTag").value});state.updates=a;save();updateStatus();showUpdates();toast(t("uAdded"));};
     document.querySelectorAll("[data-udel]").forEach(b=>b.onclick=()=>{const a=updList().slice();a.splice(+b.dataset.udel,1);state.updates=a;save();updateStatus();showUpdates();});
@@ -2526,6 +2762,7 @@ document.addEventListener("click",e=>{
 $("#langBtn").onclick=showUpdates;
 applyLang();
 if(location.hash==="#list_players")viewSet("players",true);else if(location.hash==="#lista_prometedores")viewSet("prom",true);
+if(location.hash==="#postularse")applyForm();
 /* admin: no visible button. Open the page with #admin to get the password form */
 function adminHash(){if(location.hash!=="#admin")return;try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}adminEntry();}
 window.addEventListener("hashchange",adminHash);adminHash();
