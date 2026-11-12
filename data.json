@@ -75,26 +75,8 @@
       "added": ""
     },
     {
-      "id": "zdz9v56n",
-      "name": "The Pharaoh - Kaizo [ Super Expert ] TeamSkill",
-      "creator": "Plataformer2000",
-      "diff": "Super Expert",
-      "code": "IAKF-GS7J-RDW4-7BOG",
-      "status": "verified",
-      "env": "desert",
-      "style": "smw",
-      "time": "day",
-      "tags": [
-        "short"
-      ],
-      "desc": "Aquí está, mi nuevo nivelito kaizo, con una dificultad algo elevada jeje",
-      "video": "https://youtu.be/afmvT7bkabk?si=bVBZBHiJveqlFC4v",
-      "img": "",
-      "added": ""
-    },
-    {
       "id": "yxuckqdi",
-      "name": "Royal kiazo",
+      "name": "Royal kaizo",
       "creator": "‪makermx‬",
       "diff": "Super Expert",
       "code": "E9QL-PJCZ-9JXP-YB1J",
@@ -162,6 +144,25 @@
       "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy",
       "img": "",
       "added": ""
+    },
+    {
+      "id": "93o54xal",
+      "added": "2026-11-12",
+      "img": "",
+      "name": "´´-[HOLLOW ADVENTURE]-´´",
+      "creator": "xBlangro164x",
+      "diff": "Insane",
+      "code": "DICL-AMD3-WAIJ-UV6W",
+      "status": "verified",
+      "env": "desert",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "speed",
+        "skill"
+      ],
+      "desc": "DIFICULTAD: INSANE DEMON. Un nivel con tecnicas extractas. suerte lo tuyo ;D",
+      "video": "https://youtu.be/zrUJjsnrTGU"
     },
     {
       "id": "4dp8bi7v",
@@ -288,6 +289,7 @@
       "k": "u9"
     }
   ],
+  "trash": [],
   "players": [
     {
       "id": "pql3tkcfs",
@@ -446,8 +448,6 @@
   "prom": [
     {
       "id": "2wem6mmk",
-      "added": "2026-11-12",
-      "img": "",
       "name": "Dire, Dire Dock's (Super Mario 64) Music",
       "creator": "Fannsmit",
       "diff": "Insane",
@@ -461,7 +461,9 @@
         "art"
       ],
       "desc": "Musical. Share It And Enjoy It.  Gg's n_n",
-      "video": ""
+      "video": "",
+      "img": "",
+      "added": "2026-11-12"
     },
     {
       "id": "pm-demo",
@@ -518,6 +520,24 @@
       "video": "",
       "img": "",
       "added": ""
+    },
+    {
+      "id": "wknm0fge",
+      "name": "The Pharaoh - Kaizo [ Super Expert ] TeamSkill",
+      "creator": "Plataformer2000",
+      "diff": "Super Expert",
+      "code": "IAKF-GS7J-RDW4-7BOG",
+      "status": "verified",
+      "env": "desert",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "short"
+      ],
+      "desc": "Aquí está, mi nuevo nivelito kaizo, con una dificultad algo elevada jeje",
+      "video": "https://youtu.be/afmvT7bkabk?si=bVBZBHiJveqlFC4v",
+      "img": "",
+      "added": "2026-11-12"
     },
     {
       "id": "2buduf68",
@@ -651,5 +671,5 @@
       "added": ""
     }
   ],
-  "updated": "2026-11-12T03:28:49.042Z"
+  "updated": "2026-11-12T22:40:58.629Z"
 }
