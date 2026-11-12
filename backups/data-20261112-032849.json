@@ -1,0 +1,599 @@
+{
+  "diffs": [
+    {
+      "name": "Hard",
+      "color": "#00ffff"
+    },
+    {
+      "name": "Insane",
+      "color": "#197d00"
+    },
+    {
+      "name": "Expert",
+      "color": "#ffff00"
+    },
+    {
+      "name": "Super Expert",
+      "color": "#f07c00"
+    },
+    {
+      "name": "Extreme",
+      "color": "#662900"
+    },
+    {
+      "name": "Impossible",
+      "color": "#111111"
+    }
+  ],
+  "levels": [
+    {
+      "id": "l4",
+      "name": "Malabaizo - Kaizo",
+      "creator": "Plataformer2000",
+      "diff": "Extreme",
+      "code": "",
+      "status": "verified",
+      "env": "ground",
+      "style": "smw",
+      "time": "night",
+      "tags": [],
+      "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
+      "video": "https://youtu.be/675WMIqQhqs",
+      "img": ""
+    },
+    {
+      "id": "l2",
+      "name": "Muncher Volcano",
+      "creator": "LuicundoGD",
+      "diff": "Extreme",
+      "code": "L3Q9-8LIU-9V3T-GCUQ",
+      "status": "verified",
+      "env": "volcano",
+      "style": "smw",
+      "time": "day",
+      "tags": [],
+      "desc": "Kaizo. Versión 3.5.1 · 500 s · Apariencia SMW. \"Tras más de dos horas verificándolo, es mi segundo kaizo y el más difícil que he hecho. Varía técnicas e incluye Spin Shell Jump\" - Luicundo",
+      "video": "https://youtu.be/YFoQiYoV43s",
+      "img": ""
+    },
+    {
+      "id": "l3",
+      "name": "Desert Night SMB3 - Kaizo Level",
+      "creator": "playoff16",
+      "diff": "Super Expert",
+      "code": "7REI-2XW3-C4XE-6N6X",
+      "status": "verified",
+      "env": "desert",
+      "style": "smb3",
+      "time": "night",
+      "tags": [],
+      "desc": "Good level, Gg",
+      "video": "https://youtu.be/80tYWUSpsdU",
+      "img": ""
+    },
+    {
+      "id": "zdz9v56n",
+      "name": "The Pharaoh - Kaizo [ Super Expert ] TeamSkill",
+      "creator": "Plataformer2000",
+      "diff": "Super Expert",
+      "code": "IAKF-GS7J-RDW4-7BOG",
+      "status": "verified",
+      "env": "desert",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "short"
+      ],
+      "desc": "Aquí está, mi nuevo nivelito kaizo, con una dificultad algo elevada jeje",
+      "video": "https://youtu.be/afmvT7bkabk?si=bVBZBHiJveqlFC4v",
+      "img": ""
+    },
+    {
+      "id": "yxuckqdi",
+      "name": "Royal kiazo",
+      "creator": "‪makermx‬",
+      "diff": "Super Expert",
+      "code": "E9QL-PJCZ-9JXP-YB1J",
+      "status": "verified",
+      "env": "ground",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "short"
+      ],
+      "desc": "No check point corto pero intenso",
+      "video": "https://youtu.be/6QYuTiAVUO8?si=oSggw44lsiPhAPlG",
+      "img": ""
+    },
+    {
+      "id": "l1",
+      "name": "\"1 La Cueva Del Reto\"",
+      "creator": "Hugollano",
+      "diff": "Expert",
+      "code": "VZW9-BDE7-AMU2-VPA2",
+      "status": "verified",
+      "env": "underground",
+      "style": "smb",
+      "time": "day",
+      "tags": [],
+      "desc": "",
+      "video": "https://youtu.be/6tt2ueu9dR0",
+      "img": ""
+    },
+    {
+      "id": "kyh9q19e",
+      "name": "My bestest shell level [Kaizo]",
+      "creator": "Newpalebn",
+      "diff": "Expert",
+      "code": "MLLE-WS7N-AZQ9-S8JO",
+      "status": "verified",
+      "env": "snow",
+      "style": "smb3",
+      "time": "day",
+      "tags": [
+        "skill",
+        "solo"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/ndqn4lww9SA?si=KipVIq6ZkMSB4kgQ",
+      "img": ""
+    },
+    {
+      "id": "d2ajnd1j",
+      "name": "Frostall rage (kaizo)",
+      "creator": "Maladesmmwe",
+      "diff": "Expert",
+      "code": "2JVJ-VHIB-3WEZ-CP62",
+      "status": "verified",
+      "env": "snow",
+      "style": "smb",
+      "time": "night",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy",
+      "img": ""
+    },
+    {
+      "id": "4dp8bi7v",
+      "name": "La acojenante y Flipante Mansion De Hector [Kaizo]",
+      "creator": "LuigiRicoRico",
+      "diff": "Insane",
+      "code": "UIGG-8QBC-WXDW-EZ9K",
+      "status": "verified",
+      "env": "ghost",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy",
+      "img": ""
+    },
+    {
+      "id": "q0nj503a",
+      "name": "Megatively - Kaizo",
+      "creator": "Newpalebn",
+      "diff": "Insane",
+      "code": "Z3GL-4IS5-7EEY-LHR",
+      "status": "verified",
+      "env": "ground",
+      "style": "smb3",
+      "time": "night",
+      "tags": [
+        "skill",
+        "solo"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/ndqn4lww9SA?si=KipVIq6ZkMSB4kgQ",
+      "img": ""
+    }
+  ],
+  "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
+  "updates": [
+    {
+      "date": "2026-11-06",
+      "title": "Prometedores",
+      "desc": "Nieveles prometedores",
+      "tag": "new"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Nuevo lista de jugadores",
+      "desc": "Cosas nuevas de top jugadores",
+      "tag": "new"
+    },
+    {
+      "date": "2026-10-18",
+      "title": "",
+      "desc": "",
+      "k": "u12"
+    },
+    {
+      "date": "2026-10-18",
+      "title": "",
+      "desc": "",
+      "k": "u11"
+    },
+    {
+      "date": "2026-10-18",
+      "title": "",
+      "desc": "",
+      "k": "u10"
+    },
+    {
+      "date": "2026-10-17",
+      "title": "",
+      "desc": "",
+      "k": "u1"
+    },
+    {
+      "date": "2026-10-17",
+      "title": "",
+      "desc": "",
+      "k": "u2"
+    },
+    {
+      "date": "2026-10-17",
+      "title": "",
+      "desc": "",
+      "k": "u3"
+    },
+    {
+      "date": "2026-10-17",
+      "title": "",
+      "desc": "",
+      "k": "u4"
+    },
+    {
+      "date": "2026-10-15",
+      "title": "",
+      "desc": "",
+      "k": "u5"
+    },
+    {
+      "date": "2026-10-15",
+      "title": "",
+      "desc": "",
+      "k": "u6"
+    },
+    {
+      "date": "2026-10-12",
+      "title": "",
+      "desc": "",
+      "k": "u7"
+    },
+    {
+      "date": "2026-10-09",
+      "title": "",
+      "desc": "",
+      "k": "u8"
+    },
+    {
+      "date": "2026-10-09",
+      "title": "",
+      "desc": "",
+      "k": "u9"
+    }
+  ],
+  "players": [
+    {
+      "id": "pql3tkcfs",
+      "name": "Cerespin",
+      "desc": "",
+      "rp": 175,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pu6ewetl8",
+      "name": "RYANBOSS966",
+      "desc": "",
+      "rp": 119,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pam7pt3xy",
+      "name": "Billie64",
+      "desc": "",
+      "rp": 51,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pdvpuzxuc",
+      "name": "PerrunoXD",
+      "desc": "",
+      "rp": 51,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "picwr9vj0",
+      "name": "Zamasu",
+      "desc": "",
+      "rp": 42,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pf2pzcigq",
+      "name": "MARIODDJ",
+      "desc": "",
+      "rp": null,
+      "re": 3250,
+      "clears": []
+    },
+    {
+      "id": "pybvr11y0",
+      "name": "Jojoyito",
+      "desc": "",
+      "rp": 35,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "p8c7vgbjz",
+      "name": "Hicardo",
+      "desc": "",
+      "rp": 32,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pka8ldt8v",
+      "name": "BenMaster",
+      "desc": "",
+      "rp": 30,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pi2qtfe2t",
+      "name": "Skyslayer",
+      "desc": "",
+      "rp": 25,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "p2htenrjm",
+      "name": "Elfrynn",
+      "desc": "",
+      "rp": 25,
+      "re": null,
+      "clears": []
+    },
+    {
+      "id": "pd1h5xqxe",
+      "name": "Ederssj",
+      "desc": "",
+      "rp": null,
+      "re": 3213,
+      "clears": []
+    },
+    {
+      "id": "ppsv0pig5",
+      "name": "Toadetteclzz",
+      "desc": "",
+      "rp": null,
+      "re": 2356,
+      "clears": []
+    },
+    {
+      "id": "pj3cnzy6v",
+      "name": "Dimou",
+      "desc": "",
+      "rp": null,
+      "re": 1890,
+      "clears": []
+    },
+    {
+      "id": "pzjxvony1",
+      "name": "Kokoshibou77",
+      "desc": "",
+      "rp": null,
+      "re": 1883,
+      "clears": []
+    },
+    {
+      "id": "p34869tfw",
+      "name": "qwfpg5",
+      "desc": "",
+      "rp": null,
+      "re": 1612,
+      "clears": []
+    },
+    {
+      "id": "pd1cqvlfw",
+      "name": "Azert33",
+      "desc": "",
+      "rp": null,
+      "re": 1126,
+      "clears": []
+    }
+  ],
+  "prom": [
+    {
+      "id": "pm-demo",
+      "name": "Link's lost cavern",
+      "creator": "Malodesmmwe",
+      "diff": "Hard",
+      "code": "ZSBI-I1S3-B6FD-I3TC",
+      "status": "verified",
+      "env": "underground",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "puzzle",
+        "link"
+      ],
+      "desc": "Mi primer nivel de link",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "rev9kk9b",
+      "name": "Rock volcano",
+      "creator": "Samuel4833",
+      "diff": "Hard",
+      "code": "ZOO1-9S5I-YSJF-VLHA",
+      "status": "verified",
+      "env": "volcano",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "puzzle"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "0htfv973",
+      "name": "Frostall Roger (kaizo)",
+      "creator": "Malodesmmwe",
+      "diff": "Hard",
+      "code": "2JVJ-VHIB-3WEZ-CP62",
+      "status": "verified",
+      "env": "snow",
+      "style": "smb",
+      "time": "night",
+      "tags": [
+        "short",
+        "skill"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "2buduf68",
+      "name": "Loonboo (pvz minigames theme) - musical speedrun",
+      "creator": "Soulsline",
+      "diff": "Hard",
+      "code": "3F43-2HDK-54AP-T9Z4",
+      "status": "verified",
+      "env": "autumn",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "speed",
+        "music"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "om8kpxdw",
+      "name": "Mr switch",
+      "creator": "Plataformer2000",
+      "diff": "Hard",
+      "code": "NN3Z-OM9Y-7WRO-2ZA8",
+      "status": "verified",
+      "env": "ground",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "puzzle",
+        "solo"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "q49oggnl",
+      "name": "Jumpman on Grrrols",
+      "creator": "Ambarkym",
+      "diff": "Hard",
+      "code": "I88Q-EE45-MZHM-KAI1",
+      "status": "verified",
+      "env": "forest",
+      "style": "nsmbu",
+      "time": "",
+      "tags": [
+        "skill",
+        "solo"
+      ],
+      "desc": ". . .",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "nfr0t2pz",
+      "name": "Corre y salta",
+      "creator": "Dayron",
+      "diff": "Hard",
+      "code": "VWVJ-OJ9V-JIC1-K6PF",
+      "status": "verified",
+      "env": "sky",
+      "style": "smb3",
+      "time": "day",
+      "tags": [
+        "speed"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "hxj6lyk5",
+      "name": "La avaricia Destruye todo",
+      "creator": "Eternal",
+      "diff": "Hard",
+      "code": "WWG9-9D9Y-JDES-BGTW",
+      "status": "verified",
+      "env": "airship",
+      "style": "smb",
+      "time": "night",
+      "tags": [
+        "shoot",
+        "solo"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "gpswiaxs",
+      "name": "El Dúo Perfecto -spike Ball y snowball",
+      "creator": "Denity",
+      "diff": "Hard",
+      "code": "BRBS-GKFC-DEG3-E4WH",
+      "status": "verified",
+      "env": "snow",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "trad"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    },
+    {
+      "id": "sq949zss",
+      "name": "Entre Las Airships de bowser",
+      "creator": "TMysterio",
+      "diff": "Hard",
+      "code": "T89S-AUKW-KAPJ-O2IM",
+      "status": "verified",
+      "env": "airship",
+      "style": "smb",
+      "time": "day",
+      "tags": [
+        "trad",
+        "skill"
+      ],
+      "desc": "",
+      "video": "",
+      "img": ""
+    }
+  ],
+  "updated": "2026-11-11T23:59:31.909Z"
+}
