@@ -28,6 +28,8 @@
   "levels": [
     {
       "id": "l4",
+      "added": "",
+      "img": "",
       "name": "Malabaizo - Kaizo",
       "creator": "Plataformer2000",
       "diff": "Extreme",
@@ -38,9 +40,7 @@
       "time": "night",
       "tags": [],
       "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
-      "video": "https://youtu.be/675WMIqQhqs",
-      "img": "",
-      "added": ""
+      "video": "https://youtu.be/675WMIqQhqs"
     },
     {
       "id": "l2",
@@ -91,6 +91,24 @@
       "video": "https://youtu.be/6QYuTiAVUO8?si=oSggw44lsiPhAPlG",
       "img": "",
       "added": ""
+    },
+    {
+      "id": "tfwlartg",
+      "added": "2026-11-14",
+      "img": "",
+      "name": "D'not touch ground - kaizo level",
+      "creator": "playoff16",
+      "diff": "Super Expert",
+      "code": "U2TW-W953-DWJJ-ED9Q",
+      "status": "verified",
+      "env": "ground",
+      "style": "smb3",
+      "time": "day",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": ""
     },
     {
       "id": "l1",
@@ -144,6 +162,24 @@
       "video": "https://youtu.be/q__KK8RgowU?si=lGHsbzrsvvDH09Hy",
       "img": "",
       "added": ""
+    },
+    {
+      "id": "e1yb58c8",
+      "added": "2026-11-14",
+      "img": "",
+      "name": "Kaizo doble de smm2",
+      "creator": "makermx",
+      "diff": "Expert",
+      "code": "1N4S-PNMV-N3WX-XJCQ",
+      "status": "verified",
+      "env": "underground",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/dDxBu9E9k6M?si=XM0n1_9uqyO1yZwS"
     },
     {
       "id": "93o54xal",
@@ -200,24 +236,6 @@
       "video": "https://youtu.be/ndqn4lww9SA?si=KipVIq6ZkMSB4kgQ",
       "img": "",
       "added": ""
-    },
-    {
-      "id": "e1yb58c8",
-      "added": "2026-11-14",
-      "img": "",
-      "name": "Kaizo doble de smm2",
-      "creator": "makermx",
-      "diff": "Expert",
-      "code": "1N4S-PNMV-N3WX-XJCQ",
-      "status": "verified",
-      "env": "underground",
-      "style": "smw",
-      "time": "day",
-      "tags": [
-        "skill"
-      ],
-      "desc": "",
-      "video": "https://youtu.be/dDxBu9E9k6M?si=XM0n1_9uqyO1yZwS"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
@@ -689,5 +707,5 @@
       "added": ""
     }
   ],
-  "updated": "2026-11-14T01:43:15.420Z"
+  "updated": "2026-11-14T23:22:51.815Z"
 }
