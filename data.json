@@ -147,8 +147,6 @@
     },
     {
       "id": "93o54xal",
-      "added": "2026-11-12",
-      "img": "",
       "name": "´´-[HOLLOW ADVENTURE]-´´",
       "creator": "xBlangro164x",
       "diff": "Insane",
@@ -162,7 +160,9 @@
         "skill"
       ],
       "desc": "DIFICULTAD: INSANE DEMON. Un nivel con tecnicas extractas. suerte lo tuyo ;D",
-      "video": "https://youtu.be/zrUJjsnrTGU"
+      "video": "https://youtu.be/zrUJjsnrTGU",
+      "img": "",
+      "added": "2026-11-12"
     },
     {
       "id": "4dp8bi7v",
@@ -200,6 +200,24 @@
       "video": "https://youtu.be/ndqn4lww9SA?si=KipVIq6ZkMSB4kgQ",
       "img": "",
       "added": ""
+    },
+    {
+      "id": "e1yb58c8",
+      "added": "2026-11-14",
+      "img": "",
+      "name": "Kaizo doble de smm2",
+      "creator": "makermx",
+      "diff": "Expert",
+      "code": "1N4S-PNMV-N3WX-XJCQ",
+      "status": "verified",
+      "env": "underground",
+      "style": "smw",
+      "time": "day",
+      "tags": [
+        "skill"
+      ],
+      "desc": "",
+      "video": "https://youtu.be/dDxBu9E9k6M?si=XM0n1_9uqyO1yZwS"
     }
   ],
   "credits": "Creador:\nSpyderSammy\nDEV:\nSpyderSammy\nTamalitos209\nDevhelper:\nelfafagod\nblangro164.1.5\nAldian\n0benmaster0\n_dioneru",
@@ -671,5 +689,5 @@
       "added": ""
     }
   ],
-  "updated": "2026-11-12T22:40:58.629Z"
+  "updated": "2026-11-14T01:43:15.420Z"
 }
