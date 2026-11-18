@@ -361,27 +361,22 @@ body[data-font=clear] h1{line-height:1.5;text-shadow:3px 0 0 var(--black),-3px 0
 .sbtn i{display:block;width:100%;height:100%;background:center/contain no-repeat}
 
 .thumb{position:relative;display:block;margin:10px 0;border:4px solid var(--black);box-shadow:4px 4px 0 var(--black);background:#000;line-height:0}
-#plPanel,#plSec,#prPanel,#prSec{display:none}
-body[data-view=prom] #prPanel,body[data-view=prom] #prSec{display:block}
-body[data-view=prom] #searchPanel,body[data-view=prom] #lvSec,body[data-view=prom] nav.jump,body[data-view=players] #plPanel~#x{display:none}
+#prPanel,#prSec,#plPanel,#plSec{display:none}
 body[data-view=players] #plPanel,body[data-view=players] #plSec{display:block}
 body[data-view=players] #searchPanel,body[data-view=players] #lvSec,body[data-view=players] nav.jump{display:none}
+body[data-view=prom] #prPanel,body[data-view=prom] #prSec{display:block}
+body[data-view=prom] #searchPanel,body[data-view=prom] #lvSec,body[data-view=prom] nav.jump{display:none}
 .plrow{background:var(--paper,#fff8dc);border:4px solid var(--black);box-shadow:4px 4px 0 var(--black);padding:10px;margin:0 0 12px;cursor:pointer}
-.plrow .plh{display:flex;align-items:center;gap:8px}
-.plrow .plh b{flex:1;min-width:0;word-break:break-word;font-size:12px}
-.pltabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}.pltabs .btn{text-transform:none;width:100%;text-align:center;min-height:0;padding:9px 2px;font-size:9px;line-height:1.3}.pltabs .btn.on{background:#fbd000}
-#plQ{width:100%;box-sizing:border-box;padding:8px;font-size:10px}.plhow{margin-top:8px;border:3px dashed #0006;padding:6px;font-size:9px}.plhow summary{cursor:pointer;font-size:10px}
+.plrow.yt{cursor:default}.plrow .plh{display:flex;align-items:center;gap:8px}.plrow .plh b{flex:1;min-width:0;word-break:break-word;font-size:12px}
+.plrow .plpt{flex:0 0 auto;background:#fbd000;border:3px solid var(--black);padding:3px 6px;font-size:10px;white-space:nowrap}
+.plrow .ytb{display:flex;gap:10px;align-items:center;margin-top:8px}.plrow .ytb>div{flex:1;min-width:0}.plrow .yav{flex:0 0 64px;width:64px;height:64px;border:3px solid var(--black);border-radius:50%;object-fit:cover;background:#ddd}
+.plrow .pld{font-size:9px;margin:6px 0 0;word-break:break-word}.plrow .plh .rkc{flex:0 0 auto}
 .plrow.p1{border-color:#b8860b;background:#fff3b8}.plrow.p2{border-color:#6b7683;background:#eef1f5}.plrow.p3{border-color:#8a4b1f;background:#fbe3cf}
-.plrow .plh .rkc{flex:0 0 auto}.plrow .plpt{flex:0 0 auto}
+.pltabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}.pltabs .btn{width:100%;text-align:center;min-height:44px;padding:6px 2px;font-size:8px;line-height:1.3}
+#plQ{width:100%;box-sizing:border-box;padding:8px;font-size:10px}
 #toTop{position:fixed;left:10px;bottom:10px;z-index:41;width:48px;height:48px;padding:0;font-size:16px;zoom:var(--z)}#toTop.hide{display:none}
 .newtag{display:inline-block;background:#d32a1f;color:#fff;border:2px solid #111;padding:1px 4px;font-size:7px;margin-left:4px;vertical-align:middle;white-space:nowrap;flex:0 0 auto}
 .tpls{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.tpls .btn{font-size:8px;padding:6px}
-.pbdg{display:inline-block;border:2px solid #111;padding:2px 5px;font-size:8px;white-space:nowrap}
-.plrow .plpt{background:#fbd000;border:3px solid var(--black);padding:3px 6px;font-size:10px;white-space:nowrap}
-.plrow .plb{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
-.plrow .plav{flex:0 0 64px;width:64px;height:64px;border:3px solid var(--black);background:#ddd;object-fit:cover;image-rendering:auto}
-.plrow .plbd{display:flex;flex-wrap:wrap;gap:4px}
-.plrow .plbd .badge{font-size:8px}
 .plclr{max-height:30vh;overflow:auto;border:3px solid var(--black);padding:4px;margin:4px 0}
 .plclr label{display:flex;gap:6px;align-items:center;padding:3px 0;font-size:9px;cursor:pointer}
 .plclr label input{width:18px;height:18px;flex:0 0 auto}
@@ -531,10 +526,10 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
   <button class="btn" id="menuBtn" aria-label="Menu" aria-haspopup="menu" aria-expanded="false"><span class="bars"><i></i><i></i><i></i></span></button>
   <div class="menu hide" id="menu" role="menu">
     <button class="btn" data-menu="bg" role="menuitem">&#128444; <span id="bgL"></span></button>
-    <button class="btn" data-menu="players" role="menuitem">&#127942; <span id="plL"></span></button>
     <button class="btn" data-menu="apply" role="menuitem">&#128221; <span id="apL"></span></button>
     <button class="btn" data-menu="upd" role="menuitem">&#128339; <span id="upL"></span></button>
     <button class="btn" data-menu="prom" role="menuitem">&#11088; <span id="prL"></span></button>
+    <button class="btn" data-menu="players" role="menuitem">&#127942; <span id="plL"></span></button>
     <button class="btn" data-menu="saved" role="menuitem">&#9829; <span id="savL"></span></button>
     <button class="btn" data-menu="settings" role="menuitem">&#9881; <span id="setL"></span></button>
     <button class="btn" data-menu="social" role="menuitem">&#128279; <span id="socL"></span></button>
@@ -601,24 +596,19 @@ body:not([data-font=clear]) .lvh .rname,body:not([data-font=clear]) .lvh h2{line
 <section id="lvSec">
   <div id="list"></div>
 </section>
-<section class="panel" id="plPanel">
-  <h2 style="margin:0"><span class="qblock">?</span> <span id="plTitle"></span></h2>
-  <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="plBack"></button><button class="btn sm blue" id="plLink"></button><button class="btn sm green hide" id="plAdd"></button><button class="btn sm hide" id="plImp"></button></div>
-  <div class="pltabs" id="plTabs"></div>
-  <h3 id="plH" style="margin:10px 0 0;font-size:11px"></h3>
-  <input type="search" id="plQ" maxlength="40" autocomplete="off" style="margin-top:8px">
-  <p id="plCnt" style="font-size:9px;margin:6px 0 0"></p>
-  <details class="plhow" id="plHow"><summary id="plHowT"></summary>
-    <p id="plRule" style="font-size:9px;margin:6px 0 0"></p>
-    <div class="tags" id="plPts" style="margin-top:8px"></div>
-    <div class="tags" id="plBdg" style="margin-top:6px"></div></details>
-</section>
 <section class="panel" id="prPanel">
   <h2 style="margin:0"><span class="qblock">?</span> <span id="prTitle"></span></h2>
   <p id="prIntro" style="font-size:10px;margin:8px 0 0"></p>
   <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="prBack"></button><button class="btn sm blue" id="prLink"></button><button class="btn sm green hide" id="prAdd"></button><button class="btn sm hide" id="prImp"></button></div>
 </section>
 <section id="prSec"><div id="prList"></div></section>
+<section class="panel" id="plPanel">
+  <h2 style="margin:0"><span class="qblock">?</span> <span id="plTitle"></span></h2>
+  <div class="actions" style="margin:8px 0 0"><button class="btn sm" id="plBack"></button><button class="btn sm blue" id="plLink"></button><button class="btn sm green hide" id="plAdd"></button><button class="btn sm hide" id="plImp"></button></div>
+  <div class="pltabs" id="plTabs"></div>
+  <h3 id="plH" style="margin:10px 0 0;font-size:11px"></h3>
+  <input type="search" id="plQ" maxlength="40" autocomplete="off" style="margin-top:8px">
+</section>
 <section id="plSec"><div id="plList"></div></section>
 
 <div class="live" id="live"></div>
@@ -936,12 +926,13 @@ function clean(d){
   const o={diffs,levels};
   o.prom=Array.isArray(d.prom)?clean({diffs:d.diffs,levels:d.prom,players:[]}).levels.slice(0,300):[];
   if(!Array.isArray(d.prom)&&!d.__inner&&levels.length)o.prom=[{id:"pm-demo",name:"Ejemplo de nivel prometedor",creator:"Creador",diff:diffs[0]?diffs[0].name:"",code:"",status:"verified",env:"",style:"",time:"",tags:[],desc:"Este es un nivel de ejemplo. Entra como admin para editarlo o borrarlo.",video:"",img:""}];
+  o.players=Array.isArray(d.players)?d.players.filter(p=>p&&typeof p==="object"&&p.name).slice(0,300).map(p=>({id:/^[\w-]{1,24}$/.test(p.id||"")?p.id:"p"+uid(),name:SX(p.name,40),desc:SX(p.desc,300),added:/^\d{4}-\d\d-\d\d$/.test(p.added||"")?p.added:"",rp:recN(p.rp),re:recN(p.re)})):[];
+  o.yts=Array.isArray(d.yts)?d.yts.filter(y=>y&&typeof y==="object"&&y.name).slice(0,200).map(y=>({id:/^[\w-]{1,24}$/.test(y.id||"")?y.id:"y"+uid(),name:SX(y.name,40),link:/^https?:\/\//i.test(y.link||"")?SX(y.link,300):"",subs:Math.min(Math.floor(Number(y.subs))||0,999999999)||null,img:/^(https?:\/\/|levelimgs\/[\w.-]+$)/i.test(y.img||"")?SX(y.img,300):"",desc:SX(y.desc,300)})):[];
+  if(!Array.isArray(d.players)&&!d.__inner&&levels.length){o.players=[{id:"p-demo",name:"Jugador de ejemplo",rp:25,re:45,desc:"Este es un jugador de ejemplo. Entra como admin para editarlo o borrarlo.",added:""}];o.yts=[{id:"y-demo",name:"Youtuber de ejemplo",link:"https://www.youtube.com/",subs:12500,img:"levelimgs/ejemplo.png",desc:"Este es un youtuber de ejemplo. Entra como admin para editarlo o borrarlo."}];}
   if(Array.isArray(d.trash)){const lim=Date.now()-30*864e5;o.trash=d.trash.filter(x=>x&&typeof x==="object"&&x.l&&typeof x.l==="object"&&Date.parse(x.date)>lim).slice(0,50).map(x=>{const c=clean({diffs:[],levels:[x.l]}).levels[0];return c?{l:c,pos:Math.max(1,x.pos|0),date:SX(x.date,10)}:null;}).filter(Boolean);}
   if(typeof d.updated==="string"&&!isNaN(Date.parse(d.updated)))o.updated=d.updated.slice(0,30);
   if(typeof d.credits==="string")o.credits=d.credits.slice(0,600);
-  if(Array.isArray(d.players))o.players=d.players.filter(p=>p&&typeof p==="object"&&p.name).slice(0,300).map(p=>({id:SX(p.id||("p"+Math.random().toString(36).slice(2,9)),20),name:SX(p.name,40),desc:SX(p.desc,300),added:/^\d{4}-\d{2}-\d{2}$/.test(p.added||"")?p.added:"",rp:recN(p.rp),re:recN(p.re),clears:Array.isArray(p.clears)?p.clears.map(x=>SX(x,40)).slice(0,500):[]}));
   if(Array.isArray(d.updates))o.updates=d.updates.filter(u=>u&&typeof u==="object").map(u=>({date:SX(u.date,10),title:SX(u.title,60),desc:SX(u.desc,400),...(/^[un]\d{1,3}$/.test(u.k||"")?{k:u.k}:{}),...(u.tag==="new"||u.tag==="chg"?{tag:u.tag}:{})}));
-  if(!Array.isArray(o.players)&&!Array.isArray(d.players)&&o.levels.length)o.players=[{id:"p-demo",name:"Jugador de ejemplo",rp:25,re:45,desc:"Este es un jugador de ejemplo. Entra como admin para editarlo o borrarlo.",clears:o.levels.slice(0,3).map(l=>l.id)}];
   return o;
 }
 const readJSON=k=>{try{const s=JSON.parse(lsGet(k));return valid(s)?clean(s):null;}catch(e){return null;}};
@@ -1621,7 +1612,7 @@ async function publish(){
   const base="https://api.github.com/repos/"+c.owner+"/"+c.repo+"/contents/"+c.path.split("/").map(encodeURIComponent).join("/");
   const H={"Authorization":"Bearer "+c.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
   const updated=new Date().toISOString();
-  const body=JSON.stringify({diffs:state.diffs,levels:state.levels,credits:state.credits,updates:state.updates,trash:state.trash,players:state.players,prom:state.prom,updated},null,2);
+  const body=JSON.stringify({diffs:state.diffs,levels:state.levels,credits:state.credits,updates:state.updates,trash:state.trash,players:state.players,yts:state.yts,prom:state.prom,updated},null,2);
   try{
     let sha,oldB64="";
     const g=await fetch(base+"?ref="+encodeURIComponent(c.branch)+"&t="+Date.now(),{headers:H,cache:"no-store"});
@@ -1699,7 +1690,7 @@ function jsonForm(){
     const H={"Authorization":"Bearer "+c.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
     const updated=new Date().toISOString();
     const out=Object.assign({},data,{updated});
-    const body=JSON.stringify({diffs:out.diffs,levels:out.levels,credits:out.credits||"",updates:out.updates,trash:out.trash,players:out.players,prom:out.prom,updated},null,2);
+    const body=JSON.stringify({diffs:out.diffs,levels:out.levels,credits:out.credits||"",updates:out.updates,trash:out.trash,players:out.players,yts:out.yts,prom:out.prom,updated},null,2);
     try{
       let sha;const g=await fetch(base+"?ref="+encodeURIComponent(c.branch||"main")+"&t="+Date.now(),{headers:H,cache:"no-store"});
       if(g.ok)sha=(await g.json()).sha;else if(g.status!==404)throw new Error(await ghErr(g));
@@ -1791,114 +1782,13 @@ function inboxForm(){
   };
 }
 $("#aInbox").onclick=inboxForm;updInboxBtn();
-/* ===== players list ===== */
-const PTS_N={"hard":1,"insane":3,"expert":5,"super expert":10,"extreme":15,"impossible":20};
-const ptsOf=n=>{const k=String(n||"").toLowerCase();if(PTS_N[k]!=null)return PTS_N[k];const i=state.diffs.findIndex(d=>d.name===n);return i<0?1:[1,3,5,10,15,20][Math.min(i,5)];};
-const PLT={
-es:{tsP:"🌟 Prometedores",tsE:"♾ Sin fin",tsB:"🏆 Mejores",how:"Cómo se ganan los puntos",find2:"Buscar jugador...",cnt:"{0} jugadores",noMatch:"Ningún jugador coincide",tbP:"Jugadores prometedores",tbE:"Desafío Mario Sin Fin (Expert)",tbB:"Los mejores jugadores",rec:"Récord",fRp:"Récord en Prometedores",fRe:"Récord en Desafío sin fin (Expert)",rule:"Desde {0} de récord, el récord completo suma como puntos.",sLv:"Puntos de niveles",sPr:"Puntos de Prometedores",sEn:"Puntos de Desafío sin fin",min:"mín. {0}",noOne:"Nadie en esta lista todavía",ruleB:"Total = niveles + Prometedores + Desafío sin fin.",bR:"Bronce",bS:"Plata",bG:"Oro",bL:"Insignias",m:"Lista de jugadores",t:"LISTA DE JUGADORES",back:"← Lista de niveles",link:"Copiar enlace",copied:"Enlace copiado",add:"+ Jugador",pts:"puntos",none:"Aún no hay jugadores",lvls:"Niveles pasados",edit:"Editar",del:"Borrar",delQ:"¿Borrar a \"{0}\"?",name:"Nombre",img:"Imagen (opcional)",vid:"Video (opcional)",notes:"Notas",clr:"Niveles que pasó",find:"Buscar nivel...",save:"Guardar",cancel:"Cancelar",need:"Falta el nombre",saved:"Jugador guardado",done:"Jugador borrado",up:"Subir imagen",total:"Total",watch:"Ver video",pl:"puntos por nivel"},
-en:{tsP:"🌟 Promising",tsE:"♾ Endless",tsB:"🏆 Best",how:"How points work",find2:"Search player...",cnt:"{0} players",noMatch:"No player matches",tbP:"Promising players",tbE:"Endless Mario Challenge (Expert)",tbB:"Best players",rec:"Record",fRp:"Record in Promising",fRe:"Record in Endless Challenge (Expert)",rule:"From {0} record, the whole record counts as points.",sLv:"Level points",sPr:"Promising points",sEn:"Endless Challenge points",min:"min. {0}",noOne:"Nobody on this list yet",ruleB:"Total = levels + Promising + Endless Challenge.",bR:"Bronze",bS:"Silver",bG:"Gold",bL:"Badges",m:"Player list",t:"PLAYER LIST",back:"← Level list",link:"Copy link",copied:"Link copied",add:"+ Player",pts:"points",none:"No players yet",lvls:"Cleared levels",edit:"Edit",del:"Delete",delQ:"Delete \"{0}\"?",name:"Name",img:"Image (optional)",vid:"Video (optional)",notes:"Notes",clr:"Levels cleared",find:"Search level...",save:"Save",cancel:"Cancel",need:"Name is missing",saved:"Player saved",done:"Player deleted",up:"Upload image",total:"Total",watch:"Watch video",pl:"points per level"},
-pt:{tsP:"🌟 Promissores",tsE:"♾ Sem fim",tsB:"🏆 Melhores",how:"Como os pontos funcionam",find2:"Buscar jogador...",cnt:"{0} jogadores",noMatch:"Nenhum jogador encontrado",tbP:"Jogadores promissores",tbE:"Desafio Mario Sem Fim (Expert)",tbB:"Melhores jogadores",rec:"Recorde",fRp:"Recorde em Promissores",fRe:"Recorde no Desafio sem fim (Expert)",rule:"A partir de {0} de recorde, o recorde inteiro soma como pontos.",sLv:"Pontos dos níveis",sPr:"Pontos de Promissores",sEn:"Pontos do Desafio sem fim",min:"mín. {0}",noOne:"Ninguém nesta lista ainda",ruleB:"Total = níveis + Promissores + Desafio sem fim.",bR:"Bronze",bS:"Prata",bG:"Ouro",bL:"Insígnias",m:"Lista de jogadores",t:"LISTA DE JOGADORES",back:"← Lista de níveis",link:"Copiar link",copied:"Link copiado",add:"+ Jogador",pts:"pontos",none:"Ainda não há jogadores",lvls:"Níveis completados",edit:"Editar",del:"Excluir",delQ:"Excluir \"{0}\"?",name:"Nome",img:"Imagem (opcional)",vid:"Vídeo (opcional)",notes:"Notas",clr:"Níveis completados",find:"Buscar nível...",save:"Salvar",cancel:"Cancelar",need:"Falta o nome",saved:"Jogador salvo",done:"Jogador excluído",up:"Enviar imagem",total:"Total",watch:"Ver vídeo",pl:"pontos por nível"}};
-const plt=(k,a)=>{let v=(PLT[LANG]||PLT.en)[k]||PLT.en[k]||"";return a==null?v:v.replace("{0}",a);};
-const BDG=[[40,"bG","#fbd000","#111"],[15,"bS","#c9d1d9","#111"],[1,"bR","#cd7f32","#fff"]];
-const plBadge=p=>{const b=BDG.find(x=>p>=x[0]);return b?`<span class="pbdg" style="background:${b[2]};color:${b[3]}">${esc(plt(b[1]))}</span>`:"";};
-const PP_MIN=20,EP_MIN=40;
-const recPts=(v,min)=>v!=null&&v>=min?v:0;
-const plTotal=p=>{let lp=0,n=0;const by={};(p.clears||[]).forEach(id=>{const l=state.levels.find(x=>x.id===id);if(l){lp+=ptsOf(l.diff);n++;by[l.diff]=(by[l.diff]||0)+1;}});const pp=recPts(p.rp,PP_MIN),ep=recPts(p.re,EP_MIN);return{pts:lp+pp+ep,lp,pp,ep,n,by};};
-let plTab="best";
-const plSorted=()=>(state.players||[]).map(p=>({p,...plTotal(p)})).sort((a,b)=>b.pts-a.pts||b.n-a.n||a.p.name.localeCompare(b.p.name));
+/* ===== views ===== */
 const VH={players:"#list_players",prom:"#lista_prometedores"};
 function viewSet(v,noHash){
   document.body.setAttribute("data-view",v);
   if(!noHash){try{const h=VH[v]||"";if(h)history.replaceState(null,"",location.pathname+location.search+h);else if(location.hash==="#list_players"||location.hash==="#lista_prometedores")history.replaceState(null,"",location.pathname+location.search);}catch(e){location.hash=VH[v]||"";}}
   plRender();prRender();if(v!=="levels")window.scrollTo(0,0);
 }
-function plSet(on,noHash){viewSet(on?"players":"levels",noHash);}
-function plRender(){
-  const e=$("#plL");if(e)e.textContent=document.body.getAttribute("data-view")==="players"?plt("back").replace(/^\S+\s/,""):plt("m");
-  $("#plTitle").textContent=plt("t");$("#plBack").textContent=plt("back");$("#plLink").textContent=plt("link");$("#plAdd").textContent=plt("add");$("#plAdd").classList.toggle("hide",!admin);{const b=$("#plImp");b.textContent=imp("save");b.classList.toggle("hide",!admin);}
-  $("#plPts").innerHTML=state.diffs.map(d=>`<span class="tg" style="border-color:${esc(d.color)}">${esc(d.name)}: ${ptsOf(d.name)}+</span>`).join("");
-  $("#plBdg").innerHTML="<b style=\"font-size:9px\">"+esc(plt("bL"))+":</b> "+BDG.slice().reverse().map(b=>`<span class="pbdg" style="background:${b[2]};color:${b[3]}">${esc(plt(b[1]))} ${b[0]}+</span>`).join(" ");
-  const tabs=[["prom","tsP","tbP"],["endless","tsE","tbE"],["best","tsB","tbB"]];
-  $("#plTabs").innerHTML=tabs.map(x=>`<button type="button" class="btn${plTab===x[0]?" on":""}" data-pltab="${x[0]}" title="${esc(plt(x[2]))}">${esc(plt(x[1]))}</button>`).join("");
-  const cur=tabs.find(x=>x[0]===plTab);$("#plH").textContent=plt(cur[2]);
-  $("#plHowT").textContent=plt("how");$("#plQ").placeholder=plt("find2");
-  $("#plRule").textContent=plTab==="prom"?plt("rule",PP_MIN):plTab==="endless"?plt("rule",EP_MIN):plt("ruleB");
-  const bestV=plTab==="best";$("#plPts").style.display=bestV?"":"none";$("#plBdg").style.display=bestV?"":"none";
-  const q=($("#plQ").value||"").trim().toLowerCase();
-  const rk=(arr,f)=>arr.map((r,i)=>({...r,rank:arr.findIndex(x=>f(x)===f(r))+1}));
-  const actions=r=>admin?`<div class="rowtools"><button class="btn sm blue" data-ple="${esc(r.p.id)}">${plt("edit")}</button><button class="btn sm red" data-pld="${esc(r.p.id)}">${plt("del")}</button></div>`:"";
-  const rcls=n=>n<=3?" p"+n:"";
-  let list,html="";
-  if(bestV){
-    list=rk(plSorted(),r=>r.pts+"|"+r.n);
-  }else{
-    const k=plTab==="prom"?"rp":"re";
-    list=rk(plSorted().filter(r=>r.p[k]!=null).sort((a,b)=>b.p[k]-a.p[k]||a.p.name.localeCompare(b.p.name)),r=>r.p[k]);
-  }
-  const total=list.length;
-  list=list.filter(r=>!q||r.p.name.toLowerCase().includes(q));
-  $("#plCnt").textContent=plt("cnt",total);
-  if(bestV){
-    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b>${newTag(r.p)}${plBadge(r.pts)}<span class="plpt">${r.pts} ${esc(plt("pts"))}</span></div>
-    <div class="plb"><div class="plbd">${state.diffs.filter(d=>r.by[d.name]).map(d=>`<span class="badge" style="background:${esc(d.color)}">${esc(d.name)} x${r.by[d.name]}</span>`).join("")}${r.pp?`<span class="badge" style="background:#6a2fb8">Prom ${r.pp}</span>`:""}${r.ep?`<span class="badge" style="background:#d32a1f">Expert ${r.ep}</span>`:""}${(!r.pts)?"&mdash;":""}</div></div>${actions(r)}</div>`).join("");
-  }else{
-    const k=plTab==="prom"?"rp":"re",min=plTab==="prom"?PP_MIN:EP_MIN;
-    html=list.map(r=>`<div class="plrow${rcls(r.rank)}" data-pl="${esc(r.p.id)}"><div class="plh"><span class="rkc ${r.rank<4?"":"b"}">${r.rank}</span><b>${esc(r.p.name)}</b>${newTag(r.p)}<span class="plpt">${esc(plt("rec"))} ${r.p[k]}</span></div>
-    <div class="plb"><div class="plbd"><span class="badge" style="background:${r.p[k]>=min?"#2fa84f":"#777"}">${r.p[k]>=min?"+"+r.p[k]+" "+esc(plt("pts")):esc(plt("min",min))}</span></div></div>${actions(r)}</div>`).join("");
-  }
-  if(!list.length)html=`<div class="empty">${plt(q?"noMatch":"noOne")}</div>`;
-  $("#plList").innerHTML=html;
-}
-function plDetail(id){
-  const all=plSorted(),r=all.map(x=>({...x,rank:all.findIndex(y=>y.pts===x.pts&&y.n===x.n)+1})).find(x=>x.p.id===id);if(!r)return;const p=r.p;
-  const lv=(p.clears||[]).map(i=>state.levels.find(l=>l.id===i)).filter(Boolean);
-  $("#detailBox").innerHTML=`<h2 style="margin-top:0">#${r.rank} ${esc(p.name)} ${plBadge(r.pts)}</h2>
-    <p><b>${r.pts}</b> ${esc(plt("pts"))} · ${r.n} ${esc(plt("lvls").toLowerCase())}</p>
-    <div class="tlrow"><span>${esc(plt("sLv"))}</span><b>${r.lp}</b></div>
-    <div class="tlrow"><span>${esc(plt("tbP"))}: ${p.rp!=null?esc(plt("rec"))+" "+p.rp:"&mdash;"}</span><b>${r.pp}</b></div>
-    <div class="tlrow"><span>${esc(plt("tbE"))}: ${p.re!=null?esc(plt("rec"))+" "+p.re:"&mdash;"}</span><b>${r.ep}</b></div>
-    ${p.desc?`<p style="font-size:10px">${esc(p.desc)}</p>`:""}
-    <span class="lbl">${esc(plt("lvls"))}</span>
-    <div>${lv.map(l=>`<div class="tlrow"><div><b>${esc(l.name)}</b></div><div>${badge(l.diff)} +${ptsOf(l.diff)}</div></div>`).join("")||"&mdash;"}</div>
-    <div class="actions"><button class="btn" data-close="#mDetail">${t("close")}</button></div>`;
-  open("#mDetail");
-}
-function plForm(id){
-  const ex=(state.players||[]).find(p=>p.id===id),p=ex?JSON.parse(JSON.stringify(ex)):{id:"p"+uid(),name:"",desc:"",rp:null,re:null,clears:[]};
-  const sel=new Set(p.clears);
-  $("#formBox").innerHTML=`<h2>${plt(ex?"edit":"add")}</h2>
-    <label class="lbl">${plt("name")}</label><input type="text" id="pName" maxlength="40" value="${esc(p.name)}">
-    <label class="lbl">${plt("fRp")}</label><input type="number" id="pRp" min="0" inputmode="numeric" value="${p.rp==null?"":p.rp}">
-    <label class="lbl">${plt("fRe")}</label><input type="number" id="pRe" min="0" inputmode="numeric" value="${p.re==null?"":p.re}">
-    <label class="lbl">${plt("notes")}</label><textarea id="pDesc" maxlength="300">${esc(p.desc)}</textarea>
-    <label class="lbl">${plt("clr")} — <b id="pTot">0</b> ${esc(plt("pts"))}</label>
-    <input type="search" id="pFind" placeholder="${esc(plt("find"))}"><div class="plclr" id="pClr"></div>
-    <div class="actions"><button class="btn green" id="pSave">${plt("save")}</button><button class="btn" data-close="#mForm">${plt("cancel")}</button></div>`;
-  const tot=()=>{let n=0;sel.forEach(i=>{const l=state.levels.find(x=>x.id===i);if(l)n+=ptsOf(l.diff);});n+=recPts(recN($("#pRp").value),PP_MIN)+recPts(recN($("#pRe").value),EP_MIN);$("#pTot").textContent=n;};
-  const draw=()=>{const q=$("#pFind").value.trim().toLowerCase();$("#pClr").innerHTML=state.levels.filter(l=>!q||l.name.toLowerCase().includes(q)).map(l=>`<label><input type="checkbox" data-c="${esc(l.id)}"${sel.has(l.id)?" checked":""}><span>${esc(l.name)}</span>${badge(l.diff)}<b>+${ptsOf(l.diff)}</b></label>`).join("");
-    $("#pClr").querySelectorAll("[data-c]").forEach(c=>c.onchange=()=>{c.checked?sel.add(c.dataset.c):sel.delete(c.dataset.c);tot();});tot();};
-  draw();$("#pFind").oninput=draw;$("#pRp").oninput=tot;$("#pRe").oninput=tot;
-  $("#pSave").onclick=()=>{
-    const name=$("#pName").value.trim();if(!name){toast(plt("need"));return;}
-    const o={id:p.id,added:ex?(ex.added||""):new Date().toISOString().slice(0,10),name,rp:recN($("#pRp").value),re:recN($("#pRe").value),desc:$("#pDesc").value.trim().slice(0,300),clears:[...sel]};
-    const a=(state.players||[]).slice();const i=a.findIndex(x=>x.id===p.id);if(i>=0)a[i]=o;else a.push(o);
-    state.players=a;save();render();close("#mForm");toast(plt("saved"));
-  };
-  open("#mForm");
-}
-$("#plBack").onclick=()=>plSet(false);
-$("#plQ").addEventListener("input",()=>plRender());
-$("#plTabs").addEventListener("click",e=>{const b=e.target.closest("[data-pltab]");if(b){plTab=b.dataset.pltab;plRender();}});
-$("#plAdd").onclick=()=>{if(admin)plForm(null);};
-$("#plLink").onclick=()=>{const v=location.origin+location.pathname+"#list_players",done=()=>toast(plt("copied"));
-  const fb=()=>{try{const ta=document.createElement("textarea");ta.value=v;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
-  try{navigator.clipboard.writeText(v).then(done,fb);}catch(e){fb();}};
-$("#plList").addEventListener("click",e=>{
-  const ed=e.target.closest("[data-ple]"),dl=e.target.closest("[data-pld]");
-  if(ed){e.stopPropagation();if(admin)plForm(ed.dataset.ple);return;}
-  if(dl){e.stopPropagation();const p=(state.players||[]).find(x=>x.id===dl.dataset.pld);if(admin&&p&&confirm(plt("delQ",p.name))){state.players=state.players.filter(x=>x.id!==p.id);save();render();toast(plt("done"));}return;}
-  const r=e.target.closest("[data-pl]");if(r)plDetail(r.dataset.pl);
-});
 window.addEventListener("hashchange",()=>{const h=location.hash;if(h==="#list_players")viewSet("players",true);else if(h==="#lista_prometedores")viewSet("prom",true);else if(h==="#postularse")applyForm();else if(!h&&document.body.getAttribute("data-view")!=="levels")viewSet("levels",true);});
 
 
@@ -1916,6 +1806,7 @@ function updForm(){
     <div class="tlrow"><b>${esc(upt("lv"))}</b><span>${state.levels.length}</span></div>
     <div class="tlrow"><b>${esc(upt("pr"))}</b><span>${(state.prom||[]).length}</span></div>
     <div class="tlrow"><b>${esc(upt("pl"))}</b><span>${(state.players||[]).length}</span></div>
+    <div class="tlrow"><b>Youtubers</b><span>${(state.yts||[]).length}</span></div>
     <div class="actions"><button class="btn" data-close="#mForm">${esc(upt("close"))}</button></div>`;
   open("#mForm");
 }
@@ -2015,7 +1906,7 @@ function impForm(kind){
     }else{
       const key=k==="pp"?"rp":"re",today=new Date().toISOString().slice(0,10),a=(state.players||[]).map(p=>({...p}));
       r.upd.forEach(u=>{const p=a.find(x=>x.id===u.id);if(p)p[key]=u.v;});
-      r.items.forEach(x=>{const p={id:"p"+uid(),added:today,name:x.name,desc:"",rp:null,re:null,clears:[]};p[key]=x.v;a.push(p);});
+      r.items.forEach(x=>{const p={id:"p"+uid(),added:today,name:x.name,desc:"",rp:null,re:null};p[key]=x.v;a.push(p);});
       state.players=a;
     }
     save();render();close("#mForm");toast(imp("done"));
@@ -2116,13 +2007,119 @@ function prRender(){
 }
 $("#prBack").onclick=()=>viewSet("levels");
 $("#prImp").onclick=()=>{if(admin)impForm("pr");};
-$("#plImp").onclick=()=>{if(admin)impForm(plTab==="endless"?"pe":"pp");};
 $("#prAdd").onclick=()=>{if(admin){LVK="prom";levelForm(null);}};
 $("#prLink").onclick=()=>{const v=location.origin+location.pathname+"#lista_prometedores",done=()=>toast(prt("copied"));
   const fb=()=>{try{const ta=document.createElement("textarea");ta.value=v;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
   try{navigator.clipboard.writeText(v).then(done,fb);}catch(e){fb();}};
 
 
+
+/* ===== players list ===== */
+const PLT={
+es:{m:"Lista de jugadores",t:"LISTA DE JUGADORES",back:"← Lista de niveles",link:"Copiar enlace",copied:"Enlace copiado",add:"+ Jugador",addY:"+ Youtuber",tp:"Prometedores",te:"Sin fin (expert)",ty:"Youtubers",hp:"Jugadores prometedores",he:"Desafío Mario sin fin (expert)",hy:"Youtubers de SMM:WE",none:"Aún no hay nada aquí",edit:"Editar",del:"Borrar",delQ:"¿Borrar a \"{0}\"?",name:"Nombre",rp:"Récord Prometedores",re:"Récord Desafío sin fin",notes:"Notas",chan:"Link del canal (https://...)",save:"Guardar",cancel:"Cancelar",need:"Falta el nombre",bad:"Link no válido",saved:"Guardado",done:"Borrado",q:"Buscar...",open:"Abrir canal",rec:"Récord",subs:"Suscriptores",img:"Foto del canal (link, opcional)",up:"Subir foto"},
+en:{m:"Player list",t:"PLAYER LIST",back:"← Level list",link:"Copy link",copied:"Link copied",add:"+ Player",addY:"+ Youtuber",tp:"Promising",te:"Endless (expert)",ty:"Youtubers",hp:"Promising players",he:"Endless Mario Challenge (expert)",hy:"SMM:WE Youtubers",none:"Nothing here yet",edit:"Edit",del:"Delete",delQ:"Delete \"{0}\"?",name:"Name",rp:"Promising record",re:"Endless Challenge record",notes:"Notes",chan:"Channel link (https://...)",save:"Save",cancel:"Cancel",need:"Name is missing",bad:"Invalid link",saved:"Saved",done:"Deleted",q:"Search...",open:"Open channel",rec:"Record",subs:"Subscribers",img:"Channel photo (link, optional)",up:"Upload photo"},
+pt:{m:"Lista de jogadores",t:"LISTA DE JOGADORES",back:"← Lista de níveis",link:"Copiar link",copied:"Link copiado",add:"+ Jogador",addY:"+ Youtuber",tp:"Promissores",te:"Sem fim (expert)",ty:"Youtubers",hp:"Jogadores promissores",he:"Desafio Mario sem fim (expert)",hy:"Youtubers de SMM:WE",none:"Ainda não há nada aqui",edit:"Editar",del:"Excluir",delQ:"Excluir \"{0}\"?",name:"Nome",rp:"Recorde Promissores",re:"Recorde Desafio sem fim",notes:"Notas",chan:"Link do canal (https://...)",save:"Salvar",cancel:"Cancelar",need:"Falta o nome",bad:"Link inválido",saved:"Salvo",done:"Excluído",q:"Buscar...",open:"Abrir canal",rec:"Recorde",subs:"Inscritos",img:"Foto do canal (link, opcional)",up:"Enviar foto"}};
+const plt=(k,a)=>{let v=(PLT[LANG]||PLT.en)[k]||PLT.en[k]||"";return a==null?v:v.replace("{0}",a);};
+let plTab="prom";
+const fmtN=n=>n>=1e6?parseFloat((n/1e6).toFixed(2))+"M":n>=1e3?parseFloat((n/1e3).toFixed(1))+"K":String(n);
+function plRender(){
+  const on=document.body.getAttribute("data-view")==="players",yt=plTab==="yt";
+  const e=$("#plL");if(e)e.textContent=on?plt("back").replace(/^\S+\s/,""):plt("m");
+  $("#plTitle").textContent=plt("t");$("#plBack").textContent=plt("back");$("#plLink").textContent=plt("link");
+  $("#plAdd").textContent=plt(yt?"addY":"add");$("#plAdd").classList.toggle("hide",!admin);
+  {const b=$("#plImp");b.textContent=imp("save");b.classList.toggle("hide",!admin||yt);}
+  $("#plTabs").innerHTML=[["prom","tp"],["endless","te"],["yt","ty"]].map(x=>`<button class="btn sm${plTab===x[0]?" green":""}" data-pltab="${x[0]}">${esc(plt(x[1]))}</button>`).join("");
+  $("#plH").textContent=plt(plTab==="prom"?"hp":plTab==="endless"?"he":"hy");$("#plQ").placeholder=plt("q");
+  const q=$("#plQ").value.trim().toLowerCase(),tools=id=>admin?`<div class="rowtools"><button class="btn sm blue" data-ple="${esc(id)}">${esc(plt("edit"))}</button><button class="btn sm red" data-pld="${esc(id)}">${esc(plt("del"))}</button></div>`:"";
+  let h="";
+  if(yt){
+    const full=(state.yts||[]).slice().sort((a,b)=>(b.subs||0)-(a.subs||0)||a.name.localeCompare(b.name));
+    h=full.map((y,i)=>({y,i})).filter(x=>!q||x.y.name.toLowerCase().includes(q)).map(x=>{const y=x.y,i=x.i,body=(y.desc?`<p class="pld" style="margin:0">${esc(y.desc)}</p>`:"")+(y.link?`<div class="actions" style="margin:${y.desc?"8px":"0"} 0 0"><a class="btn sm" href="${esc(y.link)}" target="_blank" rel="noopener noreferrer">&#9654; ${esc(plt("open"))}</a></div>`:"");return `<div class="plrow yt${i<3?" p"+(i+1):""}"><div class="plh"><span class="rkc ${i<4?"":"b"}">${i+1}</span><b>${esc(y.name)}</b><span class="plpt">${y.subs?esc(fmtN(y.subs))+" &#128101;":"&mdash;"}</span></div>${y.img||body?`<div class="ytb">${y.img?`<img class="yav" src="${esc(y.img)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`:""}${body?`<div>${body}</div>`:""}</div>`:""}${tools(y.id)}</div>`;}).join("");
+  }else{
+    const key=plTab==="prom"?"rp":"re";
+    const full=(state.players||[]).filter(p=>p[key]!=null).sort((a,b)=>b[key]-a[key]||a.name.localeCompare(b.name));
+    h=full.map((p,i)=>({p,i})).filter(x=>!q||x.p.name.toLowerCase().includes(q)).map(x=>`<div class="plrow${x.i<3?" p"+(x.i+1):""}" data-pl="${esc(x.p.id)}"><div class="plh"><span class="rkc ${x.i<4?"":"b"}">${x.i+1}</span><b>${esc(x.p.name)}</b><span class="plpt">${x.p[key]}</span></div>${tools(x.p.id)}</div>`).join("");
+  }
+  $("#plList").innerHTML=h||`<div class="empty">${esc(plt("none"))}</div>`;
+}
+function plDetail(id){
+  const p=(state.players||[]).find(x=>x.id===id);if(!p)return;
+  $("#detailBox").innerHTML=`<h2 style="margin-top:0">${esc(p.name)}</h2>
+    <div class="tlrow"><b>${esc(plt("rp"))}</b><span>${p.rp!=null?p.rp:"&mdash;"}</span></div>
+    <div class="tlrow"><b>${esc(plt("re"))}</b><span>${p.re!=null?p.re:"&mdash;"}</span></div>
+    ${p.desc?`<p style="font-size:10px">${esc(p.desc)}</p>`:""}
+    <div class="actions"><button class="btn" data-close="#mDetail">${t("close")}</button></div>`;
+  open("#mDetail");
+}
+function plForm(id){
+  const ex=(state.players||[]).find(p=>p.id===id),p=ex?{...ex}:{id:"p"+uid(),name:"",rp:null,re:null,desc:"",added:new Date().toISOString().slice(0,10)};
+  $("#formBox").innerHTML=`<h2>${esc(plt(ex?"edit":"add"))}</h2>
+    <label class="lbl">${esc(plt("name"))}</label><input type="text" id="pName" maxlength="40" value="${esc(p.name)}">
+    <label class="lbl">${esc(plt("rp"))}</label><input type="number" id="pRp" min="0" max="999999" inputmode="numeric" value="${p.rp!=null?p.rp:""}">
+    <label class="lbl">${esc(plt("re"))}</label><input type="number" id="pRe" min="0" max="999999" inputmode="numeric" value="${p.re!=null?p.re:""}">
+    <label class="lbl">${esc(plt("notes"))}</label><textarea id="pDesc" maxlength="300">${esc(p.desc)}</textarea>
+    <div class="actions"><button class="btn green" id="pSave">${esc(plt("save"))}</button><button class="btn" data-close="#mForm">${esc(plt("cancel"))}</button></div>`;
+  $("#pSave").onclick=()=>{
+    const name=$("#pName").value.trim();if(!name){toast(plt("need"));return;}
+    const o={id:p.id,name,rp:recN($("#pRp").value),re:recN($("#pRe").value),desc:$("#pDesc").value.trim().slice(0,300),added:p.added||""};
+    const a=(state.players||[]).slice(),i=a.findIndex(x=>x.id===p.id);if(i>=0)a[i]=o;else a.push(o);
+    state.players=a;save();render();close("#mForm");toast(plt("saved"));
+  };
+  open("#mForm");
+}
+function ytForm(id){
+  const ex=(state.yts||[]).find(y=>y.id===id),y=ex?{...ex}:{id:"y"+uid(),name:"",link:"",desc:""};
+  $("#formBox").innerHTML=`<h2>${esc(plt(ex?"edit":"addY"))}</h2>
+    <label class="lbl">${esc(plt("name"))}</label><input type="text" id="yName" maxlength="40" value="${esc(y.name)}">
+    <label class="lbl">${esc(plt("chan"))}</label><input type="url" id="yLink" value="${esc(y.link)}" placeholder="https://www.youtube.com/@...">
+    <label class="lbl">${esc(plt("img"))}</label><input type="text" id="yImg" placeholder="https://... / levelimgs/..." value="${esc(y.img||"")}">
+    <div style="display:flex;gap:8px;align-items:center;margin:4px 0"><label class="btn sm" for="yImgF" id="yImgB">${esc(plt("up"))}</label><input type="file" id="yImgF" accept="image/*" hidden><span id="yImgP"></span></div>
+    <label class="lbl">${esc(plt("subs"))}</label><input type="number" id="ySubs" min="0" max="999999999" inputmode="numeric" value="${y.subs||""}">
+    <label class="lbl">${esc(plt("notes"))}</label><textarea id="yDesc" maxlength="300">${esc(y.desc)}</textarea>
+    <div class="actions"><button class="btn green" id="ySave">${esc(plt("save"))}</button><button class="btn" data-close="#mForm">${esc(plt("cancel"))}</button></div>`;
+  const pv=src=>{$("#yImgP").innerHTML=src?'<img alt="" style="height:44px;width:44px;border-radius:50%;object-fit:cover;border:2px solid #111" src="'+esc(src)+'">':"";};
+  pv(y.img||"");$("#yImg").oninput=()=>pv($("#yImg").value.trim());
+  $("#yImgF").onchange=async e=>{
+    const f=e.target.files[0];e.target.value="";if(!f)return;
+    const c=ghCfg();if(!c.owner||!c.repo||!c.token){close("#mForm");ghForm();toast(t("setupGh"));return;}
+    const b=$("#yImgB");b.textContent=imt("wait");
+    try{
+      const url=URL.createObjectURL(f);
+      const im=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=url;});
+      const k=Math.min(1,400/Math.max(im.width,im.height)),cv=document.createElement("canvas");cv.width=Math.max(1,Math.round(im.width*k));cv.height=Math.max(1,Math.round(im.height*k));
+      const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(im,0,0,cv.width,cv.height);URL.revokeObjectURL(url);
+      const data=cv.toDataURL("image/jpeg",0.85),path="levelimgs/"+uid()+".jpg";
+      const r=await fetch("https://api.github.com/repos/"+c.owner+"/"+c.repo+"/contents/"+path,{method:"PUT",headers:{"Authorization":"Bearer "+c.token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},body:JSON.stringify({message:"Add youtuber image",content:data.split(",")[1],branch:c.branch||"main"})});
+      if(!r.ok)throw new Error(await ghErr(r));
+      $("#yImg").value=path;pv(data);toast(imt("ok"));
+    }catch(er){toast(imt("fail",er&&er.message||"?"));}
+    b.textContent=plt("up");
+  };
+  $("#ySave").onclick=()=>{
+    const name=$("#yName").value.trim(),link=$("#yLink").value.trim(),img=$("#yImg").value.trim();
+    if(!name){toast(plt("need"));return;}
+    if(link&&!/^https?:\/\//i.test(link)){toast(plt("bad"));return;}
+    if(img&&!/^(https?:\/\/|levelimgs\/[\w.-]+$)/i.test(img)){toast(plt("bad"));return;}
+    const o={id:y.id,name,link,img,subs:Math.min(Math.floor(Number($("#ySubs").value))||0,999999999)||null,desc:$("#yDesc").value.trim().slice(0,300)};
+    const a=(state.yts||[]).slice(),i=a.findIndex(x=>x.id===y.id);if(i>=0)a[i]=o;else a.push(o);
+    state.yts=a;save();render();close("#mForm");toast(plt("saved"));
+  };
+  open("#mForm");
+}
+$("#plBack").onclick=()=>viewSet("levels");
+$("#plQ").addEventListener("input",()=>plRender());
+$("#plTabs").addEventListener("click",e=>{const b=e.target.closest("[data-pltab]");if(b){plTab=b.dataset.pltab;plRender();}});
+$("#plAdd").onclick=()=>{if(admin)(plTab==="yt"?ytForm:plForm)(null);};
+$("#plImp").onclick=()=>{if(admin)impForm(plTab==="endless"?"pe":"pp");};
+$("#plLink").onclick=()=>{const v=location.origin+location.pathname+"#list_players",done=()=>toast(plt("copied"));
+  const fb=()=>{try{const ta=document.createElement("textarea");ta.value=v;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();}catch(e){}done();};
+  try{navigator.clipboard.writeText(v).then(done,fb);}catch(e){fb();}};
+$("#plList").addEventListener("click",e=>{
+  const ed=e.target.closest("[data-ple]"),dl=e.target.closest("[data-pld]"),yt=plTab==="yt";
+  if(ed){e.stopPropagation();if(admin)(yt?ytForm:plForm)(ed.dataset.ple);return;}
+  if(dl){e.stopPropagation();const k=yt?"yts":"players",p=(state[k]||[]).find(x=>x.id===dl.dataset.pld);if(admin&&p&&confirm(plt("delQ",p.name))){state[k]=state[k].filter(x=>x.id!==p.id);save();render();toast(plt("done"));}return;}
+  const r=e.target.closest("[data-pl]");if(r)plDetail(r.dataset.pl);
+});
 
 /* ===== admin tools: incomplete levels, link checker, trash ===== */
 const TLT={
@@ -2541,9 +2538,9 @@ menuEl.addEventListener("click",e=>{
   else if(b.dataset.menu==="music"){setTimeout(()=>{mMenu.classList.remove("hide");mBtn.setAttribute("aria-expanded","true");mUI();},0);}
   else if(b.dataset.menu==="lang"){drawLang();open("#mLang");}
   else if(b.dataset.menu==="send"){sendForm();}
-  else if(b.dataset.menu==="players"){plSet(document.body.getAttribute("data-view")!=="players");}
   else if(b.dataset.menu==="upd"){updForm();}
   else if(b.dataset.menu==="apply"){applyForm();}
+  else if(b.dataset.menu==="players"){viewSet(document.body.getAttribute("data-view")!=="players"?"players":"levels");}
   else if(b.dataset.menu==="prom"){viewSet(document.body.getAttribute("data-view")!=="prom"?"prom":"levels");}
   else if(b.dataset.menu==="saved"){openSaved();}
   else if(b.dataset.menu==="settings"){openSettings();}
