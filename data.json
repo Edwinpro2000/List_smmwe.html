@@ -28,8 +28,6 @@
   "levels": [
     {
       "id": "l4",
-      "added": "",
-      "img": "",
       "name": "Malabaizo - Kaizo",
       "creator": "Plataformer2000",
       "diff": "Extreme",
@@ -40,7 +38,9 @@
       "time": "night",
       "tags": [],
       "desc": "El nivel fue creado con la intención de ser el más desafiante de su creador hasta la fecha. Lo puedes descargar en MediaFire para SMMWE 3.4.4F",
-      "video": "https://youtu.be/675WMIqQhqs"
+      "video": "https://youtu.be/675WMIqQhqs",
+      "img": "",
+      "added": ""
     },
     {
       "id": "l2",
@@ -94,8 +94,6 @@
     },
     {
       "id": "tfwlartg",
-      "added": "2026-11-14",
-      "img": "",
       "name": "D'not touch ground - kaizo level",
       "creator": "playoff16",
       "diff": "Super Expert",
@@ -108,7 +106,9 @@
         "skill"
       ],
       "desc": "",
-      "video": ""
+      "video": "",
+      "img": "",
+      "added": "2026-11-14"
     },
     {
       "id": "l1",
@@ -165,8 +165,6 @@
     },
     {
       "id": "e1yb58c8",
-      "added": "2026-11-14",
-      "img": "",
       "name": "Kaizo doble de smm2",
       "creator": "makermx",
       "diff": "Expert",
@@ -179,7 +177,9 @@
         "skill"
       ],
       "desc": "",
-      "video": "https://youtu.be/dDxBu9E9k6M?si=XM0n1_9uqyO1yZwS"
+      "video": "https://youtu.be/dDxBu9E9k6M?si=XM0n1_9uqyO1yZwS",
+      "img": "",
+      "added": "2026-11-14"
     },
     {
       "id": "93o54xal",
@@ -707,5 +707,5 @@
       "added": ""
     }
   ],
-  "updated": "2026-11-14T23:22:51.815Z"
+  "updated": "2026-11-18T23:58:10.948Z"
 }
