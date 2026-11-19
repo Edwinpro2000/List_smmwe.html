@@ -528,6 +528,22 @@
       "img": "",
       "subs": 10000,
       "desc": ""
+    },
+    {
+      "id": "yvhegxem3",
+      "name": "Paper Yosho",
+      "link": "https://youtube.com/@paperyosho?si=wGUc05Uqj9id-FwE",
+      "img": "",
+      "subs": 1090,
+      "desc": ""
+    },
+    {
+      "id": "yj7qy375b",
+      "name": "Tommy Maker U",
+      "link": "https://youtube.com/@tommymakeru?si=pz_x5AOTH8tUh7fk",
+      "img": "",
+      "subs": 12400,
+      "desc": ""
     }
   ],
   "prom": [
@@ -756,5 +772,5 @@
       "added": ""
     }
   ],
-  "updated": "2026-11-19T00:17:56.025Z"
+  "updated": "2026-11-19T00:20:18.757Z"
 }
